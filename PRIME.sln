@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRIMEWeb", "PRIMEWeb\PRIMEWeb.csproj", "{D093F5AE-DCC4-42F6-977A-21FF5C4FB998}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D093F5AE-DCC4-42F6-977A-21FF5C4FB998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D093F5AE-DCC4-42F6-977A-21FF5C4FB998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D093F5AE-DCC4-42F6-977A-21FF5C4FB998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D093F5AE-DCC4-42F6-977A-21FF5C4FB998}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66857620-9D59-4096-B1CC-6E2D926A3244}
+	EndGlobalSection
+EndGlobal
