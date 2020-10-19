@@ -9,6 +9,7 @@
     <style type="text/css">
         body {
             background-color: #e0e0e0;
+            line-height: 1;
         }
 
         #wrapper-out {
@@ -51,7 +52,7 @@
             background-image: linear-gradient(to right, #25cefd, #6385fd, #786bfe, #b625ff);
             border: 2px solid #fff;
             margin-top: 2rem;
-            padding: 10px 95px 12px 95px;
+            padding: 10px 95px;
         }
 
         #btnLogin:hover {
