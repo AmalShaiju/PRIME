@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="CSS\bootstrap.css" />
     <Content Include="Customers\Default.aspx" />
+    <Content Include="Customers\NewCustomer.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Landing.aspx" />
     <Content Include="Script\bootstrap.min.js" />
@@ -82,6 +83,13 @@
     </Compile>
     <Compile Include="Customers\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\NewCustomer.aspx.cs">
+      <DependentUpon>NewCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customers\NewCustomer.aspx.designer.cs">
+      <DependentUpon>NewCustomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

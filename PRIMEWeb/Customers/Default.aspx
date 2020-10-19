@@ -25,6 +25,10 @@
             margin: 15px auto;
             padding: 15px;
         }
+        h1 {
+            text-align: center;
+            padding: 10px 0;
+        }
         #grpCreateFilter {
             margin: 10px 0;
         }
@@ -73,7 +77,7 @@
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Customers</h1>
                     <div id="grpCreateFilter" class="btn-group" role="group">
-                        <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Customer" Text="New Customer" />
+                        <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Customer" Text="Create New Customer" PostBackUrl="/Customers/NewCustomer.aspx" />
                         <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Customers">
                             Filter Customers
                         </button>
@@ -103,7 +107,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Phone:</label>
+                                        <label class="control-label">City:</label>
                                         <asp:TextBox ID="txtCity" runat="server" placeholder="City" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
