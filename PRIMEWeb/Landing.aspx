@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>PRIME - Home</title>
-    <link href="CSS/bootstrap.css" rel="stylesheet" />
+    <link href="/CSS/bootstrap.css" rel="stylesheet" />
     <style type="text/css">
         body {
             background-color: #e0e0e0;
@@ -52,10 +52,10 @@
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Hello <asp:Label ID="lblUser" runat="server" Text="(Name)"></asp:Label></h1>
                     <h4>Let's get started</h4>
-                    <asp:Button ID="btnCustomers" runat="server" Text="Customers" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="~/Customers.aspx" />
-                    <asp:Button ID="btnSales" runat="server" Text="Sales" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="~/Sales.aspx" />
-                    <asp:Button ID="btnInventory" runat="server" Text="Inventory" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="~/Inventory.aspx" />
-                    <asp:Button ID="btnEquipment" runat="server" Text="Equipment" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="~/Equipment.aspx" />
+                    <asp:Button ID="btnCustomers" runat="server" Text="Customers" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Customers/" />
+                    <asp:Button ID="btnSales" runat="server" Text="Sales" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Sale/" />
+                    <asp:Button ID="btnInventory" runat="server" Text="Inventory" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Inventory/" />
+                    <asp:Button ID="btnEquipment" runat="server" Text="Equipment" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Equipment/" />
                 </div>
             </div>
         </div>

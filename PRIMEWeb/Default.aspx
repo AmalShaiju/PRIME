@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>PRIME - Login</title>
-    <link href="CSS/bootstrap.css" rel="stylesheet" />
+    <link href="/CSS/bootstrap.css" rel="stylesheet" />
     <style type="text/css">
         body {
             background-color: #e0e0e0;
