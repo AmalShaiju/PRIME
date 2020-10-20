@@ -12,7 +12,7 @@
             line-height: 1;
         }
         .breadcrumb, #navbar {
-            margin: 0 10px;
+            margin: 10px;
         }
         #btnLogout {
             margin: 0 15px;
@@ -39,7 +39,6 @@
             margin-bottom: 2rem;
         }
         .form-control {
-            background: transparent;
             border: none;
             border-bottom: 2px solid #6c757d;
             -webkit-box-shadow: none;
@@ -79,7 +78,7 @@
                         <a class="nav-link" href="/Equipment/">Equipment</a>
                     </li>
                 </ul>
-                <ol class="collapse navbar-collapse breadcrumb">
+                <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
                     <li class="breadcrumb-item"><a href="/Customers/">Customers</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Create New Customer</li>
@@ -89,7 +88,7 @@
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
-                <h1>Create New Customers</h1>
+                <h1>Create New Customer</h1>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
                         <asp:TextBox ID="txtFName" runat="server" placeholder="First Name" CssClass="form-control" required="required"></asp:TextBox>

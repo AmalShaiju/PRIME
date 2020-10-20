@@ -12,13 +12,13 @@
             line-height: 1;
         }
         .breadcrumb {
-            margin: 0
+            margin: 10px;
         }
         #frmLanding {
             text-align: center;
         }
         #wrapper {
-            height: calc(100vh - 4rem);
+            height: calc(100vh - 4rem - 20px);
         }
         h1, h4 {
             margin: 2rem 0;
@@ -53,7 +53,7 @@
                     <h1>Hello <asp:Label ID="lblUser" runat="server" Text="(Name)"></asp:Label></h1>
                     <h4>Let's get started</h4>
                     <asp:Button ID="btnCustomers" runat="server" Text="Customers" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Customers/" />
-                    <asp:Button ID="btnSales" runat="server" Text="Sales" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Sale/" />
+                    <asp:Button ID="btnSales" runat="server" Text="Sales" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Sales/" />
                     <asp:Button ID="btnInventory" runat="server" Text="Inventory" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Inventory/" />
                     <asp:Button ID="btnEquipment" runat="server" Text="Equipment" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Equipment/" />
                 </div>
