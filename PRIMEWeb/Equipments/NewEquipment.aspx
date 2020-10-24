@@ -114,6 +114,13 @@
                     </div>
                 </div>
                 <div class="form-row">
+                    <div class="col-md-6 form-group">
+                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select">
+                            <asp:ListItem>Select the Customer...</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                <div class="form-row">
                     <div id="divBtnEquipments" class="col-md-12">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Create Equipment" CssClass="btn btn-outline-primary" Text="Create Equipment" />
                         <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
