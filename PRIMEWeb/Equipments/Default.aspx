@@ -124,7 +124,15 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div id="divBtnSearch" class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Customer:</label>
+                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control">
+                                            <asp:ListItem>Customers...</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div id="divBtnSearch" class="col-md-6 align-self-end">
                                     <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>

@@ -69,6 +69,15 @@ namespace PRIMEWeb.Equipments
         protected global::System.Web.UI.WebControls.DropDownList ddlType;
 
         /// <summary>
+        /// ddlCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCustomer;
+
+        /// <summary>
         /// btnCreate control.
         /// </summary>
         /// <remarks>
