@@ -62,7 +62,7 @@
                         <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Equipment/">Equipment</a>
+                        <a class="nav-link" href="/Equipments/">Equipments</a>
                     </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
