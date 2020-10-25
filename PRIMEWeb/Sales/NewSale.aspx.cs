@@ -13,5 +13,24 @@ namespace PRIMEWeb.Sales
         {
 
         }
+
+        protected void btnAddOrder_Click(object sender, EventArgs e)
+        {
+            pnlBtnSales.Visible = false;
+            pnlOrder.Visible = true;
+        }
+
+        protected void btnSaveOrder_Click(object sender, EventArgs e)
+        {
+            pnlBtnSales.Visible = true;
+            pnlOrder.Visible = false;
+            ddlProduct.SelectedIndex = 0;
+            txtQty.Text = txtNote.Text = String.Empty;
+        }
+
+        protected void ddlProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
