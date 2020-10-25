@@ -25,7 +25,7 @@
             margin: 15px auto;
             padding: 15px;
         }
-        #wrapper-inner {
+        #wrapper-inner, #pnlOrder {
             padding: 30px;
         }
         h1 {
@@ -50,12 +50,12 @@
         .form-check-label {
             margin-right: 10px;
         }
-        #divBtnSales, #divBtnOrder {
+        #pnlBtnSales, #divBtnOrder {
             text-align: center;
             margin-top: 20px;
             margin-bottom: 20px;
         }
-        #divBtnSales input, #divBtnSales a, #divBtnOrder input, #divBtnOrder a {
+        #pnlBtnSales input, #pnlBtnSales a, #divBtnOrder input, #divBtnOrder a {
             margin: 0 10px;
         }
     </style>
@@ -129,22 +129,23 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div id="divBtnSales" class="col-md-12">
-                        <asp:Button ID="btnAddOrder" runat="server" aria-label="Add an Order" CssClass="btn btn-outline-primary" Text="Add an Order" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="false" aria-controls="collapseOrder" />
-                        <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
+                    <asp:Panel ID="pnlBtnSales" CssClass="col-md-12" runat="server">
+                        <asp:Button ID="btnAddOrder" runat="server" aria-label="Add an Order" CssClass="btn btn-outline-primary" Text="Add an Order" UseSubmitBehavior="False" OnClick="btnAddOrder_Click" />
+                        <a class="btn btn-outline-primary" href="/Sales/NewSale.aspx" role="button" aria-label="Clear Form">Clear Form</a>
                         <a class="btn btn-outline-primary" href="/Sales/" role="button" aria-label="Cancel Creating Sale">Cancel</a>
-                    </div>
+                    </asp:Panel>
                 </div>
             </div>
-            <div class="collapse col-lg-9" id="collapseOrder">
+            <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
+            <asp:Panel ID="pnlOrder" CssClass="col-lg-9" Visible="False" runat="server">
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:DropDownList ID="ddlProduct" runat="server" CssClass="custom-select" AutoPostBack="True">
+                        <asp:DropDownList ID="ddlProduct" runat="server" CssClass="custom-select" AutoPostBack="True" OnSelectedIndexChanged="ddlProduct_SelectedIndexChanged">
                             <asp:ListItem>Select a Product...</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtQty" runat="server" CssClass="form-control" TextMode="Number" placeholder="Quantity" required="required" AutoPostBack="True"></asp:TextBox>
+                        <asp:TextBox ID="txtQty" runat="server" CssClass="form-control" TextMode="Number" placeholder="Quantity" required="required"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-row">
@@ -152,22 +153,30 @@
                         <asp:TextBox ID="txtNote" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Notes for this order..."></asp:TextBox>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" placeholder="Price" ReadOnly="True"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtStock" runat="server" CssClass="form-control" placeholder="The number of selected product in stock..." ReadOnly="True"></asp:TextBox>
-                    </div>
-                </div>
+                <asp:UpdatePanel ID="upnOrder" runat="server">
+                    <ContentTemplate>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" placeholder="Price" ReadOnly="True"></asp:TextBox>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <asp:TextBox ID="txtStock" runat="server" CssClass="form-control" placeholder="The number of selected product in stock..." ReadOnly="True"></asp:TextBox>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="ddlProduct" EventName="SelectedIndexChanged" />
+                    </Triggers>
+                </asp:UpdatePanel>
                 <div class="form-row">
                     <div id="divBtnOrder" class="col-md-12">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Create Sale" CssClass="btn btn-outline-primary" Text="Create Sale" PostBackUrl="/Sales/" />
-                        <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
+                        <asp:Button ID="btnSaveOrder" runat="server" aria-label="Save Order" CssClass="btn btn-outline-primary" Text="Save Order" OnClick="btnSaveOrder_Click" />
+                        <a class="btn btn-outline-primary" href="/Sales/NewSale.aspx" role="button" aria-label="Clear Form">Clear Form</a>
                         <a class="btn btn-outline-primary" href="/Sales/" role="button" aria-label="Cancel Creating Sale">Cancel</a>
                     </div>
                 </div>
-            </div>
+            </asp:Panel>
         </div>
     </form>
 </body>
