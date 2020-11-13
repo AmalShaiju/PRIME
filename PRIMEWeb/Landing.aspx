@@ -55,7 +55,8 @@
                     <asp:Button ID="btnCustomers" runat="server" Text="Customers" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Customers/" />
                     <asp:Button ID="btnSales" runat="server" Text="Sales" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Sales/" />
                     <asp:Button ID="btnInventory" runat="server" Text="Inventory" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Inventory/" />
-                    <asp:Button ID="btnEquipment" runat="server" Text="Equipments" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Equipments/" />
+                    <asp:Button ID="btnEquipments" runat="server" Text="Equipments" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Equipments/" />
+                    <asp:Button ID="btnRepairs" runat="server" Text="Repairs" CssClass="btn btn-outline-primary rounded-pill" PostBackUrl="/Repairs/" />
                 </div>
             </div>
         </div>

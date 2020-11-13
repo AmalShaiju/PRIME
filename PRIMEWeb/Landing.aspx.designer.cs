@@ -69,12 +69,21 @@ namespace PRIMEWeb
         protected global::System.Web.UI.WebControls.Button btnInventory;
 
         /// <summary>
-        /// btnEquipment control.
+        /// btnEquipments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEquipment;
+        protected global::System.Web.UI.WebControls.Button btnEquipments;
+
+        /// <summary>
+        /// btnRepairs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRepairs;
     }
 }
