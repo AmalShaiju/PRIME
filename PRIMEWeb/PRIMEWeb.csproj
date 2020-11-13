@@ -76,6 +76,9 @@
     <Content Include="Inventory\CreateNewItem.aspx" />
     <Content Include="Inventory\Default.aspx" />
     <Content Include="Landing.aspx" />
+    <Content Include="Repairs\Default.aspx" />
+    <Content Include="Repairs\NewRepair.aspx" />
+    <Content Include="Repairs\WarrantyReport.aspx" />
     <Content Include="Sales\Default.aspx" />
     <Content Include="Sales\NewSale.aspx" />
     <Content Include="Sales\Report.aspx" />
@@ -141,6 +144,27 @@
       <DependentUpon>Landing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repairs\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repairs\NewRepair.aspx.cs">
+      <DependentUpon>NewRepair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\NewRepair.aspx.designer.cs">
+      <DependentUpon>NewRepair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repairs\WarrantyReport.aspx.cs">
+      <DependentUpon>WarrantyReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\WarrantyReport.aspx.designer.cs">
+      <DependentUpon>WarrantyReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

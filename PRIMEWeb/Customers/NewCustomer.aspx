@@ -77,6 +77,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Equipments/">Equipments</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Repairs/">Repairs</a>
+                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
