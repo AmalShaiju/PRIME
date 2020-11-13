@@ -29,18 +29,8 @@
             text-align: center;
             padding: 10px 0;
         }
-        #divBtnSales {
-            margin: 10px 0;
-        }
-        #divBtnSearch {
-            text-align: right;
-            margin-bottom: 1rem;
-        }
-        #btnClear {
-            margin-left: 30px;
-        }
         .table {
-            margin: 15px auto;
+            margin: 30px auto 0 auto;
         }
         .table td, .table th {
             text-align: center;
@@ -62,7 +52,7 @@
     <script src="/Script/bootstrap.min.js"></script>
 </head>
 <body>
-    <form id="frmSales" runat="server">
+    <form id="frmInventory" runat="server">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
             <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,16 +64,16 @@
                         <a class="nav-link" href="/Customers/">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Sales/">Sales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Inventory/">Inventory</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/Equipments/">Equipments</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/Sales/">Sales</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/Repairs/">Repairs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
@@ -97,67 +87,46 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Inventory</h1>
-                    <div id="divBtnInventory" class="btn-group" role="group">
-                        <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Inventory Item" Text="Create New Inventory Item" PostBackUrl="/Inventory/CreateNewItem.aspx" />
-                        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Inventory Items">
-                            Filter Inventory
-                        </button>
-                    </div>
+                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-secondary" aria-label="Add New Inventory Item" Text="Add New Item" PostBackUrl="/Inventory/NewItem.aspx" />
+                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Inventory Items">
+                        Filter Inventory
+                    </button>
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
-                                <div class="col-md-4 ">
-                                    <div class="form-group ">
-                                        <label class="control-label">Product :</label>
-                                        <asp:TextBox ID="txtItemName" runat="server" CssClass="form-control " ></asp:TextBox>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-4 ">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Quantity:</label>
-                                        <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control " ></asp:TextBox>
+                                        <label class="control-label">Product Name:</label>
+                                        <asp:TextBox ID="txtItemName" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
-                                    <div class="col-md-4 ">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Size:</label>
-                                        <asp:TextBox ID="txtSize" runat="server" CssClass="form-control " ></asp:TextBox>
-                                    </div>
-                                </div>
-                                </div>
-                            <div class="form-row">
-                                <div class="col-md-4 ">
-                                    <div class="form-group">
-                                        <label class="control-label">Measure:</label>
-                                        <asp:DropDownList ID="ddlMeasures" runat="server" CssClass="form-control ">
-                                            <asp:ListItem>All Measures</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                            
-                            
-                                    <div class="col-md-4 ">
-                                    <div class="form-group">
-                                        <label class="control-label">Price:</label>
-                                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control " ></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 ">
-                                    <div class="form-group" >
                                         <label class="control-label">Brand:</label>
-                                        <asp:DropDownList ID="ddlBrand" runat="server" CssClass="form-control ">
+                                        <asp:DropDownList ID="ddlBrands" runat="server" CssClass="form-control">
                                             <asp:ListItem>All brands</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
-
-                        
-                            
-                                <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
-                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">From Price:</label>
+                                        <asp:TextBox ID="txtFromPrice" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">To Price:</label>
+                                        <asp:TextBox ID="txtToPrice" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                        <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
+                                        <input type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter" />
                                 </div>
                             </div>
                         </div>
@@ -166,50 +135,48 @@
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
-                                <th scope="col">Description</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Size</th>
-                                <th scope="col">Price</th>
                                 <th scope="col">Brand</th>
+                                <th scope="col">Price</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>2 stroke oil</td>
-                                <td>Blue -Oil for a two stroke engine</td>
                                 <td>12</td>
                                 <td>6.00 FL oz</td>
-                                <td>$4.95</td>
                                 <td>Castrol</td>
+                                <td>$4.95</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Customer" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Item Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Item" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Item" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>Air Filter</td>
-                                <td>Paper. Air filter for Briggs and Stratton engines</td>
                                 <td>23</td>
                                 <td>5.00 inch</td>
-                                <td>$15.99</td>
                                 <td>Briggs and Stratton</td>
+                                <td>$15.99</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Customer" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Item Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Item" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Item" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>50:1 Mixed Gas</td>
-                                <td>Pre-mixed gas for two stroke engines requiring 
-                                    <br />a 50:1 gas to oil ratio</td>
                                 <td>9</td>
                                 <td>1.00 Litre</td>
-                                <td>$12.50</td>
                                 <td>Champion</td>
+                                <td>$12.50</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Customer" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Item Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Item" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Item" Text="Delete" />
                                 </td>
                             </tr>
                         </tbody>

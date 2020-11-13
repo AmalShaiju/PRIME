@@ -29,9 +29,6 @@
             text-align: center;
             padding: 10px 0;
         }
-        #divBtnRepairs {
-            margin: 10px 0;
-        }
         .form-check-inline {
             margin-right: 2rem;
         }
@@ -43,7 +40,7 @@
             margin-left: 30px;
         }
         .table {
-            margin: 15px auto;
+            margin: 30px auto 0 auto;
         }
         .table td, .table th {
             text-align: center;
@@ -66,16 +63,16 @@
                         <a class="nav-link" href="/Customers/">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Sales/">Sales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Inventory/">Inventory</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/Equipments/">Equipments</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/Sales/">Sales</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/Repairs/">Repairs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
@@ -89,14 +86,12 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="rounded-lg">
                     <h1>Repairs</h1>
-                    <div id="divBtnRepairs" class="btn-group" role="group">
-                        <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Repair" Text="Create New Repair" PostBackUrl="/Repairs/NewRepair.aspx" />
-                        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Repairs">
-                            Filter Repairs
-                        </button>
-                        <asp:Button ID="btnReport" runat="server" CssClass="btn btn-secondary" aria-label="Warranty Report" Text="Warranty Report" PostBackUrl="/Repairs/WarrantyReport.aspx" />
-                        <asp:Button ID="btnServices" runat="server" CssClass="btn btn-secondary" aria-label="Services" Text="Services" PostBackUrl="/Repairs/Services.aspx" />
-                    </div>
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Repair" Text="Create New Repair" PostBackUrl="/Repairs/NewRepair.aspx" />
+                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Repairs">
+                        Filter Repairs
+                    </button>
+                    <asp:Button ID="btnServices" runat="server" CssClass="btn btn-secondary" aria-label="Services" Text="Services" PostBackUrl="/Repairs/Services.aspx" />
+                    <asp:Button ID="btnReport" runat="server" CssClass="btn btn-secondary" aria-label="Warranty Report" Text="Warranty Report" PostBackUrl="/Repairs/WarrantyReport.aspx" />
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
@@ -193,9 +188,9 @@
                                 <td>Lawn Mower</td>
                                 <td>Mark Otto</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Customer Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Customer" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Repair Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Repair" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Repair" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
@@ -206,9 +201,9 @@
                                 <td>Weedeater</td>
                                 <td>Jacob Thornton</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Customer Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Customer" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Repair Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Repair" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Repair" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
@@ -219,9 +214,9 @@
                                 <td>Snow Blower</td>
                                 <td>Larry Bird</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Customer Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Customer" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Repair Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Repair" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Repair" Text="Delete" />
                                 </td>
                             </tr>
                         </tbody>

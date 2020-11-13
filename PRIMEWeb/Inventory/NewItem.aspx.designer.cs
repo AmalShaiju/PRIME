@@ -11,17 +11,17 @@ namespace PRIMEWeb.Inventory
 {
 
 
-    public partial class CreateNewItem
+    public partial class NewItem
     {
 
         /// <summary>
-        /// frmNewSale control.
+        /// frmNewItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmNewSale;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmNewItem;
 
         /// <summary>
         /// btnLogout control.
@@ -33,40 +33,22 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// ddlProductName control.
+        /// ddlProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProducts;
 
         /// <summary>
-        /// ddlMeasure control.
+        /// ddlMeasures control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMeasure;
-
-        /// <summary>
-        /// txtDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription;
-
-        /// <summary>
-        /// txtBrand control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBrand;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMeasures;
 
         /// <summary>
         /// txtQuantity control.
@@ -87,13 +69,31 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.TextBox txtSize;
 
         /// <summary>
-        /// pnlBtnSales control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBtnSales;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+
+        /// <summary>
+        /// txtBrand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBrand;
+
+        /// <summary>
+        /// pnlBtnItems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlBtnItems;
 
         /// <summary>
         /// btnAddItem control.
@@ -103,14 +103,5 @@ namespace PRIMEWeb.Inventory
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddItem;
-
-        /// <summary>
-        /// smgOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager smgOrder;
     }
 }
