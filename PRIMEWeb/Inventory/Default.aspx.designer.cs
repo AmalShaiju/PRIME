@@ -15,13 +15,13 @@ namespace PRIMEWeb.Inventory
     {
 
         /// <summary>
-        /// frmSales control.
+        /// frmInventory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmSales;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmInventory;
 
         /// <summary>
         /// btnLogout control.
@@ -33,13 +33,13 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// btnCreate control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreate;
+        protected global::System.Web.UI.WebControls.Button btnAdd;
 
         /// <summary>
         /// txtItemName control.
@@ -51,49 +51,31 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.TextBox txtItemName;
 
         /// <summary>
-        /// txtQuantity control.
+        /// ddlBrands control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQuantity;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBrands;
 
         /// <summary>
-        /// txtSize control.
+        /// txtFromPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSize;
+        protected global::System.Web.UI.WebControls.TextBox txtFromPrice;
 
         /// <summary>
-        /// ddlMeasures control.
+        /// txtToPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMeasures;
-
-        /// <summary>
-        /// txtPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrice;
-
-        /// <summary>
-        /// ddlBrand control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBrand;
+        protected global::System.Web.UI.WebControls.TextBox txtToPrice;
 
         /// <summary>
         /// btnSearch control.

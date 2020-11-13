@@ -69,16 +69,16 @@
                         <a class="nav-link" href="/Customers/">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Sales/">Sales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Inventory/">Inventory</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/Equipments/">Equipments</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/Sales/">Sales</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/Repairs/">Repairs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">

@@ -29,11 +29,8 @@
             text-align: center;
             padding: 10px 0;
         }
-        #grpCreateFilter {
-            margin: 10px 0;
-        }
         .table {
-            margin: 15px auto;
+            margin: 30px auto 0 auto;
         }
         .table td, .table th {
             text-align: center;
@@ -56,16 +53,16 @@
                         <a class="nav-link" href="/Customers/">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Sales/">Sales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Inventory/">Inventory</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/Equipments/">Equipments</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/Sales/">Sales</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/Repairs/">Repairs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
@@ -79,12 +76,10 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Customers</h1>
-                    <div id="grpCreateFilter" class="btn-group" role="group">
-                        <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Customer" Text="Create New Customer" PostBackUrl="/Customers/NewCustomer.aspx" />
-                        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Customers">
-                            Filter Customers
-                        </button>
-                    </div>
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Customer" Text="Create New Customer" PostBackUrl="/Customers/NewCustomer.aspx" />
+                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Customers">
+                        Filter Customers
+                    </button>
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">

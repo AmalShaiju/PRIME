@@ -73,7 +73,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Equipments\Default.aspx" />
     <Content Include="Equipments\NewEquipment.aspx" />
-    <Content Include="Inventory\CreateNewItem.aspx" />
+    <Content Include="Inventory\NewItem.aspx" />
     <Content Include="Inventory\Default.aspx" />
     <Content Include="Landing.aspx" />
     <Content Include="Repairs\Default.aspx" />
@@ -124,12 +124,12 @@
     <Compile Include="Equipments\NewEquipment.aspx.designer.cs">
       <DependentUpon>NewEquipment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Inventory\CreateNewItem.aspx.cs">
-      <DependentUpon>CreateNewItem.aspx</DependentUpon>
+    <Compile Include="Inventory\NewItem.aspx.cs">
+      <DependentUpon>NewItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Inventory\CreateNewItem.aspx.designer.cs">
-      <DependentUpon>CreateNewItem.aspx</DependentUpon>
+    <Compile Include="Inventory\NewItem.aspx.designer.cs">
+      <DependentUpon>NewItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inventory\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
