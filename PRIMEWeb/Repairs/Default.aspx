@@ -95,6 +95,7 @@
                             Filter Repairs
                         </button>
                         <asp:Button ID="btnReport" runat="server" CssClass="btn btn-secondary" aria-label="Warranty Report" Text="Warranty Report" PostBackUrl="/Repairs/WarrantyReport.aspx" />
+                        <asp:Button ID="btnServices" runat="server" CssClass="btn btn-secondary" aria-label="Services" Text="Services" PostBackUrl="/Repairs/Services.aspx" />
                     </div>
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
