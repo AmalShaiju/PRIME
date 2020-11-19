@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIMEWeb.Equipments
+namespace PRIMEWeb.Customers
 {
 
 
-    public partial class Default
+    public partial class Equipments
     {
 
         /// <summary>

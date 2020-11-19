@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PRIMEWeb.Equipments.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Equipments.aspx.cs" Inherits="PRIMEWeb.Customers.Equipments" %>
 
 <!DOCTYPE html>
 
@@ -60,9 +60,6 @@
                         <a class="nav-link" href="/Customers/">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Equipments/">Equipments</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/Sales/">Sales</a>
                     </li>
                     <li class="nav-item">
@@ -74,6 +71,7 @@
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/Customers/">Customers</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Equipments</li>
                 </ol>
             </div>
@@ -83,7 +81,7 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Equipments</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Equipment" Text="Create New Equipment" PostBackUrl="/Equipments/NewEquipment.aspx" />
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Equipment" Text="Create New Equipment" PostBackUrl="/Customers/NewEquipment.aspx" />
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Equipments">
                         Filter Equipments
                     </button>

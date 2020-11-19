@@ -53,9 +53,6 @@
                         <a class="nav-link" href="/Customers/">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Equipments/">Equipments</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/Sales/">Sales</a>
                     </li>
                     <li class="nav-item">
@@ -80,6 +77,7 @@
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Customers">
                         Filter Customers
                     </button>
+                    <asp:Button ID="btnEquipments" runat="server" CssClass="btn btn-secondary" aria-label="Equipments Page" Text="Equipments" PostBackUrl="/Customers/Equipments.aspx" />
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
