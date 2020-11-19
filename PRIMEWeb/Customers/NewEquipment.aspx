@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewEquipment.aspx.cs" Inherits="PRIMEWeb.Equipments.NewEquipment" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewEquipment.aspx.cs" Inherits="PRIMEWeb.Customers.NewEquipment" %>
 
 <!DOCTYPE html>
 
@@ -73,9 +73,6 @@
                         <a class="nav-link" href="/Customers/">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Equipments/">Equipments</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/Sales/">Sales</a>
                     </li>
                     <li class="nav-item">
@@ -87,7 +84,8 @@
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
-                    <li class="breadcrumb-item"><a href="/Equipments/">Equipments</a></li>
+                    <li class="breadcrumb-item"><a href="/Customers/">Customers</a></li>
+                    <li class="breadcrumb-item"><a href="/Customers/Equipments.aspx">Equipments</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Create New Equipment</li>
                 </ol>
             </div>

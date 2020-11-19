@@ -43,6 +43,9 @@
             text-align: center;
             vertical-align: middle;
         }
+        td .btn {
+            width: 80px;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -58,9 +61,6 @@
                 <ul class="navbar-nav" id="navbar">
                     <li class="nav-item">
                         <a class="nav-link" href="/Customers/">Customers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Equipments/">Equipments</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Sales/">Sales</a>
@@ -151,7 +151,7 @@
                                 <th scope="col">Sale Number</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Customer</th>
-                                <th scope="col">Status</th>
+                                <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -160,33 +160,39 @@
                                 <td>123</td>
                                 <td>2020-01-23</td>
                                 <td>Mark Otto</td>
-                                <td>Paid</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Sale Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Sale" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Sale" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-success" aria-label="Sale Paid" Text="Paid" Enabled="False" />
+                                </td>
+                                <td>
+                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Sale Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Sale" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Sale" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>456</td>
                                 <td>2020-10-15</td>
                                 <td>Jacob Thornton</td>
-                                <td>Unpaid</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Sale Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Sale" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Sale" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-success" aria-label="Pay for Sale" Text="Pay" />
+                                </td>
+                                <td>
+                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Sale Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Sale" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Sale" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>789</td>
                                 <td>2020-04-13</td>
                                 <td>Larry Bird</td>
-                                <td>Paid</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Sale Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Sale" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Sale" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-success" aria-label="Sale Paid" Text="Paid" Enabled="False" />
+                                </td>
+                                <td>
+                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Sale Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Sale" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Sale" Text="Delete" />
                                 </td>
                             </tr>
                         </tbody>

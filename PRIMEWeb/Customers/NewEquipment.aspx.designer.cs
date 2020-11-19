@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIMEWeb.Equipments
+namespace PRIMEWeb.Customers
 {
 
 

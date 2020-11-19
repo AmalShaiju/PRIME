@@ -46,6 +46,9 @@
             text-align: center;
             vertical-align: middle;
         }
+        td .btn {
+            width: 80px;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -61,9 +64,6 @@
                 <ul class="navbar-nav" id="navbar">
                     <li class="nav-item">
                         <a class="nav-link" href="/Customers/">Customers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Equipments/">Equipments</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Sales/">Sales</a>
@@ -136,8 +136,8 @@
                                 <td>Standard oil change for most makes and models.</td>
                                 <td>$25.50</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Service" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Service" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Service" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Service" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
@@ -145,8 +145,8 @@
                                 <td>Package deal with oil change and other winter preparation.</td>
                                 <td>$45.00</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Service" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Service" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Service" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Service" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
@@ -154,8 +154,8 @@
                                 <td>Sharpening and balancing of standard cutting blade or chain.</td>
                                 <td>$15.00</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Service" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Service" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Service" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Service" Text="Delete" />
                                 </td>
                             </tr>
                         </tbody>

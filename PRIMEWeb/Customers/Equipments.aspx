@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PRIMEWeb.Equipments.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Equipments.aspx.cs" Inherits="PRIMEWeb.Customers.Equipments" %>
 
 <!DOCTYPE html>
 
@@ -43,6 +43,9 @@
             text-align: center;
             vertical-align: middle;
         }
+        td .btn {
+            width: 80px;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -60,9 +63,6 @@
                         <a class="nav-link" href="/Customers/">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Equipments/">Equipments</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/Sales/">Sales</a>
                     </li>
                     <li class="nav-item">
@@ -74,6 +74,7 @@
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/Customers/">Customers</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Equipments</li>
                 </ol>
             </div>
@@ -83,7 +84,7 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Equipments</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Equipment" Text="Create New Equipment" PostBackUrl="/Equipments/NewEquipment.aspx" />
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Equipment" Text="Create New Equipment" PostBackUrl="/Customers/NewEquipment.aspx" />
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Equipments">
                         Filter Equipments
                     </button>
@@ -154,9 +155,9 @@
                                 <td>Black and Decker</td>
                                 <td>Lawn Mower</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Equipment Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Equipment" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Equipment" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Equipment Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Equipment" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Equipment" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
@@ -165,9 +166,9 @@
                                 <td>Husqvarna</td>
                                 <td>Weedeater</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Equipment Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Equipment" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Equipment" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Equipment Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Equipment" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Equipment" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
@@ -176,9 +177,9 @@
                                 <td>Honda</td>
                                 <td>Generator</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Equipment Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Equipment" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Equipment" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Equipment Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Equipment" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Equipment" Text="Delete" />
                                 </td>
                             </tr>
                         </tbody>
