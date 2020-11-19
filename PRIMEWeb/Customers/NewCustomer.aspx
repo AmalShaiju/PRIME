@@ -69,9 +69,6 @@
                         <a class="nav-link" href="/Customers/">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Equipments/">Equipments</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/Sales/">Sales</a>
                     </li>
                     <li class="nav-item">
