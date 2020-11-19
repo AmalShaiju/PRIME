@@ -46,6 +46,9 @@
             text-align: center;
             vertical-align: middle;
         }
+        td .btn {
+            width: 80px;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -185,9 +188,9 @@
                                 <td>Lawn Mower</td>
                                 <td>Mark Otto</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Repair Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Repair" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Repair" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Repair Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Repair" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Repair" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
@@ -198,9 +201,9 @@
                                 <td>Weedeater</td>
                                 <td>Jacob Thornton</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Repair Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Repair" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Repair" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Repair Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Repair" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Repair" Text="Delete" />
                                 </td>
                             </tr>
                             <tr>
@@ -211,9 +214,9 @@
                                 <td>Snow Blower</td>
                                 <td>Larry Bird</td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn btn-outline-secondary" aria-label="Repair Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-warning" aria-label="Edit Repair" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-outline-danger" aria-label="Delete Repair" Text="Delete" />
+                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Repair Details" Text="Details" />
+                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Repair" Text="Edit" />
+                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Repair" Text="Delete" />
                                 </td>
                             </tr>
                         </tbody>
