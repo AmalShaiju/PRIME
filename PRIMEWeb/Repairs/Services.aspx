@@ -49,7 +49,7 @@
         td .btn {
             width: 80px;
         }
-    </style>
+        </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
 </head>
@@ -115,12 +115,13 @@
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
-                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
+                                    <asp:Button ID="btnClear" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Clear Filter" OnClick="btnClear_Click" />
                                 </div>
                             </div>
                         </div>
-                    </div>
+                       
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -160,6 +161,13 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                    <div>
+                     <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                        </asp:GridView>
+                        <br />
+                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        </div>
                 </div>
             </div>
         </div>

@@ -93,6 +93,9 @@
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9">
                 <h1>Create New Service</h1>
+                <p>
+                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                </p>
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -117,7 +120,7 @@
                 </div>
                 <div class="form-row">
                     <asp:Panel ID="pnlBtnRepairs" CssClass="col-md-12" runat="server">
-                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Service" CssClass="btn btn-outline-primary" Text="Create Service" />
+                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Service" CssClass="btn btn-outline-primary" Text="Create Service" OnClick="btnCreate_Click" />
                         <input class="btn btn-outline-primary" type="reset" value="Clear Form" aria-label="Clear Form" />
                         <a class="btn btn-outline-primary" href="/Repairs/Services.aspx" role="button" aria-label="Cancel Creating Service">Cancel</a>
                     </asp:Panel>
