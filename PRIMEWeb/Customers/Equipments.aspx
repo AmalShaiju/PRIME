@@ -83,7 +83,7 @@
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
         </nav>
-        <div class="container rounded-lg" style="height: 751px">
+        <div class="container rounded-lg" style="height: 80%">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Equipments</h1>
@@ -141,7 +141,9 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table" id="tblEquipment">
+                    <asp:GridView ID="gvEquipment" CssClass="table" runat="server">
+                    </asp:GridView>
+                    <%--<table class="table" id="tblEquipment">
                         <thead>
                             <tr>
                                 <th scope="col" class="auto-style1">Model</th>
@@ -186,19 +188,13 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>--%>
                     <asp:Label ID="lblStatus" runat="server"></asp:Label>
                     <asp:Label ID="lblSave" runat="server"></asp:Label>
-                    <br />
-                    <asp:ListBox ID="lstResults" runat="server"></asp:ListBox>
-                    <asp:GridView ID="gvEquipment" runat="server">
-                    </asp:GridView>
-                    <br />
                 </div>
-                <br />
-                <asp:ObjectDataSource ID="odsType" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.equip_typeTableAdapter"></asp:ObjectDataSource>
-                <asp:ObjectDataSource ID="odsCustomer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.customerTableAdapter"></asp:ObjectDataSource>
-                <asp:ObjectDataSource ID="odsManufacturer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.manufacturerTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsType" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.equip_typeTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsCustomer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.customerTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsManufacturer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.manufacturerTableAdapter"></asp:ObjectDataSource>
             </div>
         </div>
     </form>

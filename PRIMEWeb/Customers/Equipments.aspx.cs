@@ -19,24 +19,43 @@ namespace PRIMEWeb.Customers
         static Equipments()
         {
             dsEquipment = new EquipmentDataSet();
-            customerTableAdapter daCustomer = new customerTableAdapter();
             equipmentTableAdapter daEquipment = new equipmentTableAdapter();
-            manufacturerTableAdapter daManufacturer = new manufacturerTableAdapter();
-            equip_typeTableAdapter daType = new equip_typeTableAdapter();
+            //customerTableAdapter daCustomer = new customerTableAdapter();
+            //manufacturerTableAdapter daManufacturer = new manufacturerTableAdapter();
+            //equip_typeTableAdapter daType = new equip_typeTableAdapter();
 
             try
             {
-                daCustomer.Fill(dsEquipment.customer);
                 daEquipment.Fill(dsEquipment.equipment);
-                daManufacturer.Fill(dsEquipment.manufacturer);
-                daType.Fill(dsEquipment.equip_type);
+                //daCustomer.Fill(dsEquipment.customer);
+                //daManufacturer.Fill(dsEquipment.manufacturer);
+                //daType.Fill(dsEquipment.equip_type);
             }
             catch { }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Model");
+            dt.Columns.Add("Serial");
+            dt.Columns.Add("Customer");
+            dt.Columns.Add("Type");
+            dt.Columns.Add("Manufacturer");
+
+            foreach (DataRow r in dsEquipment.equipment)
+            {
+                DataRow record = dt.NewRow();
+                record[0] = r.ItemArray[1].ToString();
+                record[1] = r.ItemArray[2].ToString();
+                record[2] = r.ItemArray[6].ToString();
+                record[3] = r.ItemArray[8].ToString();
+                record[4] = r.ItemArray[7].ToString();
+                dt.Rows.Add(record);
+            }
+
+            this.gvEquipment.DataSource = dt;
+            this.gvEquipment.DataBind();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -55,12 +74,30 @@ namespace PRIMEWeb.Customers
         //display
         private void DisplayEquipment()
         {
-            this.lstResults.Items.Clear();
-            //this.Clear();
-            foreach (DataRow row in rows)
-                this.lstResults.Items.Add(row.ItemArray[0].ToString() + ' ' + row.ItemArray[1].ToString()
-                    + ' ' + row.ItemArray[2].ToString() + ' ' + row.ItemArray[3].ToString()
-                    + ' ' + row.ItemArray[4].ToString() + ' ' + row.ItemArray[5].ToString());
+            this.gvEquipment.DataSource = null;
+            this.gvEquipment.DataBind();
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Model");
+            dt.Columns.Add("Serial");
+            dt.Columns.Add("Customer");
+            dt.Columns.Add("Type");
+            dt.Columns.Add("Manufacturer");
+
+            foreach (DataRow r in rows)
+            {
+                DataRow record = dt.NewRow();
+                record[0] = r.ItemArray[1].ToString();
+                record[1] = r.ItemArray[2].ToString();
+                record[2] = r.ItemArray[6].ToString();
+                record[3] = r.ItemArray[8].ToString();
+                record[4] = r.ItemArray[7].ToString();
+                dt.Rows.Add(record);
+            }
+
+            this.gvEquipment.DataSource = dt;
+            this.gvEquipment.DataBind();
+
             lblStatus.Text = "Search Results: " + ((rows.Length > 0) ? rows.Length.ToString() : "0");
         }
 

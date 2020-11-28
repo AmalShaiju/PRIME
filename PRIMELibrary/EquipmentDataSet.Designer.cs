@@ -951,6 +951,12 @@ namespace PRIMELibrary {
             
             private global::System.Data.DataColumn columnManufacturerID;
             
+            private global::System.Data.DataColumn columnCustomer;
+            
+            private global::System.Data.DataColumn columnManufacturer;
+            
+            private global::System.Data.DataColumn columnType;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public equipmentDataTable() {
@@ -1034,6 +1040,30 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CustomerColumn {
+                get {
+                    return this.columnCustomer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ManufacturerColumn {
+                get {
+                    return this.columnManufacturer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TypeColumn {
+                get {
+                    return this.columnType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1069,7 +1099,7 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public equipmentRow AddequipmentRow(string Model, string Serial, int CustomerID, int EquipmentID, int ManufacturerID) {
+            public equipmentRow AddequipmentRow(string Model, string Serial, int CustomerID, int EquipmentID, int ManufacturerID, string Customer, string Manufacturer, string Type) {
                 equipmentRow rowequipmentRow = ((equipmentRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1077,7 +1107,10 @@ namespace PRIMELibrary {
                         Serial,
                         CustomerID,
                         EquipmentID,
-                        ManufacturerID};
+                        ManufacturerID,
+                        Customer,
+                        Manufacturer,
+                        Type};
                 rowequipmentRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowequipmentRow);
                 return rowequipmentRow;
@@ -1113,6 +1146,9 @@ namespace PRIMELibrary {
                 this.columnCustomerID = base.Columns["CustomerID"];
                 this.columnEquipmentID = base.Columns["EquipmentID"];
                 this.columnManufacturerID = base.Columns["ManufacturerID"];
+                this.columnCustomer = base.Columns["Customer"];
+                this.columnManufacturer = base.Columns["Manufacturer"];
+                this.columnType = base.Columns["Type"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1130,6 +1166,12 @@ namespace PRIMELibrary {
                 base.Columns.Add(this.columnEquipmentID);
                 this.columnManufacturerID = new global::System.Data.DataColumn("ManufacturerID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnManufacturerID);
+                this.columnCustomer = new global::System.Data.DataColumn("Customer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomer);
+                this.columnManufacturer = new global::System.Data.DataColumn("Manufacturer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnManufacturer);
+                this.columnType = new global::System.Data.DataColumn("Type", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnType);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1143,6 +1185,10 @@ namespace PRIMELibrary {
                 this.columnCustomerID.AllowDBNull = false;
                 this.columnEquipmentID.AllowDBNull = false;
                 this.columnManufacturerID.AllowDBNull = false;
+                this.columnCustomer.ReadOnly = true;
+                this.columnCustomer.MaxLength = 81;
+                this.columnManufacturer.MaxLength = 30;
+                this.columnType.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1746,6 +1792,54 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Customer {
+                get {
+                    try {
+                        return ((string)(this[this.tableequipment.CustomerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Customer\' in table \'equipment\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableequipment.CustomerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Manufacturer {
+                get {
+                    try {
+                        return ((string)(this[this.tableequipment.ManufacturerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Manufacturer\' in table \'equipment\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableequipment.ManufacturerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Type {
+                get {
+                    try {
+                        return ((string)(this[this.tableequipment.TypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Type\' in table \'equipment\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableequipment.TypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsModelNull() {
                 return this.IsNull(this.tableequipment.ModelColumn);
             }
@@ -1766,6 +1860,42 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSerialNull() {
                 this[this.tableequipment.SerialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCustomerNull() {
+                return this.IsNull(this.tableequipment.CustomerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCustomerNull() {
+                this[this.tableequipment.CustomerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsManufacturerNull() {
+                return this.IsNull(this.tableequipment.ManufacturerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetManufacturerNull() {
+                this[this.tableequipment.ManufacturerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTypeNull() {
+                return this.IsNull(this.tableequipment.TypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTypeNull() {
+                this[this.tableequipment.TypeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2110,19 +2240,6 @@ namespace PRIMELibrary.EquipmentDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EquipmentDataSet.customerDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual EquipmentDataSet.customerDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -2256,25 +2373,6 @@ namespace PRIMELibrary.EquipmentDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Type", "Type");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [equip_type] WHERE (([ID] = @Original_ID))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [equip_type] ([eqtType]) VALUES (@Type);\r\nSELECT id AS \'ID\', eqtType " +
-                "AS \'Type\' FROM equip_type WHERE (id = SCOPE_IDENTITY()) ORDER BY \'Type\'";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [equip_type] SET [eqtType] = @Type WHERE (([ID] = @Original_ID));\r\nSELECT " +
-                "id AS \'ID\', eqtType AS \'Type\' FROM equip_type WHERE (id = @id) ORDER BY \'Type\'";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2297,140 +2395,12 @@ namespace PRIMELibrary.EquipmentDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EquipmentDataSet.equip_typeDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual EquipmentDataSet.equip_typeDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             EquipmentDataSet.equip_typeDataTable dataTable = new EquipmentDataSet.equip_typeDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EquipmentDataSet.equip_typeDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EquipmentDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "equip_type");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Type) {
-            if ((Type == null)) {
-                throw new global::System.ArgumentNullException("Type");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Type));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Type, int Original_ID, int id) {
-            if ((Type == null)) {
-                throw new global::System.ArgumentNullException("Type");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Type));
-            }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Type, int Original_ID) {
-            return this.Update(Type, Original_ID, Original_ID);
         }
     }
     
@@ -2561,34 +2531,10 @@ namespace PRIMELibrary.EquipmentDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("CustomerID", "CustomerID");
             tableMapping.ColumnMappings.Add("EquipmentID", "EquipmentID");
             tableMapping.ColumnMappings.Add("ManufacturerID", "ManufacturerID");
+            tableMapping.ColumnMappings.Add("Customer", "Customer");
+            tableMapping.ColumnMappings.Add("Manufacturer", "Manufacturer");
+            tableMapping.ColumnMappings.Add("Type", "Type");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [equipment] WHERE (([ID] = @Original_ID))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [equipment] ([equModel], [equSerial], [custID], [equtypeID], [equManuID]) VALUES (@Model, @Serial, @CustomerID, @EquipmentID, @ManufacturerID);
-SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'CustomerID', equtypeID AS 'EquipmentID', equManuID AS 'ManufacturerID' FROM equipment WHERE (id = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Model", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Model", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Serial", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Serial", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EquipmentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EquipmentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ManufacturerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ManufacturerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [equipment] SET [equModel] = @Model, [equSerial] = @Serial, [custID] = @CustomerID, [equtypeID] = @EquipmentID, [equManuID] = @ManufacturerID WHERE (([ID] = @Original_ID));
-SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'CustomerID', equtypeID AS 'EquipmentID', equManuID AS 'ManufacturerID' FROM equipment WHERE (id = @id)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Model", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Model", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Serial", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Serial", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EquipmentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EquipmentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ManufacturerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ManufacturerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2604,9 +2550,11 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id AS \'ID\', equModel AS \'Model\', equSerial AS \'Serial\', custID AS \'Custome" +
-                "rID\', equtypeID AS \'EquipmentID\', equManuID AS \'ManufacturerID\'\r\nFROM     equipm" +
-                "ent";
+            this._commandCollection[0].CommandText = @"SELECT equipment.id AS 'ID', equipment.equModel AS 'Model', equipment.equSerial AS 'Serial', equipment.custID AS 'CustomerID', equipment.equtypeID AS 'EquipmentID', equipment.equManuID AS 'ManufacturerID', customer.custFirst + ' ' + customer.custLast AS 'Customer', equip_type.eqtType AS 'Type', manufacturer.manName AS 'Manufacturer'
+FROM     equipment INNER JOIN
+                  customer ON equipment.custID = customer.id INNER JOIN
+                  equip_type ON equipment.equtypeID = equip_type.id INNER JOIN
+                  manufacturer ON equipment.equManuID = manufacturer.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2621,150 +2569,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EquipmentDataSet.equipmentDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            EquipmentDataSet.equipmentDataTable dataTable = new EquipmentDataSet.equipmentDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EquipmentDataSet.equipmentDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EquipmentDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "equipment");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Model, string Serial, int CustomerID, int EquipmentID, int ManufacturerID) {
-            if ((Model == null)) {
-                throw new global::System.ArgumentNullException("Model");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Model));
-            }
-            if ((Serial == null)) {
-                throw new global::System.ArgumentNullException("Serial");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Serial));
-            }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(CustomerID));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(EquipmentID));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(ManufacturerID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Model, string Serial, int CustomerID, int EquipmentID, int ManufacturerID, int Original_ID, int id) {
-            if ((Model == null)) {
-                throw new global::System.ArgumentNullException("Model");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Model));
-            }
-            if ((Serial == null)) {
-                throw new global::System.ArgumentNullException("Serial");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Serial));
-            }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(CustomerID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(EquipmentID));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(ManufacturerID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Model, string Serial, int CustomerID, int EquipmentID, int ManufacturerID, int Original_ID) {
-            return this.Update(Model, Serial, CustomerID, EquipmentID, ManufacturerID, Original_ID, Original_ID);
         }
     }
     
@@ -2892,27 +2696,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Manufacturer", "Manufacturer");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [manufacturer] WHERE (([ID] = @Original_ID))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [manufacturer] ([manName]) VALUES (@Manufacturer);\r\nSELECT id AS \'ID\'" +
-                ", manName AS \'Manufacturer\' FROM manufacturer WHERE (id = SCOPE_IDENTITY()) ORDE" +
-                "R BY \'Manufacturer\'";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Manufacturer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Manufacturer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [manufacturer] SET [manName] = @Manufacturer WHERE (([ID] = @Original_ID))" +
-                ";\r\nSELECT id AS \'ID\', manName AS \'Manufacturer\' FROM manufacturer WHERE (id = @i" +
-                "d) ORDER BY \'Manufacturer\'";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Manufacturer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Manufacturer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2936,140 +2719,12 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EquipmentDataSet.manufacturerDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual EquipmentDataSet.manufacturerDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             EquipmentDataSet.manufacturerDataTable dataTable = new EquipmentDataSet.manufacturerDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EquipmentDataSet.manufacturerDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EquipmentDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "manufacturer");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Manufacturer) {
-            if ((Manufacturer == null)) {
-                throw new global::System.ArgumentNullException("Manufacturer");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Manufacturer));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Manufacturer, int Original_ID, int id) {
-            if ((Manufacturer == null)) {
-                throw new global::System.ArgumentNullException("Manufacturer");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Manufacturer));
-            }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Manufacturer, int Original_ID) {
-            return this.Update(Manufacturer, Original_ID, Original_ID);
         }
     }
     
@@ -3085,12 +2740,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
         
         private UpdateOrderOption _updateOrder;
         
-        private equip_typeTableAdapter _equip_typeTableAdapter;
-        
-        private equipmentTableAdapter _equipmentTableAdapter;
-        
-        private manufacturerTableAdapter _manufacturerTableAdapter;
-        
         private bool _backupDataSetBeforeUpdate;
         
         private global::System.Data.IDbConnection _connection;
@@ -3103,48 +2752,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
             }
             set {
                 this._updateOrder = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public equip_typeTableAdapter equip_typeTableAdapter {
-            get {
-                return this._equip_typeTableAdapter;
-            }
-            set {
-                this._equip_typeTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public equipmentTableAdapter equipmentTableAdapter {
-            get {
-                return this._equipmentTableAdapter;
-            }
-            set {
-                this._equipmentTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public manufacturerTableAdapter manufacturerTableAdapter {
-            get {
-                return this._manufacturerTableAdapter;
-            }
-            set {
-                this._manufacturerTableAdapter = value;
             }
         }
         
@@ -3167,18 +2774,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._equip_typeTableAdapter != null) 
-                            && (this._equip_typeTableAdapter.Connection != null))) {
-                    return this._equip_typeTableAdapter.Connection;
-                }
-                if (((this._equipmentTableAdapter != null) 
-                            && (this._equipmentTableAdapter.Connection != null))) {
-                    return this._equipmentTableAdapter.Connection;
-                }
-                if (((this._manufacturerTableAdapter != null) 
-                            && (this._manufacturerTableAdapter.Connection != null))) {
-                    return this._manufacturerTableAdapter.Connection;
-                }
                 return null;
             }
             set {
@@ -3192,15 +2787,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._equip_typeTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._equipmentTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._manufacturerTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 return count;
             }
         }
@@ -3212,33 +2798,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateUpdatedRows(EquipmentDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._equip_typeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.equip_type.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._equip_typeTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._equipmentTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.equipment.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._equipmentTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._manufacturerTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.manufacturer.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._manufacturerTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -3249,30 +2808,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateInsertedRows(EquipmentDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._equip_typeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.equip_type.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._equip_typeTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._equipmentTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.equipment.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._equipmentTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._manufacturerTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.manufacturer.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._manufacturerTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -3283,30 +2818,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(EquipmentDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._manufacturerTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.manufacturer.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._manufacturerTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._equipmentTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.equipment.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._equipmentTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._equip_typeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.equip_type.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._equip_typeTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             return result;
         }
         
@@ -3346,21 +2857,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._equip_typeTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._equip_typeTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._equipmentTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._equipmentTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._manufacturerTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._manufacturerTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -3393,33 +2889,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._equip_typeTableAdapter != null)) {
-                    revertConnections.Add(this._equip_typeTableAdapter, this._equip_typeTableAdapter.Connection);
-                    this._equip_typeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._equip_typeTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._equip_typeTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._equip_typeTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._equip_typeTableAdapter.Adapter);
-                    }
-                }
-                if ((this._equipmentTableAdapter != null)) {
-                    revertConnections.Add(this._equipmentTableAdapter, this._equipmentTableAdapter.Connection);
-                    this._equipmentTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._equipmentTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._equipmentTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._equipmentTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._equipmentTableAdapter.Adapter);
-                    }
-                }
-                if ((this._manufacturerTableAdapter != null)) {
-                    revertConnections.Add(this._manufacturerTableAdapter, this._manufacturerTableAdapter.Connection);
-                    this._manufacturerTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._manufacturerTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._manufacturerTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._manufacturerTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._manufacturerTableAdapter.Adapter);
-                    }
-                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -3477,18 +2946,6 @@ SELECT id AS 'ID', equModel AS 'Model', equSerial AS 'Serial', custID AS 'Custom
             finally {
                 if (workConnOpened) {
                     workConnection.Close();
-                }
-                if ((this._equip_typeTableAdapter != null)) {
-                    this._equip_typeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._equip_typeTableAdapter]));
-                    this._equip_typeTableAdapter.Transaction = null;
-                }
-                if ((this._equipmentTableAdapter != null)) {
-                    this._equipmentTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._equipmentTableAdapter]));
-                    this._equipmentTableAdapter.Transaction = null;
-                }
-                if ((this._manufacturerTableAdapter != null)) {
-                    this._manufacturerTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._manufacturerTableAdapter]));
-                    this._manufacturerTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
