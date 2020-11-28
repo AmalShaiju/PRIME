@@ -7,25 +7,25 @@ using System.Web.UI.WebControls;
 
 using System.Data;
 using PRIMELibrary;
-using PRIMELibrary.EmmasDataSetTableAdapters;
+using PRIMELibrary.RepairsDataSetTableAdapters;
 
 namespace PRIMEWeb.Repairs
 {
     public partial class NewService : System.Web.UI.Page
     {
 
-        static EmmasDataSet dsEmmmas = new EmmasDataSet();
-        private static DataRow[] rows;
+        static RepairsDataSet RepairsDataSet;
+        //private static DataRow[] rows;
 
 
         static NewService()
         {
-
+            RepairsDataSet = new RepairsDataSet();
             AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
 
             try
             {
-                daservices.Fill(dsEmmmas.AllserviceData);
+                daservices.Fill(RepairsDataSet.AllserviceData);
             }
             catch { }
         }
@@ -37,14 +37,31 @@ namespace PRIMEWeb.Repairs
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            DataRow service = dsEmmmas.AllserviceData.NewRow();
-            //update record with user's input
-            service[1] = this.txtName.Text; 
-            service[2] = this.txtDescription.Text;
-            service[3] = this.txtPrice.Text;
-            dsEmmmas.AllserviceData.Rows.Add(service);
-            Save();
-           
+            try
+            {
+                DataRow service = RepairsDataSet.AllserviceData.NewRow();
+                //update record with user's input
+                service[1] = this.txtName.Text;
+                service[2] = this.txtDescription.Text;
+                service[3] = this.txtPrice.Text;
+                RepairsDataSet.AllserviceData.Rows.Add(service);
+
+
+                AllserviceDataTableAdapter daService = new AllserviceDataTableAdapter();
+                daService.Update(service);
+                RepairsDataSet.AcceptChanges();
+
+                //Refresh the page to show the record being deleted
+                Response.Redirect(Request.RawUrl);
+                Label1.Text = "Created";
+            }
+            catch
+            {
+                Label1.Text = "Failed";
+
+            }
+
+
         }
                                                                                             
         private void Save()
@@ -53,13 +70,13 @@ namespace PRIMEWeb.Repairs
 
             try
             {
-                daservices.Update(dsEmmmas.AllserviceData);
-                dsEmmmas.AcceptChanges();
+                daservices.Update(RepairsDataSet.AllserviceData);
+                RepairsDataSet.AcceptChanges();
                 this.Label1.Text = "saved";
             }
             catch
             {
-                dsEmmmas.RejectChanges();
+                RepairsDataSet.RejectChanges();
                 this.Label1.Text = "not saved";
 
             }

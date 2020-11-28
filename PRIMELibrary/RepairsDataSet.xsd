@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="EmmasDataSet" targetNamespace="http://tempuri.org/EmmasDataSet.xsd" xmlns:mstns="http://tempuri.org/EmmasDataSet.xsd" xmlns="http://tempuri.org/EmmasDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="RepairsDataSet" targetNamespace="http://tempuri.org/RepairsDataSet.xsd" xmlns:mstns="http://tempuri.org/RepairsDataSet.xsd" xmlns="http://tempuri.org/RepairsDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -75,10 +75,10 @@ SELECT id, serName, serDescription, serPrice FROM service WHERE (id = @id)</Comm
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="EmmasDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="EmmasDataSet" msprop:Generator_UserDSName="EmmasDataSet">
+  <xs:element name="RepairsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="RepairsDataSet" msprop:Generator_UserDSName="RepairsDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="AllserviceData" msprop:Generator_TableClassName="AllserviceDataDataTable" msprop:Generator_TableVarName="tableAllserviceData" msprop:Generator_TablePropName="AllserviceData" msprop:Generator_RowDeletingName="AllserviceDataRowDeleting" msprop:Generator_RowChangingName="AllserviceDataRowChanging" msprop:Generator_RowEvHandlerName="AllserviceDataRowChangeEventHandler" msprop:Generator_RowDeletedName="AllserviceDataRowDeleted" msprop:Generator_UserTableName="AllserviceData" msprop:Generator_RowChangedName="AllserviceDataRowChanged" msprop:Generator_RowEvArgName="AllserviceDataRowChangeEvent" msprop:Generator_RowClassName="AllserviceDataRow">
+        <xs:element name="AllserviceData" msprop:Generator_TableClassName="AllserviceDataDataTable" msprop:Generator_TableVarName="tableAllserviceData" msprop:Generator_RowChangedName="AllserviceDataRowChanged" msprop:Generator_TablePropName="AllserviceData" msprop:Generator_RowDeletingName="AllserviceDataRowDeleting" msprop:Generator_RowChangingName="AllserviceDataRowChanging" msprop:Generator_RowEvHandlerName="AllserviceDataRowChangeEventHandler" msprop:Generator_RowDeletedName="AllserviceDataRowDeleted" msprop:Generator_RowClassName="AllserviceDataRow" msprop:Generator_UserTableName="AllserviceData" msprop:Generator_RowEvArgName="AllserviceDataRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

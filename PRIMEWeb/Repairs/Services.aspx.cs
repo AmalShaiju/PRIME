@@ -7,20 +7,20 @@ using System.Web.UI.WebControls;
 
 using System.Data;
 using PRIMELibrary;
-using PRIMELibrary.EmmasDataSetTableAdapters;
+using PRIMELibrary.RepairsDataSetTableAdapters;
 
 namespace PRIMEWeb.Repairs
 {
     public partial class Services : System.Web.UI.Page
     {
 
-        static EmmasDataSet dsEmmmas = new EmmasDataSet();
+        static RepairsDataSet dsEmmmas;
         private static DataRow[] rows;
-
+                                                                                                    
 
         static Services()
         {
-            
+            dsEmmmas = new RepairsDataSet();
             AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
 
             try
@@ -30,8 +30,16 @@ namespace PRIMEWeb.Repairs
             catch { }
         }
 
+        private static int id = -1;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            //refresh the dataset, so the newly created record is shown in index
+            AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
+            dsEmmmas.Reset();
+            daservices.Fill(dsEmmmas.AllserviceData);
+
+
             this.Label1.Text = "ready";
             
             DataTable dt = new DataTable();
@@ -136,7 +144,47 @@ namespace PRIMEWeb.Repairs
             this.GridView1.DataSource = dt;
             this.GridView1.DataBind();
         }
-  
 
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            //Not too secure sending value through query string
+            //Response.Redirect("EditService.aspx?ID=" + GridView1.Rows[e.NewEditIndex].Cells[1].Text
+
+            //Send Id using cookie, more seecure I presume
+            HttpCookie cID = new HttpCookie("ID");
+            cID.Value = GridView1.Rows[e.NewEditIndex].Cells[1].Text;
+            Response.Cookies.Add(cID);
+            Response.Redirect("EditService.aspx");
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            id = Convert.ToInt32(GridView1.Rows[e.RowIndex].Cells[1].Text);
+
+            if (id != 1)
+            {
+                try
+                {
+                    DataRow record = dsEmmmas.AllserviceData.FindByid(id);
+
+                    record.Delete();
+
+                    AllserviceDataTableAdapter daservice = new AllserviceDataTableAdapter();
+                    daservice.Update(record);
+                    dsEmmmas.AcceptChanges();
+                    Label1.Text = "deleted";
+
+                    //Refresh the page to show the record being deleted
+                    Response.Redirect(Request.RawUrl);
+
+                }
+                catch
+                {
+                    Label1.Text = "not deleted";
+                }
+
+            }
+        }
     }
 }
+
