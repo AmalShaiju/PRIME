@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PRIMELibrary">
+      <HintPath>..\PRIMELibrary\bin\Debug\PRIMELibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,6 +70,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Emmas.mdf" />
+    <Content Include="App_Data\Emmas_log.ldf">
+      <DependentUpon>Emmas.mdf</DependentUpon>
+    </Content>
     <Content Include="CSS\bootstrap.css" />
     <Content Include="Customers\Default.aspx" />
     <Content Include="Customers\NewCustomer.aspx" />
