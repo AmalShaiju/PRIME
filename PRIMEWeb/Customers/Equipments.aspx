@@ -141,7 +141,7 @@
                             </div>
                         </div>
                     </div>
-                    <asp:GridView ID="gvEquipment" CssClass="table" runat="server">
+                    <asp:GridView ID="gvEquipment" CssClass="table" runat="server" GridLines="None" OnRowDataBound="gvEquipment_RowDataBound">
                     </asp:GridView>
                     <%--<table class="table" id="tblEquipment">
                         <thead>

@@ -39,6 +39,10 @@
         td .btn {
             width: 80px;
         }
+        .auto-style1 {
+            left: 0px;
+            top: 0px;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -118,14 +122,14 @@
                                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="col-md-6 align-self-center">
+                                <div class="auto-style1">
                                     <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <asp:GridView ID="gvCustomers" runat="server" CssClass="table">
+                    <asp:GridView ID="gvCustomers" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gvCustomers_RowDataBound">
                     </asp:GridView>
                     <asp:Label ID="lblStatus" runat="server"></asp:Label>
                     <asp:Label ID="lblSave" runat="server"></asp:Label>

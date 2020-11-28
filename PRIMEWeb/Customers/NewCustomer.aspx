@@ -120,11 +120,12 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-12">
-                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Customer" CssClass="btn btn-outline-primary" Text="Create Customer" PostBackUrl="/Customers/" />
+                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Customer" CssClass="btn btn-outline-primary" Text="Create Customer" OnClick="btnCreate_Click" />
                         <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
                         <a class="btn btn-outline-primary" href="/Customers/" role="button" aria-label="Cancel Creating Customer">Cancel</a>
                     </div>
                 </div>
+                <asp:Label ID="lblStatus" runat="server"></asp:Label>
             </div>
         </div>
     </form>
