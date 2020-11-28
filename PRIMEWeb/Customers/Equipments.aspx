@@ -46,6 +46,9 @@
         td .btn {
             width: 80px;
         }
+        .auto-style1 {
+            height: 25px;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -80,7 +83,7 @@
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
         </nav>
-        <div class="container rounded-lg">
+        <div class="container rounded-lg" style="height: 751px">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Equipments</h1>
@@ -108,16 +111,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Manufacturer:</label>
-                                        <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Manufacturers...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="odsManufacturer" DataTextField="Manufacturer" DataValueField="ID">
+                                            <asp:ListItem Value="None">Select Manufacturer</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Type:</label>
-                                        <asp:DropDownList ID="ddlType" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Types...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlType" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="odsType" DataTextField="Type" DataValueField="ID">
+                                            <asp:ListItem Value="None">Select Type</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -126,26 +129,26 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Customer:</label>
-                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Customers...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="odsCustomer" DataTextField="Customer" DataValueField="ID">
+                                            <asp:ListItem Value="None">Select Customer</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
+                    <table class="table" id="tblEquipment">
                         <thead>
                             <tr>
-                                <th scope="col">Model</th>
-                                <th scope="col">Serial Number</th>
-                                <th scope="col">Manufacturer</th>
-                                <th scope="col">Type</th>
-                                <th scope="col"></th>
+                                <th scope="col" class="auto-style1">Model</th>
+                                <th scope="col" class="auto-style1">Serial Number</th>
+                                <th scope="col" class="auto-style1">Manufacturer</th>
+                                <th scope="col" class="auto-style1">Type</th>
+                                <th scope="col" class="auto-style1"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -184,7 +187,18 @@
                             </tr>
                         </tbody>
                     </table>
+                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    <asp:Label ID="lblSave" runat="server"></asp:Label>
+                    <br />
+                    <asp:ListBox ID="lstResults" runat="server"></asp:ListBox>
+                    <asp:GridView ID="gvEquipment" runat="server">
+                    </asp:GridView>
+                    <br />
                 </div>
+                <br />
+                <asp:ObjectDataSource ID="odsType" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.equip_typeTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsCustomer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.customerTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsManufacturer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.manufacturerTableAdapter"></asp:ObjectDataSource>
             </div>
         </div>
     </form>
