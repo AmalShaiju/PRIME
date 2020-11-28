@@ -13,7 +13,7 @@ namespace PRIMEWeb.Customers
     public partial class NewEquipment : System.Web.UI.Page
     {
         static EquipmentDataSet dsEquipment = new EquipmentDataSet();
-        private static DataRow[] rows;
+        
         static NewEquipment()
         {
             equipmentCRUDTableAdapter daEquipment = new equipmentCRUDTableAdapter();

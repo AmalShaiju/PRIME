@@ -113,58 +113,22 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
+                                    <div class="form-group">
+                                        <label class="control-label">Email:</label>
+                                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 align-self-center">
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">City</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>123-456-7890</td>
-                                <td>Welland</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Customer Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Customer" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>345-765-7890</td>
-                                <td>Niagara Falls</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Customer Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Customer" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Larry</td>
-                                <td>Bird</td>
-                                <td>345-285-7890</td>
-                                <td>Toronto</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Customer Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Customer" Text="Delete" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <asp:GridView ID="gvCustomers" runat="server" CssClass="table">
+                    </asp:GridView>
+                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    <asp:Label ID="lblSave" runat="server"></asp:Label>
                 </div>
             </div>
         </div>
