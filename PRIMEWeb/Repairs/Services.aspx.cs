@@ -14,18 +14,18 @@ namespace PRIMEWeb.Repairs
     public partial class Services : System.Web.UI.Page
     {
 
-        static RepairsDataSet dsEmmmas;
+        static RepairsDataSet RepairsDataSet;
         private static DataRow[] rows;
                                                                                                     
 
         static Services()
         {
-            dsEmmmas = new RepairsDataSet();
+            RepairsDataSet = new RepairsDataSet();
             AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
 
             try
             {
-                daservices.Fill(dsEmmmas.AllserviceData);
+                daservices.Fill(RepairsDataSet.AllserviceData);
             }
             catch { }
         }
@@ -36,8 +36,8 @@ namespace PRIMEWeb.Repairs
         {
             //refresh the dataset, so the newly created record is shown in index
             AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
-            dsEmmmas.Reset();
-            daservices.Fill(dsEmmmas.AllserviceData);
+            RepairsDataSet.Reset();
+            daservices.Fill(RepairsDataSet.AllserviceData);
 
 
             this.Label1.Text = "ready";
@@ -51,7 +51,7 @@ namespace PRIMEWeb.Repairs
             DataRow dr = dt.NewRow();
 
 
-            foreach (DataRow r in dsEmmmas.AllserviceData)
+            foreach (DataRow r in RepairsDataSet.AllserviceData)
             {
                 DataRow nr = dt.NewRow();
                 nr[0] = r.ItemArray[0].ToString();
@@ -75,10 +75,10 @@ namespace PRIMEWeb.Repairs
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (dsEmmmas.AllserviceData.Count > 0)
+            if (RepairsDataSet.AllserviceData.Count > 0)
             {
                 string criteria = FilterCriteria();
-                rows = (criteria.Length > 0) ? dsEmmmas.AllserviceData.Select(criteria) : dsEmmmas.AllserviceData.Select();
+                rows = (criteria.Length > 0) ? RepairsDataSet.AllserviceData.Select(criteria) : RepairsDataSet.AllserviceData.Select();
                 DisplayServiceByFilter();
             }
             else
@@ -165,13 +165,13 @@ namespace PRIMEWeb.Repairs
             {
                 try
                 {
-                    DataRow record = dsEmmmas.AllserviceData.FindByid(id);
+                    DataRow record = RepairsDataSet.AllserviceData.FindByid(id);
 
                     record.Delete();
 
                     AllserviceDataTableAdapter daservice = new AllserviceDataTableAdapter();
                     daservice.Update(record);
-                    dsEmmmas.AcceptChanges();
+                    RepairsDataSet.AcceptChanges();
                     Label1.Text = "deleted";
 
                     //Refresh the page to show the record being deleted
