@@ -104,30 +104,35 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="custom-select">
-                            <asp:ListItem>Select the Manufacturer...</asp:ListItem>
+                        <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsManufacturer" DataTextField="Manufacturer" DataValueField="ID">
+                            <asp:ListItem Value="0">Select Manufacturer</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="col-md-6 form-group">
-                        <asp:DropDownList ID="ddlType" runat="server" CssClass="custom-select">
-                            <asp:ListItem>Select the Type...</asp:ListItem>
+                        <asp:DropDownList ID="ddlType" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsType" DataTextField="Type" DataValueField="ID">
+                            <asp:ListItem Value="0">Select Type</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select">
-                            <asp:ListItem>Select the Customer...</asp:ListItem>
+                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsCustomer" DataTextField="Customer" DataValueField="ID">
+                            <asp:ListItem Value="0">Select Customer</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                 </div>
                 <div class="form-row">
                     <div id="divBtnEquipments" class="col-md-12">
-                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Equipment" CssClass="btn btn-outline-primary" Text="Create Equipment" />
+                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Equipment" CssClass="btn btn-outline-primary" Text="Create Equipment" OnClick="btnCreate_Click" />
                         <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
                         <a class="btn btn-outline-primary" href="/Equipments/" role="button" aria-label="Cancel Creating Equipment">Cancel</a>
                     </div>
                 </div>
+                <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                <br />
+                <asp:ObjectDataSource ID="odsType" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.equip_typeTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsCustomer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.customerTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsManufacturer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.manufacturerTableAdapter"></asp:ObjectDataSource>
             </div>
         </div>
     </form>
