@@ -17,6 +17,7 @@ namespace PRIMEWeb.Customers
         private static bool flag = false; //indicate if the data loading failed
         private static List<Button> btnEdits = new List<Button>(); //list of the edit btns
         private static List<Button> btnDeletes = new List<Button>(); //list of the delete btns
+        private static List<Button> btnDetails = new List<Button>(); //list of the detail btns
 
         static Default()
         {
@@ -67,9 +68,7 @@ namespace PRIMEWeb.Customers
             DataTable dt = new DataTable();
             dt.Columns.Add("Full Name");
             dt.Columns.Add("Phone");
-            dt.Columns.Add("Address");
             dt.Columns.Add("City");
-            dt.Columns.Add("Postal");
             dt.Columns.Add("Email");
             dt.Columns.Add();
 
@@ -78,10 +77,8 @@ namespace PRIMEWeb.Customers
                 DataRow record = dt.NewRow();
                 record[0] = r.ItemArray[1].ToString() + ' ' + r.ItemArray[2].ToString();
                 record[1] = r.ItemArray[3].ToString();
-                record[2] = r.ItemArray[4].ToString();
-                record[3] = r.ItemArray[5].ToString();
-                record[4] = r.ItemArray[6].ToString();
-                record[5] = r.ItemArray[7].ToString();
+                record[2] = r.ItemArray[5].ToString();
+                record[3] = r.ItemArray[7].ToString();
                 dt.Rows.Add(record);
             }
 
@@ -111,10 +108,20 @@ namespace PRIMEWeb.Customers
         {
             if (e.Row.RowIndex == -1)
             {
-                e.Row.Cells[6].Text = String.Empty;
+                e.Row.Cells[4].Text = String.Empty;
                 //Clear the header for Edit btn
                 return;  //skip the header
             }
+
+            //details btn
+            Button btnDetail = new Button();  //create detail btn
+            btnDetails.Add(btnDetail);  //the list index of the button will also be the row index
+            btnDetail.CssClass = "btn btn-info";  //set css class
+            btnDetail.Text = "Detail";
+            btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale");
+            //set aria label
+            btnDetail.Attributes.Add("OnClick", "btnDetail_Click");  //click event handler
+            e.Row.Cells[4].Controls.Add(btnDetail);  //add the btn
 
             //edit btn
             Button btnEdit = new Button();  //create edit btn
@@ -124,7 +131,7 @@ namespace PRIMEWeb.Customers
             btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
             //set aria label
             btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
-            e.Row.Cells[6].Controls.Add(btnEdit);  //add the btn
+            e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
 
             //delete btn
             Button btnDelete = new Button();  //create delete btn
@@ -139,7 +146,7 @@ namespace PRIMEWeb.Customers
             btnDelete.Visible = false;
             btnDelete.Enabled = false;
 
-            e.Row.Cells[6].Controls.Add(btnDelete);  //add the btn
+            e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
         }
     }
 }
