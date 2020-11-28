@@ -39,20 +39,21 @@ namespace PRIMEWeb.Repairs
         {
             try
             {
-                DataRow service = RepairsDataSet.AllserviceData.NewRow();
+                DataRow service = RepairsDataSet.AllserviceData.NewRow(); // Create a new row of service table in memory
                 //update record with user's input
                 service[1] = this.txtName.Text;
                 service[2] = this.txtDescription.Text;
                 service[3] = this.txtPrice.Text;
-                RepairsDataSet.AllserviceData.Rows.Add(service);
+                RepairsDataSet.AllserviceData.Rows.Add(service); // add the rows to the dataset
 
 
                 AllserviceDataTableAdapter daService = new AllserviceDataTableAdapter();
-                daService.Update(service);
-                RepairsDataSet.AcceptChanges();
+                daService.Update(service); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                RepairsDataSet.AcceptChanges();// Call accept method on the dataset so it update the chanmges to the database
 
                 //Refresh the page to show the record being deleted
-                Response.Redirect(Request.RawUrl);
+                Response.Redirect("Services.aspx"); // Redirect the user to dexpage on to show created data
+
                 Label1.Text = "Created";
             }
             catch
@@ -63,28 +64,29 @@ namespace PRIMEWeb.Repairs
 
 
         }
-                                                                                            
-        private void Save()
-        {
-            AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
+          
+        // Usse this code if the page has multiple places updating the data
+        //private void Save()
+        //{
+        //    AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
 
-            try
-            {
-                daservices.Update(RepairsDataSet.AllserviceData);
-                RepairsDataSet.AcceptChanges();
-                this.Label1.Text = "saved";
-            }
-            catch
-            {
-                RepairsDataSet.RejectChanges();
-                this.Label1.Text = "not saved";
+        //    try
+        //    {
+        //        daservices.Update(RepairsDataSet.AllserviceData);
+        //        RepairsDataSet.AcceptChanges();
+        //        this.Label1.Text = "saved";
+        //    }
+        //    catch
+        //    {
+        //        RepairsDataSet.RejectChanges();
+        //        this.Label1.Text = "not saved";
 
-            }
-            finally
-            {
-                Clear();
-            }
-        }
+        //    }
+        //    finally
+        //    {
+        //        Clear();
+        //    }
+        //}
 
         private void Clear()
         {

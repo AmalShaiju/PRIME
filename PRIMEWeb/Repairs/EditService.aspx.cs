@@ -29,31 +29,48 @@ namespace PRIMEWeb.Repairs
             catch { }
         }
 
+
         private static int id = -1;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["ID"] != null)
+            if (Request.Cookies["ID"] != null) // Reuest the cookies which contaions the ID Of thr record that was carried over from the index page
                 Label1.Text = Request.Cookies["ID"].Value;
 
             id = Convert.ToInt32(Request.Cookies["ID"].Value);
-
-            DataRow Service = repairsDataSet.AllserviceData.FindByid(id);
-            if (Service != null)
+            
+            if(id != 1)
             {
-                this.txtName.Text = Service.ItemArray[1].ToString();
-                this.txtDescription.Text = Service.ItemArray[2].ToString();
-                this.txtPrice.Text = Service.ItemArray[3].ToString();
+                try
+                {
+                    DataRow Service = repairsDataSet.AllserviceData.FindByid(id); // Find the related Record and fill the fields in the page with the data
 
-            }
-            else
-            {
-                this.Clear();
-                Label1.Text = "Please Try Again";
+                    if (Service != null)
+                    {
+                        this.txtName.Text = Service.ItemArray[1].ToString();
+                        this.txtDescription.Text = Service.ItemArray[2].ToString();
+                        this.txtPrice.Text = Service.ItemArray[3].ToString();
 
+                    }
+                    else
+                    {
+                        this.Clear();
+                        Label1.Text = "Please Try Again";
+
+                    }
+                }
+                catch
+                {
+                    Label1.Text = "Database Error";
+
+                }
             }
+
+
 
         }
+
 
         //Edit Button click
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -64,15 +81,17 @@ namespace PRIMEWeb.Repairs
               
                 try
                 {
-                    DataRow sevice = repairsDataSet.AllserviceData.FindByid(id);
+                    DataRow sevice = repairsDataSet.AllserviceData.FindByid(id); // find the related Record
+
                     //update record with user's input
                     sevice[1] = this.txtName.Text;
                     sevice[2] = this.txtDescription.Text;
                     sevice[3] = Convert.ToDecimal(this.txtPrice.Text);
 
                     AllserviceDataTableAdapter daservice = new AllserviceDataTableAdapter();
-                    daservice.Update(sevice);
-                    repairsDataSet.AcceptChanges();
+                    daservice.Update(sevice); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                    repairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+
                     Label1.Text = "Record Successfully Updated";
                 }
                 catch { Label1.Text = "Unable to Update Record"; }
@@ -101,29 +120,29 @@ namespace PRIMEWeb.Repairs
         }
 
         // Uopdate/Cretea Method
-        private void Save()
-        {
-            AllserviceDataTableAdapter daservice= new AllserviceDataTableAdapter();
+        //private void Save()
+        //{
+        //    AllserviceDataTableAdapter daservice= new AllserviceDataTableAdapter();
 
-            try
-            {
-                daservice.Update(repairsDataSet.AllserviceData);
-                repairsDataSet.AcceptChanges();
-                this.Label1.Text = "saved";
-            }
-            catch
-            {
-                repairsDataSet.RejectChanges();
-                this.Label1.Text = "not saved";
+        //    try
+        //    {
+        //        daservice.Update(repairsDataSet.AllserviceData);
+        //        repairsDataSet.AcceptChanges();
+        //        this.Label1.Text = "saved";
+        //    }
+        //    catch
+        //    {
+        //        repairsDataSet.RejectChanges();
+        //        this.Label1.Text = "not saved";
 
-            }
-            finally
-            {
-                Clear();
-            }
-        }
+        //    }
+        //    finally
+        //    {
+        //        Clear();
+        //    }
+        //}
 
-        //Clear all fields
+
         private void Clear()
         {
             this.txtName.Text = "";
