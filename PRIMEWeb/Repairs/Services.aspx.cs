@@ -84,7 +84,7 @@ namespace PRIMEWeb.Repairs
 
             //Send Id using cookie, more seecure I presume
             HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
-            cID.Value = GridView1.Rows[rowindex].Cells[1].Text;
+            cID.Value = GridView1.Rows[rowindex].Cells[0].Text;
             Response.Cookies.Add(cID);
             Response.Redirect("EditService.aspx"); // Redirect the user to Edit page on btn click
 
@@ -105,7 +105,7 @@ namespace PRIMEWeb.Repairs
 
             this.Label1.Text = rowindex.ToString();
 
-            id = Convert.ToInt32(GridView1.Rows[rowindex].Cells[1].Text);
+            id = Convert.ToInt32(GridView1.Rows[rowindex].Cells[0].Text);
 
             if (id != 1)
             {
@@ -129,7 +129,59 @@ namespace PRIMEWeb.Repairs
                     Label1.Text = "not deleted";
                 }
             }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e) // Method adding the btns to the table
+        {
+            try
+            {
+                if (e.Row.RowIndex == -1)
+                {
+                    e.Row.Cells[4].Text = String.Empty;
+                    //Clear the header for Detail Edit Delete btn
+                    return;  //skip the header
+                }
+
+                // Edit btn
+                Button btnEdit = new Button();  //create edit btn
+                                                // btnEdits.Add(btnEdit);  //the list index of the button will also be the row index
+                btnEdit.CssClass = "btn btn-dark";  //set css class
+                btnEdit.Text = "Edit";
+                btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
+
+                //set aria label
+                // btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
+
+                btnEdit.Click += new EventHandler(btnEdit_Click);// Set button click event
+                e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
+
+
+
+                // Delete btn
+                Button btnDelete = new Button();  //create delete btn
+                                                  // btnDetails.Add(btnDelete);  //the list index of the button will also be the row index
+                btnDelete.CssClass = "btn btn-danger";  //set css class
+                btnDelete.Text = "Delete";
+                btnDelete.Attributes.Add("aria-label", "Click to delete this sale");
+                //set aria label
+                // btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
+                btnDelete.Click += new EventHandler(btnDelete_Click);// Set button click event
+
+
+                //if (not admin)
+                //btnDelete.Visible = false;
+                //btnDelete.Enabled = false;
+
+                e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
             }
+            catch
+            {
+                this.Label1.Text = "No record found";
+
+            }
+
+
+        }
 
         // Filer Clear btn
         protected void btnClear_Click(object sender, EventArgs e)
@@ -171,7 +223,7 @@ namespace PRIMEWeb.Repairs
             dt.Columns.Add("ID");
             dt.Columns.Add("Service");
             dt.Columns.Add("Description");
-            dt.Columns.Add("Price");
+            dt.Columns.Add("Price");    
             dt.Columns.Add(""); // column for Edit and Delete btn
 
 
@@ -194,99 +246,6 @@ namespace PRIMEWeb.Repairs
             this.GridView1.DataBind();
         }
 
-        // Method that edits the record 
-        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            //Not too secure sending value through query string
-            //Response.Redirect("EditService.aspx?ID=" + GridView1.Rows[e.NewEditIndex].Cells[1].Text
-
-            //Send Id using cookie, more seecure I presume
-            HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
-            cID.Value = GridView1.Rows[e.NewEditIndex].Cells[1].Text;
-            Response.Cookies.Add(cID);
-            Response.Redirect("EditService.aspx"); // Redirect the user to Edit page on btn click
-        }
-
-        //Method that deletes the record
-        protected void GridView1_RowDeleting1(object sender, GridViewDeleteEventArgs e)
-        {
-            id = Convert.ToInt32(GridView1.Rows[e.RowIndex].Cells[1].Text);
-
-            if (id != 1)
-            {
-                try
-                {
-                    DataRow record = RepairsDataSet.AllserviceData.FindByid(id); // Find and add the record to tbe record variable
-
-                    record.Delete(); // Deletes the record in memory
-
-                    AllserviceDataTableAdapter daservice = new AllserviceDataTableAdapter(); // table adapter to service table (Service adapter)
-                    daservice.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
-                    RepairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
-                    Label1.Text = "deleted";
-
-                    //Refresh the page to show the record being deleted
-                    Response.Redirect(Request.RawUrl);
-
-                }
-                catch
-                {
-                    Label1.Text = "not deleted";
-                }
-
-            }
-        }
-
-
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e) // Method adding the btns to the table
-        {
-            if (e.Row.RowIndex == -1)
-            {
-                e.Row.Cells[4].Text = String.Empty;
-                //Clear the header for Detail Edit Delete btn
-                return;  //skip the header
-            }
-
-            // Edit btn
-            Button btnEdit = new Button();  //create edit btn
-                                            // btnEdits.Add(btnEdit);  //the list index of the button will also be the row index
-            btnEdit.CssClass = "btn btn-dark";  //set css class
-            btnEdit.Text = "Edit";
-            btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
-
-            //set aria label
-            // btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
-
-            btnEdit.Click += new EventHandler(btnEdit_Click);// Set button click event
-            e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
-
-
-
-            // Delete btn
-            Button btnDelete = new Button();  //create delete btn
-                                              // btnDetails.Add(btnDelete);  //the list index of the button will also be the row index
-            btnDelete.CssClass = "btn btn-danger";  //set css class
-            btnDelete.Text = "Delete";
-            btnDelete.Attributes.Add("aria-label", "Click to delete this sale");
-            //set aria label
-            // btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
-            btnDelete.Click += new EventHandler(btnDelete_Click);// Set button click event
-
-
-            //if (not admin)
-            //btnDelete.Visible = false;
-            //btnDelete.Enabled = false;
-
-            e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
-
-        }
-
-        protected void btnSearch_Command(object sender, CommandEventArgs e)
-        {
-
-        }
-
-  
     }
 }
 

@@ -35,12 +35,12 @@ namespace PRIMEWeb.Repairs
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["ID"] != null) // Reuest the cookies which contaions the ID Of thr record that was carried over from the index page
+            if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
                 Label1.Text = Request.Cookies["ID"].Value;
 
             id = Convert.ToInt32(Request.Cookies["ID"].Value);
             
-            if(id != 1)
+            if(id != -1)
             {
                 try
                 {
@@ -93,6 +93,8 @@ namespace PRIMEWeb.Repairs
                     repairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
 
                     Label1.Text = "Record Successfully Updated";
+                    Response.Redirect("Services .aspx"); // Redirect the user to Edit page on btn click
+
                 }
                 catch { Label1.Text = "Unable to Update Record"; }
 

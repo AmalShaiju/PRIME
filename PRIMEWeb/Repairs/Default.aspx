@@ -49,6 +49,17 @@
         td .btn {
             width: 80px;
         }
+        .auto-style1 {
+            position: relative;
+            width: 100%;
+            -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+            max-width: 50%;
+            left: 0px;
+            top: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -95,7 +106,7 @@
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="auto-style1">
                                     <div class="form-group">
                                         <label class="control-label">Date In:</label>
                                         <asp:TextBox ID="txtDateIn" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
@@ -112,34 +123,34 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Service:</label>
-                                        <asp:DropDownList ID="ddlServices" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Services...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlServices" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Service" DataTextField="serName" DataValueField="id">
+                                            <asp:ListItem Selected="True" Value="None">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Equipment:</label>
-                                        <asp:DropDownList ID="ddlEquipments" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Equipments...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlEquipments" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Equipment" DataTextField="eqtType" DataValueField="id">
+                                            <asp:ListItem Selected="True">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="auto-style1">
                                     <div class="form-group">
                                         <label class="control-label">Employee:</label>
-                                        <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Employees...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Employee" DataTextField="Employee Full Name" DataValueField="id">
+                                            <asp:ListItem Selected="True">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Customer:</label>
-                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Customers...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Customer" DataTextField="Customer Full Name" DataValueField="id">
+                                            <asp:ListItem Selected="True">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -149,32 +160,38 @@
                                     <div class="form-group">
                                         <label class="control-label">Warranty Status:</label>
                                         <div class="form-control">
-                                            <div class="form-check form-check-inline">
+                                            <div class="form-check form-check-inline" style="left: 0px; top: 0px">
                                                 <asp:RadioButton ID="radInWarranty" runat="server" CssClass="form-check-input" value="true" GroupName="radStatus" />
                                                 <label class="form-check-label" for="radInWarranty">In Warranty</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <asp:RadioButton ID="radNoWarranty" runat="server" CssClass="form-check-input" value="false" GroupName="radStatus" />
+                                                <asp:RadioButton ID="radNoWarranty" runat="server" CssClass="form-check-input" value="false" GroupName="radStatus" Checked="True" />
                                                 <label class="form-check-label" for="radNoWarranty">Not In Warranty</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div>
+              
+                    
+                        <asp:GridView ID="GridView1" runat="server" BorderStyle="None" CssClass="table" GridLines="None" OnRowDataBound="GridView1_RowDataBound1">
+                            <EmptyDataTemplate>
+                                No Records Found
+                            </EmptyDataTemplate>
+                        </asp:GridView>
+                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
                         <br />
 
-                    </div>
 
-                    <table class="table">
+<%--                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Date In</th>
@@ -227,8 +244,42 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>--%>
+                    <asp:ObjectDataSource ID="Service" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.AllserviceDataTableAdapter" UpdateMethod="Update">
+                        <DeleteParameters>
+                            <asp:Parameter Name="Original_id" Type="Int32" />
+                            <asp:Parameter Name="Original_serName" Type="String" />
+                            <asp:Parameter Name="Original_serDescription" Type="String" />
+                            <asp:Parameter Name="Original_serPrice" Type="Decimal" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="serName" Type="String" />
+                            <asp:Parameter Name="serDescription" Type="String" />
+                            <asp:Parameter Name="serPrice" Type="Decimal" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="serName" Type="String" />
+                            <asp:Parameter Name="serDescription" Type="String" />
+                            <asp:Parameter Name="serPrice" Type="Decimal" />
+                            <asp:Parameter Name="Original_id" Type="Int32" />
+                            <asp:Parameter Name="Original_serName" Type="String" />
+                            <asp:Parameter Name="Original_serDescription" Type="String" />
+                            <asp:Parameter Name="Original_serPrice" Type="Decimal" />
+                        </UpdateParameters>
+                    </asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="Employee" runat="server" DeleteMethod="Delete" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.employeeTableAdapter">
+                        <DeleteParameters>
+                            <asp:Parameter Name="Original_id" Type="Int32" />
+                        </DeleteParameters>
+                    </asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="Customer" runat="server" DeleteMethod="Delete" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.customerTableAdapter">
+                        <DeleteParameters>
+                            <asp:Parameter Name="Original_id" Type="Int32" />
+                        </DeleteParameters>
+                    </asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="Equipment" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.EquipmentLookUpTableAdapter"></asp:ObjectDataSource>
                 </div>
+
             </div>
         </div>
     </form>
