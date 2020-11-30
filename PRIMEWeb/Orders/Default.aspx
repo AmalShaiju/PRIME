@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PRIMEWeb.Inventory.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PRIMEWeb.Orders.Default" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-   <title>PRIME - Inventory</title>
+   <title>PRIME - Orders</title>
     <link href="/CSS/bootstrap.css" rel="stylesheet" />
     <style type="text/css">
         body {
@@ -44,7 +44,7 @@
     <script src="/Script/bootstrap.min.js"></script>
 </head>
 <body>
-    <form id="frmInventory" runat="server">
+    <form id="frmOrders" runat="server">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
             <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,10 +70,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a>
                     </li>
+
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Inventory</li>
+                    <li class="breadcrumb-item active" aria-current="page">Orders</li>
                 </ol>
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
@@ -81,69 +82,25 @@
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
-                    <h1>Inventory</h1>
-                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-secondary" aria-label="Add New Inventory Item" Text="Add New Item" PostBackUrl="/Inventory/NewItem.aspx" />
-                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Inventory Items">
-                        Filter Inventory
-                    </button>
-                    <div class="collapse" id="collapseFilter">
-                        <div class="card card-body bg-light">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Product Name:</label>
-                                        <asp:TextBox ID="txtItemName" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Brand:</label>
-                                        <asp:DropDownList ID="ddlBrands" runat="server" CssClass="form-control">
-                                            <asp:ListItem>All brands</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">From Price:</label>
-                                        <asp:TextBox ID="txtFromPrice" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">To Price:</label>
-                                        <asp:TextBox ID="txtToPrice" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                        <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
-                                        <input type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h1>Orders</h1>
+
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">Brand</th>
-                                <th scope="col">Price</th>
-                                <th scope="col"></th>
+                                <th scope="col">Product Number</th>
+                                <th scope="col">Date Ordered</th>
+                                <th scope="col">Paid money</th>
+                                
+                                
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>2 stroke oil</td>
-                                <td>12</td>
-                                <td>6.00 FL oz</td>
-                                <td>Castrol</td>
-                                <td>$4.95</td>
+                                <td>###</td>
+                                <td>11/29/2019</td>
+                                <td>100$</td>
+                                
+                                
                                 <td>
                                     <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
                                     <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Item" Text="Edit" />
@@ -151,11 +108,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Air Filter</td>
-                                <td>23</td>
-                                <td>5.00 inch</td>
-                                <td>Briggs and Stratton</td>
-                                <td>$15.99</td>
+                                <td>###</td>
+                                <td>12/15/2019</td>
+                                <td>1500$</td>
+                                
                                 <td>
                                     <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
                                     <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Item" Text="Edit" />
@@ -163,11 +119,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>50:1 Mixed Gas</td>
-                                <td>9</td>
-                                <td>1.00 Litre</td>
-                                <td>Champion</td>
-                                <td>$12.50</td>
+                                <td>###</td>
+                                <td>8/28/2019</td>
+                                <td>190$</td>
+                                
                                 <td>
                                     <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
                                     <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Item" Text="Edit" />
