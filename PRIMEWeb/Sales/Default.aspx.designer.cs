@@ -114,6 +114,24 @@ namespace PRIMEWeb.Sales
         protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
+        /// smgSales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager smgSales;
+
+        /// <summary>
+        /// upnSales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnSales;
+
+        /// <summary>
         /// gvSales control.
         /// </summary>
         /// <remarks>

@@ -146,7 +146,15 @@
                             </div>
                         </div>
                     </div>
-                    <asp:GridView ID="gvSales" runat="server" CssClass="table" CellPadding="0" GridLines="None" OnRowDataBound="gvSales_RowDataBound"></asp:GridView>
+                    <asp:ScriptManager ID="smgSales" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnSales" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="gvSales" runat="server" CssClass="table" CellPadding="0" GridLines="None" OnRowDataBound="gvSales_RowDataBound"></asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>
