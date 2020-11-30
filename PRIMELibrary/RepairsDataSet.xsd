@@ -317,6 +317,54 @@ SELECT id, serordDateIn, serordDateOut, serordIssue, serordWarranty, receiptID, 
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="WarrantyLookUpTableAdapter" GeneratorDataComponentClassName="WarrantyLookUpTableAdapter" Name="WarrantyLookUp" UserDataComponentName="WarrantyLookUpTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT manufacturer.manName, equip_type.eqtType, equipment.equModel, equipment.equSerial, service_order.serordIssue, service.serPrice, service_order.serordDateIn, service_order.serordDateOut, manufacturer.id AS 'ManID'
+FROM     manufacturer INNER JOIN
+                  equipment ON manufacturer.id = equipment.equManuID INNER JOIN
+                  equip_type ON equipment.equtypeID = equip_type.id INNER JOIN
+                  service_order ON equipment.id = service_order.equipID INNER JOIN
+                  service ON service_order.serviceID = service.id
+WHERE  (service_order.serordWarranty = 1)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="manName" DataSetColumn="manName" />
+              <Mapping SourceColumn="equModel" DataSetColumn="equModel" />
+              <Mapping SourceColumn="equSerial" DataSetColumn="equSerial" />
+              <Mapping SourceColumn="eqtType" DataSetColumn="eqtType" />
+              <Mapping SourceColumn="serordIssue" DataSetColumn="serordIssue" />
+              <Mapping SourceColumn="serPrice" DataSetColumn="serPrice" />
+              <Mapping SourceColumn="serordDateIn" DataSetColumn="serordDateIn" />
+              <Mapping SourceColumn="serordDateOut" DataSetColumn="serordDateOut" />
+              <Mapping SourceColumn="ManID" DataSetColumn="ManID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ManufacturerTableAdapter" GeneratorDataComponentClassName="ManufacturerTableAdapter" Name="Manufacturer" UserDataComponentName="ManufacturerTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectName="dbo.manufacturer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT id, manName
+FROM     manufacturer</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="manName" DataSetColumn="manName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -475,6 +523,65 @@ SELECT id, serordDateIn, serordDateOut, serordIssue, serordWarranty, receiptID, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="WarrantyLookUp" msprop:Generator_TableClassName="WarrantyLookUpDataTable" msprop:Generator_TableVarName="tableWarrantyLookUp" msprop:Generator_RowChangedName="WarrantyLookUpRowChanged" msprop:Generator_TablePropName="WarrantyLookUp" msprop:Generator_RowDeletingName="WarrantyLookUpRowDeleting" msprop:Generator_RowChangingName="WarrantyLookUpRowChanging" msprop:Generator_RowEvHandlerName="WarrantyLookUpRowChangeEventHandler" msprop:Generator_RowDeletedName="WarrantyLookUpRowDeleted" msprop:Generator_RowClassName="WarrantyLookUpRow" msprop:Generator_UserTableName="WarrantyLookUp" msprop:Generator_RowEvArgName="WarrantyLookUpRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="manName" msprop:Generator_ColumnVarNameInTable="columnmanName" msprop:Generator_ColumnPropNameInRow="manName" msprop:Generator_ColumnPropNameInTable="manNameColumn" msprop:Generator_UserColumnName="manName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="equModel" msprop:Generator_ColumnVarNameInTable="columnequModel" msprop:Generator_ColumnPropNameInRow="equModel" msprop:Generator_ColumnPropNameInTable="equModelColumn" msprop:Generator_UserColumnName="equModel" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="equSerial" msprop:Generator_ColumnVarNameInTable="columnequSerial" msprop:Generator_ColumnPropNameInRow="equSerial" msprop:Generator_ColumnPropNameInTable="equSerialColumn" msprop:Generator_UserColumnName="equSerial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="eqtType" msprop:Generator_ColumnVarNameInTable="columneqtType" msprop:Generator_ColumnPropNameInRow="eqtType" msprop:Generator_ColumnPropNameInTable="eqtTypeColumn" msprop:Generator_UserColumnName="eqtType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="serordIssue" msprop:Generator_ColumnVarNameInTable="columnserordIssue" msprop:Generator_ColumnPropNameInRow="serordIssue" msprop:Generator_ColumnPropNameInTable="serordIssueColumn" msprop:Generator_UserColumnName="serordIssue" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="serPrice" msprop:Generator_ColumnVarNameInTable="columnserPrice" msprop:Generator_ColumnPropNameInRow="serPrice" msprop:Generator_ColumnPropNameInTable="serPriceColumn" msprop:Generator_UserColumnName="serPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="serordDateIn" msprop:Generator_ColumnVarNameInTable="columnserordDateIn" msprop:Generator_ColumnPropNameInRow="serordDateIn" msprop:Generator_ColumnPropNameInTable="serordDateInColumn" msprop:Generator_UserColumnName="serordDateIn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="serordDateOut" msprop:Generator_ColumnVarNameInTable="columnserordDateOut" msprop:Generator_ColumnPropNameInRow="serordDateOut" msprop:Generator_ColumnPropNameInTable="serordDateOutColumn" msprop:Generator_UserColumnName="serordDateOut" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ManID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnManID" msprop:Generator_ColumnPropNameInRow="ManID" msprop:Generator_ColumnPropNameInTable="ManIDColumn" msprop:Generator_UserColumnName="ManID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Manufacturer" msprop:Generator_TableClassName="ManufacturerDataTable" msprop:Generator_TableVarName="tableManufacturer" msprop:Generator_TablePropName="Manufacturer" msprop:Generator_RowDeletingName="ManufacturerRowDeleting" msprop:Generator_RowChangingName="ManufacturerRowChanging" msprop:Generator_RowEvHandlerName="ManufacturerRowChangeEventHandler" msprop:Generator_RowDeletedName="ManufacturerRowDeleted" msprop:Generator_UserTableName="Manufacturer" msprop:Generator_RowChangedName="ManufacturerRowChanged" msprop:Generator_RowEvArgName="ManufacturerRowChangeEvent" msprop:Generator_RowClassName="ManufacturerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="manName" msprop:Generator_ColumnVarNameInTable="columnmanName" msprop:Generator_ColumnPropNameInRow="manName" msprop:Generator_ColumnPropNameInTable="manNameColumn" msprop:Generator_UserColumnName="manName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -503,6 +610,14 @@ SELECT id, serordDateIn, serordDateOut, serordIssue, serordWarranty, receiptID, 
     </xs:unique>
     <xs:unique name="service_order_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:service_order" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="WarrantyLookUp_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:WarrantyLookUp" />
+      <xs:field xpath="mstns:ManID" />
+    </xs:unique>
+    <xs:unique name="Manufacturer_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Manufacturer" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
   </xs:element>

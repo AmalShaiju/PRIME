@@ -11,33 +11,52 @@
             background-color: #e0e0e0;
             line-height: 1;
         }
+
         .breadcrumb, #navbar {
             margin: 10px;
         }
+
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
             width: 130px;
         }
+
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;
             margin: 15px auto;
             padding: 15px;
         }
+
         h1 {
             text-align: center;
             padding: 10px 0 30px 0;
         }
+
         h4 {
             padding-top: 30px;
         }
+
         .table {
             margin: 15px auto 20px auto;
         }
-        .table td, .table th {
-            text-align: center;
-            vertical-align: middle;
+
+            .table td, .table th {
+                text-align: center;
+                vertical-align: middle;
+            }
+
+        .auto-style1 {
+            position: relative;
+            width: 100%;
+            -ms-flex: 0 0 75%;
+            flex: 0 0 75%;
+            max-width: 75%;
+            left: 0px;
+            top: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -74,7 +93,7 @@
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
-            <div class="col-lg-9">
+            <div class="auto-style1">
                 <h1>Warranty Report</h1>
                 <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Entries">
                     Filter Entries
@@ -99,65 +118,29 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Manufacturer:</label>
-                                    <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control">
+                                    <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control" DataSourceID="Manufacturer" DataTextField="manName" DataValueField="id">
                                         <asp:ListItem>Manufacturers...</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
                             <div id="divBtnSearch" class="col-md-6 form-group align-self-end">
-                                <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
-                                <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
+                                <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
+                                <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <h4>Detailed Report</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Manufacturer</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Model</th>
-                            <th scope="col">Serial</th>
-                            <th scope="col">Issue</th>
-                            <th scope="col">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Honda</td>
-                            <td>Lawn Mower</td>
-                            <td>20in Cordless</td>
-                            <td>545482135484</td>
-                            <td>Gap spark plug and restring line.</td>
-                            <td>$50.00</td>
-                        </tr>
-                        <tr>
-                            <td>Honda</td>
-                            <td>Weedeater</td>
-                            <td>17-inch 2 stroke</td>
-                            <td>5461548513</td>
-                            <td>Change oil and sharpen blade.</td>
-                            <td>$35.50</td>
-                        </tr>
-                        <tr>
-                            <td>Hitachi</td>
-                            <td>Lawn Mower</td>
-                            <td>EU1000i</td>
-                            <td>1584513215</td>
-                            <td>Change oil and air filter.</td>
-                            <td>$37.00</td>
-                        </tr>
-                        <tr>
-                            <td>Craftsman</td>
-                            <td>Chainsaw</td>
-                            <td>DCCS690M1</td>
-                            <td>654df5645df</td>
-                            <td>Change oil and sharpen blade.</td>
-                            <td>$55.50</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+
+                <asp:GridView ID="DetailGrid" runat="server" CssClass="table" BorderStyle="None" EmptyDataText="No Records Found" GridLines="None">
+                    <EmptyDataTemplate>
+                        No Records Found
+                    </EmptyDataTemplate>
+                </asp:GridView>
+                <br />
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
                 <h4>Overall Report</h4>
                 <table class="table">
                     <thead>
@@ -190,6 +173,8 @@
                         </tr>
                     </tbody>
                 </table>
+                <br />
+                <asp:ObjectDataSource ID="Manufacturer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.ManufacturerTableAdapter"></asp:ObjectDataSource>
             </div>
         </div>
     </form>
