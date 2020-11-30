@@ -29,6 +29,9 @@
             text-align: center;
             padding: 10px 0;
         }
+        #collapseFilter {
+            margin: 5px auto;
+        }
         #divBtnSearch {
             text-align: right;
             margin-bottom: 1rem;
@@ -36,8 +39,11 @@
         #btnClear {
             margin-left: 30px;
         }
+        #upnSales {
+            padding-top: 20px;
+        }
         .table {
-            margin: 30px auto 0 auto;
+            margin: 5px auto 0 auto;
         }
         .table td, .table th {
             text-align: center;
