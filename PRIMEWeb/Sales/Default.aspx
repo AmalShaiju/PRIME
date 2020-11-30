@@ -149,6 +149,7 @@
                     <asp:ScriptManager ID="smgSales" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="upnSales" runat="server">
                         <ContentTemplate>
+                            <asp:Label ID="lblCount" runat="server"></asp:Label>
                             <asp:GridView ID="gvSales" runat="server" CssClass="table" CellPadding="0" GridLines="None" OnRowDataBound="gvSales_RowDataBound"></asp:GridView>
                         </ContentTemplate>
                         <Triggers>

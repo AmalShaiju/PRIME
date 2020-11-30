@@ -93,6 +93,18 @@ namespace PRIMEWeb.Sales
             gvSales.DataSource = dtSales;
             btnStatuses.Clear();  //clear the list
             gvSales.DataBind();
+            switch (gvSales.Rows.Count)
+            {
+                case 0:
+                    lblCount.Text = "No records found.";
+                    break;
+                case 1:
+                    lblCount.Text = "1 record found.";
+                    break;
+                default:
+                    lblCount.Text = gvSales.Rows.Count.ToString() + " records found.";
+                    break;
+            }
         }
 
         protected void gvSales_RowDataBound(object sender, GridViewRowEventArgs e)
