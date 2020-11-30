@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectName="dbo.receipt" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT receipt.id, receipt.ordDate, receipt.ordPaid, customer.custFirst + ' ' + customer.custLast AS custName
+                    <CommandText>SELECT receipt.id, receipt.ordDate, receipt.ordPaid, customer.custFirst + ' ' + customer.custLast AS custName, receipt.custID, receipt.empID
 FROM     receipt INNER JOIN
                   customer ON receipt.custID = customer.id</CommandText>
                     <Parameters />
@@ -25,6 +25,46 @@ FROM     receipt INNER JOIN
               <Mapping SourceColumn="ordDate" DataSetColumn="ordDate" />
               <Mapping SourceColumn="ordPaid" DataSetColumn="ordPaid" />
               <Mapping SourceColumn="custName" DataSetColumn="custName" />
+              <Mapping SourceColumn="custID" DataSetColumn="custID" />
+              <Mapping SourceColumn="empID" DataSetColumn="empID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CustomerNameTableAdapter" GeneratorDataComponentClassName="CustomerNameTableAdapter" Name="CustomerName" UserDataComponentName="CustomerNameTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectName="dbo.customer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT id, custFirst + ' ' + custLast AS custName
+FROM     customer
+ORDER BY custName</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="custName" DataSetColumn="custName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EmployeeNameTableAdapter" GeneratorDataComponentClassName="EmployeeNameTableAdapter" Name="EmployeeName" UserDataComponentName="EmployeeNameTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectName="dbo.employee" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT id, empFirst + ' ' + empLast AS empName
+FROM     employee
+ORDER BY empName</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="empName" DataSetColumn="empName" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -36,13 +76,43 @@ FROM     receipt INNER JOIN
   <xs:element name="SalesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SalesDataSet" msprop:Generator_UserDSName="SalesDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SalesIndex" msprop:Generator_TableClassName="SalesIndexDataTable" msprop:Generator_TableVarName="tableSalesIndex" msprop:Generator_TablePropName="SalesIndex" msprop:Generator_RowDeletingName="SalesIndexRowDeleting" msprop:Generator_RowChangingName="SalesIndexRowChanging" msprop:Generator_RowEvHandlerName="SalesIndexRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesIndexRowDeleted" msprop:Generator_UserTableName="SalesIndex" msprop:Generator_RowChangedName="SalesIndexRowChanged" msprop:Generator_RowEvArgName="SalesIndexRowChangeEvent" msprop:Generator_RowClassName="SalesIndexRow">
+        <xs:element name="SalesIndex" msprop:Generator_TableClassName="SalesIndexDataTable" msprop:Generator_TableVarName="tableSalesIndex" msprop:Generator_RowChangedName="SalesIndexRowChanged" msprop:Generator_TablePropName="SalesIndex" msprop:Generator_RowDeletingName="SalesIndexRowDeleting" msprop:Generator_RowChangingName="SalesIndexRowChanging" msprop:Generator_RowEvHandlerName="SalesIndexRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesIndexRowDeleted" msprop:Generator_RowClassName="SalesIndexRow" msprop:Generator_UserTableName="SalesIndex" msprop:Generator_RowEvArgName="SalesIndexRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
               <xs:element name="ordDate" msprop:Generator_ColumnVarNameInTable="columnordDate" msprop:Generator_ColumnPropNameInRow="ordDate" msprop:Generator_ColumnPropNameInTable="ordDateColumn" msprop:Generator_UserColumnName="ordDate" type="xs:dateTime" minOccurs="0" />
               <xs:element name="ordPaid" msprop:Generator_ColumnVarNameInTable="columnordPaid" msprop:Generator_ColumnPropNameInRow="ordPaid" msprop:Generator_ColumnPropNameInTable="ordPaidColumn" msprop:Generator_UserColumnName="ordPaid" type="xs:boolean" minOccurs="0" />
               <xs:element name="custName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncustName" msprop:Generator_ColumnPropNameInRow="custName" msprop:Generator_ColumnPropNameInTable="custNameColumn" msprop:Generator_UserColumnName="custName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="81" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="custID" msprop:Generator_ColumnVarNameInTable="columncustID" msprop:Generator_ColumnPropNameInRow="custID" msprop:Generator_ColumnPropNameInTable="custIDColumn" msprop:Generator_UserColumnName="custID" type="xs:int" />
+              <xs:element name="empID" msprop:Generator_ColumnVarNameInTable="columnempID" msprop:Generator_ColumnPropNameInRow="empID" msprop:Generator_ColumnPropNameInTable="empIDColumn" msprop:Generator_UserColumnName="empID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CustomerName" msprop:Generator_TableClassName="CustomerNameDataTable" msprop:Generator_TableVarName="tableCustomerName" msprop:Generator_TablePropName="CustomerName" msprop:Generator_RowDeletingName="CustomerNameRowDeleting" msprop:Generator_RowChangingName="CustomerNameRowChanging" msprop:Generator_RowEvHandlerName="CustomerNameRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomerNameRowDeleted" msprop:Generator_UserTableName="CustomerName" msprop:Generator_RowChangedName="CustomerNameRowChanged" msprop:Generator_RowEvArgName="CustomerNameRowChangeEvent" msprop:Generator_RowClassName="CustomerNameRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="custName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncustName" msprop:Generator_ColumnPropNameInRow="custName" msprop:Generator_ColumnPropNameInTable="custNameColumn" msprop:Generator_UserColumnName="custName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="81" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EmployeeName" msprop:Generator_TableClassName="EmployeeNameDataTable" msprop:Generator_TableVarName="tableEmployeeName" msprop:Generator_TablePropName="EmployeeName" msprop:Generator_RowDeletingName="EmployeeNameRowDeleting" msprop:Generator_RowChangingName="EmployeeNameRowChanging" msprop:Generator_RowEvHandlerName="EmployeeNameRowChangeEventHandler" msprop:Generator_RowDeletedName="EmployeeNameRowDeleted" msprop:Generator_UserTableName="EmployeeName" msprop:Generator_RowChangedName="EmployeeNameRowChanged" msprop:Generator_RowEvArgName="EmployeeNameRowChangeEvent" msprop:Generator_RowClassName="EmployeeNameRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="empName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnempName" msprop:Generator_ColumnPropNameInRow="empName" msprop:Generator_ColumnPropNameInTable="empNameColumn" msprop:Generator_UserColumnName="empName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="81" />
@@ -58,5 +128,19 @@ FROM     receipt INNER JOIN
       <xs:selector xpath=".//mstns:SalesIndex" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
+    <xs:unique name="CustomerName_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CustomerName" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="EmployeeName_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EmployeeName" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="receipt_fk_custID" msdata:parent="CustomerName" msdata:child="SalesIndex" msdata:parentkey="id" msdata:childkey="custID" msprop:Generator_UserChildTable="SalesIndex" msprop:Generator_ChildPropName="GetSalesIndexRows" msprop:Generator_UserRelationName="receipt_fk_custID" msprop:Generator_RelationVarName="relationreceipt_fk_custID" msprop:Generator_UserParentTable="CustomerName" msprop:Generator_ParentPropName="CustomerNameRow" />
+      <msdata:Relationship name="receipt_fk_empID" msdata:parent="EmployeeName" msdata:child="SalesIndex" msdata:parentkey="id" msdata:childkey="empID" msprop:Generator_UserChildTable="SalesIndex" msprop:Generator_ChildPropName="GetSalesIndexRows" msprop:Generator_UserRelationName="receipt_fk_empID" msprop:Generator_RelationVarName="relationreceipt_fk_empID" msprop:Generator_UserParentTable="EmployeeName" msprop:Generator_ParentPropName="EmployeeNameRow" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>
