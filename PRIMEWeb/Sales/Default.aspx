@@ -95,7 +95,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Sale Number:</label>
-                                        <asp:TextBox ID="txtSaleNum" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtSaleNum" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -140,7 +140,7 @@
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
                             </div>

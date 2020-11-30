@@ -25,8 +25,12 @@ namespace PRIMEWeb.Sales
             try
             {
                 SalesIndexTableAdapter daSalesIndex = new SalesIndexTableAdapter();
+                CustomerNameTableAdapter daCustomerNames = new CustomerNameTableAdapter();
+                EmployeeNameTableAdapter daEmployeeNames = new EmployeeNameTableAdapter();
                 dsSales.Clear();
                 daSalesIndex.Fill(dsSales.SalesIndex);
+                daCustomerNames.Fill(dsSales.CustomerName);
+                daEmployeeNames.Fill(dsSales.EmployeeName);
             }
             catch (Exception ex)
             {
@@ -45,7 +49,30 @@ namespace PRIMEWeb.Sales
             //data loaded successfully
 
             rows = dsSales.SalesIndex.Select(); //get records
-            DisplaySales();
+            DisplaySales();  //display records
+
+            if (IsPostBack) return;
+
+            DisplayCustomerList();
+            DisplayEmployeeList();  //populate ddl
+        }
+
+        private void DisplayEmployeeList()
+        {
+            ddlEmployee.Items.Clear();
+            ddlEmployee.Items.Add(new ListItem("All Employees", "-1"));
+            foreach (DataRow r in dsSales.EmployeeName.Rows)
+                ddlEmployee.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
+            ddlEmployee.SelectedIndex = 0; //select All Employees by default
+        }
+
+        private void DisplayCustomerList()
+        {
+            ddlCustomer.Items.Clear();
+            ddlCustomer.Items.Add(new ListItem("All Customers", "-1"));
+            foreach (DataRow r in dsSales.CustomerName.Rows)
+                ddlCustomer.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
+            ddlCustomer.SelectedIndex = 0; //select All Customers by default
         }
 
         private void DisplaySales()
@@ -140,6 +167,38 @@ namespace PRIMEWeb.Sales
         protected void btnStatus_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            List<string> searchCmds = new List<string>(); //list of the filters
+            if (txtSaleNum.Text != String.Empty)
+                searchCmds.Add("id = " + txtSaleNum.Text);
+            if (ddlCustomer.SelectedValue != "-1")
+                searchCmds.Add("custID = " + ddlCustomer.SelectedValue);
+            if (txtDate.Text != String.Empty)
+                searchCmds.Add("ordDate = #" + txtDate.Text + "#");
+            if (ddlEmployee.SelectedValue != "-1")
+                searchCmds.Add("empID = " + ddlEmployee.SelectedValue);
+            if (radPaid.Checked)
+                searchCmds.Add("ordPaid = True");
+            else if (radUnpaid.Checked)
+                searchCmds.Add("ordPaid = False");
+            //populate commands
+
+            string cmd;
+
+            if (searchCmds.Count == 0)
+                rows = dsSales.SalesIndex.Select(); //get all records
+            else
+            {
+                cmd = searchCmds[0];
+                for (int i = 1; i < searchCmds.Count; i++)
+                    cmd += " And " + searchCmds[i];
+                rows = dsSales.SalesIndex.Select(cmd); //get needed records
+            }
+
+            DisplaySales();
         }
     }
 }
