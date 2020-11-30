@@ -16,27 +16,38 @@ namespace PRIMEWeb.Repairs
         static RepairsDataSet RepairsDataSet;
         private static DataRow[] rows; // Data rows to load more than one record ( doesnt need to be static ) // Not Sure
 
-
+        private static bool flag = false;
         static Default()
         {
             RepairsDataSet = new RepairsDataSet();
             RepairLookUpTableAdapter daRepair = new RepairLookUpTableAdapter();
-
-
+            service_orderTableAdapter daServiceOrder = new service_orderTableAdapter();
             try
             {
                 daRepair.Fill(RepairsDataSet.RepairLookUp);
+                daServiceOrder.Fill(RepairsDataSet.service_order);
             }
-            catch { }
+            catch 
+            {
+                flag = true; // dataset filling failed
+            }
         }
 
         private static int id = -1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (flag)
+                this.Label1.Text = "failed to load Data";
+           
+            // Refresh the dataset so all updates are shown on page refresh 
             RepairLookUpTableAdapter daRepair = new RepairLookUpTableAdapter();
+            service_orderTableAdapter daServiceOrder = new service_orderTableAdapter();
+
             RepairsDataSet.Reset();
             daRepair.Fill(RepairsDataSet.RepairLookUp);
+            daServiceOrder.Fill(RepairsDataSet.service_order);
+
 
             rows = RepairsDataSet.RepairLookUp.Select(); //get records
             DisplayRepairTable();
@@ -61,7 +72,7 @@ namespace PRIMEWeb.Repairs
 
             //Send Id using cookie, more seecure I presume
             HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
-            cID.Value = GridView1.Rows[rowindex].Cells[1].Text;
+            cID.Value = GridView1.Rows[rowindex].Cells[0].Text;
             Response.Cookies.Add(cID);
             Response.Redirect("EditRepair.aspx"); // Redirect the user to Edit page on btn click
 
@@ -82,22 +93,19 @@ namespace PRIMEWeb.Repairs
 
             this.Label1.Text = rowindex.ToString();
 
-            id = Convert.ToInt32(GridView1.Rows[rowindex].Cells[1].Text);
+            id = Convert.ToInt32(GridView1.Rows[rowindex].Cells[0].Text);
 
-            if (id != 1)
+            if (id != -1)
+
             {
+
                 try
                 {
-                    DataRow record = RepairsDataSet.RepairLookUp.FindByid(id); // Find and add the record to tbe record variable
+                    DataRow record = RepairsDataSet.service_order.FindByid(id); // Find the requested record 
+                    record.Delete(); // Deletes the record in memory
 
-                    record.Delete(); // Deletes the record in m,emory
-
-
-                    // Add logic that seperates data into diifrent table update statement
-
-
-                    RepairLookUpTableAdapter daRepair = new RepairLookUpTableAdapter(); // table adapter to Repair table (Repair adapter)
-                    //daRepair.Update(record); // Call update method on the Repair adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                    service_orderTableAdapter daServiceOrder = new service_orderTableAdapter(); // table adapter to Repair table (Repair adapter)
+                    daServiceOrder.Update(record); // Call update method on the Repair adapter so it updates the table in memory ( All changes made are applied - CRUD)
                     RepairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
                     Label1.Text = "deleted";
 
@@ -122,6 +130,9 @@ namespace PRIMEWeb.Repairs
                     //Clear the header for Detail Edit Delete btn
                     return;  //skip the header
                 }
+
+                this.GridView1.HeaderRow.Cells[0].Visible = false;
+                e.Row.Cells[0].Visible = false;
 
                 // Edit btn
                 Button btnEdit = new Button();  //create edit btn
@@ -178,7 +189,7 @@ namespace PRIMEWeb.Repairs
         //Display Method to fill tables
         private void DisplayRepairTable()
         {
-            this.Label1.Text = "ready";
+           //this.Label1.Text = "ready";
 
             //HyperLinkField hp = new HyperLinkField();
             //hp.Text = "Edit";
@@ -186,13 +197,13 @@ namespace PRIMEWeb.Repairs
             //hp  .Visible = true;
 
             DataTable dt = new DataTable();
-          // dt.Columns.Add("ID");
+            dt.Columns.Add("ID");
             dt.Columns.Add("DateIn");
             dt.Columns.Add("DateOut");
             dt.Columns.Add("Issue");
             dt.Columns.Add("InWarrenty");
             dt.Columns.Add("Equipment");
-            dt.Columns.Add("Employee");     
+           // dt.Columns.Add("Employee");     
             dt.Columns.Add(""); // column for Edit and Delete btn
 
 
@@ -202,13 +213,13 @@ namespace PRIMEWeb.Repairs
             foreach (DataRow r in rows) // loop through the static DataRow[] row since the records from filter are saved in them.
             {
                 DataRow nr = dt.NewRow();
-               // nr[0] = r.ItemArray[0].ToString();
-                nr[0] = Convert.ToDateTime(r.ItemArray[11].ToString()).ToShortDateString();
-                nr[1] = Convert.ToDateTime(r.ItemArray[12].ToString()).ToShortDateString();
-                nr[2] = r.ItemArray[1].ToString();
-                nr[3] = r.ItemArray[2].ToString();
-                nr[4] = r.ItemArray[10].ToString();
-                nr[5] = r.ItemArray[9].ToString();
+                nr[0] = r.ItemArray[0].ToString();
+                nr[1] = Convert.ToDateTime(r.ItemArray[11].ToString()).ToShortDateString();
+                nr[2] = Convert.ToDateTime(r.ItemArray[12].ToString()).ToShortDateString();
+                nr[3] = r.ItemArray[1].ToString();
+                nr[4] = r.ItemArray[2].ToString();
+                nr[5] = r.ItemArray[10].ToString();
+               // nr[6] = r.ItemArray[9].ToString();
 
                 dt.Rows.Add(nr);
                 //this.GridView1.Columns.Add(hp);
@@ -218,8 +229,6 @@ namespace PRIMEWeb.Repairs
             this.GridView1.DataBind();
         }
 
-
-       
 
         // Filter criteria
         private string FilterCriteria()

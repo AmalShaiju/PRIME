@@ -20,11 +20,11 @@ namespace PRIMEWeb.Repairs
         static EditService()
         {
             repairsDataSet = new RepairsDataSet();
-            AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
+            serviceTableAdapter daservices = new serviceTableAdapter();
 
             try
             {
-                daservices.Fill(repairsDataSet.AllserviceData);
+                daservices.Fill(repairsDataSet.service);
             }
             catch { }
         }
@@ -44,7 +44,7 @@ namespace PRIMEWeb.Repairs
             {
                 try
                 {
-                    DataRow Service = repairsDataSet.AllserviceData.FindByid(id); // Find the related Record and fill the fields in the page with the data
+                    DataRow Service = repairsDataSet.service.FindByid(id); // Find the related Record and fill the fields in the page with the data
 
                     if (Service != null)
                     {
@@ -81,19 +81,19 @@ namespace PRIMEWeb.Repairs
               
                 try
                 {
-                    DataRow sevice = repairsDataSet.AllserviceData.FindByid(id); // find the related Record
+                    DataRow sevice = repairsDataSet.service.FindByid(id); // find the related Record
 
                     //update record with user's input
                     sevice[1] = this.txtName.Text;
                     sevice[2] = this.txtDescription.Text;
                     sevice[3] = Convert.ToDecimal(this.txtPrice.Text);
 
-                    AllserviceDataTableAdapter daservice = new AllserviceDataTableAdapter();
+                    serviceTableAdapter daservice = new serviceTableAdapter();
                     daservice.Update(sevice); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
                     repairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
 
                     Label1.Text = "Record Successfully Updated";
-                    Response.Redirect("Services .aspx"); // Redirect the user to Edit page on btn click
+                    Response.Redirect("Services.aspx"); // Redirect the user to Edit page on btn click
 
                 }
                 catch { Label1.Text = "Unable to Update Record"; }

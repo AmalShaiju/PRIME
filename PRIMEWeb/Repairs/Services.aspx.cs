@@ -21,12 +21,12 @@ namespace PRIMEWeb.Repairs
         static Services()
         {
             RepairsDataSet = new RepairsDataSet();
-            AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
+            serviceTableAdapter daservices = new serviceTableAdapter();
 
 
             try
             {
-                daservices.Fill(RepairsDataSet.AllserviceData);
+                daservices.Fill(RepairsDataSet.service);
             }
             catch { }
         }
@@ -36,36 +36,29 @@ namespace PRIMEWeb.Repairs
         protected void Page_Load(object sender, EventArgs e)
         {
             //refresh the dataset, so the newly created record is shown in index
-            AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
+            serviceTableAdapter daservices = new serviceTableAdapter();
             RepairsDataSet.Reset();
-            daservices.Fill(RepairsDataSet.AllserviceData);
+            daservices.Fill(RepairsDataSet.service);
 
-            rows = RepairsDataSet.AllserviceData.Select(); //get records
+            rows = RepairsDataSet.service.Select(); //get records
             DisplayServiceTable();
 
         }
 
-        //trial code to check if the id waa being pulled
-        //protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (this.GridView1.EditIndex != -1)
-        //        this.Label1.Text = GridView1.SelectedRow.Cells[1].Text;
-        //}
-
-        // Filter Seach Btn
+        // Filter Search Btn
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (RepairsDataSet.AllserviceData.Count > 0)
+            if (RepairsDataSet.service.Count > 0)
             {
                 string criteria = FilterCriteria();
-                rows = (criteria.Length > 0) ? RepairsDataSet.AllserviceData.Select(criteria) : RepairsDataSet.AllserviceData.Select(); // Data satisfying the conditions is saved in rows
+                rows = (criteria.Length > 0) ? RepairsDataSet.service.Select(criteria) : RepairsDataSet.service.Select(); // Data satisfying the conditions is saved in rows
                 DisplayServiceTable();
             }
             else
                 this.Label1.Text = "No Records Found";
         }
 
-        // Edit btn clcik
+        // Edit btn 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             // Get the button that raised the event
@@ -84,14 +77,14 @@ namespace PRIMEWeb.Repairs
 
             //Send Id using cookie, more seecure I presume
             HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
-            cID.Value = GridView1.Rows[rowindex].Cells[0].Text;
+            cID.Value = this.GridView1.Rows[rowindex].Cells[0].Text;
             Response.Cookies.Add(cID);
             Response.Redirect("EditService.aspx"); // Redirect the user to Edit page on btn click
 
 
         }
 
-        // Delete btn click
+        // Delete btn 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             // Get the button that raised the event
@@ -107,15 +100,15 @@ namespace PRIMEWeb.Repairs
 
             id = Convert.ToInt32(GridView1.Rows[rowindex].Cells[0].Text);
 
-            if (id != 1)
+            if (id != -1)
             {
                 try
                 {
-                    DataRow record = RepairsDataSet.AllserviceData.FindByid(id); // Find and add the record to tbe record variable
+                    DataRow record = RepairsDataSet.service.FindByid(id); // Find and add the record to tbe record variable
 
-                    record.Delete(); // Deletes the record in m,emory
+                    record.Delete(); // Deletes the record in memory
 
-                    AllserviceDataTableAdapter daservice = new AllserviceDataTableAdapter(); // table adapter to service table (Service adapter)
+                    serviceTableAdapter daservice = new serviceTableAdapter(); // table adapter to service table (Service adapter)
                     daservice.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
                     RepairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
                     Label1.Text = "deleted";
@@ -131,8 +124,10 @@ namespace PRIMEWeb.Repairs
             }
         }
 
+        // Method to add edit and delete btn 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e) // Method adding the btns to the table
         {
+            this.Label1.Text = "fired datbound";
             try
             {
                 if (e.Row.RowIndex == -1)
@@ -141,6 +136,8 @@ namespace PRIMEWeb.Repairs
                     //Clear the header for Detail Edit Delete btn
                     return;  //skip the header
                 }
+             //   this.GridView1.HeaderRow.Cells[0].Visible = false;
+            //    e.Row.Cells[0].Visible = false;
 
                 // Edit btn
                 Button btnEdit = new Button();  //create edit btn
@@ -183,14 +180,13 @@ namespace PRIMEWeb.Repairs
 
         }
 
-        // Filer Clear btn
+        // Filter Clear btn
         protected void btnClear_Click(object sender, EventArgs e)
         {
             this.txtName.Text = "";
             this.txtDescription.Text = "";
             this.txtPrice.Text = "";
         }
-
 
         // Filter criteria
         private string FilterCriteria()
@@ -207,7 +203,6 @@ namespace PRIMEWeb.Repairs
 
             return criteria;
         }
-
 
         //Display Method to fill tables
         private void DisplayServiceTable()

@@ -245,7 +245,7 @@
                             </tr>
                         </tbody>
                     </table>--%>
-                    <asp:ObjectDataSource ID="Service" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.AllserviceDataTableAdapter" UpdateMethod="Update">
+                    <asp:ObjectDataSource ID="Service" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.serviceTableAdapter" UpdateMethod="Update">
                         <DeleteParameters>
                             <asp:Parameter Name="Original_id" Type="Int32" />
                             <asp:Parameter Name="Original_serName" Type="String" />
@@ -267,12 +267,12 @@
                             <asp:Parameter Name="Original_serPrice" Type="Decimal" />
                         </UpdateParameters>
                     </asp:ObjectDataSource>
-                    <asp:ObjectDataSource ID="Employee" runat="server" DeleteMethod="Delete" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.employeeTableAdapter">
+                    <asp:ObjectDataSource ID="Employee" runat="server" DeleteMethod="Delete" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.EmployeeLookUpTableAdapter">
                         <DeleteParameters>
                             <asp:Parameter Name="Original_id" Type="Int32" />
                         </DeleteParameters>
                     </asp:ObjectDataSource>
-                    <asp:ObjectDataSource ID="Customer" runat="server" DeleteMethod="Delete" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.customerTableAdapter">
+                    <asp:ObjectDataSource ID="Customer" runat="server" DeleteMethod="Delete" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.CustomerLookUpTableAdapter">
                         <DeleteParameters>
                             <asp:Parameter Name="Original_id" Type="Int32" />
                         </DeleteParameters>

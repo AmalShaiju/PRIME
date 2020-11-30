@@ -21,11 +21,11 @@ namespace PRIMEWeb.Repairs
         static NewService()
         {
             RepairsDataSet = new RepairsDataSet();
-            AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
+            serviceTableAdapter daservices = new serviceTableAdapter();
 
             try
             {
-                daservices.Fill(RepairsDataSet.AllserviceData);
+                daservices.Fill(RepairsDataSet.service);
             }
             catch { }
         }
@@ -39,15 +39,15 @@ namespace PRIMEWeb.Repairs
         {
             try
             {
-                DataRow service = RepairsDataSet.AllserviceData.NewRow(); // Create a new row of service table in memory
+                DataRow service = RepairsDataSet.service.NewRow(); // Create a new row of service table in memory
                 //update record with user's input
                 service[1] = this.txtName.Text;
                 service[2] = this.txtDescription.Text;
                 service[3] = this.txtPrice.Text;
-                RepairsDataSet.AllserviceData.Rows.Add(service); // add the rows to the dataset
+                RepairsDataSet.service.Rows.Add(service); // add the rows to the dataset
 
 
-                AllserviceDataTableAdapter daService = new AllserviceDataTableAdapter();
+                serviceTableAdapter daService = new serviceTableAdapter();
                 daService.Update(service); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
                 RepairsDataSet.AcceptChanges();// Call accept method on the dataset so it update the chanmges to the database
 
