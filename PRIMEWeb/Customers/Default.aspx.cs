@@ -142,11 +142,13 @@ namespace PRIMEWeb.Customers
             //set aria label
             btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
 
-            //if (not admin)
-            btnDelete.Visible = false;
-            btnDelete.Enabled = false;
+            ////if (not admin)
+            //btnDelete.Visible = false;
+            //btnDelete.Enabled = false;
 
             e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
+
+            e.Row.Cells[4].Attributes["width"] = "295px";
         }
     }
 }

@@ -122,6 +122,7 @@ namespace PRIMEWeb.Customers
             btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
             //set aria label
             btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
+            btnEdit.CommandName = "EditRow";
             e.Row.Cells[5].Controls.Add(btnEdit);  //add the btn
 
             //delete btn
@@ -129,15 +130,34 @@ namespace PRIMEWeb.Customers
             btnDeletes.Add(btnDelete);  //the list index of the button will also be the row index
             btnDelete.CssClass = "btn btn-danger";  //set css class
             btnDelete.Text = "Delete";
-            btnDelete.Attributes.Add("aria-label", "Click to delete this sale");
-            //set aria label
+            btnDelete.Attributes.Add("aria-label", "Click to delete this sale");//set aria label
             btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
+            //btnDelete.CommandName = "DeleteRow";
+            //btnDelete.CommandArgument = "<%# ((GridViewRow) Container).RowIndex %>";
+            //btnDelete.CommandArgument = "<%# ((GridViewRow) Container).RowIndex %>";
+            //ID="addbtn" runat="server"  Text="save" CommandName="SAVE" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
 
-            //if (not admin)
-            btnDelete.Visible = false;
-            btnDelete.Enabled = false;
+            ////if (not admin)
+            //btnDelete.Visible = false;
+            //btnDelete.Enabled = false;
 
             e.Row.Cells[5].Controls.Add(btnDelete);  //add the btn
+            e.Row.Cells[5].Attributes["width"] = "205px";
         }
+
+        //protected void gvCustomers_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    if (e.CommandName == "DeleteRow")
+        //    {
+        //        int index = Convert.ToInt32(e.CommandArgument);
+        //        //string deltequer = "delete from yourtablename where id='" + id + "'";
+        //        //lblSave.Text = "Index: " + index.ToString() + "; ID: " + id.ToString();
+        //        lblSave.Text = "INDEX " + index.ToString();
+        //    }
+        //    else if (e.CommandName == "EditRow")
+        //    {
+
+        //    }
+        //}
     }
 }

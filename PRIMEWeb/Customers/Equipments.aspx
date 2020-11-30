@@ -45,6 +45,7 @@
         }
         td .btn {
             width: 80px;
+            margin: 0 5px;
         }
         .auto-style1 {
             height: 25px;
@@ -146,7 +147,7 @@
                     <%--<table class="table" id="tblEquipment">
                         <thead>
                             <tr>
-                                <th scope="col" class="auto-style1">Model</th>
+                                <th scope="col" class="auto-style1">Model</th>   onrowcommand="gvCustomers_RowCommand"
                                 <th scope="col" class="auto-style1">Serial Number</th>
                                 <th scope="col" class="auto-style1">Manufacturer</th>
                                 <th scope="col" class="auto-style1">Type</th>

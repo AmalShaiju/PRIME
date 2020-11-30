@@ -38,6 +38,7 @@
         }
         td .btn {
             width: 80px;
+            margin: 0 5px;
         }
         .auto-style1 {
             left: 0px;
