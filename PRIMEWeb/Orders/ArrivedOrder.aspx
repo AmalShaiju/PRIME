@@ -88,7 +88,7 @@
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
-                    <li class="breadcrumb-item"><a href="/Inventory/">Inventory</a></li>
+                    <li class="breadcrumb-item"><a href="/Orders/">Orders</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Order Arrived</li>
                 </ol>
             </div>
