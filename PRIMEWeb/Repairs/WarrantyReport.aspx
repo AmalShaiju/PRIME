@@ -118,8 +118,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Manufacturer:</label>
-                                    <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control" DataSourceID="Manufacturer" DataTextField="manName" DataValueField="id">
-                                        <asp:ListItem>Manufacturers...</asp:ListItem>
+                                    <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control" DataSourceID="Manufacturer" DataTextField="manName" DataValueField="id" AppendDataBoundItems="True">
+                                        <asp:ListItem>None</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -142,39 +142,23 @@
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
                 <h4>Overall Report</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Manufacturer</th>
-                            <th scope="col"># Repaired</th>
-                            <th scope="col">Total Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>All</td>
-                            <td>4</td>
-                            <td>$178.00</td>
-                        </tr>
-                        <tr>
-                            <td>Honda</td>
-                            <td>2</td>
-                            <td>$85.50</td>
-                        </tr>
-                        <tr>
-                            <td>Hitachi</td>
-                            <td>1</td>
-                            <td>$37.00</td>
-                        </tr>
-                        <tr>
-                            <td>Craftsman</td>
-                            <td>1</td>
-                            <td>$55.50</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div>
+
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table" DataSourceID="OverallWarranty" GridLines="None">
+                        <Columns>
+                            <asp:BoundField DataField="manName" HeaderText="Manufacturer" SortExpression="manName" />
+                            <asp:BoundField DataField="Total Repairs" HeaderText="Total Repairs" ReadOnly="True" SortExpression="Total Repairs" />
+                            <asp:BoundField DataField="Total Price" HeaderText="Total Price" ReadOnly="True" SortExpression="Total Price" />
+                        </Columns>
+                        <EmptyDataTemplate>
+                            No Records Found
+                        </EmptyDataTemplate>
+                    </asp:GridView>
+
+                </div>
                 <br />
-                <asp:ObjectDataSource ID="Manufacturer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.ManufacturerTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="Manufacturer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.Manufacturer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="OverallWarranty" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.RepairsDataSetTableAdapters.OverallWarrentyReportLookUpTableAdapter"></asp:ObjectDataSource>
             </div>
         </div>
     </form>

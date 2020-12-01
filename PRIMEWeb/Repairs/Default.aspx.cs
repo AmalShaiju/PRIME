@@ -258,7 +258,7 @@ namespace PRIMEWeb.Repairs
             : (this.ddlCustomer.Text != "None") ? "cusID = " + this.ddlCustomer.SelectedValue.ToString() : "";
 
             criteria += (this.radNoWarranty.Checked && criteria.Length > 0) ? "And serordWarranty =" + 0
-           : (this.radNoWarranty.Checked) ? "serordWarranty =" + 1 : "";
+           : (this.radNoWarranty.Checked) ? "serordWarranty =" + 0 : "";
 
             criteria += (this.radInWarranty.Checked && criteria.Length > 0) ? "And serordWarranty =" + 1
           : (this.radInWarranty.Checked) ? "serordWarranty =" + 1 : "";

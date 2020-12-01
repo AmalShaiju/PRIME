@@ -20,12 +20,12 @@ namespace PRIMEWeb.Repairs
         static WarrantyReport()
         {
             RepairsDataSet = new RepairsDataSet();
-            WarrantyLookUpTableAdapter daWarrenty = new WarrantyLookUpTableAdapter();
+            DetailWarrantyLookUpTableAdapter daWarrenty = new DetailWarrantyLookUpTableAdapter();
 
 
             try
             {
-                daWarrenty.Fill(RepairsDataSet.WarrantyLookUp);
+                daWarrenty.Fill(RepairsDataSet.DetailWarrantyLookUp);
             }
             catch { }
         }
@@ -34,11 +34,11 @@ namespace PRIMEWeb.Repairs
         protected void Page_Load(object sender, EventArgs e)
         {
             //refresh the dataset, so the newly created record is shown in index
-            WarrantyLookUpTableAdapter daWarrenty = new WarrantyLookUpTableAdapter();
+            DetailWarrantyLookUpTableAdapter daWarrenty = new DetailWarrantyLookUpTableAdapter();
             RepairsDataSet.Reset();
-            daWarrenty.Fill(RepairsDataSet.WarrantyLookUp);
+            daWarrenty.Fill(RepairsDataSet.DetailWarrantyLookUp);
 
-            rows = RepairsDataSet.WarrantyLookUp.Select(); //get records
+            rows = RepairsDataSet.DetailWarrantyLookUp.Select(); //get records
             DisplayWarrentyeTable();
         }
 
@@ -46,7 +46,7 @@ namespace PRIMEWeb.Repairs
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             string criteria = FilterCriteria();
-            rows = (criteria.Length > 0) ? RepairsDataSet.RepairLookUp.Select(criteria) : RepairsDataSet.RepairLookUp.Select(); // Data satisfying the conditions is saved in rows
+            rows = (criteria.Length > 0) ? RepairsDataSet.DetailWarrantyLookUp.Select(criteria) : RepairsDataSet.DetailWarrantyLookUp.Select(); // Data satisfying the conditions is saved in rows
             DisplayWarrentyeTable();
         }
 
@@ -61,8 +61,8 @@ namespace PRIMEWeb.Repairs
             criteria += (this.txtToDate.Text.Length > 0 && criteria.Length > 0) ? "and serordDateIn <='" + this.txtToDate.Text + "'"
                 : (this.txtToDate.Text.Length > 0) ? "serordDateIn ='" + this.txtToDate.Text + "' " : "";
 
-            criteria += (this.ddlManufacturer.Text != "None" && criteria.Length > 0) ? "And ManID = " + this.ddlManufacturer.SelectedValue.ToString()
-            : (this.ddlManufacturer.Text != "None") ? "ManID = " + this.ddlManufacturer.SelectedValue.ToString() : "";
+            criteria += (this.ddlManufacturer.Text != "None" && criteria.Length > 0) ? "And ManID=" + this.ddlManufacturer.SelectedValue.ToString()
+            : (this.ddlManufacturer.Text != "None") ? "ManID=" + this.ddlManufacturer.SelectedValue.ToString() : "";
 
             return criteria;
         }

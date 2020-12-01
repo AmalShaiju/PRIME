@@ -38,9 +38,11 @@ namespace PRIMELibrary {
         
         private service_orderDataTable tableservice_order;
         
-        private WarrantyLookUpDataTable tableWarrantyLookUp;
+        private DetailWarrantyLookUpDataTable tableDetailWarrantyLookUp;
         
         private ManufacturerDataTable tableManufacturer;
+        
+        private OverallWarrentyReportLookUpDataTable tableOverallWarrentyReportLookUp;
         
         private global::System.Data.DataRelation relationserord_fk_empID;
         
@@ -97,11 +99,14 @@ namespace PRIMELibrary {
                 if ((ds.Tables["service_order"] != null)) {
                     base.Tables.Add(new service_orderDataTable(ds.Tables["service_order"]));
                 }
-                if ((ds.Tables["WarrantyLookUp"] != null)) {
-                    base.Tables.Add(new WarrantyLookUpDataTable(ds.Tables["WarrantyLookUp"]));
+                if ((ds.Tables["DetailWarrantyLookUp"] != null)) {
+                    base.Tables.Add(new DetailWarrantyLookUpDataTable(ds.Tables["DetailWarrantyLookUp"]));
                 }
                 if ((ds.Tables["Manufacturer"] != null)) {
                     base.Tables.Add(new ManufacturerDataTable(ds.Tables["Manufacturer"]));
+                }
+                if ((ds.Tables["OverallWarrentyReportLookUp"] != null)) {
+                    base.Tables.Add(new OverallWarrentyReportLookUpDataTable(ds.Tables["OverallWarrentyReportLookUp"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -195,9 +200,9 @@ namespace PRIMELibrary {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public WarrantyLookUpDataTable WarrantyLookUp {
+        public DetailWarrantyLookUpDataTable DetailWarrantyLookUp {
             get {
-                return this.tableWarrantyLookUp;
+                return this.tableDetailWarrantyLookUp;
             }
         }
         
@@ -208,6 +213,16 @@ namespace PRIMELibrary {
         public ManufacturerDataTable Manufacturer {
             get {
                 return this.tableManufacturer;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public OverallWarrentyReportLookUpDataTable OverallWarrentyReportLookUp {
+            get {
+                return this.tableOverallWarrentyReportLookUp;
             }
         }
         
@@ -299,11 +314,14 @@ namespace PRIMELibrary {
                 if ((ds.Tables["service_order"] != null)) {
                     base.Tables.Add(new service_orderDataTable(ds.Tables["service_order"]));
                 }
-                if ((ds.Tables["WarrantyLookUp"] != null)) {
-                    base.Tables.Add(new WarrantyLookUpDataTable(ds.Tables["WarrantyLookUp"]));
+                if ((ds.Tables["DetailWarrantyLookUp"] != null)) {
+                    base.Tables.Add(new DetailWarrantyLookUpDataTable(ds.Tables["DetailWarrantyLookUp"]));
                 }
                 if ((ds.Tables["Manufacturer"] != null)) {
                     base.Tables.Add(new ManufacturerDataTable(ds.Tables["Manufacturer"]));
+                }
+                if ((ds.Tables["OverallWarrentyReportLookUp"] != null)) {
+                    base.Tables.Add(new OverallWarrentyReportLookUpDataTable(ds.Tables["OverallWarrentyReportLookUp"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -380,16 +398,22 @@ namespace PRIMELibrary {
                     this.tableservice_order.InitVars();
                 }
             }
-            this.tableWarrantyLookUp = ((WarrantyLookUpDataTable)(base.Tables["WarrantyLookUp"]));
+            this.tableDetailWarrantyLookUp = ((DetailWarrantyLookUpDataTable)(base.Tables["DetailWarrantyLookUp"]));
             if ((initTable == true)) {
-                if ((this.tableWarrantyLookUp != null)) {
-                    this.tableWarrantyLookUp.InitVars();
+                if ((this.tableDetailWarrantyLookUp != null)) {
+                    this.tableDetailWarrantyLookUp.InitVars();
                 }
             }
             this.tableManufacturer = ((ManufacturerDataTable)(base.Tables["Manufacturer"]));
             if ((initTable == true)) {
                 if ((this.tableManufacturer != null)) {
                     this.tableManufacturer.InitVars();
+                }
+            }
+            this.tableOverallWarrentyReportLookUp = ((OverallWarrentyReportLookUpDataTable)(base.Tables["OverallWarrentyReportLookUp"]));
+            if ((initTable == true)) {
+                if ((this.tableOverallWarrentyReportLookUp != null)) {
+                    this.tableOverallWarrentyReportLookUp.InitVars();
                 }
             }
             this.relationserord_fk_empID = this.Relations["serord_fk_empID"];
@@ -419,10 +443,12 @@ namespace PRIMELibrary {
             base.Tables.Add(this.tableOrderLookUp);
             this.tableservice_order = new service_orderDataTable();
             base.Tables.Add(this.tableservice_order);
-            this.tableWarrantyLookUp = new WarrantyLookUpDataTable();
-            base.Tables.Add(this.tableWarrantyLookUp);
+            this.tableDetailWarrantyLookUp = new DetailWarrantyLookUpDataTable();
+            base.Tables.Add(this.tableDetailWarrantyLookUp);
             this.tableManufacturer = new ManufacturerDataTable();
             base.Tables.Add(this.tableManufacturer);
+            this.tableOverallWarrentyReportLookUp = new OverallWarrentyReportLookUpDataTable();
+            base.Tables.Add(this.tableOverallWarrentyReportLookUp);
             this.relationserord_fk_empID = new global::System.Data.DataRelation("serord_fk_empID", new global::System.Data.DataColumn[] {
                         this.tableEmployeeLookUp.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableservice_order.empIDColumn}, false);
@@ -481,13 +507,19 @@ namespace PRIMELibrary {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeWarrantyLookUp() {
+        private bool ShouldSerializeDetailWarrantyLookUp() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeManufacturer() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeOverallWarrentyReportLookUp() {
             return false;
         }
         
@@ -568,10 +600,13 @@ namespace PRIMELibrary {
         public delegate void service_orderRowChangeEventHandler(object sender, service_orderRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void WarrantyLookUpRowChangeEventHandler(object sender, WarrantyLookUpRowChangeEvent e);
+        public delegate void DetailWarrantyLookUpRowChangeEventHandler(object sender, DetailWarrantyLookUpRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void ManufacturerRowChangeEventHandler(object sender, ManufacturerRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void OverallWarrentyReportLookUpRowChangeEventHandler(object sender, OverallWarrentyReportLookUpRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2856,7 +2891,7 @@ namespace PRIMELibrary {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class WarrantyLookUpDataTable : global::System.Data.TypedTableBase<WarrantyLookUpRow> {
+        public partial class DetailWarrantyLookUpDataTable : global::System.Data.TypedTableBase<DetailWarrantyLookUpRow> {
             
             private global::System.Data.DataColumn columnmanName;
             
@@ -2878,8 +2913,8 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public WarrantyLookUpDataTable() {
-                this.TableName = "WarrantyLookUp";
+            public DetailWarrantyLookUpDataTable() {
+                this.TableName = "DetailWarrantyLookUp";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2887,7 +2922,7 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal WarrantyLookUpDataTable(global::System.Data.DataTable table) {
+            internal DetailWarrantyLookUpDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2904,7 +2939,7 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected WarrantyLookUpDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DetailWarrantyLookUpDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2992,34 +3027,34 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public WarrantyLookUpRow this[int index] {
+            public DetailWarrantyLookUpRow this[int index] {
                 get {
-                    return ((WarrantyLookUpRow)(this.Rows[index]));
+                    return ((DetailWarrantyLookUpRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event WarrantyLookUpRowChangeEventHandler WarrantyLookUpRowChanging;
+            public event DetailWarrantyLookUpRowChangeEventHandler DetailWarrantyLookUpRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event WarrantyLookUpRowChangeEventHandler WarrantyLookUpRowChanged;
+            public event DetailWarrantyLookUpRowChangeEventHandler DetailWarrantyLookUpRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event WarrantyLookUpRowChangeEventHandler WarrantyLookUpRowDeleting;
+            public event DetailWarrantyLookUpRowChangeEventHandler DetailWarrantyLookUpRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event WarrantyLookUpRowChangeEventHandler WarrantyLookUpRowDeleted;
+            public event DetailWarrantyLookUpRowChangeEventHandler DetailWarrantyLookUpRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddWarrantyLookUpRow(WarrantyLookUpRow row) {
+            public void AddDetailWarrantyLookUpRow(DetailWarrantyLookUpRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public WarrantyLookUpRow AddWarrantyLookUpRow(string manName, string equModel, string equSerial, string eqtType, string serordIssue, decimal serPrice, System.DateTime serordDateIn, System.DateTime serordDateOut) {
-                WarrantyLookUpRow rowWarrantyLookUpRow = ((WarrantyLookUpRow)(this.NewRow()));
+            public DetailWarrantyLookUpRow AddDetailWarrantyLookUpRow(string manName, string equModel, string equSerial, string eqtType, string serordIssue, decimal serPrice, System.DateTime serordDateIn, System.DateTime serordDateOut) {
+                DetailWarrantyLookUpRow rowDetailWarrantyLookUpRow = ((DetailWarrantyLookUpRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         manName,
                         equModel,
@@ -3030,22 +3065,22 @@ namespace PRIMELibrary {
                         serordDateIn,
                         serordDateOut,
                         null};
-                rowWarrantyLookUpRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowWarrantyLookUpRow);
-                return rowWarrantyLookUpRow;
+                rowDetailWarrantyLookUpRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDetailWarrantyLookUpRow);
+                return rowDetailWarrantyLookUpRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public WarrantyLookUpRow FindByManID(int ManID) {
-                return ((WarrantyLookUpRow)(this.Rows.Find(new object[] {
+            public DetailWarrantyLookUpRow FindByManID(int ManID) {
+                return ((DetailWarrantyLookUpRow)(this.Rows.Find(new object[] {
                             ManID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                WarrantyLookUpDataTable cln = ((WarrantyLookUpDataTable)(base.Clone()));
+                DetailWarrantyLookUpDataTable cln = ((DetailWarrantyLookUpDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -3053,7 +3088,7 @@ namespace PRIMELibrary {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new WarrantyLookUpDataTable();
+                return new DetailWarrantyLookUpDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3108,28 +3143,28 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public WarrantyLookUpRow NewWarrantyLookUpRow() {
-                return ((WarrantyLookUpRow)(this.NewRow()));
+            public DetailWarrantyLookUpRow NewDetailWarrantyLookUpRow() {
+                return ((DetailWarrantyLookUpRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new WarrantyLookUpRow(builder);
+                return new DetailWarrantyLookUpRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(WarrantyLookUpRow);
+                return typeof(DetailWarrantyLookUpRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.WarrantyLookUpRowChanged != null)) {
-                    this.WarrantyLookUpRowChanged(this, new WarrantyLookUpRowChangeEvent(((WarrantyLookUpRow)(e.Row)), e.Action));
+                if ((this.DetailWarrantyLookUpRowChanged != null)) {
+                    this.DetailWarrantyLookUpRowChanged(this, new DetailWarrantyLookUpRowChangeEvent(((DetailWarrantyLookUpRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3137,8 +3172,8 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.WarrantyLookUpRowChanging != null)) {
-                    this.WarrantyLookUpRowChanging(this, new WarrantyLookUpRowChangeEvent(((WarrantyLookUpRow)(e.Row)), e.Action));
+                if ((this.DetailWarrantyLookUpRowChanging != null)) {
+                    this.DetailWarrantyLookUpRowChanging(this, new DetailWarrantyLookUpRowChangeEvent(((DetailWarrantyLookUpRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3146,8 +3181,8 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.WarrantyLookUpRowDeleted != null)) {
-                    this.WarrantyLookUpRowDeleted(this, new WarrantyLookUpRowChangeEvent(((WarrantyLookUpRow)(e.Row)), e.Action));
+                if ((this.DetailWarrantyLookUpRowDeleted != null)) {
+                    this.DetailWarrantyLookUpRowDeleted(this, new DetailWarrantyLookUpRowChangeEvent(((DetailWarrantyLookUpRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3155,14 +3190,14 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.WarrantyLookUpRowDeleting != null)) {
-                    this.WarrantyLookUpRowDeleting(this, new WarrantyLookUpRowChangeEvent(((WarrantyLookUpRow)(e.Row)), e.Action));
+                if ((this.DetailWarrantyLookUpRowDeleting != null)) {
+                    this.DetailWarrantyLookUpRowDeleting(this, new DetailWarrantyLookUpRowChangeEvent(((DetailWarrantyLookUpRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveWarrantyLookUpRow(WarrantyLookUpRow row) {
+            public void RemoveDetailWarrantyLookUpRow(DetailWarrantyLookUpRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -3189,7 +3224,7 @@ namespace PRIMELibrary {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "WarrantyLookUpDataTable";
+                attribute2.FixedValue = "DetailWarrantyLookUpDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3467,6 +3502,285 @@ namespace PRIMELibrary {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "ManufacturerDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class OverallWarrentyReportLookUpDataTable : global::System.Data.TypedTableBase<OverallWarrentyReportLookUpRow> {
+            
+            private global::System.Data.DataColumn columnmanName;
+            
+            private global::System.Data.DataColumn columnTotal_Repairs;
+            
+            private global::System.Data.DataColumn columnTotal_Price;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OverallWarrentyReportLookUpDataTable() {
+                this.TableName = "OverallWarrentyReportLookUp";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal OverallWarrentyReportLookUpDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected OverallWarrentyReportLookUpDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn manNameColumn {
+                get {
+                    return this.columnmanName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Total_RepairsColumn {
+                get {
+                    return this.columnTotal_Repairs;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Total_PriceColumn {
+                get {
+                    return this.columnTotal_Price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OverallWarrentyReportLookUpRow this[int index] {
+                get {
+                    return ((OverallWarrentyReportLookUpRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event OverallWarrentyReportLookUpRowChangeEventHandler OverallWarrentyReportLookUpRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event OverallWarrentyReportLookUpRowChangeEventHandler OverallWarrentyReportLookUpRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event OverallWarrentyReportLookUpRowChangeEventHandler OverallWarrentyReportLookUpRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event OverallWarrentyReportLookUpRowChangeEventHandler OverallWarrentyReportLookUpRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddOverallWarrentyReportLookUpRow(OverallWarrentyReportLookUpRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OverallWarrentyReportLookUpRow AddOverallWarrentyReportLookUpRow(string manName, int Total_Repairs, string Total_Price) {
+                OverallWarrentyReportLookUpRow rowOverallWarrentyReportLookUpRow = ((OverallWarrentyReportLookUpRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        manName,
+                        Total_Repairs,
+                        Total_Price};
+                rowOverallWarrentyReportLookUpRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOverallWarrentyReportLookUpRow);
+                return rowOverallWarrentyReportLookUpRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                OverallWarrentyReportLookUpDataTable cln = ((OverallWarrentyReportLookUpDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new OverallWarrentyReportLookUpDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnmanName = base.Columns["manName"];
+                this.columnTotal_Repairs = base.Columns["Total Repairs"];
+                this.columnTotal_Price = base.Columns["Total Price"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnmanName = new global::System.Data.DataColumn("manName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmanName);
+                this.columnTotal_Repairs = new global::System.Data.DataColumn("Total Repairs", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal_Repairs);
+                this.columnTotal_Price = new global::System.Data.DataColumn("Total Price", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal_Price);
+                this.columnmanName.MaxLength = 30;
+                this.columnTotal_Repairs.ReadOnly = true;
+                this.columnTotal_Price.ReadOnly = true;
+                this.columnTotal_Price.MaxLength = 16;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OverallWarrentyReportLookUpRow NewOverallWarrentyReportLookUpRow() {
+                return ((OverallWarrentyReportLookUpRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new OverallWarrentyReportLookUpRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(OverallWarrentyReportLookUpRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.OverallWarrentyReportLookUpRowChanged != null)) {
+                    this.OverallWarrentyReportLookUpRowChanged(this, new OverallWarrentyReportLookUpRowChangeEvent(((OverallWarrentyReportLookUpRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.OverallWarrentyReportLookUpRowChanging != null)) {
+                    this.OverallWarrentyReportLookUpRowChanging(this, new OverallWarrentyReportLookUpRowChangeEvent(((OverallWarrentyReportLookUpRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.OverallWarrentyReportLookUpRowDeleted != null)) {
+                    this.OverallWarrentyReportLookUpRowDeleted(this, new OverallWarrentyReportLookUpRowChangeEvent(((OverallWarrentyReportLookUpRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.OverallWarrentyReportLookUpRowDeleting != null)) {
+                    this.OverallWarrentyReportLookUpRowDeleting(this, new OverallWarrentyReportLookUpRowChangeEvent(((OverallWarrentyReportLookUpRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveOverallWarrentyReportLookUpRow(OverallWarrentyReportLookUpRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                RepairsDataSet ds = new RepairsDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "OverallWarrentyReportLookUpDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4417,15 +4731,15 @@ namespace PRIMELibrary {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class WarrantyLookUpRow : global::System.Data.DataRow {
+        public partial class DetailWarrantyLookUpRow : global::System.Data.DataRow {
             
-            private WarrantyLookUpDataTable tableWarrantyLookUp;
+            private DetailWarrantyLookUpDataTable tableDetailWarrantyLookUp;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal WarrantyLookUpRow(global::System.Data.DataRowBuilder rb) : 
+            internal DetailWarrantyLookUpRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableWarrantyLookUp = ((WarrantyLookUpDataTable)(this.Table));
+                this.tableDetailWarrantyLookUp = ((DetailWarrantyLookUpDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4433,14 +4747,14 @@ namespace PRIMELibrary {
             public string manName {
                 get {
                     try {
-                        return ((string)(this[this.tableWarrantyLookUp.manNameColumn]));
+                        return ((string)(this[this.tableDetailWarrantyLookUp.manNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'manName\' in table \'WarrantyLookUp\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'manName\' in table \'DetailWarrantyLookUp\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWarrantyLookUp.manNameColumn] = value;
+                    this[this.tableDetailWarrantyLookUp.manNameColumn] = value;
                 }
             }
             
@@ -4449,14 +4763,14 @@ namespace PRIMELibrary {
             public string equModel {
                 get {
                     try {
-                        return ((string)(this[this.tableWarrantyLookUp.equModelColumn]));
+                        return ((string)(this[this.tableDetailWarrantyLookUp.equModelColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'equModel\' in table \'WarrantyLookUp\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'equModel\' in table \'DetailWarrantyLookUp\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWarrantyLookUp.equModelColumn] = value;
+                    this[this.tableDetailWarrantyLookUp.equModelColumn] = value;
                 }
             }
             
@@ -4465,14 +4779,14 @@ namespace PRIMELibrary {
             public string equSerial {
                 get {
                     try {
-                        return ((string)(this[this.tableWarrantyLookUp.equSerialColumn]));
+                        return ((string)(this[this.tableDetailWarrantyLookUp.equSerialColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'equSerial\' in table \'WarrantyLookUp\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'equSerial\' in table \'DetailWarrantyLookUp\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWarrantyLookUp.equSerialColumn] = value;
+                    this[this.tableDetailWarrantyLookUp.equSerialColumn] = value;
                 }
             }
             
@@ -4481,14 +4795,14 @@ namespace PRIMELibrary {
             public string eqtType {
                 get {
                     try {
-                        return ((string)(this[this.tableWarrantyLookUp.eqtTypeColumn]));
+                        return ((string)(this[this.tableDetailWarrantyLookUp.eqtTypeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'eqtType\' in table \'WarrantyLookUp\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'eqtType\' in table \'DetailWarrantyLookUp\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWarrantyLookUp.eqtTypeColumn] = value;
+                    this[this.tableDetailWarrantyLookUp.eqtTypeColumn] = value;
                 }
             }
             
@@ -4497,14 +4811,14 @@ namespace PRIMELibrary {
             public string serordIssue {
                 get {
                     try {
-                        return ((string)(this[this.tableWarrantyLookUp.serordIssueColumn]));
+                        return ((string)(this[this.tableDetailWarrantyLookUp.serordIssueColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'serordIssue\' in table \'WarrantyLookUp\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'serordIssue\' in table \'DetailWarrantyLookUp\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWarrantyLookUp.serordIssueColumn] = value;
+                    this[this.tableDetailWarrantyLookUp.serordIssueColumn] = value;
                 }
             }
             
@@ -4513,14 +4827,14 @@ namespace PRIMELibrary {
             public decimal serPrice {
                 get {
                     try {
-                        return ((decimal)(this[this.tableWarrantyLookUp.serPriceColumn]));
+                        return ((decimal)(this[this.tableDetailWarrantyLookUp.serPriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'serPrice\' in table \'WarrantyLookUp\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'serPrice\' in table \'DetailWarrantyLookUp\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWarrantyLookUp.serPriceColumn] = value;
+                    this[this.tableDetailWarrantyLookUp.serPriceColumn] = value;
                 }
             }
             
@@ -4529,14 +4843,14 @@ namespace PRIMELibrary {
             public System.DateTime serordDateIn {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableWarrantyLookUp.serordDateInColumn]));
+                        return ((global::System.DateTime)(this[this.tableDetailWarrantyLookUp.serordDateInColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'serordDateIn\' in table \'WarrantyLookUp\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'serordDateIn\' in table \'DetailWarrantyLookUp\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWarrantyLookUp.serordDateInColumn] = value;
+                    this[this.tableDetailWarrantyLookUp.serordDateInColumn] = value;
                 }
             }
             
@@ -4545,14 +4859,14 @@ namespace PRIMELibrary {
             public System.DateTime serordDateOut {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableWarrantyLookUp.serordDateOutColumn]));
+                        return ((global::System.DateTime)(this[this.tableDetailWarrantyLookUp.serordDateOutColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'serordDateOut\' in table \'WarrantyLookUp\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'serordDateOut\' in table \'DetailWarrantyLookUp\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWarrantyLookUp.serordDateOutColumn] = value;
+                    this[this.tableDetailWarrantyLookUp.serordDateOutColumn] = value;
                 }
             }
             
@@ -4560,107 +4874,107 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int ManID {
                 get {
-                    return ((int)(this[this.tableWarrantyLookUp.ManIDColumn]));
+                    return ((int)(this[this.tableDetailWarrantyLookUp.ManIDColumn]));
                 }
                 set {
-                    this[this.tableWarrantyLookUp.ManIDColumn] = value;
+                    this[this.tableDetailWarrantyLookUp.ManIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsmanNameNull() {
-                return this.IsNull(this.tableWarrantyLookUp.manNameColumn);
+                return this.IsNull(this.tableDetailWarrantyLookUp.manNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetmanNameNull() {
-                this[this.tableWarrantyLookUp.manNameColumn] = global::System.Convert.DBNull;
+                this[this.tableDetailWarrantyLookUp.manNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsequModelNull() {
-                return this.IsNull(this.tableWarrantyLookUp.equModelColumn);
+                return this.IsNull(this.tableDetailWarrantyLookUp.equModelColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetequModelNull() {
-                this[this.tableWarrantyLookUp.equModelColumn] = global::System.Convert.DBNull;
+                this[this.tableDetailWarrantyLookUp.equModelColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsequSerialNull() {
-                return this.IsNull(this.tableWarrantyLookUp.equSerialColumn);
+                return this.IsNull(this.tableDetailWarrantyLookUp.equSerialColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetequSerialNull() {
-                this[this.tableWarrantyLookUp.equSerialColumn] = global::System.Convert.DBNull;
+                this[this.tableDetailWarrantyLookUp.equSerialColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IseqtTypeNull() {
-                return this.IsNull(this.tableWarrantyLookUp.eqtTypeColumn);
+                return this.IsNull(this.tableDetailWarrantyLookUp.eqtTypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SeteqtTypeNull() {
-                this[this.tableWarrantyLookUp.eqtTypeColumn] = global::System.Convert.DBNull;
+                this[this.tableDetailWarrantyLookUp.eqtTypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsserordIssueNull() {
-                return this.IsNull(this.tableWarrantyLookUp.serordIssueColumn);
+                return this.IsNull(this.tableDetailWarrantyLookUp.serordIssueColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetserordIssueNull() {
-                this[this.tableWarrantyLookUp.serordIssueColumn] = global::System.Convert.DBNull;
+                this[this.tableDetailWarrantyLookUp.serordIssueColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsserPriceNull() {
-                return this.IsNull(this.tableWarrantyLookUp.serPriceColumn);
+                return this.IsNull(this.tableDetailWarrantyLookUp.serPriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetserPriceNull() {
-                this[this.tableWarrantyLookUp.serPriceColumn] = global::System.Convert.DBNull;
+                this[this.tableDetailWarrantyLookUp.serPriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsserordDateInNull() {
-                return this.IsNull(this.tableWarrantyLookUp.serordDateInColumn);
+                return this.IsNull(this.tableDetailWarrantyLookUp.serordDateInColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetserordDateInNull() {
-                this[this.tableWarrantyLookUp.serordDateInColumn] = global::System.Convert.DBNull;
+                this[this.tableDetailWarrantyLookUp.serordDateInColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsserordDateOutNull() {
-                return this.IsNull(this.tableWarrantyLookUp.serordDateOutColumn);
+                return this.IsNull(this.tableDetailWarrantyLookUp.serordDateOutColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetserordDateOutNull() {
-                this[this.tableWarrantyLookUp.serordDateOutColumn] = global::System.Convert.DBNull;
+                this[this.tableDetailWarrantyLookUp.serordDateOutColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4715,6 +5029,107 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetmanNameNull() {
                 this[this.tableManufacturer.manNameColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class OverallWarrentyReportLookUpRow : global::System.Data.DataRow {
+            
+            private OverallWarrentyReportLookUpDataTable tableOverallWarrentyReportLookUp;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal OverallWarrentyReportLookUpRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableOverallWarrentyReportLookUp = ((OverallWarrentyReportLookUpDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string manName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOverallWarrentyReportLookUp.manNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'manName\' in table \'OverallWarrentyReportLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOverallWarrentyReportLookUp.manNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Total_Repairs {
+                get {
+                    try {
+                        return ((int)(this[this.tableOverallWarrentyReportLookUp.Total_RepairsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Total Repairs\' in table \'OverallWarrentyReportLookUp\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableOverallWarrentyReportLookUp.Total_RepairsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Total_Price {
+                get {
+                    try {
+                        return ((string)(this[this.tableOverallWarrentyReportLookUp.Total_PriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Total Price\' in table \'OverallWarrentyReportLookUp\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableOverallWarrentyReportLookUp.Total_PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsmanNameNull() {
+                return this.IsNull(this.tableOverallWarrentyReportLookUp.manNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetmanNameNull() {
+                this[this.tableOverallWarrentyReportLookUp.manNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotal_RepairsNull() {
+                return this.IsNull(this.tableOverallWarrentyReportLookUp.Total_RepairsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotal_RepairsNull() {
+                this[this.tableOverallWarrentyReportLookUp.Total_RepairsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotal_PriceNull() {
+                return this.IsNull(this.tableOverallWarrentyReportLookUp.Total_PriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotal_PriceNull() {
+                this[this.tableOverallWarrentyReportLookUp.Total_PriceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4960,22 +5375,22 @@ namespace PRIMELibrary {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class WarrantyLookUpRowChangeEvent : global::System.EventArgs {
+        public class DetailWarrantyLookUpRowChangeEvent : global::System.EventArgs {
             
-            private WarrantyLookUpRow eventRow;
+            private DetailWarrantyLookUpRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public WarrantyLookUpRowChangeEvent(WarrantyLookUpRow row, global::System.Data.DataRowAction action) {
+            public DetailWarrantyLookUpRowChangeEvent(DetailWarrantyLookUpRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public WarrantyLookUpRow Row {
+            public DetailWarrantyLookUpRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -5010,6 +5425,40 @@ namespace PRIMELibrary {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ManufacturerRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class OverallWarrentyReportLookUpRowChangeEvent : global::System.EventArgs {
+            
+            private OverallWarrentyReportLookUpRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OverallWarrentyReportLookUpRowChangeEvent(OverallWarrentyReportLookUpRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OverallWarrentyReportLookUpRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7050,7 +7499,7 @@ SELECT id, serordDateIn, serordDateOut, serordIssue, serordWarranty, receiptID, 
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class WarrantyLookUpTableAdapter : global::System.ComponentModel.Component {
+    public partial class DetailWarrantyLookUpTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -7064,7 +7513,7 @@ SELECT id, serordDateIn, serordDateOut, serordIssue, serordWarranty, receiptID, 
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public WarrantyLookUpTableAdapter() {
+        public DetailWarrantyLookUpTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -7161,7 +7610,7 @@ SELECT id, serordDateIn, serordDateOut, serordIssue, serordWarranty, receiptID, 
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "WarrantyLookUp";
+            tableMapping.DataSetTable = "DetailWarrantyLookUp";
             tableMapping.ColumnMappings.Add("manName", "manName");
             tableMapping.ColumnMappings.Add("equModel", "equModel");
             tableMapping.ColumnMappings.Add("equSerial", "equSerial");
@@ -7201,7 +7650,7 @@ WHERE  (service_order.serordWarranty = 1)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(RepairsDataSet.WarrantyLookUpDataTable dataTable) {
+        public virtual int Fill(RepairsDataSet.DetailWarrantyLookUpDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7214,9 +7663,9 @@ WHERE  (service_order.serordWarranty = 1)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual RepairsDataSet.WarrantyLookUpDataTable GetData() {
+        public virtual RepairsDataSet.DetailWarrantyLookUpDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            RepairsDataSet.WarrantyLookUpDataTable dataTable = new RepairsDataSet.WarrantyLookUpDataTable();
+            RepairsDataSet.DetailWarrantyLookUpDataTable dataTable = new RepairsDataSet.DetailWarrantyLookUpDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7231,7 +7680,7 @@ WHERE  (service_order.serordWarranty = 1)";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ManufacturerTableAdapter : global::System.ComponentModel.Component {
+    public partial class Manufacturer : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -7245,7 +7694,7 @@ WHERE  (service_order.serordWarranty = 1)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public ManufacturerTableAdapter() {
+        public Manufacturer() {
             this.ClearBeforeFill = true;
         }
         
@@ -7385,6 +7834,182 @@ WHERE  (service_order.serordWarranty = 1)";
         public virtual RepairsDataSet.ManufacturerDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             RepairsDataSet.ManufacturerDataTable dataTable = new RepairsDataSet.ManufacturerDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class OverallWarrentyReportLookUpTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public OverallWarrentyReportLookUpTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "OverallWarrentyReportLookUp";
+            tableMapping.ColumnMappings.Add("manName", "manName");
+            tableMapping.ColumnMappings.Add("Total Repairs", "Total Repairs");
+            tableMapping.ColumnMappings.Add("Total Price", "Total Price");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::PRIMELibrary.Properties.Settings.Default.EmmasConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"    SELECT  manufacturer.manName,count(service_order.equipID) As 'Total Repairs', '$' + CAST(sum(service.SerPrice) AS VARCHAR(15)) As 'Total Price'
+    FROM     manufacturer INNER JOIN
+                      equipment ON manufacturer.id = equipment.equManuID INNER JOIN
+                      equip_type ON equipment.equtypeID = equip_type.id INNER JOIN
+                      service_order ON equipment.id = service_order.equipID INNER JOIN
+                      service ON service_order.serviceID = service.id
+    Group by service_order.equipID,service.serPrice, manufacturer.manName,equip_type.eqtType,service_order.serordWarranty
+    having service_order.serordWarranty = 1";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(RepairsDataSet.OverallWarrentyReportLookUpDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual RepairsDataSet.OverallWarrentyReportLookUpDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            RepairsDataSet.OverallWarrentyReportLookUpDataTable dataTable = new RepairsDataSet.OverallWarrentyReportLookUpDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
