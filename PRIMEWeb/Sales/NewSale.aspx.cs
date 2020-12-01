@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace PRIMEWeb.Sales
@@ -37,6 +38,14 @@ namespace PRIMEWeb.Sales
         protected void lsbOrders_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtQty.Text = lsbOrders.SelectedValue;
+        }
+
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            lblCustomerHelp.Visible = lblDateHelp.Visible = lblEmployeeHelp.Visible =
+                lblNoteHelp.Visible = lblPaymentHelp.Visible = lblPriceHelp.Visible =
+                lblProductHelp.Visible = lblQtyHelp.Visible = lblStockHelp.Visible =
+                pnlOrdersHelp.Visible = cboHelp.Checked;
         }
     }
 }
