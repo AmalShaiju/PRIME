@@ -96,15 +96,6 @@ namespace PRIMEWeb.Customers
         protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
-        /// gvEquipment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEquipment;
-
-        /// <summary>
         /// lblStatus control.
         /// </summary>
         /// <remarks>
@@ -121,6 +112,33 @@ namespace PRIMEWeb.Customers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSave;
+
+        /// <summary>
+        /// smgEquipment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager smgEquipment;
+
+        /// <summary>
+        /// upnEquipment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnEquipment;
+
+        /// <summary>
+        /// gvEquipment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvEquipment;
 
         /// <summary>
         /// odsType control.

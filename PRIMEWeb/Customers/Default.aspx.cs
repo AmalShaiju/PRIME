@@ -18,7 +18,7 @@ namespace PRIMEWeb.Customers
         private static List<Button> btnEdits = new List<Button>(); //list of the edit btns
         private static List<Button> btnDeletes = new List<Button>(); //list of the delete btns
         private static List<Button> btnDetails = new List<Button>(); //list of the detail btns
-
+        private static int id = -1;
         static Default()
         {
             try
@@ -66,6 +66,7 @@ namespace PRIMEWeb.Customers
             this.gvCustomers.DataBind();
 
             DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
             dt.Columns.Add("Full Name");
             dt.Columns.Add("Phone");
             dt.Columns.Add("City");
@@ -75,10 +76,11 @@ namespace PRIMEWeb.Customers
             foreach (DataRow r in rows)
             {
                 DataRow record = dt.NewRow();
-                record[0] = r.ItemArray[1].ToString() + ' ' + r.ItemArray[2].ToString();
-                record[1] = r.ItemArray[3].ToString();
-                record[2] = r.ItemArray[5].ToString();
-                record[3] = r.ItemArray[7].ToString();
+                record[0] = r.ItemArray[0].ToString();
+                record[1] = r.ItemArray[1].ToString() + ' ' + r.ItemArray[2].ToString();
+                record[2] = r.ItemArray[3].ToString();
+                record[3] = r.ItemArray[5].ToString();
+                record[4] = r.ItemArray[7].ToString();
                 dt.Rows.Add(record);
             }
 
@@ -108,10 +110,15 @@ namespace PRIMEWeb.Customers
         {
             if (e.Row.RowIndex == -1)
             {
-                e.Row.Cells[4].Text = String.Empty;
+                e.Row.Cells[5].Text = String.Empty;
                 //Clear the header for Edit btn
                 return;  //skip the header
             }
+
+            //hiding id column
+            this.gvCustomers.HeaderRow.Cells[0].Visible = false;
+            e.Row.Cells[0].Visible = false;
+            e.Row.Cells[5].Attributes["width"] = "295px";
 
             //details btn
             Button btnDetail = new Button();  //create detail btn
@@ -120,8 +127,8 @@ namespace PRIMEWeb.Customers
             btnDetail.Text = "Detail";
             btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale");
             //set aria label
-            btnDetail.Attributes.Add("OnClick", "btnDetail_Click");  //click event handler
-            e.Row.Cells[4].Controls.Add(btnDetail);  //add the btn
+            btnDetail.Click += new EventHandler(btnDetail_Click);  //click event handler
+            e.Row.Cells[5].Controls.Add(btnDetail);  //add the btn
 
             //edit btn
             Button btnEdit = new Button();  //create edit btn
@@ -130,8 +137,8 @@ namespace PRIMEWeb.Customers
             btnEdit.Text = "Edit";
             btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
             //set aria label
-            btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
-            e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
+            btnEdit.Click += new EventHandler(btnEdit_Click);  //click event handler
+            e.Row.Cells[5].Controls.Add(btnEdit);  //add the btn
 
             //delete btn
             Button btnDelete = new Button();  //create delete btn
@@ -140,15 +147,59 @@ namespace PRIMEWeb.Customers
             btnDelete.Text = "Delete";
             btnDelete.Attributes.Add("aria-label", "Click to delete this sale");
             //set aria label
-            btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
+            btnDelete.Click += new EventHandler(btnDelete_Click);  //click event handler
 
-            ////if (not admin)
-            //btnDelete.Visible = false;
-            //btnDelete.Enabled = false;
+            e.Row.Cells[5].Controls.Add(btnDelete);  //add the btn
 
-            e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
+        }
 
-            e.Row.Cells[4].Attributes["width"] = "295px";
+        // Delete btn 
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            //Get the button that raised the event
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Get rowindex
+            int rowindex = gvr.RowIndex;
+
+            this.lblSave.Text = rowindex.ToString();
+
+            id = Convert.ToInt32(gvCustomers.Rows[rowindex].Cells[0].Text);
+
+            if (id != -1)
+            {
+                try
+                {
+                    DataRow record = dsCustomer.customer.FindByID(id); // Find and add the record to tbe record variable
+                    record.Delete(); // Deletes the record in memory
+
+                    customerTableAdapter daCustomer = new customerTableAdapter(); // table adapter to service table (Service adapter)
+                    daCustomer.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                    dsCustomer.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+                    //Refresh the page to show the record being deleted
+                    lblSave.Text = "Record deleted";
+                    Response.Redirect(Request.RawUrl);
+                }
+                catch
+                {
+                    lblSave.Text = "Record not deleted";
+                }
+            }
+        }
+
+        // Edit btn 
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Details btn 
+        protected void btnDetail_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

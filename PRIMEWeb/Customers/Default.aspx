@@ -130,10 +130,18 @@
                             </div>
                         </div>
                     </div>
-                    <asp:GridView ID="gvCustomers" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gvCustomers_RowDataBound">
-                    </asp:GridView>
                     <asp:Label ID="lblStatus" runat="server"></asp:Label>
                     <asp:Label ID="lblSave" runat="server"></asp:Label>
+                    <asp:ScriptManager ID="smgCustomer" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnCustomer" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="gvCustomers" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gvCustomers_RowDataBound">
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ namespace PRIMEWeb.Customers
         private static bool flag = false; //indicate if the data loading failed
         private static List<Button> btnEdits = new List<Button>(); //list of the edit btns
         private static List<Button> btnDeletes = new List<Button>(); //list of the delete btns
-
+        private static int id = -1;
         static Equipments()
         {
             try
@@ -65,6 +65,7 @@ namespace PRIMEWeb.Customers
             this.gvEquipment.DataBind();
 
             DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
             dt.Columns.Add("Model");
             dt.Columns.Add("Serial");
             dt.Columns.Add("Customer");
@@ -75,11 +76,12 @@ namespace PRIMEWeb.Customers
             foreach (DataRow r in rows)
             {
                 DataRow record = dt.NewRow();
-                record[0] = r.ItemArray[1].ToString();
-                record[1] = r.ItemArray[2].ToString();
-                record[2] = r.ItemArray[6].ToString();
-                record[3] = r.ItemArray[8].ToString();
-                record[4] = r.ItemArray[7].ToString();
+                record[0] = r.ItemArray[0].ToString();
+                record[1] = r.ItemArray[1].ToString();
+                record[2] = r.ItemArray[2].ToString();
+                record[3] = r.ItemArray[6].ToString();
+                record[4] = r.ItemArray[8].ToString();
+                record[5] = r.ItemArray[7].ToString();
                 dt.Rows.Add(record);
             }
 
@@ -109,55 +111,96 @@ namespace PRIMEWeb.Customers
         {
             if (e.Row.RowIndex == -1)
             {
-                e.Row.Cells[5].Text = String.Empty;
+                e.Row.Cells[6].Text = String.Empty;
                 //Clear the header for Edit btn
                 return;  //skip the header
             }
+
+            //hiding id column
+            this.gvEquipment.HeaderRow.Cells[0].Visible = false;
+            e.Row.Cells[0].Visible = false;
+            e.Row.Cells[6].Attributes["width"] = "205px";
 
             //edit btn
             Button btnEdit = new Button();  //create edit btn
             btnEdits.Add(btnEdit);  //the list index of the button will also be the row index
             btnEdit.CssClass = "btn btn-dark";  //set css class
             btnEdit.Text = "Edit";
-            btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
-            //set aria label
-            btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
-            btnEdit.CommandName = "EditRow";
-            e.Row.Cells[5].Controls.Add(btnEdit);  //add the btn
+            btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this equipment");//set aria label
+            btnEdit.Click += new EventHandler(btnEdit_Click);  //click event handler
+            e.Row.Cells[6].Controls.Add(btnEdit);  //add the btn
 
             //delete btn
             Button btnDelete = new Button();  //create delete btn
             btnDeletes.Add(btnDelete);  //the list index of the button will also be the row index
             btnDelete.CssClass = "btn btn-danger";  //set css class
             btnDelete.Text = "Delete";
-            btnDelete.Attributes.Add("aria-label", "Click to delete this sale");//set aria label
-            btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
-            //btnDelete.CommandName = "DeleteRow";
-            //btnDelete.CommandArgument = "<%# ((GridViewRow) Container).RowIndex %>";
-            //btnDelete.CommandArgument = "<%# ((GridViewRow) Container).RowIndex %>";
-            //ID="addbtn" runat="server"  Text="save" CommandName="SAVE" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
-
-            ////if (not admin)
-            //btnDelete.Visible = false;
-            //btnDelete.Enabled = false;
-
-            e.Row.Cells[5].Controls.Add(btnDelete);  //add the btn
-            e.Row.Cells[5].Attributes["width"] = "205px";
+            btnDelete.Attributes.Add("aria-label", "Click to delete this equipment");//set aria label
+            btnDelete.Click += new EventHandler(btnDelete_Click);  //click event handler
+            //btnDelete.Attributes.Add("AutoPostBack", "false");
+            //btnDelete.PostBackUrl = "false";
+            e.Row.Cells[6].Controls.Add(btnDelete);  //add the btn
         }
 
-        //protected void gvCustomers_RowCommand(object sender, GridViewCommandEventArgs e)
-        //{
-        //    if (e.CommandName == "DeleteRow")
-        //    {
-        //        int index = Convert.ToInt32(e.CommandArgument);
-        //        //string deltequer = "delete from yourtablename where id='" + id + "'";
-        //        //lblSave.Text = "Index: " + index.ToString() + "; ID: " + id.ToString();
-        //        lblSave.Text = "INDEX " + index.ToString();
-        //    }
-        //    else if (e.CommandName == "EditRow")
-        //    {
+        // Delete btn 
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            //Get the button that raised the event
+            Button btn = (Button)sender;
 
-        //    }
-        //}
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Get rowindex
+            int rowindex = gvr.RowIndex;
+
+            this.lblSave.Text = rowindex.ToString();
+
+            id = Convert.ToInt32(gvEquipment.Rows[rowindex].Cells[0].Text);
+
+            //if (id != -1)
+            //{
+            //    try
+            //    {
+            //        DataRow record = dsEquipment.equipment.FindByID(id); // Find and add the record to tbe record variable
+            //        record.Delete(); // Deletes the record in memory
+
+            //        equipmentCRUDTableAdapter daEquipmentCRUD = new equipmentCRUDTableAdapter(); // table adapter to service table (Service adapter)
+            //        daEquipmentCRUD.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+            //        dsEquipment.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+            //        //Refresh the page to show the record being deleted
+            //        lblSave.Text = "Record deleted";
+            //        Response.Redirect(Request.RawUrl);
+            //    }
+            //    catch
+            //    {
+            //        lblSave.Text = "Record not deleted";
+            //    }
+            //}
+        }
+
+        // Edit btn 
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            // Get the button that raised the event
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Get rowindex
+            int rowindex = gvr.RowIndex;
+
+            this.lblSave.Text = rowindex.ToString();
+
+            // Not too secure sending value through query string
+            //Response.Redirect("EditService.aspx?ID=" + GridView1.Rows[e.NewEditIndex].Cells[1].Text
+
+            //Send Id using cookie, more seecure I presume
+            HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+            cID.Value = this.gvEquipment.Rows[rowindex].Cells[0].Text;
+            Response.Cookies.Add(cID);
+            Response.Redirect("EditEquipment.aspx"); // Redirect the user to Edit page on btn click
+        }
     }
 }

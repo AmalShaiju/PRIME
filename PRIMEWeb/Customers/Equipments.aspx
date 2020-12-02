@@ -142,8 +142,19 @@
                             </div>
                         </div>
                     </div>
-                    <asp:GridView ID="gvEquipment" CssClass="table" runat="server" GridLines="None" OnRowDataBound="gvEquipment_RowDataBound">
-                    </asp:GridView>
+                    <br />
+                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    <asp:Label ID="lblSave" runat="server"></asp:Label>
+                    <asp:ScriptManager ID="smgEquipment" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnEquipment" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="gvEquipment" CssClass="table" runat="server" GridLines="None" OnRowDataBound="gvEquipment_RowDataBound">
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                     <%--<table class="table" id="tblEquipment">
                         <thead>
                             <tr>
@@ -190,8 +201,6 @@
                             </tr>
                         </tbody>
                     </table>--%>
-                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
-                    <asp:Label ID="lblSave" runat="server"></asp:Label>
                 </div>
                 <asp:ObjectDataSource ID="odsType" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.equip_typeTableAdapter"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="odsCustomer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.customerTableAdapter"></asp:ObjectDataSource>
