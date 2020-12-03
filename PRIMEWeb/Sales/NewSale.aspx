@@ -129,15 +129,12 @@
                     <h4>Sales Information</h4>
                     <div class="form-row">
                         <div class="col-md-6 form-group">
-                            <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select">
-                                <asp:ListItem>Select a Customer...</asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select"></asp:DropDownList>
                             <asp:Label ID="lblCustomerHelp" runat="server" Text="Select the customer whom this receipt belongs to." CssClass="lbl-help" Visible="False"></asp:Label>
+
                         </div>
                         <div class="col-md-6 form-group">
-                            <asp:DropDownList ID="ddlPayment" runat="server" CssClass="custom-select">
-                                <asp:ListItem>Select a Payment method...</asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:DropDownList ID="ddlPayment" runat="server" CssClass="custom-select"></asp:DropDownList>
                             <asp:Label ID="lblPaymentHelp" runat="server" Text="Select the payment used for this receipt." CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
                     </div>
@@ -147,9 +144,7 @@
                             <asp:Label ID="lblDateHelp" runat="server" Text="Date of creation for this receipt.<br />Today's date has been automatically filled in." CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
                         <div class="col-md-6 form-group">
-                            <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="custom-select">
-                                <asp:ListItem>Select an Employee...</asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="custom-select"></asp:DropDownList>
                             <asp:Label ID="lblEmployeeHelp" runat="server" Text="Select the employee who created this receipt." CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
                     </div>
@@ -159,13 +154,11 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div id="divProduct" class="form-group">
-                                <asp:DropDownList ID="ddlProduct" runat="server" CssClass="custom-select" AutoPostBack="True" OnSelectedIndexChanged="ddlProduct_SelectedIndexChanged">
-                                    <asp:ListItem>Select a Product...</asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:DropDownList ID="ddlProduct" runat="server" CssClass="custom-select" AutoPostBack="True" OnSelectedIndexChanged="ddlProduct_SelectedIndexChanged"></asp:DropDownList>
                                 <asp:Label ID="lblProductHelp" runat="server" Text="Select the product to order.<br />After selection you will see the price and number in stock at two fields after. " CssClass="lbl-help" Visible="False"></asp:Label>
                             </div>
                             <div id="divQty" class="form-group">
-                                <asp:TextBox ID="txtQty" runat="server" CssClass="form-control" TextMode="Number" placeholder="Quantity" required="required"></asp:TextBox>
+                                <asp:TextBox ID="txtQty" runat="server" CssClass="form-control" TextMode="Number" min="1" placeholder="Quantity" required="required"></asp:TextBox>
                                 <asp:Label ID="lblQtyHelp" runat="server" Text="Input needed quantity.<br />If more than the amount in stock is needed, the order will go to Orders department to fill the margin." CssClass="lbl-help" Visible="False"></asp:Label>
                             </div>
                             <div id="divNote" class="form-group">
@@ -183,15 +176,15 @@
                         </div>
                         <div class="col-md-6">
                             <label id="lblOrders" class="control-label">Saved Orders:</label>
-                            <asp:ListBox ID="lsbOrders" runat="server" AutoPostBack="True" OnSelectedIndexChanged="lsbOrders_SelectedIndexChanged"></asp:ListBox>
+                            <asp:ListBox ID="lsbOrders" runat="server"></asp:ListBox>
                         </div>
                     </div>
                     <div class="form-row">
                         <div id="divBtnOrder" class="col-md-12">
-                            <asp:Button ID="btnCreate" runat="server" aria-label="Create Sale" CssClass="btn btn-outline-primary" Text="Create Sale" PostBackUrl="/Sales/" />
-                            <asp:Button ID="btnSaveOrder" runat="server" aria-label="Save Order" CssClass="btn btn-outline-primary" Text="Save Order" OnClick="btnSaveOrder_Click" />
+                            <asp:Button ID="btnCreate" runat="server" aria-label="Create Sale" CssClass="btn btn-outline-primary" Text="Create Sale" PostBackUrl="/Sales/" CausesValidation="False" />
+                            <asp:Button ID="btnAddOrder" runat="server" aria-label="Add Order" CssClass="btn btn-outline-primary" Text="Add Order" OnClick="btnAddOrder_Click" />
                             <asp:Button ID="btnDeleteOrder" runat="server" aria-label="Delete Order" CssClass="btn btn-outline-primary" Text="Delete Order" OnClick="btnDeleteOrder_Click" />
-                            <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-outline-primary" Text="Clear Order Form" />
+                            <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-outline-primary" Text="Clear Order Form" CausesValidation="False" />
                             <a class="btn btn-outline-primary" href="/Sales/" role="button" aria-label="Cancel Creating Sale">Cancel</a>
                         </div>
                     </div>
@@ -207,8 +200,7 @@
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="cboHelp" EventName="CheckedChanged" />
                 <asp:AsyncPostBackTrigger ControlID="ddlProduct" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="lsbOrders" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="btnSaveOrder" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="btnAddOrder" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="btnDeleteOrder" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="btnClearOrder" EventName="Click" />
             </Triggers>

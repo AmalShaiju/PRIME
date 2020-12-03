@@ -162,7 +162,7 @@ namespace PRIMEWeb.Sales
 
             //delete btn
             Button btnDelete = new Button();  //create delete btn
-            btnDetails.Add(btnDelete);  //the list index of the button will also be the row index
+            btnDeletes.Add(btnDelete);  //the list index of the button will also be the row index
             btnDelete.CssClass = "btn btn-danger";  //set css class
             btnDelete.Text = "Delete";
             btnDelete.Attributes.Add("aria-label", "Click to delete this sale");

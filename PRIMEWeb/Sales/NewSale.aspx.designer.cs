@@ -240,13 +240,13 @@ namespace PRIMEWeb.Sales
         protected global::System.Web.UI.WebControls.Button btnCreate;
 
         /// <summary>
-        /// btnSaveOrder control.
+        /// btnAddOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveOrder;
+        protected global::System.Web.UI.WebControls.Button btnAddOrder;
 
         /// <summary>
         /// btnDeleteOrder control.
