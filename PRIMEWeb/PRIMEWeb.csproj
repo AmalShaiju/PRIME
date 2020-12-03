@@ -84,6 +84,7 @@
     <Content Include="Inventory\Default.aspx" />
     <Content Include="Landing.aspx" />
     <Content Include="Repairs\Default.aspx" />
+    <Content Include="Repairs\Details.aspx" />
     <Content Include="Repairs\EditRepair.aspx" />
     <Content Include="Repairs\EditService.aspx" />
     <Content Include="Repairs\NewRepair.aspx" />
@@ -161,6 +162,13 @@
     </Compile>
     <Compile Include="Repairs\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repairs\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="Repairs\EditRepair.aspx.cs">
       <DependentUpon>EditRepair.aspx</DependentUpon>

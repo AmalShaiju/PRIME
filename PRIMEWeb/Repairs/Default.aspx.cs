@@ -44,7 +44,6 @@ namespace PRIMEWeb.Repairs
             RepairLookUpTableAdapter daRepair = new RepairLookUpTableAdapter();
             service_orderTableAdapter daServiceOrder = new service_orderTableAdapter();
 
-            RepairsDataSet.Reset();
             daRepair.Fill(RepairsDataSet.RepairLookUp);
             daServiceOrder.Fill(RepairsDataSet.service_order);
 
@@ -75,6 +74,32 @@ namespace PRIMEWeb.Repairs
             cID.Value = GridView1.Rows[rowindex].Cells[0].Text;
             Response.Cookies.Add(cID);
             Response.Redirect("EditRepair.aspx"); // Redirect the user to Edit page on btn click
+
+
+        }
+
+        //detail btn
+        protected void btnDetail_Click(object sender, EventArgs e)
+        {
+            // Get the button that raised the event
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Get rowindex
+            int rowindex = gvr.RowIndex;
+
+            this.Label1.Text = rowindex.ToString();
+
+            // Not too secure sending value through query string
+            //Response.Redirect("EditService.aspx?ID=" + GridView1.Rows[e.NewEditIndex].Cells[1].Text
+
+            //Send Id using cookie, more seecure I presume
+            HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+            cID.Value = GridView1.Rows[rowindex].Cells[0].Text;
+            Response.Cookies.Add(cID);
+            Response.Redirect("Details.aspx"); // Redirect the user to Edit page on btn click
 
 
         }
@@ -133,6 +158,19 @@ namespace PRIMEWeb.Repairs
 
                 this.GridView1.HeaderRow.Cells[0].Visible = false;
                 e.Row.Cells[0].Visible = false;
+
+                //delete Btn
+                Button btnDetail = new Button();  //create detail btn
+               // btnDetails.Add(btnDetail);  //the list index of the button will also be the row index
+                btnDetail.CssClass = "btn btn-info";  //set css class
+                btnDetail.Text = "Detail";
+                btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale");
+                //set aria label
+                //    btnDetail.Attributes.Add("OnClick", "btnDetail_Click");  //click event handler
+                btnDetail.Click += new EventHandler(btnDetail_Click);// Set button click event
+
+                e.Row.Cells[6].Controls.Add(btnDetail);  //add the btn
+
 
                 // Edit btn
                 Button btnEdit = new Button();  //create edit btn
@@ -214,11 +252,11 @@ namespace PRIMEWeb.Repairs
             {
                 DataRow nr = dt.NewRow();
                 nr[0] = r.ItemArray[0].ToString();
-                nr[1] = Convert.ToDateTime(r.ItemArray[11].ToString()).ToShortDateString();
-                nr[2] = Convert.ToDateTime(r.ItemArray[12].ToString()).ToShortDateString();
+                nr[1] = Convert.ToDateTime(r.ItemArray[7].ToString()).ToShortDateString();
+                nr[2] = Convert.ToDateTime(r.ItemArray[8].ToString()).ToShortDateString();
                 nr[3] = r.ItemArray[1].ToString();
                 nr[4] = r.ItemArray[2].ToString();
-                nr[5] = r.ItemArray[10].ToString();
+                nr[5] = r.ItemArray[6].ToString();
                // nr[6] = r.ItemArray[9].ToString();
 
                 dt.Rows.Add(nr);

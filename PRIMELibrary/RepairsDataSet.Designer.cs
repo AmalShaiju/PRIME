@@ -927,14 +927,6 @@ namespace PRIMELibrary {
             
             private global::System.Data.DataColumn columnserordWarranty;
             
-            private global::System.Data.DataColumn columnreceiptID;
-            
-            private global::System.Data.DataColumn columnserviceID;
-            
-            private global::System.Data.DataColumn columnequipID;
-            
-            private global::System.Data.DataColumn columnempID;
-            
             private global::System.Data.DataColumn columnserName;
             
             private global::System.Data.DataColumn columnserPrice;
@@ -949,7 +941,25 @@ namespace PRIMELibrary {
             
             private global::System.Data.DataColumn columnCustomer_Full_Name;
             
-            private global::System.Data.DataColumn columncusID;
+            private global::System.Data.DataColumn columnequModel;
+            
+            private global::System.Data.DataColumn columnequSerial;
+            
+            private global::System.Data.DataColumn columncustFirst;
+            
+            private global::System.Data.DataColumn columncustPhone;
+            
+            private global::System.Data.DataColumn columncustLast;
+            
+            private global::System.Data.DataColumn columncustAddress;
+            
+            private global::System.Data.DataColumn columncustCity;
+            
+            private global::System.Data.DataColumn columncustPostal;
+            
+            private global::System.Data.DataColumn columncustEmail;
+            
+            private global::System.Data.DataColumn columnmanName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1005,38 +1015,6 @@ namespace PRIMELibrary {
             public global::System.Data.DataColumn serordWarrantyColumn {
                 get {
                     return this.columnserordWarranty;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn receiptIDColumn {
-                get {
-                    return this.columnreceiptID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn serviceIDColumn {
-                get {
-                    return this.columnserviceID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn equipIDColumn {
-                get {
-                    return this.columnequipID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn empIDColumn {
-                get {
-                    return this.columnempID;
                 }
             }
             
@@ -1098,9 +1076,81 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn cusIDColumn {
+            public global::System.Data.DataColumn equModelColumn {
                 get {
-                    return this.columncusID;
+                    return this.columnequModel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn equSerialColumn {
+                get {
+                    return this.columnequSerial;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn custFirstColumn {
+                get {
+                    return this.columncustFirst;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn custPhoneColumn {
+                get {
+                    return this.columncustPhone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn custLastColumn {
+                get {
+                    return this.columncustLast;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn custAddressColumn {
+                get {
+                    return this.columncustAddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn custCityColumn {
+                get {
+                    return this.columncustCity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn custPostalColumn {
+                get {
+                    return this.columncustPostal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn custEmailColumn {
+                get {
+                    return this.columncustEmail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn manNameColumn {
+                get {
+                    return this.columnmanName;
                 }
             }
             
@@ -1141,16 +1191,31 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public RepairLookUpRow AddRepairLookUpRow(string serordIssue, bool serordWarranty, int receiptID, int serviceID, int equipID, int empID, string serName, decimal serPrice, string Employee_Full_Name, string eqtType, System.DateTime DateIn, System.DateTime DateOut, string Customer_Full_Name) {
+            public RepairLookUpRow AddRepairLookUpRow(
+                        string serordIssue, 
+                        bool serordWarranty, 
+                        string serName, 
+                        decimal serPrice, 
+                        string Employee_Full_Name, 
+                        string eqtType, 
+                        System.DateTime DateIn, 
+                        System.DateTime DateOut, 
+                        string Customer_Full_Name, 
+                        string equModel, 
+                        string equSerial, 
+                        string custFirst, 
+                        string custPhone, 
+                        string custLast, 
+                        string custAddress, 
+                        string custCity, 
+                        string custPostal, 
+                        string custEmail, 
+                        string manName) {
                 RepairLookUpRow rowRepairLookUpRow = ((RepairLookUpRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         serordIssue,
                         serordWarranty,
-                        receiptID,
-                        serviceID,
-                        equipID,
-                        empID,
                         serName,
                         serPrice,
                         Employee_Full_Name,
@@ -1158,7 +1223,16 @@ namespace PRIMELibrary {
                         DateIn,
                         DateOut,
                         Customer_Full_Name,
-                        null};
+                        equModel,
+                        equSerial,
+                        custFirst,
+                        custPhone,
+                        custLast,
+                        custAddress,
+                        custCity,
+                        custPostal,
+                        custEmail,
+                        manName};
                 rowRepairLookUpRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRepairLookUpRow);
                 return rowRepairLookUpRow;
@@ -1191,10 +1265,6 @@ namespace PRIMELibrary {
                 this.columnid = base.Columns["id"];
                 this.columnserordIssue = base.Columns["serordIssue"];
                 this.columnserordWarranty = base.Columns["serordWarranty"];
-                this.columnreceiptID = base.Columns["receiptID"];
-                this.columnserviceID = base.Columns["serviceID"];
-                this.columnequipID = base.Columns["equipID"];
-                this.columnempID = base.Columns["empID"];
                 this.columnserName = base.Columns["serName"];
                 this.columnserPrice = base.Columns["serPrice"];
                 this.columnEmployee_Full_Name = base.Columns["Employee Full Name"];
@@ -1202,7 +1272,16 @@ namespace PRIMELibrary {
                 this.columnDateIn = base.Columns["DateIn"];
                 this.columnDateOut = base.Columns["DateOut"];
                 this.columnCustomer_Full_Name = base.Columns["Customer Full Name"];
-                this.columncusID = base.Columns["cusID"];
+                this.columnequModel = base.Columns["equModel"];
+                this.columnequSerial = base.Columns["equSerial"];
+                this.columncustFirst = base.Columns["custFirst"];
+                this.columncustPhone = base.Columns["custPhone"];
+                this.columncustLast = base.Columns["custLast"];
+                this.columncustAddress = base.Columns["custAddress"];
+                this.columncustCity = base.Columns["custCity"];
+                this.columncustPostal = base.Columns["custPostal"];
+                this.columncustEmail = base.Columns["custEmail"];
+                this.columnmanName = base.Columns["manName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1214,14 +1293,6 @@ namespace PRIMELibrary {
                 base.Columns.Add(this.columnserordIssue);
                 this.columnserordWarranty = new global::System.Data.DataColumn("serordWarranty", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnserordWarranty);
-                this.columnreceiptID = new global::System.Data.DataColumn("receiptID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnreceiptID);
-                this.columnserviceID = new global::System.Data.DataColumn("serviceID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnserviceID);
-                this.columnequipID = new global::System.Data.DataColumn("equipID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnequipID);
-                this.columnempID = new global::System.Data.DataColumn("empID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnempID);
                 this.columnserName = new global::System.Data.DataColumn("serName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnserName);
                 this.columnserPrice = new global::System.Data.DataColumn("serPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -1236,8 +1307,26 @@ namespace PRIMELibrary {
                 base.Columns.Add(this.columnDateOut);
                 this.columnCustomer_Full_Name = new global::System.Data.DataColumn("Customer Full Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCustomer_Full_Name);
-                this.columncusID = new global::System.Data.DataColumn("cusID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncusID);
+                this.columnequModel = new global::System.Data.DataColumn("equModel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnequModel);
+                this.columnequSerial = new global::System.Data.DataColumn("equSerial", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnequSerial);
+                this.columncustFirst = new global::System.Data.DataColumn("custFirst", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustFirst);
+                this.columncustPhone = new global::System.Data.DataColumn("custPhone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustPhone);
+                this.columncustLast = new global::System.Data.DataColumn("custLast", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustLast);
+                this.columncustAddress = new global::System.Data.DataColumn("custAddress", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustAddress);
+                this.columncustCity = new global::System.Data.DataColumn("custCity", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustCity);
+                this.columncustPostal = new global::System.Data.DataColumn("custPostal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustPostal);
+                this.columncustEmail = new global::System.Data.DataColumn("custEmail", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustEmail);
+                this.columnmanName = new global::System.Data.DataColumn("manName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmanName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -1247,21 +1336,22 @@ namespace PRIMELibrary {
                 this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
                 this.columnserordIssue.MaxLength = 100;
-                this.columnreceiptID.AllowDBNull = false;
-                this.columnserviceID.AllowDBNull = false;
-                this.columnequipID.AllowDBNull = false;
-                this.columnempID.AllowDBNull = false;
                 this.columnserName.MaxLength = 20;
                 this.columnEmployee_Full_Name.ReadOnly = true;
                 this.columnEmployee_Full_Name.MaxLength = 81;
                 this.columneqtType.MaxLength = 30;
                 this.columnCustomer_Full_Name.ReadOnly = true;
                 this.columnCustomer_Full_Name.MaxLength = 81;
-                this.columncusID.AutoIncrement = true;
-                this.columncusID.AutoIncrementSeed = -1;
-                this.columncusID.AutoIncrementStep = -1;
-                this.columncusID.AllowDBNull = false;
-                this.columncusID.ReadOnly = true;
+                this.columnequModel.MaxLength = 50;
+                this.columnequSerial.MaxLength = 30;
+                this.columncustFirst.MaxLength = 30;
+                this.columncustPhone.MaxLength = 10;
+                this.columncustLast.MaxLength = 50;
+                this.columncustAddress.MaxLength = 60;
+                this.columncustCity.MaxLength = 50;
+                this.columncustPostal.MaxLength = 6;
+                this.columncustEmail.MaxLength = 30;
+                this.columnmanName.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4001,50 +4091,6 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int receiptID {
-                get {
-                    return ((int)(this[this.tableRepairLookUp.receiptIDColumn]));
-                }
-                set {
-                    this[this.tableRepairLookUp.receiptIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int serviceID {
-                get {
-                    return ((int)(this[this.tableRepairLookUp.serviceIDColumn]));
-                }
-                set {
-                    this[this.tableRepairLookUp.serviceIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int equipID {
-                get {
-                    return ((int)(this[this.tableRepairLookUp.equipIDColumn]));
-                }
-                set {
-                    this[this.tableRepairLookUp.equipIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int empID {
-                get {
-                    return ((int)(this[this.tableRepairLookUp.empIDColumn]));
-                }
-                set {
-                    this[this.tableRepairLookUp.empIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string serName {
                 get {
                     try {
@@ -4157,12 +4203,161 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int cusID {
+            public string equModel {
                 get {
-                    return ((int)(this[this.tableRepairLookUp.cusIDColumn]));
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.equModelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'equModel\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableRepairLookUp.cusIDColumn] = value;
+                    this[this.tableRepairLookUp.equModelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string equSerial {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.equSerialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'equSerial\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairLookUp.equSerialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string custFirst {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.custFirstColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'custFirst\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairLookUp.custFirstColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string custPhone {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.custPhoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'custPhone\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairLookUp.custPhoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string custLast {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.custLastColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'custLast\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairLookUp.custLastColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string custAddress {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.custAddressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'custAddress\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairLookUp.custAddressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string custCity {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.custCityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'custCity\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairLookUp.custCityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string custPostal {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.custPostalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'custPostal\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairLookUp.custPostalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string custEmail {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.custEmailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'custEmail\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairLookUp.custEmailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string manName {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairLookUp.manNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'manName\' in table \'RepairLookUp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairLookUp.manNameColumn] = value;
                 }
             }
             
@@ -4272,6 +4467,126 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetCustomer_Full_NameNull() {
                 this[this.tableRepairLookUp.Customer_Full_NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsequModelNull() {
+                return this.IsNull(this.tableRepairLookUp.equModelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetequModelNull() {
+                this[this.tableRepairLookUp.equModelColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsequSerialNull() {
+                return this.IsNull(this.tableRepairLookUp.equSerialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetequSerialNull() {
+                this[this.tableRepairLookUp.equSerialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IscustFirstNull() {
+                return this.IsNull(this.tableRepairLookUp.custFirstColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetcustFirstNull() {
+                this[this.tableRepairLookUp.custFirstColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IscustPhoneNull() {
+                return this.IsNull(this.tableRepairLookUp.custPhoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetcustPhoneNull() {
+                this[this.tableRepairLookUp.custPhoneColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IscustLastNull() {
+                return this.IsNull(this.tableRepairLookUp.custLastColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetcustLastNull() {
+                this[this.tableRepairLookUp.custLastColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IscustAddressNull() {
+                return this.IsNull(this.tableRepairLookUp.custAddressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetcustAddressNull() {
+                this[this.tableRepairLookUp.custAddressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IscustCityNull() {
+                return this.IsNull(this.tableRepairLookUp.custCityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetcustCityNull() {
+                this[this.tableRepairLookUp.custCityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IscustPostalNull() {
+                return this.IsNull(this.tableRepairLookUp.custPostalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetcustPostalNull() {
+                this[this.tableRepairLookUp.custPostalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IscustEmailNull() {
+                return this.IsNull(this.tableRepairLookUp.custEmailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetcustEmailNull() {
+                this[this.tableRepairLookUp.custEmailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsmanNameNull() {
+                return this.IsNull(this.tableRepairLookUp.manNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetmanNameNull() {
+                this[this.tableRepairLookUp.manNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5994,10 +6309,6 @@ SELECT id, serName, serDescription, serPrice FROM service WHERE (id = @id)";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("serordIssue", "serordIssue");
             tableMapping.ColumnMappings.Add("serordWarranty", "serordWarranty");
-            tableMapping.ColumnMappings.Add("receiptID", "receiptID");
-            tableMapping.ColumnMappings.Add("serviceID", "serviceID");
-            tableMapping.ColumnMappings.Add("equipID", "equipID");
-            tableMapping.ColumnMappings.Add("empID", "empID");
             tableMapping.ColumnMappings.Add("serName", "serName");
             tableMapping.ColumnMappings.Add("serPrice", "serPrice");
             tableMapping.ColumnMappings.Add("Employee Full Name", "Employee Full Name");
@@ -6005,7 +6316,16 @@ SELECT id, serName, serDescription, serPrice FROM service WHERE (id = @id)";
             tableMapping.ColumnMappings.Add("DateIn", "DateIn");
             tableMapping.ColumnMappings.Add("DateOut", "DateOut");
             tableMapping.ColumnMappings.Add("Customer Full Name", "Customer Full Name");
-            tableMapping.ColumnMappings.Add("cusID", "cusID");
+            tableMapping.ColumnMappings.Add("equModel", "equModel");
+            tableMapping.ColumnMappings.Add("equSerial", "equSerial");
+            tableMapping.ColumnMappings.Add("custFirst", "custFirst");
+            tableMapping.ColumnMappings.Add("custPhone", "custPhone");
+            tableMapping.ColumnMappings.Add("custLast", "custLast");
+            tableMapping.ColumnMappings.Add("custAddress", "custAddress");
+            tableMapping.ColumnMappings.Add("custCity", "custCity");
+            tableMapping.ColumnMappings.Add("custPostal", "custPostal");
+            tableMapping.ColumnMappings.Add("custEmail", "custEmail");
+            tableMapping.ColumnMappings.Add("manName", "manName");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -6022,15 +6342,16 @@ SELECT id, serName, serDescription, serPrice FROM service WHERE (id = @id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT service_order.id, CONVERT(date, service_order.serordDateIn, 111) AS 'DateIn', CONVERT(date, service_order.serordDateOut, 111) AS 'DateOut', service_order.serordIssue, service_order.serordWarranty, 
-                  employee.empFirst + ' ' + employee.empLast AS 'Employee Full Name', service.serName, equip_type.eqtType, service_order.receiptID, service_order.serviceID, service_order.equipID, service_order.empID, service.serPrice, 
-                  customer.custFirst + ' ' + customer.custLast AS 'Customer Full Name', customer.id AS cusID
-FROM     service_order INNER JOIN
-                  employee ON service_order.empID = employee.id INNER JOIN
-                  equipment ON service_order.equipID = equipment.id INNER JOIN
-                  equip_type ON equipment.equtypeID = equip_type.id INNER JOIN
-                  service ON service_order.serviceID = service.id INNER JOIN
-                  customer ON equipment.custID = customer.id";
+            this._commandCollection[0].CommandText = @"SELECT        service_order.id, CONVERT(date, service_order.serordDateIn, 111) AS 'DateIn', CONVERT(date, service_order.serordDateOut, 111) AS 'DateOut', service_order.serordIssue, service_order.serordWarranty, 
+                         employee.empFirst + ' ' + employee.empLast AS 'Employee Full Name', service.serName, equip_type.eqtType, service.serPrice, customer.custFirst + ' ' + customer.custLast AS 'Customer Full Name', equipment.equModel, 
+                         equipment.equSerial, customer.custFirst, customer.custPhone, customer.custLast, customer.custAddress, customer.custCity, customer.custPostal, customer.custEmail, manufacturer.manName
+FROM            service_order INNER JOIN
+                         employee ON service_order.empID = employee.id INNER JOIN
+                         equipment ON service_order.equipID = equipment.id INNER JOIN
+                         equip_type ON equipment.equtypeID = equip_type.id INNER JOIN
+                         service ON service_order.serviceID = service.id INNER JOIN
+                         customer ON equipment.custID = customer.id INNER JOIN
+                         manufacturer ON equipment.equManuID = manufacturer.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
