@@ -113,8 +113,11 @@ namespace PRIMEWeb.Sales
         protected void btnAddOrder_Click(object sender, EventArgs e)
         {
             int productID = Convert.ToInt32(ddlProduct.SelectedValue);
-            if (productID == -1) return;  //not selecting product
-            //prompt user
+            if (productID == -1)
+            {
+                //prompt user to select a product
+                return;
+            }
 
             List<Order> orders = (List<Order>)Session["orders"];  //get saved orders
             int qty = Convert.ToInt32(txtQty.Text);  //quantity needed
@@ -181,7 +184,14 @@ namespace PRIMEWeb.Sales
 
         protected void btnDeleteOrder_Click(object sender, EventArgs e)
         {
-
+            if (lsbOrders.SelectedIndex == -1)
+            {
+                //prompt user
+                return;
+            }
+            List<Order> orders = (List<Order>)Session["orders"];  //get saved orders
+            orders.RemoveAt(lsbOrders.SelectedIndex);  //remove the record
+            lsbOrders.Items.RemoveAt(lsbOrders.SelectedIndex);  //remove the entry
         }
 
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)

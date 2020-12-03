@@ -183,8 +183,8 @@
                         <div id="divBtnOrder" class="col-md-12">
                             <asp:Button ID="btnCreate" runat="server" aria-label="Create Sale" CssClass="btn btn-outline-primary" Text="Create Sale" PostBackUrl="/Sales/" CausesValidation="False" />
                             <asp:Button ID="btnAddOrder" runat="server" aria-label="Add Order" CssClass="btn btn-outline-primary" Text="Add Order" OnClick="btnAddOrder_Click" />
-                            <asp:Button ID="btnDeleteOrder" runat="server" aria-label="Delete Order" CssClass="btn btn-outline-primary" Text="Delete Order" OnClick="btnDeleteOrder_Click" />
-                            <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-outline-primary" Text="Clear Order Form" CausesValidation="False" />
+                            <asp:Button ID="btnDeleteOrder" runat="server" aria-label="Delete Order" CssClass="btn btn-outline-primary" Text="Delete Order" OnClick="btnDeleteOrder_Click" UseSubmitBehavior="False" />
+                            <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-outline-primary" Text="Clear Order Form" UseSubmitBehavior="False" />
                             <a class="btn btn-outline-primary" href="/Sales/" role="button" aria-label="Cancel Creating Sale">Cancel</a>
                         </div>
                     </div>
