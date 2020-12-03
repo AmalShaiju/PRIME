@@ -30,39 +30,6 @@ namespace PRIMEWeb.Customers
 
         }
 
-
-        private void Save()
-        {
-            customerTableAdapter daCustomer = new customerTableAdapter();
-
-            try
-            {
-                daCustomer.Update(dsCustomer.customer);
-                dsCustomer.AcceptChanges();
-                this.lblStatus.Text = "Saved";
-            }
-            catch
-            {
-                dsCustomer.RejectChanges();
-                this.lblStatus.Text = "Not saved";
-            }
-            finally
-            {
-                Clear();
-            }
-        }
-
-        private void Clear()
-        {
-            this.txtFName.Text = "";
-            this.txtLName.Text = "";
-            this.txtPCode.Text = "";
-            this.txtPhone.Text = "";
-            this.txtCity.Text = "";
-            this.txtAddress.Text = "";
-            this.txtEmail.Text = "";
-        }
-
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             DataRow customer = dsCustomer.customer.NewRow();
@@ -77,6 +44,34 @@ namespace PRIMEWeb.Customers
             customer[7] = this.txtEmail.Text;
             dsCustomer.customer.Rows.Add(customer);
             Save();
+        }
+        private void Save()
+        {
+            customerTableAdapter daCustomer = new customerTableAdapter();
+
+            try
+            {
+                daCustomer.Update(dsCustomer.customer);
+                dsCustomer.AcceptChanges();
+                this.lblStatus.Text = "Customer Created";
+                Clear();
+            }
+            catch
+            {
+                dsCustomer.RejectChanges();
+                this.lblStatus.Text = "Failed";
+            }
+        }
+
+        private void Clear()
+        {
+            this.txtFName.Text = "";
+            this.txtLName.Text = "";
+            this.txtPCode.Text = "";
+            this.txtPhone.Text = "";
+            this.txtCity.Text = "";
+            this.txtAddress.Text = "";
+            this.txtEmail.Text = "";
         }
     }
 }

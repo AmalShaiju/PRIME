@@ -52,16 +52,13 @@ namespace PRIMEWeb.Customers
             {
                 daEquipment.Update(dsEquipment.equipmentCRUD);
                 dsEquipment.AcceptChanges();
-                this.lblStatus.Text = "Saved";
+                this.lblStatus.Text = "Equipment Created";
+                Clear();
             }
             catch
             {
                 dsEquipment.RejectChanges();
-                this.lblStatus.Text = "Not saved";
-            }
-            finally
-            {
-                Clear();
+                this.lblStatus.Text = "Failed";
             }
         }
 

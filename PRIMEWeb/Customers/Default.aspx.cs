@@ -193,13 +193,49 @@ namespace PRIMEWeb.Customers
         // Edit btn 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
+            // Get the button that raised the event
+            Button btn = (Button)sender;
 
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Get rowindex
+            int rowindex = gvr.RowIndex;
+
+            this.lblSave.Text = rowindex.ToString();
+
+            // Not too secure sending value through query string
+            //Response.Redirect("EditService.aspx?ID=" + GridView1.Rows[e.NewEditIndex].Cells[1].Text
+
+            //Send Id using cookie, more seecure I presume
+            HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+            cID.Value = this.gvCustomers.Rows[rowindex].Cells[0].Text;
+            Response.Cookies.Add(cID);
+            Response.Redirect("EditCustomer.aspx"); // Redirect the user to Edit page on btn click
         }
 
         // Details btn 
         protected void btnDetail_Click(object sender, EventArgs e)
         {
+            // Get the button that raised the event
+            Button btn = (Button)sender;
 
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Get rowindex
+            int rowindex = gvr.RowIndex;
+
+            this.lblSave.Text = rowindex.ToString();
+
+            // Not too secure sending value through query string
+            //Response.Redirect("EditService.aspx?ID=" + GridView1.Rows[e.NewEditIndex].Cells[1].Text
+
+            //Send Id using cookie, more seecure I presume
+            HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+            cID.Value = this.gvCustomers.Rows[rowindex].Cells[0].Text;
+            Response.Cookies.Add(cID);
+            Response.Redirect("DetailsCustomer.aspx"); // Redirect the user to Edit page on btn click
         }
     }
 }

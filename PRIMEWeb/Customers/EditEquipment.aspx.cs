@@ -44,17 +44,9 @@ namespace PRIMEWeb.Customers
                     {
                         this.txtModel.Text = equipment.ItemArray[1].ToString();
                         this.txtSerialNum.Text = equipment.ItemArray[2].ToString();
-                        var customer = ddlCustomer.Items.FindByValue(equipment.ItemArray[3].ToString());
-                        if (customer != null)
-                            customer.Selected = true;
-
-                        var type = ddlType.Items.FindByValue(equipment.ItemArray[4].ToString());
-                        if (type != null)
-                            type.Selected = true;
-
-                        var manufacturer = ddlManufacturer.Items.FindByValue(equipment.ItemArray[5].ToString());
-                        if (manufacturer != null)
-                            manufacturer.Selected = true;
+                        this.ddlCustomer.SelectedValue = equipment.ItemArray[3].ToString();
+                        this.ddlType.SelectedValue = equipment.ItemArray[4].ToString();
+                        this.ddlManufacturer.SelectedValue = equipment.ItemArray[5].ToString();
                     }
                     else
                     {
@@ -76,24 +68,36 @@ namespace PRIMEWeb.Customers
             {
                 try
                 {
-                    DataRow equipment = dsEquipment.equipmentCRUD.FindByID(id); // find the related Record
+                    //DataRow equipment = dsEquipment.equipmentCRUD.FindByID(id); // find the related Record
 
                     //update record with user's input
-                    equipment[1] = txtModel.Text;
-                    equipment[2] = txtSerialNum.Text;
-                    equipment[3] = Convert.ToInt32(ddlCustomer.SelectedValue);
-                    equipment[4] = Convert.ToInt32(ddlType.SelectedValue);
-                    equipment[5] = Convert.ToInt32(ddlManufacturer.SelectedValue);
-
-                    equipmentCRUDTableAdapter daEquipment = new equipmentCRUDTableAdapter();
-                    daEquipment.Update(equipment); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
-                    dsEquipment.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
-
-                    lblStatus.Text = "Record Successfully Updated";
-                    Response.Redirect("Equipments.aspx"); // Redirect the user to Edit page on btn click
+                    dsEquipment.equipmentCRUD.FindByID(id).Model = txtModel.Text.ToString();
+                    dsEquipment.equipmentCRUD.FindByID(id).Serial = txtSerialNum.Text.ToString();
+                    dsEquipment.equipmentCRUD.FindByID(id).CustomerID = Convert.ToInt32(ddlCustomer.SelectedValue);
+                    dsEquipment.equipmentCRUD.FindByID(id).EquipmentID = Convert.ToInt32(ddlType.SelectedValue);
+                    dsEquipment.equipmentCRUD.FindByID(id).ManufacturerID = Convert.ToInt32(ddlManufacturer.SelectedValue);
+                    Save();
                 }
                 catch { lblStatus.Text = "Unable to Update Record"; }
             }
+        }
+
+        private void Save()
+        {
+            equipmentCRUDTableAdapter daEquipment = new equipmentCRUDTableAdapter();
+            try
+            {
+                daEquipment.Update(dsEquipment.equipmentCRUD); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                dsEquipment.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+
+                lblStatus.Text = "Record Successfully Updated";
+            }
+            catch
+            {
+                dsEquipment.RejectChanges();
+                lblStatus.Text = "Unable to Update Record";
+            }
+            //Response.Redirect("Equipments.aspx"); // Redirect the user to Edit page on btn click
         }
     }
 }
