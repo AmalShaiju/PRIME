@@ -201,5 +201,11 @@ namespace PRIMEWeb.Sales
                 lblProductHelp.Visible = lblQtyHelp.Visible = lblStockHelp.Visible =
                 pnlOrdersHelp.Visible = cboHelp.Checked;
         }
+
+        protected void btnClearOrder_Click(object sender, EventArgs e)
+        {
+            ddlProduct.SelectedIndex = 0;
+            txtQty.Text = txtNote.Text = txtPrice.Text = txtStock.Text = String.Empty;
+        }
     }
 }
