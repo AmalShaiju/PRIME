@@ -20,7 +20,7 @@ namespace PRIMEWeb.Sales
         private static List<Button> btnEdits = new List<Button>(); //list of the edit btns
         private static List<Button> btnDeletes = new List<Button>(); //list of the delete btns
 
-        static Default()
+        protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
@@ -33,14 +33,6 @@ namespace PRIMEWeb.Sales
                 daEmployeeNames.Fill(dsSales.EmployeeName);
             }
             catch (Exception ex)
-            {
-                flag = true; //loading failed
-            }
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (flag)
             {
                 //prompt users the failure
                 return;
@@ -87,8 +79,8 @@ namespace PRIMEWeb.Sales
 
             foreach (DataRow r in rows)
             {
-                dtSales.Rows.Add(r.ItemArray[0], ((DateTime)r.ItemArray[1]).ToShortDateString(),
-                    r.ItemArray[3], r.ItemArray[2]); //ID, Date, Name, Status
+                dtSales.Rows.Add(r.ItemArray[6], ((DateTime)r.ItemArray[1]).ToShortDateString(),
+                    r.ItemArray[3], r.ItemArray[2]); //Sale#, Date, Name, Status
             }
             gvSales.DataSource = dtSales;
             btnStatuses.Clear();  //clear the list
