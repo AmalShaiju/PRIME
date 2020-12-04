@@ -88,7 +88,7 @@
     </script>
 </head>
 <body onload="setHeight()">
-    <form id="frmNewSale" runat="server">
+    <form id="frmNewSale" runat="server" class="was-validated">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
             <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,18 +129,21 @@
                     <h4>Sales Information</h4>
                     <div class="form-row">
                         <div class="col-md-6 form-group">
-                            <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select" required="required"></asp:DropDownList>
+                            <div class="invalid-feedback">Please select the customer</div>
                             <asp:Label ID="lblCustomerHelp" runat="server" Text="Select the customer whom this receipt belongs to." CssClass="lbl-help" Visible="False"></asp:Label>
 
                         </div>
                         <div class="col-md-6 form-group">
-                            <asp:DropDownList ID="ddlPayment" runat="server" CssClass="custom-select"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlPayment" runat="server" CssClass="custom-select" required="required"></asp:DropDownList>
+                            <div class="invalid-feedback">Please select the payment method</div>
                             <asp:Label ID="lblPaymentHelp" runat="server" Text="Select the payment used for this receipt." CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 form-group">
                             <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" required="required" TextMode="Date"></asp:TextBox>
+                            <div class="invalid-feedback">Please select the date</div>
                             <asp:Label ID="lblDateHelp" runat="server" Text="Date of creation for this receipt.<br />Today's date has been automatically filled in." CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
                         <div class="col-md-6 form-group">
@@ -154,15 +157,17 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div id="divProduct" class="form-group">
-                                <asp:DropDownList ID="ddlProduct" runat="server" CssClass="custom-select" AutoPostBack="True" OnSelectedIndexChanged="ddlProduct_SelectedIndexChanged"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlProduct" runat="server" CssClass="custom-select" AutoPostBack="True" OnSelectedIndexChanged="ddlProduct_SelectedIndexChanged" required="required"></asp:DropDownList>
+                                <div class="invalid-feedback">Please select the product to order</div>
                                 <asp:Label ID="lblProductHelp" runat="server" Text="Select the product to order.<br />After selection you will see the price and number in stock at two fields after. " CssClass="lbl-help" Visible="False"></asp:Label>
                             </div>
                             <div id="divQty" class="form-group">
                                 <asp:TextBox ID="txtQty" runat="server" CssClass="form-control" TextMode="Number" min="1" placeholder="Quantity" required="required"></asp:TextBox>
+                                <div class="invalid-feedback">Please input a valid quantity</div>
                                 <asp:Label ID="lblQtyHelp" runat="server" Text="Input needed quantity.<br />If more than the amount in stock is needed, the order will go to Orders department to fill the margin." CssClass="lbl-help" Visible="False"></asp:Label>
                             </div>
                             <div id="divNote" class="form-group">
-                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Notes for this order..."></asp:TextBox>
+                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control" placeholder="Notes for this order..."></asp:TextBox>
                                 <asp:Label ID="lblNoteHelp" runat="server" Text="Input notes for this order." CssClass="lbl-help" Visible="False"></asp:Label>
                             </div>
                             <div id="divPrice" class="form-group">

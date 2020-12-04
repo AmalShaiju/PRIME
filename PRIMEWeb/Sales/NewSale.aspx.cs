@@ -69,7 +69,7 @@ namespace PRIMEWeb.Sales
         protected void ddlProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             lsbOrders.SelectedIndex = -1;
-            if (ddlProduct.SelectedValue == "-1")
+            if (ddlProduct.SelectedValue == "")
                 txtPrice.Text = txtStock.Text = String.Empty;
             else
             {
@@ -81,13 +81,13 @@ namespace PRIMEWeb.Sales
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            if (ddlCustomer.SelectedValue == "-1")
+            if (ddlCustomer.SelectedValue == "")
             {
                 //prompt user to select customer
                 return;
             }
 
-            if (ddlPayment.SelectedValue == "-1")
+            if (ddlPayment.SelectedValue == "")
             {
                 //prompt user to select payment method
                 return;
@@ -175,8 +175,7 @@ namespace PRIMEWeb.Sales
 
         protected void btnAddOrder_Click(object sender, EventArgs e)
         {
-            int productID = Convert.ToInt32(ddlProduct.SelectedValue);
-            if (productID == -1)
+            if (ddlProduct.SelectedValue == "")
             {
                 //prompt user to select a product
                 return;
@@ -186,7 +185,7 @@ namespace PRIMEWeb.Sales
             //get inventory record
 
             Order order;
-            order.productID = productID;
+            order.productID = Convert.ToInt32(ddlProduct.SelectedValue);
             order.qty = Convert.ToInt32(txtQty.Text);
             order.note = txtNote.Text;
             orders.Add(order);  //save order
@@ -224,7 +223,7 @@ namespace PRIMEWeb.Sales
         private void DisplayCustomerList()
         {
             ddlCustomer.Items.Clear();
-            ddlCustomer.Items.Add(new ListItem("Select a Customer", "-1"));
+            ddlCustomer.Items.Add(new ListItem("Select a Customer", ""));
             foreach (DataRow r in dsSales.CustomerName.Rows)
                 ddlCustomer.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
             ddlCustomer.SelectedIndex = 0; //make Select a Customer as default
@@ -233,7 +232,7 @@ namespace PRIMEWeb.Sales
         private void DisplayPaymentList()
         {
             ddlPayment.Items.Clear();
-            ddlPayment.Items.Add(new ListItem("Select a Payment Method", "-1"));
+            ddlPayment.Items.Add(new ListItem("Select a Payment Method", ""));
             foreach (DataRow r in dsSales.Payment.Rows)
                 ddlPayment.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
             ddlPayment.SelectedIndex = 0; //make Select a Payment Method as default
@@ -252,7 +251,7 @@ namespace PRIMEWeb.Sales
         private void DisplayProductList()
         {
             ddlProduct.Items.Clear();
-            ddlProduct.Items.Add(new ListItem("Select a Product", "-1"));
+            ddlProduct.Items.Add(new ListItem("Select a Product", ""));
             foreach (DataRow r in dsSales.Product.Rows)
                 ddlProduct.Items.Add(
                     new ListItem(r[1].ToString() + " (" + r[3].ToString() + ")",
