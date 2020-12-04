@@ -961,6 +961,14 @@ namespace PRIMELibrary {
             
             private global::System.Data.DataColumn columnmanName;
             
+            private global::System.Data.DataColumn columnreceiptID;
+            
+            private global::System.Data.DataColumn columnserviceID;
+            
+            private global::System.Data.DataColumn columnequipID;
+            
+            private global::System.Data.DataColumn columnempID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public RepairLookUpDataTable() {
@@ -1156,6 +1164,38 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn receiptIDColumn {
+                get {
+                    return this.columnreceiptID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn serviceIDColumn {
+                get {
+                    return this.columnserviceID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn equipIDColumn {
+                get {
+                    return this.columnequipID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn empIDColumn {
+                get {
+                    return this.columnempID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1210,7 +1250,11 @@ namespace PRIMELibrary {
                         string custCity, 
                         string custPostal, 
                         string custEmail, 
-                        string manName) {
+                        string manName, 
+                        int receiptID, 
+                        int serviceID, 
+                        int equipID, 
+                        int empID) {
                 RepairLookUpRow rowRepairLookUpRow = ((RepairLookUpRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1232,7 +1276,11 @@ namespace PRIMELibrary {
                         custCity,
                         custPostal,
                         custEmail,
-                        manName};
+                        manName,
+                        receiptID,
+                        serviceID,
+                        equipID,
+                        empID};
                 rowRepairLookUpRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRepairLookUpRow);
                 return rowRepairLookUpRow;
@@ -1282,6 +1330,10 @@ namespace PRIMELibrary {
                 this.columncustPostal = base.Columns["custPostal"];
                 this.columncustEmail = base.Columns["custEmail"];
                 this.columnmanName = base.Columns["manName"];
+                this.columnreceiptID = base.Columns["receiptID"];
+                this.columnserviceID = base.Columns["serviceID"];
+                this.columnequipID = base.Columns["equipID"];
+                this.columnempID = base.Columns["empID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1327,6 +1379,14 @@ namespace PRIMELibrary {
                 base.Columns.Add(this.columncustEmail);
                 this.columnmanName = new global::System.Data.DataColumn("manName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmanName);
+                this.columnreceiptID = new global::System.Data.DataColumn("receiptID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnreceiptID);
+                this.columnserviceID = new global::System.Data.DataColumn("serviceID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnserviceID);
+                this.columnequipID = new global::System.Data.DataColumn("equipID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnequipID);
+                this.columnempID = new global::System.Data.DataColumn("empID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnempID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -1352,6 +1412,10 @@ namespace PRIMELibrary {
                 this.columncustPostal.MaxLength = 6;
                 this.columncustEmail.MaxLength = 30;
                 this.columnmanName.MaxLength = 30;
+                this.columnreceiptID.AllowDBNull = false;
+                this.columnserviceID.AllowDBNull = false;
+                this.columnequipID.AllowDBNull = false;
+                this.columnempID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4363,6 +4427,50 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int receiptID {
+                get {
+                    return ((int)(this[this.tableRepairLookUp.receiptIDColumn]));
+                }
+                set {
+                    this[this.tableRepairLookUp.receiptIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int serviceID {
+                get {
+                    return ((int)(this[this.tableRepairLookUp.serviceIDColumn]));
+                }
+                set {
+                    this[this.tableRepairLookUp.serviceIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int equipID {
+                get {
+                    return ((int)(this[this.tableRepairLookUp.equipIDColumn]));
+                }
+                set {
+                    this[this.tableRepairLookUp.equipIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int empID {
+                get {
+                    return ((int)(this[this.tableRepairLookUp.empIDColumn]));
+                }
+                set {
+                    this[this.tableRepairLookUp.empIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsserordIssueNull() {
                 return this.IsNull(this.tableRepairLookUp.serordIssueColumn);
             }
@@ -6326,6 +6434,10 @@ SELECT id, serName, serDescription, serPrice FROM service WHERE (id = @id)";
             tableMapping.ColumnMappings.Add("custPostal", "custPostal");
             tableMapping.ColumnMappings.Add("custEmail", "custEmail");
             tableMapping.ColumnMappings.Add("manName", "manName");
+            tableMapping.ColumnMappings.Add("receiptID", "receiptID");
+            tableMapping.ColumnMappings.Add("serviceID", "serviceID");
+            tableMapping.ColumnMappings.Add("equipID", "equipID");
+            tableMapping.ColumnMappings.Add("empID", "empID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -6343,7 +6455,7 @@ SELECT id, serName, serDescription, serPrice FROM service WHERE (id = @id)";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        service_order.id, CONVERT(date, service_order.serordDateIn, 111) AS 'DateIn', CONVERT(date, service_order.serordDateOut, 111) AS 'DateOut', service_order.serordIssue, service_order.serordWarranty, 
-                         employee.empFirst + ' ' + employee.empLast AS 'Employee Full Name', service.serName, equip_type.eqtType, service.serPrice, customer.custFirst + ' ' + customer.custLast AS 'Customer Full Name', equipment.equModel, 
+                         employee.empFirst + ' ' + employee.empLast AS 'Employee Full Name', service.serName, equip_type.eqtType,  service_order.receiptID, service_order.serviceID, service_order.equipID, service_order.empID,  service.serPrice, customer.custFirst + ' ' + customer.custLast AS 'Customer Full Name', equipment.equModel, 
                          equipment.equSerial, customer.custFirst, customer.custPhone, customer.custLast, customer.custAddress, customer.custCity, customer.custPostal, customer.custEmail, manufacturer.manName
 FROM            service_order INNER JOIN
                          employee ON service_order.empID = employee.id INNER JOIN
