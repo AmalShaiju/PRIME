@@ -20,18 +20,19 @@ namespace PRIMEWeb.Sales
     public partial class NewSale : System.Web.UI.Page
     {
         private static SalesDataSet dsSales = new SalesDataSet();
+        private static CustomerNameTableAdapter daCustomerNames = new CustomerNameTableAdapter();
+        private static PaymentTableAdapter daPayments = new PaymentTableAdapter();
+        private static EmployeeNameTableAdapter daEmployeeNames = new EmployeeNameTableAdapter();
+        private static ProductTableAdapter daProducts = new ProductTableAdapter();
+        private static InventoryTableAdapter daInventories = new InventoryTableAdapter();
+        private static ReceiptTableAdapter daReceipts = new ReceiptTableAdapter();
+        private static OrderLineTableAdapter daOL = new OrderLineTableAdapter();
+        private static InventoryTableAdapter daInventory = new InventoryTableAdapter();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                CustomerNameTableAdapter daCustomerNames = new CustomerNameTableAdapter();
-                PaymentTableAdapter daPayments = new PaymentTableAdapter();
-                EmployeeNameTableAdapter daEmployeeNames = new EmployeeNameTableAdapter();
-                ProductTableAdapter daProducts = new ProductTableAdapter();
-                InventoryTableAdapter daInventories = new InventoryTableAdapter();
-                ReceiptTableAdapter daReceipts = new ReceiptTableAdapter();
-                OrderLineTableAdapter daOL = new OrderLineTableAdapter();
                 dsSales.Clear();
                 daCustomerNames.Fill(dsSales.CustomerName);
                 daPayments.Fill(dsSales.Payment);
@@ -46,6 +47,9 @@ namespace PRIMEWeb.Sales
                 //prompt data load failure
                 return;
             }
+
+            ScriptManager.RegisterStartupScript(Page, GetType(), "UiFix", "setHeight();", true);
+            //use js to resize listbox
 
             if (IsPostBack) return;
             txtDate.Text = DateTime.Today.ToShortDateString();
@@ -116,8 +120,6 @@ namespace PRIMEWeb.Sales
             foreach (Order order in orders)
             {
                 DataRow nrOrder = dsSales.OrderLine.NewRow();
-                OrderLineTableAdapter daOL = new OrderLineTableAdapter();
-                InventoryTableAdapter daInventory = new InventoryTableAdapter();
                 DataRow inv = dsSales.Inventory.Select("productID = " + order.productID)[0];
                 int stock = Convert.ToInt32(inv.ItemArray[1]);
                 double invPrice = Convert.ToDouble(inv.ItemArray[4]);

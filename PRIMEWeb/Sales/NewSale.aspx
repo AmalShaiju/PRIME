@@ -87,7 +87,7 @@
         }
     </script>
 </head>
-<body onload="setHeight()">
+<body>
     <form id="frmNewSale" runat="server" class="was-validated">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
             <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
