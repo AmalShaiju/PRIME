@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using PRIMELibrary;
 using PRIMELibrary.SalesDataSetTableAdapters;
@@ -14,21 +14,19 @@ namespace PRIMEWeb.Sales
     {
         private static SalesDataSet dsSales = new SalesDataSet();
         private DataRow[] rows;
-        private static bool flag = false; //indicate if the data loading failed
-        private static List<Button> btnStatuses = new List<Button>(); //list of the pay/paid btns
         private static List<Button> btnDetails = new List<Button>(); //list of the detail btns
         private static List<Button> btnEdits = new List<Button>(); //list of the edit btns
         private static List<Button> btnDeletes = new List<Button>(); //list of the delete btns
+        private static ReceiptTableAdapter daReceipt = new ReceiptTableAdapter();
+        private static CustomerNameTableAdapter daCustomerNames = new CustomerNameTableAdapter();
+        private static EmployeeNameTableAdapter daEmployeeNames = new EmployeeNameTableAdapter();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                SalesIndexTableAdapter daSalesIndex = new SalesIndexTableAdapter();
-                CustomerNameTableAdapter daCustomerNames = new CustomerNameTableAdapter();
-                EmployeeNameTableAdapter daEmployeeNames = new EmployeeNameTableAdapter();
                 dsSales.Clear();
-                daSalesIndex.Fill(dsSales.SalesIndex);
+                daReceipt.Fill(dsSales.Receipt);
                 daCustomerNames.Fill(dsSales.CustomerName);
                 daEmployeeNames.Fill(dsSales.EmployeeName);
             }
@@ -40,11 +38,8 @@ namespace PRIMEWeb.Sales
 
             //data loaded successfully
 
-            rows = dsSales.SalesIndex.Select(); //get records
+            rows = dsSales.Receipt.Select("", "ordDate DESC"); //get records
             DisplaySales();  //display records
-
-            if (IsPostBack) return;
-
             DisplayCustomerList();
             DisplayEmployeeList();  //populate ddl
         }
@@ -79,11 +74,11 @@ namespace PRIMEWeb.Sales
 
             foreach (DataRow r in rows)
             {
-                dtSales.Rows.Add(r.ItemArray[6], ((DateTime)r.ItemArray[1]).ToShortDateString(),
-                    r.ItemArray[3], r.ItemArray[2]); //Sale#, Date, Name, Status
+                dtSales.Rows.Add(r.ItemArray[1], ((DateTime)r.ItemArray[2]).ToShortDateString(),
+                    dsSales.CustomerName.Select("id = " + r.ItemArray[5].ToString())[0].ItemArray[1],
+                    r.ItemArray[3], r.ItemArray[0]); //Sale#, Date, Name, Status, ID
             }
             gvSales.DataSource = dtSales;
-            btnStatuses.Clear();  //clear the list
             gvSales.DataBind();
             switch (gvSales.Rows.Count)
             {
@@ -109,15 +104,25 @@ namespace PRIMEWeb.Sales
             }
 
             //status btn
+            /*
             Button btnStatus = new Button();  //create status btn
-            btnStatuses.Add(btnStatus);  //the list index of the button will also be the row index
             btnStatus.CssClass = "btn btn-success";  //set css class
+            btnStatus.Attributes["name"] = e.Row.Cells[4].Text;
+            btnStatus.Click += new EventHandler(btnStatus_Click);
+            */
+
+            HtmlButton btnStatus = new HtmlButton();  //create status btn
+            btnStatus.Attributes.Add("class", "btn btn-success");  //set css class
+            btnStatus.Attributes.Add("value", e.Row.Cells[4].Text);  //record receiptID as value
+            btnStatus.Attributes.Add("runat", "server");  //run at server
+            btnStatus.ServerClick += new EventHandler(btnStatus_Click);  //click event handler
+
             if (e.Row.Cells[3].Text == "True")  //paid or not
             {
                 //if (not admin)
-                btnStatus.Enabled = false;
+                btnStatus.Attributes.Add("disabled", "disabled");
 
-                btnStatus.Text = "Paid";
+                btnStatus.InnerText = "Paid";
 
                 //if (not admin)
                 btnStatus.Attributes.Add("aria-label", "Click to set this sale as unpaid");
@@ -125,11 +130,10 @@ namespace PRIMEWeb.Sales
             }
             else
             {
-                btnStatus.Text = "Pay";
+                btnStatus.InnerText = "Pay";
                 btnStatus.Attributes.Add("aria-label", "Click to set this sale as paid");
                 //set aria label
             }
-            btnStatus.Attributes.Add("OnClick", "btnStatus_Click");  //click event handler
             e.Row.Cells[3].Controls.Add(btnStatus);  //add the btn
 
             //details btn
@@ -170,7 +174,18 @@ namespace PRIMEWeb.Sales
 
         protected void btnStatus_Click(object sender, EventArgs e)
         {
-
+            HtmlButton btnStatus = (HtmlButton)sender;
+            string receiptID = btnStatus.Attributes["value"];
+            DataRow sale = dsSales.Receipt.Select("id = " + receiptID)[0];
+            if (!(bool)sale.ItemArray[3])  //if not paid
+            {
+                sale["ordPaid"] = true;
+                daReceipt.Update(dsSales.Receipt);
+                dsSales.AcceptChanges();
+            }
+            btnStatus.InnerText = "Paid";
+            //if not admin
+            btnStatus.Attributes.Add("disabled", "disabled");
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -193,13 +208,13 @@ namespace PRIMEWeb.Sales
             string cmd;
 
             if (searchCmds.Count == 0)
-                rows = dsSales.SalesIndex.Select(); //get all records
+                rows = dsSales.Receipt.Select("", "ordDate DESC"); //get all records
             else
             {
                 cmd = searchCmds[0];
                 for (int i = 1; i < searchCmds.Count; i++)
                     cmd += " And " + searchCmds[i];
-                rows = dsSales.SalesIndex.Select(cmd); //get needed records
+                rows = dsSales.Receipt.Select(cmd, "ordDate DESC"); //get needed records
             }
 
             DisplaySales();

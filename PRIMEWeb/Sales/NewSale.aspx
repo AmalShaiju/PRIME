@@ -167,8 +167,8 @@
                                 <asp:Label ID="lblQtyHelp" runat="server" Text="Input needed quantity.<br />If more than the amount in stock is needed, the order will go to Orders department to fill the margin." CssClass="lbl-help" Visible="False"></asp:Label>
                             </div>
                             <div id="divNote" class="form-group">
-                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control" placeholder="Notes for this order..."></asp:TextBox>
-                                <asp:Label ID="lblNoteHelp" runat="server" Text="Input notes for this order." CssClass="lbl-help" Visible="False"></asp:Label>
+                                <asp:TextBox ID="txtNote" runat="server" CssClass="form-control" placeholder="(Optional) Notes for this order..."></asp:TextBox>
+                                <asp:Label ID="lblNoteHelp" runat="server" Text="Input notes for this order. (Optional)" CssClass="lbl-help" Visible="False"></asp:Label>
                             </div>
                             <div id="divPrice" class="form-group">
                                 <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" placeholder="Price" ReadOnly="True"></asp:TextBox>
