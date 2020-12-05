@@ -80,12 +80,14 @@ namespace PRIMEWeb.Sales
             e.Row.Cells[3].Controls.Add(btnStatus);  //add the btn
 
             //details btn
-            Button btnDetail = new Button();  //create detail btn
-            btnDetail.CssClass = "btn btn-info";  //set css class
-            btnDetail.Text = "Detail";
+            HtmlAnchor btnDetail = new HtmlAnchor();
+            btnDetail.Attributes.Add("type", "button");  //set as button
+            btnDetail.Attributes.Add("class", "btn btn-info");  //set css class
             btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale");
-                //set aria label
-            btnDetail.Attributes.Add("OnClick", "btnDetail_Click");  //click event handler
+            //set aria label
+            btnDetail.InnerText = "Details";  //set text
+            btnDetail.HRef = "SaleRecord.aspx?ID=" + e.Row.Cells[4].Text;
+            //redirect to details page
 
             //edit btn
             Button btnEdit = new Button();  //create edit btn
@@ -96,16 +98,14 @@ namespace PRIMEWeb.Sales
             btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
 
             //delete btn
-            HtmlButton btnDelete = new HtmlButton();  //create delete btn
+            HtmlAnchor btnDelete = new HtmlAnchor();
+            btnDelete.Attributes.Add("type", "button");  //set as button
             btnDelete.Attributes.Add("class", "btn btn-danger");  //set css class
-            btnDelete.Attributes.Add("value", e.Row.Cells[4].Text);  //record receiptID as value
-            btnDelete.Attributes.Add("runat", "server");  //run at server
-            btnDelete.Attributes.Add("data-toggle", "modal");  //set data toggle
-            btnDelete.Attributes.Add("data-target", "#deleteModal");  //set data target
-            btnDelete.Attributes.Add("aria-label", "Click to display the confirmation window");
+            btnDelete.Attributes.Add("aria-label", "Click to go to deleting confirmation page");
                 //set aria label
-            btnDelete.InnerText = "Delete";
-            btnDelete.ServerClick += new EventHandler(btnDelete_ServerClick);  //click event handler
+            btnDelete.InnerText = "Delete";  //set text
+            btnDelete.HRef = "SaleRecord.aspx?ID=" + e.Row.Cells[4].Text + "&Delete=1";
+                //redirect to delete page
 
             /*
             //if (not admin)
@@ -164,27 +164,6 @@ namespace PRIMEWeb.Sales
             btnStatus.InnerText = "Paid";
             //if not admin
             btnStatus.Attributes.Add("disabled", "disabled");
-        }
-
-        protected void btnDelete_ServerClick(object sender, EventArgs e)
-        {
-            lblReceiptID.Text = ((HtmlButton)sender).Attributes["value"];
-        }
-
-        protected void btnDeleteConfirm_Click(object sender, EventArgs e)
-        {
-            DataRow sale = dsSales.Receipt.Select("id = " + lblReceiptID.Text)[0];
-            DataRow[] orders = sale.GetChildRows("fk_orderline_receipt");
-            DataRow[] repairs = sale.GetChildRows("fk_serord_receipt");
-            foreach (DataRow o in orders)
-                o.Delete();
-            foreach (DataRow r in repairs)
-                r.Delete();
-            daOL.Update(dsSales.OrderLine);
-            daServiceOrder.Update(dsSales.ServiceOrder);
-            sale.Delete();
-            daReceipt.Update(dsSales.Receipt);
-            dsSales.AcceptChanges();
         }
 
         //helpers
