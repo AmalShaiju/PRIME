@@ -14,12 +14,11 @@ namespace PRIMEWeb.Sales
     {
         private static SalesDataSet dsSales = new SalesDataSet();
         private DataRow[] rows;
-        private static List<Button> btnDetails = new List<Button>(); //list of the detail btns
-        private static List<Button> btnEdits = new List<Button>(); //list of the edit btns
-        private static List<Button> btnDeletes = new List<Button>(); //list of the delete btns
         private static ReceiptTableAdapter daReceipt = new ReceiptTableAdapter();
         private static CustomerNameTableAdapter daCustomerNames = new CustomerNameTableAdapter();
         private static EmployeeNameTableAdapter daEmployeeNames = new EmployeeNameTableAdapter();
+        private static OrderLineTableAdapter daOL = new OrderLineTableAdapter();
+        private static ServiceOrderTableAdapter daServiceOrder = new ServiceOrderTableAdapter();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,6 +28,8 @@ namespace PRIMEWeb.Sales
                 daReceipt.Fill(dsSales.Receipt);
                 daCustomerNames.Fill(dsSales.CustomerName);
                 daEmployeeNames.Fill(dsSales.EmployeeName);
+                daOL.Fill(dsSales.OrderLine);
+                daServiceOrder.Fill(dsSales.ServiceOrder);
             }
             catch (Exception ex)
             {
@@ -40,58 +41,9 @@ namespace PRIMEWeb.Sales
 
             rows = dsSales.Receipt.Select("", "ordDate DESC"); //get records
             DisplaySales();  //display records
+            if (IsPostBack) return;
             DisplayCustomerList();
             DisplayEmployeeList();  //populate ddl
-        }
-
-        private void DisplayEmployeeList()
-        {
-            ddlEmployee.Items.Clear();
-            ddlEmployee.Items.Add(new ListItem("All Employees", "-1"));
-            foreach (DataRow r in dsSales.EmployeeName.Rows)
-                ddlEmployee.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
-            ddlEmployee.SelectedIndex = 0; //select All Employees by default
-        }
-
-        private void DisplayCustomerList()
-        {
-            ddlCustomer.Items.Clear();
-            ddlCustomer.Items.Add(new ListItem("All Customers", "-1"));
-            foreach (DataRow r in dsSales.CustomerName.Rows)
-                ddlCustomer.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
-            ddlCustomer.SelectedIndex = 0; //select All Customers by default
-        }
-
-        private void DisplaySales()
-        {
-            DataTable dtSales = new DataTable();
-            dtSales.Columns.Add("Sale Number");
-            dtSales.Columns.Add("Date");
-            dtSales.Columns.Add("Customer");
-            dtSales.Columns.Add("Status");
-            dtSales.Columns.Add();  //Details Edit Delete
-
-
-            foreach (DataRow r in rows)
-            {
-                dtSales.Rows.Add(r.ItemArray[1], ((DateTime)r.ItemArray[2]).ToShortDateString(),
-                    dsSales.CustomerName.Select("id = " + r.ItemArray[5].ToString())[0].ItemArray[1],
-                    r.ItemArray[3], r.ItemArray[0]); //Sale#, Date, Name, Status, ID
-            }
-            gvSales.DataSource = dtSales;
-            gvSales.DataBind();
-            switch (gvSales.Rows.Count)
-            {
-                case 0:
-                    lblCount.Text = "No records found.";
-                    break;
-                case 1:
-                    lblCount.Text = "1 record found.";
-                    break;
-                default:
-                    lblCount.Text = gvSales.Rows.Count.ToString() + " records found.";
-                    break;
-            }
         }
 
         protected void gvSales_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -104,13 +56,6 @@ namespace PRIMEWeb.Sales
             }
 
             //status btn
-            /*
-            Button btnStatus = new Button();  //create status btn
-            btnStatus.CssClass = "btn btn-success";  //set css class
-            btnStatus.Attributes["name"] = e.Row.Cells[4].Text;
-            btnStatus.Click += new EventHandler(btnStatus_Click);
-            */
-
             HtmlButton btnStatus = new HtmlButton();  //create status btn
             btnStatus.Attributes.Add("class", "btn btn-success");  //set css class
             btnStatus.Attributes.Add("value", e.Row.Cells[4].Text);  //record receiptID as value
@@ -119,12 +64,10 @@ namespace PRIMEWeb.Sales
 
             if (e.Row.Cells[3].Text == "True")  //paid or not
             {
-                //if (not admin)
-                btnStatus.Attributes.Add("disabled", "disabled");
-
                 btnStatus.InnerText = "Paid";
 
                 //if (not admin)
+                btnStatus.Attributes.Add("disabled", "disabled");
                 btnStatus.Attributes.Add("aria-label", "Click to set this sale as unpaid");
                 //set aria label
             }
@@ -138,54 +81,41 @@ namespace PRIMEWeb.Sales
 
             //details btn
             Button btnDetail = new Button();  //create detail btn
-            btnDetails.Add(btnDetail);  //the list index of the button will also be the row index
             btnDetail.CssClass = "btn btn-info";  //set css class
             btnDetail.Text = "Detail";
             btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale");
-            //set aria label
+                //set aria label
             btnDetail.Attributes.Add("OnClick", "btnDetail_Click");  //click event handler
-            e.Row.Cells[4].Controls.Add(btnDetail);  //add the btn
 
             //edit btn
             Button btnEdit = new Button();  //create edit btn
-            btnEdits.Add(btnEdit);  //the list index of the button will also be the row index
             btnEdit.CssClass = "btn btn-dark";  //set css class
             btnEdit.Text = "Edit";
             btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
-            //set aria label
+                //set aria label
             btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
-            e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
 
             //delete btn
-            Button btnDelete = new Button();  //create delete btn
-            btnDeletes.Add(btnDelete);  //the list index of the button will also be the row index
-            btnDelete.CssClass = "btn btn-danger";  //set css class
-            btnDelete.Text = "Delete";
-            btnDelete.Attributes.Add("aria-label", "Click to delete this sale");
-            //set aria label
-            btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
+            HtmlButton btnDelete = new HtmlButton();  //create delete btn
+            btnDelete.Attributes.Add("class", "btn btn-danger");  //set css class
+            btnDelete.Attributes.Add("value", e.Row.Cells[4].Text);  //record receiptID as value
+            btnDelete.Attributes.Add("runat", "server");  //run at server
+            btnDelete.Attributes.Add("data-toggle", "modal");  //set data toggle
+            btnDelete.Attributes.Add("data-target", "#deleteModal");  //set data target
+            btnDelete.Attributes.Add("aria-label", "Click to display the confirmation window");
+                //set aria label
+            btnDelete.InnerText = "Delete";
+            btnDelete.ServerClick += new EventHandler(btnDelete_ServerClick);  //click event handler
 
+            /*
             //if (not admin)
             btnDelete.Visible = false;
-            btnDelete.Enabled = false;
+            btnDelete.Attributes.Add("disabled", "disabled");
+            */
 
+            e.Row.Cells[4].Controls.Add(btnDetail);  //add the btn
+            e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
             e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
-        }
-
-        protected void btnStatus_Click(object sender, EventArgs e)
-        {
-            HtmlButton btnStatus = (HtmlButton)sender;
-            string receiptID = btnStatus.Attributes["value"];
-            DataRow sale = dsSales.Receipt.Select("id = " + receiptID)[0];
-            if (!(bool)sale.ItemArray[3])  //if not paid
-            {
-                sale["ordPaid"] = true;
-                daReceipt.Update(dsSales.Receipt);
-                dsSales.AcceptChanges();
-            }
-            btnStatus.InnerText = "Paid";
-            //if not admin
-            btnStatus.Attributes.Add("disabled", "disabled");
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -218,6 +148,93 @@ namespace PRIMEWeb.Sales
             }
 
             DisplaySales();
+        }
+
+        protected void btnStatus_Click(object sender, EventArgs e)
+        {
+            HtmlButton btnStatus = (HtmlButton)sender;
+            string receiptID = btnStatus.Attributes["value"];
+            DataRow sale = dsSales.Receipt.Select("id = " + receiptID)[0];
+            if (!(bool)sale.ItemArray[3])  //if not paid
+            {
+                sale["ordPaid"] = true;
+                daReceipt.Update(dsSales.Receipt);
+                dsSales.AcceptChanges();
+            }
+            btnStatus.InnerText = "Paid";
+            //if not admin
+            btnStatus.Attributes.Add("disabled", "disabled");
+        }
+
+        protected void btnDelete_ServerClick(object sender, EventArgs e)
+        {
+            lblReceiptID.Text = ((HtmlButton)sender).Attributes["value"];
+        }
+
+        protected void btnDeleteConfirm_Click(object sender, EventArgs e)
+        {
+            DataRow sale = dsSales.Receipt.Select("id = " + lblReceiptID.Text)[0];
+            DataRow[] orders = sale.GetChildRows("fk_orderline_receipt");
+            DataRow[] repairs = sale.GetChildRows("fk_serord_receipt");
+            foreach (DataRow o in orders)
+                o.Delete();
+            foreach (DataRow r in repairs)
+                r.Delete();
+            daOL.Update(dsSales.OrderLine);
+            daServiceOrder.Update(dsSales.ServiceOrder);
+            sale.Delete();
+            daReceipt.Update(dsSales.Receipt);
+            dsSales.AcceptChanges();
+        }
+
+        //helpers
+        private void DisplayCustomerList()
+        {
+            ddlCustomer.Items.Clear();
+            ddlCustomer.Items.Add(new ListItem("All Customers", "-1"));
+            foreach (DataRow r in dsSales.CustomerName.Rows)
+                ddlCustomer.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
+            ddlCustomer.SelectedIndex = 0; //select All Customers by default
+        }
+
+        private void DisplayEmployeeList()
+        {
+            ddlEmployee.Items.Clear();
+            ddlEmployee.Items.Add(new ListItem("All Employees", "-1"));
+            foreach (DataRow r in dsSales.EmployeeName.Rows)
+                ddlEmployee.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
+            ddlEmployee.SelectedIndex = 0; //select All Employees by default
+        }
+
+        private void DisplaySales()
+        {
+            DataTable dtSales = new DataTable();
+            dtSales.Columns.Add("Sale Number");
+            dtSales.Columns.Add("Date");
+            dtSales.Columns.Add("Customer");
+            dtSales.Columns.Add("Status");
+            dtSales.Columns.Add();  //Details Edit Delete
+
+            foreach (DataRow r in rows)
+            {
+                dtSales.Rows.Add(r.ItemArray[1], ((DateTime)r.ItemArray[2]).ToShortDateString(),
+                    r.GetParentRow("fk_receipt_custName")[1],
+                    r.ItemArray[3], r.ItemArray[0]); //Sale#, Date, Name, Status, ID
+            }
+            gvSales.DataSource = dtSales;
+            gvSales.DataBind();
+            switch (gvSales.Rows.Count)
+            {
+                case 0:
+                    lblCount.Text = "No records found.";
+                    break;
+                case 1:
+                    lblCount.Text = "1 record found.";
+                    break;
+                default:
+                    lblCount.Text = gvSales.Rows.Count.ToString() + " records found.";
+                    break;
+            }
         }
     }
 }

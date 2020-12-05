@@ -107,9 +107,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Customer:</label>
-                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Customers...</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
@@ -123,9 +121,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Employee:</label>
-                                        <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Employees...</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
@@ -160,8 +156,32 @@
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                            <asp:PostBackTrigger ControlID="btnDeleteConfirm"/>
                         </Triggers>
                     </asp:UpdatePanel>
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel">Delete Sale</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Do you really want to delete this sale?</p>
+                                    <p>Doing this will also delete all orders and repairs under this sale.</p>
+                                    <p>You can go back to details page to check out the orders and repairs.</p>
+                                    <p>If you're sure about this, click the "Delete" button.</p>
+                                    <asp:Label ID="lblReceiptID" runat="server" Visible="False"></asp:Label>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" CssClass="btn btn-danger" data-dismiss="modal" OnClick="btnDeleteConfirm_Click" UseSubmitBehavior="False" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

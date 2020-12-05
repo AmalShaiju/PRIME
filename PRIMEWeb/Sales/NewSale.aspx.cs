@@ -74,12 +74,20 @@ namespace PRIMEWeb.Sales
         {
             lsbOrders.SelectedIndex = -1;
             if (ddlProduct.SelectedValue == "")
-                txtPrice.Text = txtStock.Text = String.Empty;
-            else
             {
-                DataRow[] inv = dsSales.Inventory.Select("productID = " + ddlProduct.SelectedValue);
+                txtPrice.Text = txtStock.Text = String.Empty;
+                return;
+            }
+            DataRow[] inv = dsSales.Inventory.Select("productID = " + ddlProduct.SelectedValue);
+            if (inv.Count() != 0)
+            {
                 txtPrice.Text = "Price: " + Convert.ToDecimal(inv[0].ItemArray[4]).ToString("C2");
                 txtStock.Text = "Number in Stock: " + inv[0].ItemArray[1].ToString();
+            }
+            else
+            {
+                txtPrice.Text = String.Empty;
+                txtStock.Text = "Not In Inventory";
             }
         }
 
