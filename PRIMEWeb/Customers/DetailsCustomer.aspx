@@ -45,6 +45,7 @@
             box-shadow: none;
             border-radius: 0;
             height: 45px;
+            margin-top:5px;
         }
         .col-md-12 {
             text-align: center;
@@ -91,33 +92,41 @@
                 <h1>Customer Details</h1>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
+                        <asp:Label runat="server">ID</asp:Label>
                         <asp:TextBox ID="txtID" runat="server" placeholder="ID" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                     </div>
                     <div class="col-md-6 form-group">
+                        <asp:Label runat="server">First</asp:Label>
                         <asp:TextBox ID="txtFName" runat="server" placeholder="First Name" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
+                        <asp:Label runat="server">Last</asp:Label>
                         <asp:TextBox ID="txtLName" runat="server" placeholder="Last Name" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                     </div>
                     <div class="col-md-6 form-group">
+                        <asp:Label runat="server">Phone</asp:Label>
                         <asp:TextBox ID="txtPhone" runat="server" placeholder="Phone Number" CssClass="form-control" TextMode="Phone" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
+                        <asp:Label runat="server">Email</asp:Label>
                         <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                     </div>
                     <div class="col-md-6 form-group">
+                        <asp:Label runat="server">Address</asp:Label>
                         <asp:TextBox ID="txtAddress" runat="server" placeholder="Address" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
+                        <asp:Label runat="server">City</asp:Label>
                         <asp:TextBox ID="txtCity" runat="server" placeholder="City" CssClass="form-control" ReadOnly="true" ></asp:TextBox>
                     </div>
                     <div class="col-md-6 form-group">
+                        <asp:Label runat="server">Postal</asp:Label>
                         <asp:TextBox ID="txtPCode" runat="server" placeholder="Postal Code" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>

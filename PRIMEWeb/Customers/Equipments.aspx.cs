@@ -15,35 +15,24 @@ namespace PRIMEWeb.Customers
     {
         private static EquipmentDataSet dsEquipment;
         private static DataRow[] rows;
-        private static bool flag = false; //indicate if the data loading failed
         private static int id = -1;
-        static Equipments()
+
+        protected void Page_Load(object sender, EventArgs e)
         {
+            //data loaded successfully
             try
             {
                 dsEquipment = new EquipmentDataSet();
                 equipmentTableAdapter daEquipment = new equipmentTableAdapter();
                 daEquipment.Fill(dsEquipment.equipment);
+                rows = (Session["criteria"] != null) ? dsEquipment.equipment.Select(Session["criteria"].ToString())  //has criteria
+                    : dsEquipment.equipment.Select();  //select all
+                DisplayEquipment();
             }
             catch
             {
-                flag = true; //loading failed
+
             }
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                return;
-            }
-
-            //data loaded successfully
-
-            //string criteria = GetEquipmentCriteria();
-            rows = (Session["criteria"] != null) ? dsEquipment.equipment.Select(Session["criteria"].ToString())  //has criteria
-                : dsEquipment.equipment.Select();  //select all
-            DisplayEquipment();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -56,8 +45,6 @@ namespace PRIMEWeb.Customers
             }
             else
                 this.lblStatus.Text = "No Equipment Records";
-            this.lblSave.Text = "Ready";
-            
         }
 
         //display
@@ -160,12 +147,11 @@ namespace PRIMEWeb.Customers
                     daEquipmentCRUD.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
                     dsEquipment.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
                     //Refresh the page to show the record being deleted
-                    lblSave.Text = "Record deleted";
                     Response.Redirect(Request.RawUrl);
                 }
                 catch
                 {
-                    lblSave.Text = "Record not deleted";
+                    
                 }
             }
         }
@@ -175,7 +161,6 @@ namespace PRIMEWeb.Customers
         {
             HtmlButton btnDelete = (HtmlButton)sender;
             id = Convert.ToInt32(btnDelete.Attributes["value"]);
-
             //Send Id using cookie
             HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
             cID.Value = id.ToString();

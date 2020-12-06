@@ -137,14 +137,13 @@
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
                                     <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
-                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
+                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br />
                     <asp:Label ID="lblStatus" runat="server"></asp:Label>
-                    <asp:Label ID="lblSave" runat="server"></asp:Label>
                     <asp:ScriptManager ID="smgEquipment" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="upnEquipment" runat="server">
                         <ContentTemplate>
@@ -155,52 +154,6 @@
                             <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
                         </Triggers>
                     </asp:UpdatePanel>
-                    <%--<table class="table" id="tblEquipment">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="auto-style1">Model</th>   onrowcommand="gvCustomers_RowCommand"
-                                <th scope="col" class="auto-style1">Serial Number</th>
-                                <th scope="col" class="auto-style1">Manufacturer</th>
-                                <th scope="col" class="auto-style1">Type</th>
-                                <th scope="col" class="auto-style1"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>20in Cordless</td>
-                                <td>545482135484</td>
-                                <td>Black and Decker</td>
-                                <td>Lawn Mower</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Equipment Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Equipment" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Equipment" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>17-inch 2 stroke</td>
-                                <td>5461548513</td>
-                                <td>Husqvarna</td>
-                                <td>Weedeater</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Equipment Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Equipment" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Equipment" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>EU1000i</td>
-                                <td>1584513215</td>
-                                <td>Honda</td>
-                                <td>Generator</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Equipment Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Equipment" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Equipment" Text="Delete" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>--%>
                 </div>
                 <asp:ObjectDataSource ID="odsType" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.equip_typeTableAdapter"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="odsCustomer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.customerTableAdapter"></asp:ObjectDataSource>

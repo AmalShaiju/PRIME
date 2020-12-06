@@ -45,6 +45,7 @@
             box-shadow: none;
             border-radius: 0;
             height: 45px;
+            margin-top: 5px;
         }
         .col-md-12 {
             text-align: center;
@@ -91,41 +92,48 @@
                 <h1>Edit Customer</h1>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
+                        <asp:Label class="context_help" runat="server">ID</asp:Label>
                         <asp:TextBox ID="txtID" runat="server" placeholder="ID" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                     </div>
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtFName" runat="server" placeholder="First Name" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">First</asp:Label>
+                        <asp:TextBox ID="txtFName" runat="server" placeholder="Eg. John" CssClass="form-control" required="required"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtLName" runat="server" placeholder="Last Name" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Last</asp:Label>
+                        <asp:TextBox ID="txtLName" runat="server" placeholder="Eg. Smith" CssClass="form-control" required="required"></asp:TextBox>
                     </div>
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtPhone" runat="server" placeholder="Phone Number" CssClass="form-control" TextMode="Phone" required="required"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="form-control" required="required"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtAddress" runat="server" placeholder="Address" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Phone</asp:Label>
+                        <asp:TextBox ID="txtPhone" runat="server" placeholder="Eg. 2897774433" CssClass="form-control" TextMode="Phone" required="required"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtCity" runat="server" placeholder="City" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Email</asp:Label>
+                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Eg. email@gmail.com" CssClass="form-control" required="required"></asp:TextBox>
                     </div>
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtPCode" runat="server" placeholder="Postal Code" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Address</asp:Label>
+                        <asp:TextBox ID="txtAddress" runat="server" placeholder="Eg. 123 Real Street" CssClass="form-control" required="required"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 form-group">
+                        <asp:Label class="context_help" runat="server">City</asp:Label>
+                        <asp:TextBox ID="txtCity" runat="server" placeholder="Eg. Welland" CssClass="form-control" required="required"></asp:TextBox>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <asp:Label class="context_help" runat="server">Postal</asp:Label>
+                        <asp:TextBox ID="txtPCode" runat="server" placeholder="Eg. L3C7H2" CssClass="form-control" required="required"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-12">
-                        <asp:Button ID="btnUpdate" runat="server" aria-label="Update Customer" CssClass="btn btn-outline-primary" Text="Update Customer" OnClick="btnUpdate_Click" />
-                        <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
-                        <a class="btn btn-outline-primary" href="/Customers/" role="button" aria-label="Cancel Editing Customer">Cancel</a>
+                        <asp:Button ID="btnUpdate" runat="server" aria-label="Update Customer" CssClass="btn btn-outline-primary" Text="Update Customer" OnClick="btnUpdate_Click"/>
+                        &nbsp;<a class="btn btn-outline-primary" href="/Customers/" role="button" aria-label="Cancel Editing Customer">Cancel</a>
                     </div>
                 </div>
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>

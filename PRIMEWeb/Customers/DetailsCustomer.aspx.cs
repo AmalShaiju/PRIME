@@ -15,24 +15,20 @@ namespace PRIMEWeb.Customers
         static CustomerDataSet dsCustomer;
         private static int id = -1;
 
-        static DetailsCustomer()
-        {
-            dsCustomer = new CustomerDataSet();
-            customerTableAdapter daCustomer = new customerTableAdapter();
-
-            try
-            {
-                daCustomer.Fill(dsCustomer.customer);
-            }
-            catch { }
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
-                lblStatus.Text = "ID: " + Request.Cookies["ID"].Value;
+            try
+            {
+                dsCustomer = new CustomerDataSet();
+                customerTableAdapter daCustomer = new customerTableAdapter();
+                daCustomer.Fill(dsCustomer.customer);
 
-            id = Convert.ToInt32(Request.Cookies["ID"].Value);
+
+                if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
+                    id = Convert.ToInt32(Request.Cookies["ID"].Value);
+            }
+            catch { return; }
 
             if (id != -1)
             {
@@ -67,7 +63,6 @@ namespace PRIMEWeb.Customers
         {
             if (id != -1)
             {
-                //Send Id using cookie, more seecure I presume
                 HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
                 cID.Value = id.ToString();
                 Response.Cookies.Add(cID);

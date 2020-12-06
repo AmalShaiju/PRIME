@@ -46,6 +46,7 @@
             border-radius: 0;
             height: 45px;
             padding: 0.375rem 0.75rem;
+            margin-top:5px;
         }
         .form-check-label {
             margin-right: 10px;
@@ -96,19 +97,23 @@
                 <h1>Create New Equipment</h1>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtModel" runat="server" CssClass="form-control" placeholder="Model" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Model</asp:Label>
+                        <asp:TextBox ID="txtModel" runat="server" CssClass="form-control" placeholder="Eg. 20in Cordless" required="required"></asp:TextBox>
                     </div>
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtSerialNum" runat="server" CssClass="form-control" placeholder="Serial Number" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Serial</asp:Label>
+                        <asp:TextBox ID="txtSerialNum" runat="server" CssClass="form-control" placeholder="Eg. 3971sb462a" required="required"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
+                        <asp:Label class="context_help" runat="server">Manufacturer</asp:Label>
                         <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsManufacturer" DataTextField="Manufacturer" DataValueField="ID">
                             <asp:ListItem Value="0">Select Manufacturer</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="col-md-6 form-group">
+                        <asp:Label class="context_help" runat="server">Type</asp:Label>
                         <asp:DropDownList ID="ddlType" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsType" DataTextField="Type" DataValueField="ID">
                             <asp:ListItem Value="0">Select Type</asp:ListItem>
                         </asp:DropDownList>
@@ -116,6 +121,7 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
+                        <asp:Label class="context_help" runat="server">Customer</asp:Label>
                         <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsCustomer" DataTextField="Customer" DataValueField="ID">
                             <asp:ListItem Value="0">Select Customer</asp:ListItem>
                         </asp:DropDownList>

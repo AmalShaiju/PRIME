@@ -130,8 +130,8 @@
                             </div>
                         </div>
                     </div>
+                    <br />
                     <asp:Label ID="lblStatus" runat="server"></asp:Label>
-                    <asp:Label ID="lblSave" runat="server"></asp:Label>
                     <asp:ScriptManager ID="smgCustomer" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="upnCustomer" runat="server">
                         <ContentTemplate>

@@ -15,47 +15,45 @@ namespace PRIMEWeb.Customers
         static EquipmentDataSet dsEquipment;
         private static int id = -1;
 
-        static EditEquipment()
-        {
-            dsEquipment = new EquipmentDataSet();
-            equipmentCRUDTableAdapter daEquipment = new equipmentCRUDTableAdapter();
-
-            try
-            {
-                daEquipment.Fill(dsEquipment.equipmentCRUD);
-            }
-            catch { }
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
-                lblStatus.Text = "ID: " + Request.Cookies["ID"].Value;
-
-            id = Convert.ToInt32(Request.Cookies["ID"].Value);
-
-            if (id != -1)
+            try
             {
-                try
-                {
-                    DataRow equipment = dsEquipment.equipmentCRUD.FindByID(id); // Find the related Record and fill the fields in the page with the data
+                dsEquipment = new EquipmentDataSet();
+                equipmentCRUDTableAdapter daEquipment = new equipmentCRUDTableAdapter();
+                daEquipment.Fill(dsEquipment.equipmentCRUD);
+                if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
+                    id = Convert.ToInt32(Request.Cookies["ID"].Value);
+            }
+            catch { return; }
 
-                    if (equipment != null)
-                    {
-                        this.txtModel.Text = equipment.ItemArray[1].ToString();
-                        this.txtSerialNum.Text = equipment.ItemArray[2].ToString();
-                        this.ddlCustomer.SelectedValue = equipment.ItemArray[3].ToString();
-                        this.ddlType.SelectedValue = equipment.ItemArray[4].ToString();
-                        this.ddlManufacturer.SelectedValue = equipment.ItemArray[5].ToString();
-                    }
-                    else
-                    {
-                        lblStatus.Text = "Please Try Again";
-                    }
-                }
-                catch
+            if (!IsPostBack)
+            {
+                if (id != -1)
                 {
-                    lblStatus.Text = "Database Error";
+                    try
+                    {
+                        DataRow equipment = dsEquipment.equipmentCRUD.FindByID(id); // Find the related Record and fill the fields in the page with the data
+
+                        if (equipment != null)
+                        {
+                            this.txtID.Text = equipment.ItemArray[0].ToString();
+                            this.txtModel.Text = equipment.ItemArray[1].ToString();
+                            this.txtSerialNum.Text = equipment.ItemArray[2].ToString();
+                            this.ddlCustomer.SelectedValue = equipment.ItemArray[3].ToString();
+                            this.ddlType.SelectedValue = equipment.ItemArray[4].ToString();
+                            this.ddlManufacturer.SelectedValue = equipment.ItemArray[5].ToString();
+                        }
+                        else
+                        {
+                            lblStatus.Text = "Please Try Again";
+                        }
+                    }
+                    catch
+                    {
+                        lblStatus.Text = "Database Error";
+                    }
                 }
             }
         }
@@ -68,8 +66,6 @@ namespace PRIMEWeb.Customers
             {
                 try
                 {
-                    //DataRow equipment = dsEquipment.equipmentCRUD.FindByID(id); // find the related Record
-
                     //update record with user's input
                     dsEquipment.equipmentCRUD.FindByID(id).Model = txtModel.Text.ToString();
                     dsEquipment.equipmentCRUD.FindByID(id).Serial = txtSerialNum.Text.ToString();
@@ -97,7 +93,6 @@ namespace PRIMEWeb.Customers
                 dsEquipment.RejectChanges();
                 lblStatus.Text = "Unable to Update Record";
             }
-            //Response.Redirect("Equipments.aspx"); // Redirect the user to Edit page on btn click
         }
     }
 }
