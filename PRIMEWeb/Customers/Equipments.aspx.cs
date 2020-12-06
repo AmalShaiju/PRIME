@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using PRIMELibrary;
 using PRIMELibrary.EquipmentDataSetTableAdapters;
@@ -15,8 +16,6 @@ namespace PRIMEWeb.Customers
         private static EquipmentDataSet dsEquipment;
         private static DataRow[] rows;
         private static bool flag = false; //indicate if the data loading failed
-        private static List<Button> btnEdits = new List<Button>(); //list of the edit btns
-        private static List<Button> btnDeletes = new List<Button>(); //list of the delete btns
         private static int id = -1;
         static Equipments()
         {
@@ -41,7 +40,9 @@ namespace PRIMEWeb.Customers
 
             //data loaded successfully
 
-            rows = dsEquipment.equipment.Select(); //get records
+            //string criteria = GetEquipmentCriteria();
+            rows = (Session["criteria"] != null) ? dsEquipment.equipment.Select(Session["criteria"].ToString())  //has criteria
+                : dsEquipment.equipment.Select();  //select all
             DisplayEquipment();
         }
 
@@ -49,13 +50,14 @@ namespace PRIMEWeb.Customers
         {
             if (dsEquipment.equipment.Count > 0)
             {
-                string criteria = GetEquipmentCriteria();
-                rows = (criteria.Length > 0) ? dsEquipment.equipment.Select(criteria) : dsEquipment.equipment.Select();
+                Session["criteria"] = GetEquipmentCriteria();
+                rows = (Session["criteria"] != null) ? dsEquipment.equipment.Select(Session["criteria"].ToString()) : dsEquipment.equipment.Select();
                 DisplayEquipment();
             }
             else
                 this.lblStatus.Text = "No Equipment Records";
             this.lblSave.Text = "Ready";
+            
         }
 
         //display
@@ -121,84 +123,62 @@ namespace PRIMEWeb.Customers
             e.Row.Cells[0].Visible = false;
             e.Row.Cells[6].Attributes["width"] = "205px";
 
+
             //edit btn
-            Button btnEdit = new Button();  //create edit btn
-            btnEdits.Add(btnEdit);  //the list index of the button will also be the row index
-            btnEdit.CssClass = "btn btn-dark";  //set css class
-            btnEdit.Text = "Edit";
+            HtmlButton btnEdit = new HtmlButton();  //create edit btn
+            btnEdit.Attributes.Add("class","btn btn-dark");  //set css class
+            btnEdit.InnerText = "Edit";
+            btnEdit.Attributes.Add("value", e.Row.Cells[0].Text);
             btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this equipment");//set aria label
-            btnEdit.Click += new EventHandler(btnEdit_Click);  //click event handler
+            btnEdit.ServerClick += new EventHandler(btnEdit_Click);  //click event handler
             e.Row.Cells[6].Controls.Add(btnEdit);  //add the btn
 
             //delete btn
-            Button btnDelete = new Button();  //create delete btn
-            btnDeletes.Add(btnDelete);  //the list index of the button will also be the row index
-            btnDelete.CssClass = "btn btn-danger";  //set css class
-            btnDelete.Text = "Delete";
+            HtmlButton btnDelete = new HtmlButton();  //create delete btn
+            btnDelete.Attributes.Add("class", "btn btn-danger");  //set css class
+            btnDelete.InnerText = "Delete";
+            btnDelete.Attributes.Add("value", e.Row.Cells[0].Text);
             btnDelete.Attributes.Add("aria-label", "Click to delete this equipment");//set aria label
-            btnDelete.Click += new EventHandler(btnDelete_Click);  //click event handler
-            //btnDelete.Attributes.Add("AutoPostBack", "false");
-            //btnDelete.PostBackUrl = "false";
+            btnDelete.ServerClick += new EventHandler(btnDelete_Click);  //click event handler
             e.Row.Cells[6].Controls.Add(btnDelete);  //add the btn
         }
 
         // Delete btn 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            //Get the button that raised the event
-            Button btn = (Button)sender;
+            HtmlButton btnDelete = (HtmlButton)sender;
+            id = Convert.ToInt32(btnDelete.Attributes["value"]);
 
-            //Get the row that contains this button
-            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            if (id != -1)
+            {
+                try
+                {
+                    DataRow record = dsEquipment.equipment.FindByID(id); // Find and add the record to tbe record variable
+                    record.Delete(); // Deletes the record in memory
 
-            //Get rowindex
-            int rowindex = gvr.RowIndex;
-
-            this.lblSave.Text = rowindex.ToString();
-
-            id = Convert.ToInt32(gvEquipment.Rows[rowindex].Cells[0].Text);
-
-            //if (id != -1)
-            //{
-            //    try
-            //    {
-            //        DataRow record = dsEquipment.equipment.FindByID(id); // Find and add the record to tbe record variable
-            //        record.Delete(); // Deletes the record in memory
-
-            //        equipmentCRUDTableAdapter daEquipmentCRUD = new equipmentCRUDTableAdapter(); // table adapter to service table (Service adapter)
-            //        daEquipmentCRUD.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
-            //        dsEquipment.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
-            //        //Refresh the page to show the record being deleted
-            //        lblSave.Text = "Record deleted";
-            //        Response.Redirect(Request.RawUrl);
-            //    }
-            //    catch
-            //    {
-            //        lblSave.Text = "Record not deleted";
-            //    }
-            //}
+                    equipmentCRUDTableAdapter daEquipmentCRUD = new equipmentCRUDTableAdapter(); // table adapter to service table (Service adapter)
+                    daEquipmentCRUD.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                    dsEquipment.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+                    //Refresh the page to show the record being deleted
+                    lblSave.Text = "Record deleted";
+                    Response.Redirect(Request.RawUrl);
+                }
+                catch
+                {
+                    lblSave.Text = "Record not deleted";
+                }
+            }
         }
 
         // Edit btn 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            // Get the button that raised the event
-            Button btn = (Button)sender;
+            HtmlButton btnDelete = (HtmlButton)sender;
+            id = Convert.ToInt32(btnDelete.Attributes["value"]);
 
-            //Get the row that contains this button
-            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-
-            //Get rowindex
-            int rowindex = gvr.RowIndex;
-
-            this.lblSave.Text = rowindex.ToString();
-
-            // Not too secure sending value through query string
-            //Response.Redirect("EditService.aspx?ID=" + GridView1.Rows[e.NewEditIndex].Cells[1].Text
-
-            //Send Id using cookie, more seecure I presume
+            //Send Id using cookie
             HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
-            cID.Value = this.gvEquipment.Rows[rowindex].Cells[0].Text;
+            cID.Value = id.ToString();
             Response.Cookies.Add(cID);
             Response.Redirect("EditEquipment.aspx"); // Redirect the user to Edit page on btn click
         }
