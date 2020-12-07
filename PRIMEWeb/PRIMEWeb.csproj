@@ -89,7 +89,7 @@
     <Content Include="Repairs\Services.aspx" />
     <Content Include="Repairs\WarrantyReport.aspx" />
     <Content Include="Sales\Default.aspx" />
-    <Content Include="Sales\NewSale.aspx" />
+    <Content Include="Sales\SalesUpdate.aspx" />
     <Content Include="Sales\Report.aspx" />
     <Content Include="Sales\SaleRecord.aspx" />
     <Content Include="Script\bootstrap.min.js" />
@@ -196,12 +196,12 @@
     <Compile Include="Sales\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Sales\NewSale.aspx.cs">
-      <DependentUpon>NewSale.aspx</DependentUpon>
+    <Compile Include="Sales\SalesUpdate.aspx.cs">
+      <DependentUpon>SalesUpdate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sales\NewSale.aspx.designer.cs">
-      <DependentUpon>NewSale.aspx</DependentUpon>
+    <Compile Include="Sales\SalesUpdate.aspx.designer.cs">
+      <DependentUpon>SalesUpdate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sales\Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>

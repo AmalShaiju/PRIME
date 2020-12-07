@@ -85,17 +85,19 @@ namespace PRIMEWeb.Sales
             btnDetail.Attributes.Add("class", "btn btn-info");  //set css class
             btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale");
             //set aria label
-            btnDetail.InnerText = "Details";  //set text
+            btnDetail.InnerText = "Detail";  //set text
             btnDetail.HRef = "SaleRecord.aspx?ID=" + e.Row.Cells[4].Text;
             //redirect to details page
 
             //edit btn
-            Button btnEdit = new Button();  //create edit btn
-            btnEdit.CssClass = "btn btn-dark";  //set css class
-            btnEdit.Text = "Edit";
+            HtmlAnchor btnEdit = new HtmlAnchor();
+            btnEdit.Attributes.Add("type", "button");  //set as button
+            btnEdit.Attributes.Add("class", "btn btn-dark");  //set css class
             btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
-                //set aria label
-            btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
+            //set aria label
+            btnEdit.InnerText = "Edit";  //set text
+            btnEdit.HRef = "SalesUpdate.aspx?Mode=Edit&ID=" + e.Row.Cells[4].Text;
+            //redirect to edit page
 
             //delete btn
             HtmlAnchor btnDelete = new HtmlAnchor();

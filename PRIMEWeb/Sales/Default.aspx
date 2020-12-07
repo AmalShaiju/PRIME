@@ -90,11 +90,11 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Sales</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Sale" Text="Create New Sale" PostBackUrl="/Sales/NewSale.aspx" />
+                    <a type="button" href="SalesUpdate.aspx" class="btn btn-secondary" aria-label="Create New Sale">Create New Sale</a>
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Sales">
                         Filter Sales
                     </button>
-                    <asp:Button ID="btnReport" runat="server" CssClass="btn btn-secondary" aria-label="Sales Report" Text="Sales Report" PostBackUrl="/Sales/Report.aspx" />
+                    <a type="button" href="Report.aspx" class="btn btn-secondary" aria-label="Sales Report">Sales Report</a>
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">

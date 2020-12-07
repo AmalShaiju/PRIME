@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewSale.aspx.cs" Inherits="PRIMEWeb.Sales.NewSale" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SalesUpdate.aspx.cs" Inherits="PRIMEWeb.Sales.SalesUpdate" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>PRIME - Create New Sale</title>
+    <title>PRIME - <%=lblTitle.Text %></title>
     <link href="/CSS/bootstrap.css" rel="stylesheet" />
     <style type="text/css">
         body {
@@ -88,7 +88,7 @@
     </script>
 </head>
 <body>
-    <form id="frmNewSale" runat="server" class="was-validated">
+    <form id="frmSalesUpdate" runat="server" class="was-validated">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
             <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -112,7 +112,7 @@
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
                     <li class="breadcrumb-item"><a href="/Sales/">Sales</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Create New Sale</li>
+                    <li class="breadcrumb-item active" aria-current="page"><%=lblTitle.Text %></li>
                 </ol>
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
@@ -120,7 +120,9 @@
         <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="upnOrder" class="container rounded-lg row justify-content-sm-center" runat="server">
             <ContentTemplate>
-                <h1>Create New Sale</h1>
+                <h1 class="col-lg-12">
+                    <asp:Label ID="lblTitle" runat="server" Text="Create New Sale"></asp:Label>
+                </h1>
                 <div class="col-lg-9">
                     <div class="form-group form-control form-check form-check-inline">
                         <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
@@ -186,7 +188,7 @@
                     </div>
                     <div class="form-row">
                         <div id="divBtnOrder" class="col-md-12">
-                            <asp:Button ID="btnCreate" runat="server" aria-label="Create Sale" CssClass="btn btn-outline-primary" Text="Create Sale" UseSubmitBehavior="False" OnClick="btnCreate_Click"/>
+                            <asp:Button ID="btnModify" runat="server" aria-label="Create a new sale along with the orders" CssClass="btn btn-outline-primary" Text="Create Sale" UseSubmitBehavior="False" OnClick="btnModify_Click"/>
                             <asp:Button ID="btnAddOrder" runat="server" aria-label="Add Order" CssClass="btn btn-outline-primary" Text="Add Order" OnClick="btnAddOrder_Click" />
                             <asp:Button ID="btnDeleteOrder" runat="server" aria-label="Delete Order" CssClass="btn btn-outline-primary" Text="Delete Order" OnClick="btnDeleteOrder_Click" UseSubmitBehavior="False" />
                             <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-outline-primary" Text="Clear Order Form" UseSubmitBehavior="False" OnClick="btnClearOrder_Click" />
@@ -205,7 +207,7 @@
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="cboHelp" EventName="CheckedChanged" />
                 <asp:AsyncPostBackTrigger ControlID="ddlProduct" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="btnCreate" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="btnModify" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="btnAddOrder" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="btnDeleteOrder" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="btnClearOrder" EventName="Click" />

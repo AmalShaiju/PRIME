@@ -17,7 +17,7 @@ namespace PRIMEWeb.Sales
         public string note;
     }
 
-    public partial class NewSale : System.Web.UI.Page
+    public partial class SalesUpdate : System.Web.UI.Page
     {
         private static SalesDataSet dsSales = new SalesDataSet();
         private static CustomerNameTableAdapter daCustomerNames = new CustomerNameTableAdapter();
@@ -28,8 +28,11 @@ namespace PRIMEWeb.Sales
         private static ReceiptTableAdapter daReceipts = new ReceiptTableAdapter();
         private static OrderLineTableAdapter daOL = new OrderLineTableAdapter();
         private static InventoryTableAdapter daInventory = new InventoryTableAdapter();
+        private static bool dataLoaded = true;
+        private bool edit = false;
+        private string receiptID = String.Empty;
 
-        protected void Page_Load(object sender, EventArgs e)
+        static SalesUpdate()
         {
             try
             {
@@ -44,22 +47,64 @@ namespace PRIMEWeb.Sales
             }
             catch (Exception ex)
             {
-                //prompt data load failure
-                return;
+                dataLoaded = false;
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Request.QueryString["Mode"] == "Edit")
+            {
+                //if employee doesn't match redirect to details
+
+                edit = true;
+                receiptID = Request.QueryString["ID"];
+                lblTitle.Text = "Edit Sale";
+                btnModify.Text = "Save Changes";
+                btnModify.Attributes["aria-label"] = "Save changes made for this sale along with the orders";
             }
 
             ScriptManager.RegisterStartupScript(Page, GetType(), "UiFix", "setHeight();", true);
             //use js to resize listbox
 
+            if (!dataLoaded)
+            {
+                //prompt
+                return;
+            }
+
             if (IsPostBack) return;
             txtDate.Text = DateTime.Today.ToShortDateString();
 
-            DisplayCustomerList();
-            DisplayPaymentList();
+            DisplayCustomerList(receiptID);
+            DisplayPaymentList(receiptID);
             DisplayEmployeeList();
             DisplayProductList();  //populate ddl
 
-            Session["orders"] = new List<Order>();  //init
+            if (edit)
+            {
+                DataRow sale = dsSales.Receipt.FindByid(Convert.ToInt32(receiptID));
+                txtDate.Text = Convert.ToDateTime(sale.ItemArray[2]).ToShortDateString();
+
+                DataRow[] orders = sale.GetChildRows("fk_orderline_receipt");  //get orders
+
+                lsbOrders.Items.Clear();
+                foreach (DataRow o in orders)
+                {
+                    DataRow product = o.GetParentRow("fk_orderline_inventory")  //inventory
+                        .GetParentRow("fk_inventory_product");
+                    string noteAppended = (o.ItemArray[4] == null) ? String.Empty :
+                                            " - Note: " + o.ItemArray[4].ToString();
+                    lsbOrders.Items.Add(
+                        new ListItem(product.ItemArray[1].ToString() +
+                                " (" + product.ItemArray[3].ToString() + ")" +
+                                " x" + o.ItemArray[2].ToString() + noteAppended,
+                            o.ItemArray[0].ToString())
+                    );  //add to list box
+                }
+            }
+
+            Session["newOrders"] = new Dictionary<int, Order>();  //init
         }
 
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
@@ -91,41 +136,39 @@ namespace PRIMEWeb.Sales
             }
         }
 
-        protected void btnCreate_Click(object sender, EventArgs e)
+        protected void btnModify_Click(object sender, EventArgs e)
         {
-            if (ddlCustomer.SelectedValue == "")
-            {
-                //prompt user to select customer
+            if (ddlCustomer.SelectedValue == "" || ddlPayment.SelectedValue == "")
                 return;
-            }
 
-            if (ddlPayment.SelectedValue == "")
-            {
-                //prompt user to select payment method
-                return;
-            }
+            Dictionary<int, Order> orders = (Dictionary<int, Order>)Session["newOrders"];  //get saved orders
 
-            List<Order> orders = (List<Order>)Session["orders"];  //get saved orders
-
-            if (orders.Count == 0)
+            if (lsbOrders.Items.Count == 0)
             {
                 //prompt user to add orders
                 return;
             }
 
-            DataRow sale = dsSales.Receipt.NewRow();
-            sale["ordNumber"] = dsSales.Receipt.Rows.Count + 1;
+            DataRow sale;
+            if (Request.QueryString["Mode"] != "Edit")
+            {
+                sale = dsSales.Receipt.NewRow();
+                sale["ordNumber"] = dsSales.Receipt.Rows.Count + 1;
+                sale["ordPaid"] = false;
+                sale["empID"] = ddlEmployee.SelectedValue;
+            }
+            else
+                sale = dsSales.Receipt.FindByid(Convert.ToInt32(Request.QueryString["ID"]));
+
             sale["ordDate"] = txtDate.Text;
-            sale["ordPaid"] = false;
             sale["paymentID"] = ddlPayment.SelectedValue;
             sale["custID"] = ddlCustomer.SelectedValue;
-            sale["empID"] = ddlEmployee.SelectedValue;
 
-            dsSales.Receipt.Rows.Add(sale);
+            if (Request.QueryString["Mode"] != "Edit") dsSales.Receipt.Rows.Add(sale);
+
             new ReceiptTableAdapter().Update(dsSales.Receipt);
-            dsSales.AcceptChanges();
 
-            foreach (Order order in orders)
+            foreach (Order order in orders.Values)
             {
                 DataRow nrOrder = dsSales.OrderLine.NewRow();
                 DataRow inv = dsSales.Inventory.Select("productID = " + order.productID)[0];
@@ -144,11 +187,8 @@ namespace PRIMEWeb.Sales
 
                     //update orderline
                     dsSales.OrderLine.Rows.Add(nrOrder);
-                    daOL.Update(dsSales.OrderLine);
                     //update inventory
                     inv["invQuantity"] = stock - order.qty;
-                    daInventory.Update(dsSales.Inventory);
-                    dsSales.AcceptChanges();
                 }
                 else
                 {
@@ -174,34 +214,35 @@ namespace PRIMEWeb.Sales
 
                     //update orderline
                     dsSales.OrderLine.Rows.Add(orderNew);
-                    daOL.Update(dsSales.OrderLine);
                     //update inventory
                     inv["invQuantity"] = 0;
-                    daInventory.Update(dsSales.Inventory);
-                    dsSales.AcceptChanges();
                 }
             }
+            daOL.Update(dsSales.OrderLine);
+            daInventory.Update(dsSales.Inventory);
+            dsSales.AcceptChanges();
+            Response.Redirect("SaleRecord.aspx?ID=" + sale.ItemArray[0].ToString());
         }
 
         protected void btnAddOrder_Click(object sender, EventArgs e)
         {
-            if (ddlProduct.SelectedValue == "")
-            {
-                //prompt user to select a product
-                return;
-            }
+            if (ddlProduct.SelectedValue == "") return;
 
-            List<Order> orders = (List<Order>)Session["orders"];  //get saved orders
+            Dictionary<int, Order> orders = (Dictionary<int, Order>)Session["newOrders"];  //get saved orders
             //get inventory record
 
             Order order;
+            int key = orders.Count > 0 ? orders.Keys.Max() + 1 : 0;
             order.productID = Convert.ToInt32(ddlProduct.SelectedValue);
             order.qty = Convert.ToInt32(txtQty.Text);
             order.note = txtNote.Text;
-            orders.Add(order);  //save order
+            orders.Add(key, order);  //save order
+            string noteAppended = String.IsNullOrEmpty(txtNote.Text) ? String.Empty :
+                                    " - Note: " + txtNote.Text;
             lsbOrders.Items.Add(
-                new ListItem(ddlProduct.SelectedItem.Text + " x" + txtQty.Text +
-                    " - Note: " + txtNote.Text)
+                new ListItem(ddlProduct.SelectedItem.Text + " x" + txtQty.Text + noteAppended,
+                        "-" + key.ToString()  //"-" identify newly added orders, followed by the key in the dict
+                    )
             );  //add to list box
 
             //reset form
@@ -217,8 +258,14 @@ namespace PRIMEWeb.Sales
                 //prompt user
                 return;
             }
-            List<Order> orders = (List<Order>)Session["orders"];  //get saved orders
-            orders.RemoveAt(lsbOrders.SelectedIndex);  //remove the record
+            if (lsbOrders.SelectedValue.Contains("-"))  //newly added order
+            {
+                Dictionary<int, Order> orders = (Dictionary<int, Order>)Session["newOrders"];  //get saved orders
+                int key = Convert.ToInt32(lsbOrders.SelectedValue.Substring(1));
+                orders.Remove(key);  //remove the record
+            }
+            else  //in editing mode, selecting an existing order
+                dsSales.OrderLine.FindByid(Convert.ToInt32(lsbOrders.SelectedValue)).Delete();
             lsbOrders.Items.RemoveAt(lsbOrders.SelectedIndex);  //remove the entry
         }
 
@@ -230,22 +277,32 @@ namespace PRIMEWeb.Sales
 
 
         //helpers
-        private void DisplayCustomerList()
+        private void DisplayCustomerList(string receiptID)
         {
             ddlCustomer.Items.Clear();
             ddlCustomer.Items.Add(new ListItem("Select a Customer", ""));
             foreach (DataRow r in dsSales.CustomerName.Rows)
                 ddlCustomer.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
-            ddlCustomer.SelectedIndex = 0; //make Select a Customer as default
+            if (String.IsNullOrEmpty(receiptID))
+                ddlCustomer.SelectedIndex = 0; //if creating make Select a Customer as default
+            else
+                ddlCustomer.SelectedValue =
+                    dsSales.Receipt.FindByid(Convert.ToInt32(receiptID)).ItemArray[5].ToString();
+                    //if editing select the customer as is on record
         }
 
-        private void DisplayPaymentList()
+        private void DisplayPaymentList(string receiptID)
         {
             ddlPayment.Items.Clear();
             ddlPayment.Items.Add(new ListItem("Select a Payment Method", ""));
             foreach (DataRow r in dsSales.Payment.Rows)
                 ddlPayment.Items.Add(new ListItem(r[1].ToString(), r[0].ToString()));
-            ddlPayment.SelectedIndex = 0; //make Select a Payment Method as default
+            if (String.IsNullOrEmpty(receiptID))
+                ddlPayment.SelectedIndex = 0; //if creating make Select a Payment Method as default
+            else
+                ddlPayment.SelectedValue =
+                    dsSales.Receipt.FindByid(Convert.ToInt32(receiptID)).ItemArray[4].ToString();
+                    //if editing select the customer as is on record
         }
 
         private void DisplayEmployeeList()

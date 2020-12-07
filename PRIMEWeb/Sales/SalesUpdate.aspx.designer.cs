@@ -11,17 +11,17 @@ namespace PRIMEWeb.Sales
 {
 
 
-    public partial class NewSale
+    public partial class SalesUpdate
     {
 
         /// <summary>
-        /// frmNewSale control.
+        /// frmSalesUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmNewSale;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmSalesUpdate;
 
         /// <summary>
         /// btnLogout control.
@@ -49,6 +49,15 @@ namespace PRIMEWeb.Sales
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upnOrder;
+
+        /// <summary>
+        /// lblTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTitle;
 
         /// <summary>
         /// cboHelp control.
@@ -231,13 +240,13 @@ namespace PRIMEWeb.Sales
         protected global::System.Web.UI.WebControls.ListBox lsbOrders;
 
         /// <summary>
-        /// btnCreate control.
+        /// btnModify control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreate;
+        protected global::System.Web.UI.WebControls.Button btnModify;
 
         /// <summary>
         /// btnAddOrder control.
