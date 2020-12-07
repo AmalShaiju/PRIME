@@ -74,8 +74,8 @@ namespace PRIMEWeb.Customers
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         {
             lblCustomer.Visible = lblManufacturer.Visible = lblModelHelp.Visible =
-                lblSerialHelp.Visible = lblType.Visible =
-                pnlEquipmentsHelp.Visible = cboHelp.Checked;
+            lblSerialHelp.Visible = lblType.Visible =
+            pnlEquipmentsHelp.Visible = cboHelp.Checked;
         }
     }
 }

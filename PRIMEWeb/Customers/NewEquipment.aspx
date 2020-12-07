@@ -107,11 +107,13 @@
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Model</asp:Label>
                         <asp:TextBox ID="txtModel" runat="server" CssClass="form-control" placeholder="Eg. 20in Cordless" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Please input equipment's model</div>
                         <asp:Label ID="lblModelHelp" runat="server" Text="Input the equipment model (Eg. 20in Cordless)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Serial</asp:Label>
                         <asp:TextBox ID="txtSerialNum" runat="server" CssClass="form-control" placeholder="Eg. 3971462" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Please input equipment's serial number</div>
                         <asp:Label ID="lblSerialHelp" runat="server" Text="Input the equipment serial numer (Eg. 3971462)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
@@ -119,15 +121,17 @@
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Manufacturer</asp:Label>
                         <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsManufacturer" DataTextField="Manufacturer" DataValueField="ID">
-                            <asp:ListItem Value="0">Select Manufacturer</asp:ListItem>
+                            <asp:ListItem>Select Manufacturer</asp:ListItem>
                         </asp:DropDownList>
+                        <div class="invalid-feedback">Please select the manufacturer</div>
                         <asp:Label ID="lblManufacturer" runat="server" Text="Select the mafucturer of the equipment from drop down list." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Type</asp:Label>
                         <asp:DropDownList ID="ddlType" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsType" DataTextField="Type" DataValueField="ID">
-                            <asp:ListItem Value="0">Select Type</asp:ListItem>
+                            <asp:ListItem>Select Type</asp:ListItem>
                         </asp:DropDownList>
+                        <div class="invalid-feedback">Please select the equipment type</div>
                         <asp:Label ID="lblType" runat="server" Text="Select the equipment type from the drop down list." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
@@ -135,8 +139,9 @@
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Customer</asp:Label>
                         <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsCustomer" DataTextField="Customer" DataValueField="ID">
-                            <asp:ListItem Value="0">Select Customer</asp:ListItem>
+                            <asp:ListItem>Select Customer</asp:ListItem>
                         </asp:DropDownList>
+                        <div class="invalid-feedback">Please select the customer</div>
                         <asp:Label ID="lblCustomer" runat="server" Text="Select the full name of the customer the equipment belongs to." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>

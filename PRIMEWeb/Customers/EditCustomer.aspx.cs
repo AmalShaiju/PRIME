@@ -96,5 +96,11 @@ namespace PRIMEWeb.Customers
                 lblStatus.Text = "Unable to Update Record";
             }
         }
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            lblAddressHelp.Visible = lblCityHelp.Visible = lblEmailHelp.Visible =
+                lblFirstlHelp.Visible = lblLastHelp.Visible = lblPhoneHelp.Visible = lblIdHelp.Visible =
+                lblPostalHelp.Visible = pnlCustomerHelp.Visible = cboHelp.Checked;
+        }
     }
 }

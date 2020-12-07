@@ -101,13 +101,13 @@
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">First</asp:Label>
                         <asp:TextBox ID="txtFName" runat="server" placeholder="Eg. John" CssClass="form-control" required="required"></asp:TextBox>
-                        <%--<div class="invalid-feedback">Please input first name</div>--%>
+                        <div class="invalid-feedback">Please input first name</div>
                         <asp:Label ID="lblFirstlHelp" runat="server" Text="Input the customer's first name (Eg. John)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Last</asp:Label>
                         <asp:TextBox ID="txtLName" runat="server" placeholder="Eg. Smith" CssClass="form-control" required="required"></asp:TextBox>
-                        <%--<div class="invalid-feedback">Please input last name</div>--%>
+                        <div class="invalid-feedback">Please input last name</div>
                         <asp:Label ID="lblLastHelp" runat="server" Text="Input the customer's last name (Eg. Smith)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
@@ -115,13 +115,13 @@
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Phone</asp:Label>
                         <asp:TextBox ID="txtPhone" runat="server" placeholder="Eg. 2897771414" CssClass="form-control" TextMode="Phone" required="required"></asp:TextBox>
-                        <%--<div class="invalid-feedback">Please input phone number. 10 digits without +1 or spaces</div>--%>
+                        <div class="invalid-feedback">Please input phone number. 10 digits without +1 or spaces</div>
                         <asp:Label ID="lblPhoneHelp" runat="server" Text="Input the customer's phone number. 10 digits without +1 or spaces (Eg. 2897771414)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Email</asp:Label>
                         <asp:TextBox ID="txtEmail" runat="server" placeholder="Eg. email@gmail.com" CssClass="form-control" required="required"></asp:TextBox>
-                        <%--<div class="invalid-feedback">Please input email address</div>--%>
+                        <div class="invalid-feedback">Please input email address</div>
                         <asp:Label ID="lblEmailHelp" runat="server" Text="Input the customer's email address (Eg. email@gmail.com)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
@@ -129,13 +129,13 @@
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Address</asp:Label>
                         <asp:TextBox ID="txtAddress" runat="server" placeholder="Eg. 123 Real Street" CssClass="form-control" required="required"></asp:TextBox>
-                        <%--<div class="invalid-feedback">Please input address</div>--%>
+                        <div class="invalid-feedback">Please input address</div>
                         <asp:Label ID="lblAddressHelp" runat="server" Text="Input the customer's address (Eg. 123 Real Street)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">City</asp:Label>
                         <asp:TextBox ID="txtCity" runat="server" placeholder="Eg. Welland" CssClass="form-control" required="required"></asp:TextBox>
-                        <%--<div class="invalid-feedback">Please input city</div>--%>
+                        <div class="invalid-feedback">Please input city</div>
                         <asp:Label ID="lblCityHelp" runat="server" Text="Input the city customer lives in(Eg. Welland)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Postal</asp:Label>
                         <asp:TextBox ID="txtPCode" runat="server" placeholder="Eg. L3C7H2" CssClass="form-control" required="required"></asp:TextBox>
-                        <%--<div class="invalid-feedback">Please input postal code. 6 characters, no spaces</div>--%>
+                        <div class="invalid-feedback">Please input postal code. 6 characters, no spaces</div>
                         <asp:Label ID="lblPostalHelp" runat="server" Text="Input the customer's postal code. 6 characters, no spaces (Eg. L3C7H2)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
