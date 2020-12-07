@@ -143,12 +143,6 @@ namespace PRIMEWeb.Sales
 
             Dictionary<int, Order> orders = (Dictionary<int, Order>)Session["newOrders"];  //get saved orders
 
-            if (lsbOrders.Items.Count == 0)
-            {
-                //prompt user to add orders
-                return;
-            }
-
             DataRow sale;
             if (Request.QueryString["Mode"] != "Edit")
             {
@@ -166,60 +160,63 @@ namespace PRIMEWeb.Sales
 
             if (Request.QueryString["Mode"] != "Edit") dsSales.Receipt.Rows.Add(sale);
 
-            new ReceiptTableAdapter().Update(dsSales.Receipt);
-
-            foreach (Order order in orders.Values)
+            if (lsbOrders.Items.Count > 0)
             {
-                DataRow nrOrder = dsSales.OrderLine.NewRow();
-                DataRow inv = dsSales.Inventory.Select("productID = " + order.productID)[0];
-                int stock = Convert.ToInt32(inv.ItemArray[1]);
-                double invPrice = Convert.ToDouble(inv.ItemArray[4]);
-                int inventoryID = Convert.ToInt32(inv.ItemArray[0]);
+                new ReceiptTableAdapter().Update(dsSales.Receipt);
 
-                if (order.qty <= stock)
+                foreach (Order order in orders.Values)
                 {
-                    nrOrder["orlPrice"] = invPrice * order.qty * 1.11;  //price +10% +1%
-                    nrOrder["orlQuantity"] = order.qty;  //quantity
-                    nrOrder["orlOrderReq"] = false;  //not new order
-                    nrOrder["orlNote"] = order.note;  //note
-                    nrOrder["inventoryID"] = inventoryID;  //inventoryID
-                    nrOrder["receiptID"] = sale.ItemArray[0];  //receiptID
+                    DataRow nrOrder = dsSales.OrderLine.NewRow();
+                    DataRow inv = dsSales.Inventory.Select("productID = " + order.productID)[0];
+                    int stock = Convert.ToInt32(inv.ItemArray[1]);
+                    double invPrice = Convert.ToDouble(inv.ItemArray[4]);
+                    int inventoryID = Convert.ToInt32(inv.ItemArray[0]);
 
-                    //update orderline
-                    dsSales.OrderLine.Rows.Add(nrOrder);
-                    //update inventory
-                    inv["invQuantity"] = stock - order.qty;
+                    if (order.qty <= stock)
+                    {
+                        nrOrder["orlPrice"] = invPrice * order.qty * 1.11;  //price +10% +1%
+                        nrOrder["orlQuantity"] = order.qty;  //quantity
+                        nrOrder["orlOrderReq"] = false;  //not new order
+                        nrOrder["orlNote"] = order.note;  //note
+                        nrOrder["inventoryID"] = inventoryID;  //inventoryID
+                        nrOrder["receiptID"] = sale.ItemArray[0];  //receiptID
+
+                        //update orderline
+                        dsSales.OrderLine.Rows.Add(nrOrder);
+                        //update inventory
+                        inv["invQuantity"] = stock - order.qty;
+                    }
+                    else
+                    {
+                        //in stock part
+                        nrOrder["orlPrice"] = invPrice * stock * 1.11;  //price (in stock part) +10% +1%
+                        nrOrder["orlQuantity"] = stock;  //quantity (in stock part)
+                        nrOrder["orlOrderReq"] = false;  //in stock part
+                        nrOrder["orlNote"] = order.note + " (In Stock)";  //note
+                        nrOrder["inventoryID"] = inventoryID;  //inventoryID
+                        nrOrder["receiptID"] = sale.ItemArray[0];  //receiptID
+
+                        //update db
+                        dsSales.OrderLine.Rows.Add(nrOrder);
+
+                        //Order New part
+                        DataRow orderNew = dsSales.OrderLine.NewRow();
+                        orderNew["orlPrice"] = invPrice * (order.qty - stock) * 1.01;  //price (Order New part) +1%
+                        orderNew["orlQuantity"] = order.qty - stock;  //quantity (Order New part)
+                        orderNew["orlOrderReq"] = true;  //Order New part
+                        orderNew["orlNote"] = order.note + " (Order New)";  //note
+                        orderNew["inventoryID"] = inventoryID;  //inventoryID
+                        orderNew["receiptID"] = sale.ItemArray[0];  //receiptID
+
+                        //update orderline
+                        dsSales.OrderLine.Rows.Add(orderNew);
+                        //update inventory
+                        inv["invQuantity"] = 0;
+                    }
                 }
-                else
-                {
-                    //in stock part
-                    nrOrder["orlPrice"] = invPrice * stock * 1.11;  //price (in stock part) +10% +1%
-                    nrOrder["orlQuantity"] = stock;  //quantity (in stock part)
-                    nrOrder["orlOrderReq"] = false;  //in stock part
-                    nrOrder["orlNote"] = order.note + " (In Stock)";  //note
-                    nrOrder["inventoryID"] = inventoryID;  //inventoryID
-                    nrOrder["receiptID"] = sale.ItemArray[0];  //receiptID
-
-                    //update db
-                    dsSales.OrderLine.Rows.Add(nrOrder);
-
-                    //Order New part
-                    DataRow orderNew = dsSales.OrderLine.NewRow();
-                    orderNew["orlPrice"] = invPrice * (order.qty - stock) * 1.01;  //price (Order New part) +1%
-                    orderNew["orlQuantity"] = order.qty - stock;  //quantity (Order New part)
-                    orderNew["orlOrderReq"] = true;  //Order New part
-                    orderNew["orlNote"] = order.note + " (Order New)";  //note
-                    orderNew["inventoryID"] = inventoryID;  //inventoryID
-                    orderNew["receiptID"] = sale.ItemArray[0];  //receiptID
-
-                    //update orderline
-                    dsSales.OrderLine.Rows.Add(orderNew);
-                    //update inventory
-                    inv["invQuantity"] = 0;
-                }
+                daOL.Update(dsSales.OrderLine);
+                daInventory.Update(dsSales.Inventory);
             }
-            daOL.Update(dsSales.OrderLine);
-            daInventory.Update(dsSales.Inventory);
             dsSales.AcceptChanges();
             Response.Redirect("SaleRecord.aspx?ID=" + sale.ItemArray[0].ToString());
         }
