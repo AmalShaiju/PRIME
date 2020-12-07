@@ -28,28 +28,8 @@ namespace PRIMEWeb.Sales
         private static ReceiptTableAdapter daReceipts = new ReceiptTableAdapter();
         private static OrderLineTableAdapter daOL = new OrderLineTableAdapter();
         private static InventoryTableAdapter daInventory = new InventoryTableAdapter();
-        private static bool dataLoaded = true;
         private bool edit = false;
         private string receiptID = String.Empty;
-
-        static SalesUpdate()
-        {
-            try
-            {
-                dsSales.Clear();
-                daCustomerNames.Fill(dsSales.CustomerName);
-                daPayments.Fill(dsSales.Payment);
-                daEmployeeNames.Fill(dsSales.EmployeeName);
-                daProducts.Fill(dsSales.Product);
-                daInventories.Fill(dsSales.Inventory);
-                daReceipts.Fill(dsSales.Receipt);
-                daOL.Fill(dsSales.OrderLine);
-            }
-            catch (Exception ex)
-            {
-                dataLoaded = false;
-            }
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -67,13 +47,25 @@ namespace PRIMEWeb.Sales
             ScriptManager.RegisterStartupScript(Page, GetType(), "UiFix", "setHeight();", true);
             //use js to resize listbox
 
-            if (!dataLoaded)
+            if (IsPostBack) return;
+
+            try
+            {
+                dsSales.Clear();
+                daCustomerNames.Fill(dsSales.CustomerName);
+                daPayments.Fill(dsSales.Payment);
+                daEmployeeNames.Fill(dsSales.EmployeeName);
+                daProducts.Fill(dsSales.Product);
+                daInventories.Fill(dsSales.Inventory);
+                daReceipts.Fill(dsSales.Receipt);
+                daOL.Fill(dsSales.OrderLine);
+            }
+            catch (Exception ex)
             {
                 //prompt
                 return;
             }
 
-            if (IsPostBack) return;
             txtDate.Text = DateTime.Today.ToShortDateString();
 
             DisplayCustomerList(receiptID);
@@ -146,8 +138,9 @@ namespace PRIMEWeb.Sales
             DataRow sale;
             if (Request.QueryString["Mode"] != "Edit")
             {
+                DateTime now = DateTime.Now;
                 sale = dsSales.Receipt.NewRow();
-                sale["ordNumber"] = dsSales.Receipt.Rows.Count + 1;
+                sale["ordNumber"] = now.ToString("MMddHHmm");
                 sale["ordPaid"] = false;
                 sale["empID"] = ddlEmployee.SelectedValue;
             }
@@ -159,11 +152,9 @@ namespace PRIMEWeb.Sales
             sale["custID"] = ddlCustomer.SelectedValue;
 
             if (Request.QueryString["Mode"] != "Edit") dsSales.Receipt.Rows.Add(sale);
+            daReceipts.Update(dsSales.Receipt);
 
             if (lsbOrders.Items.Count > 0)
-            {
-                new ReceiptTableAdapter().Update(dsSales.Receipt);
-
                 foreach (Order order in orders.Values)
                 {
                     DataRow nrOrder = dsSales.OrderLine.NewRow();
@@ -214,9 +205,8 @@ namespace PRIMEWeb.Sales
                         inv["invQuantity"] = 0;
                     }
                 }
-                daOL.Update(dsSales.OrderLine);
-                daInventory.Update(dsSales.Inventory);
-            }
+            daOL.Update(dsSales.OrderLine);
+            daInventory.Update(dsSales.Inventory);
             dsSales.AcceptChanges();
             Response.Redirect("SaleRecord.aspx?ID=" + sale.ItemArray[0].ToString());
         }
