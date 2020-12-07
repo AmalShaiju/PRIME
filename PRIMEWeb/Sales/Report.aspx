@@ -27,10 +27,13 @@
         }
         h1 {
             text-align: center;
-            padding: 10px 0 50px 0;
+            padding-top: 10px;
+        }
+        h4 {
+            padding-top: 50px;
         }
         .table {
-            margin: 15px auto 50px auto;
+            margin-top: 15px;
         }
         .table td, .table th {
             text-align: center;
@@ -71,140 +74,14 @@
         <div class="container rounded-lg row justify-content-sm-center">
             <div class="col-lg-9">
                 <h1>Weekly Sales Report</h1>
-                <h4>Overall summary of the week's monetary events</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Order Number</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Payment ID</th>
-                            <th scope="col">Customer</th>
-                            <th scope="col">Employee</th>
-                            <th scope="col">Total Amount</th>
-                            <th scope="col">Emma's 2%</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>5643739</td>
-                            <td>2020-10-20</td>
-                            <td>56472</td>
-                            <td>John Brown (423545)</td>
-                            <td>Whilliam White</td>
-                            <td>$150.00</td>
-                            <td>$3.00</td>
-                        </tr>
-                        <tr>
-                            <td>9365439</td>
-                            <td>2020-10-19</td>
-                            <td>56445</td>
-                            <td>Weima Black (343667)</td>
-                            <td>Jessica Johns</td>
-                            <td>$230.00</td>
-                            <td>$4.60</td>
-                        </tr>
-                        <tr>
-                            <td>2956349</td>
-                            <td>2020-10-20</td>
-                            <td>56489</td>
-                            <td>David Green (853145)</td>
-                            <td>Jeremy Wolt</td>
-                            <td>$241.00</td>
-                            <td>$4.82</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h4>Sales completed last week</h4>
+                <asp:GridView ID="gvSales" runat="server" CssClass="table" CellPadding="0" GridLines="None" ></asp:GridView>
+                <asp:Label ID="lblSales" runat="server"></asp:Label>
                 <h4>Total sales broken down</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Emma's 2%</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Records</td>
-                            <td>37</td>
-                            <td>$3456.00</td>
-                            <td>$69.12</td>
-                        </tr>
-                        <tr>
-                            <td>Repair Records</td>
-                            <td>13</td>
-                            <td>$1602.00</td>
-                            <td>$32.04</td>
-                        </tr>
-                        <tr>
-                            <td>Sale Records</td>
-                            <td>14</td>
-                            <td>$1854.00</td>
-                            <td>$37.08</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h4>Inventory used & Parts Ordered </h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Inventory ID</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Inventory Usage</th>
-                            <th scope="col"># Ordered</th>
-                            <th scope="col">Amount for Inventory</th>
-                            <th scope="col">Amount for the Ordered</th>
-                            <th scope="col">Total Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>853457</td>
-                            <td>Oil "G37s", 200ml</td>
-                            <td>12</td>
-                            <td>10</td>
-                            <td>$120.00</td>
-                            <td>$100.00</td>
-                            <td>$220.00</td>
-                        </tr>
-                        <tr>
-                            <td>457875</td>
-                            <td>Wheel "Radius", 28 inches</td>
-                            <td>4</td>
-                            <td>0</td>
-                            <td>$120.00</td>
-                            <td>$0</td>
-                            <td>$120.00</td>
-                        </tr>
-                        <tr>
-                            <td>654321</td>
-                            <td>Blade "RT", silver</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>$0</td>
-                            <td>$170.00</td>
-                            <td>$170.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h4>Orders (completed, shipping, receiving)</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col"># Orders Placed</th>
-                            <th scope="col"># Shipping Orders</th>
-                            <th scope="col"># Orders Receiving</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>12</td>
-                            <td>5</td>
-                            <td>7</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <asp:GridView ID="gvBreakDown" runat="server" CssClass="table" CellPadding="0" GridLines="None" ></asp:GridView>
+                <h4>Inventory used & Parts Ordered</h4>
+                <asp:GridView ID="gvOrdered" runat="server" CssClass="table" CellPadding="0" GridLines="None" ></asp:GridView>
+                <asp:Label ID="lblOrdered" runat="server"></asp:Label>
             </div>
         </div>
     </form>
