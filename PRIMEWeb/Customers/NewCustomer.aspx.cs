@@ -73,5 +73,11 @@ namespace PRIMEWeb.Customers
             this.txtAddress.Text = "";
             this.txtEmail.Text = "";
         }
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            lblAddressHelp.Visible = lblCityHelp.Visible = lblEmailHelp.Visible =
+                lblFirstlHelp.Visible = lblLastHelp.Visible = lblPhoneHelp.Visible =
+                lblPostalHelp.Visible = pnlCustomerHelp.Visible = cboHelp.Checked;
+        }
     }
 }

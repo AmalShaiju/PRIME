@@ -70,5 +70,12 @@ namespace PRIMEWeb.Customers
             this.ddlManufacturer.SelectedIndex = 0;
             this.ddlType.SelectedIndex = 0;
         }
+
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            lblCustomer.Visible = lblManufacturer.Visible = lblModelHelp.Visible =
+                lblSerialHelp.Visible = lblType.Visible =
+                pnlEquipmentsHelp.Visible = cboHelp.Checked;
+        }
     }
 }

@@ -33,6 +33,15 @@ namespace PRIMEWeb.Customers
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
+        /// cboHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cboHelp;
+
+        /// <summary>
         /// txtModel control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace PRIMEWeb.Customers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtModel;
+
+        /// <summary>
+        /// lblModelHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblModelHelp;
 
         /// <summary>
         /// txtSerialNum control.
@@ -51,6 +69,15 @@ namespace PRIMEWeb.Customers
         protected global::System.Web.UI.WebControls.TextBox txtSerialNum;
 
         /// <summary>
+        /// lblSerialHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSerialHelp;
+
+        /// <summary>
         /// ddlManufacturer control.
         /// </summary>
         /// <remarks>
@@ -58,6 +85,15 @@ namespace PRIMEWeb.Customers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlManufacturer;
+
+        /// <summary>
+        /// lblManufacturer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblManufacturer;
 
         /// <summary>
         /// ddlType control.
@@ -69,6 +105,15 @@ namespace PRIMEWeb.Customers
         protected global::System.Web.UI.WebControls.DropDownList ddlType;
 
         /// <summary>
+        /// lblType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblType;
+
+        /// <summary>
         /// ddlCustomer control.
         /// </summary>
         /// <remarks>
@@ -76,6 +121,24 @@ namespace PRIMEWeb.Customers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCustomer;
+
+        /// <summary>
+        /// lblCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCustomer;
+
+        /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
 
         /// <summary>
         /// btnCreate control.
@@ -87,13 +150,13 @@ namespace PRIMEWeb.Customers
         protected global::System.Web.UI.WebControls.Button btnCreate;
 
         /// <summary>
-        /// lblStatus control.
+        /// pnlEquipmentsHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatus;
+        protected global::System.Web.UI.WebControls.Panel pnlEquipmentsHelp;
 
         /// <summary>
         /// odsType control.
