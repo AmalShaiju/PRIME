@@ -38,6 +38,11 @@
         }
         td .btn {
             width: 80px;
+            margin: 0 5px;
+        }
+        .auto-style1 {
+            left: 0px;
+            top: 0px;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -113,58 +118,30 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
+                                    <div class="form-group">
+                                        <label class="control-label">Email:</label>
+                                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="auto-style1">
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">City</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>123-456-7890</td>
-                                <td>Welland</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Customer Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Customer" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>345-765-7890</td>
-                                <td>Niagara Falls</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Customer Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Customer" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Larry</td>
-                                <td>Bird</td>
-                                <td>345-285-7890</td>
-                                <td>Toronto</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Customer Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Customer" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Customer" Text="Delete" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <br />
+                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    <asp:ScriptManager ID="smgCustomer" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnCustomer" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="gvCustomers" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gvCustomers_RowDataBound">
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>

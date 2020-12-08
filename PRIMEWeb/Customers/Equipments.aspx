@@ -45,6 +45,10 @@
         }
         td .btn {
             width: 80px;
+            margin: 0 5px;
+        }
+        .auto-style1 {
+            height: 25px;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -80,7 +84,7 @@
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
         </nav>
-        <div class="container rounded-lg">
+        <div class="container rounded-lg" style="height: 80%">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Equipments</h1>
@@ -108,16 +112,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Manufacturer:</label>
-                                        <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Manufacturers...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="odsManufacturer" DataTextField="Manufacturer" DataValueField="ID">
+                                            <asp:ListItem Value="None">Select Manufacturer</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Type:</label>
-                                        <asp:DropDownList ID="ddlType" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Types...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlType" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="odsType" DataTextField="Type" DataValueField="ID">
+                                            <asp:ListItem Value="None">Select Type</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -126,65 +130,34 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Customer:</label>
-                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Customers...</asp:ListItem>
+                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="odsCustomer" DataTextField="Customer" DataValueField="ID">
+                                            <asp:ListItem Value="None">Select Customer</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
-                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
+                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Model</th>
-                                <th scope="col">Serial Number</th>
-                                <th scope="col">Manufacturer</th>
-                                <th scope="col">Type</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>20in Cordless</td>
-                                <td>545482135484</td>
-                                <td>Black and Decker</td>
-                                <td>Lawn Mower</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Equipment Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Equipment" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Equipment" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>17-inch 2 stroke</td>
-                                <td>5461548513</td>
-                                <td>Husqvarna</td>
-                                <td>Weedeater</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Equipment Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Equipment" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Equipment" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>EU1000i</td>
-                                <td>1584513215</td>
-                                <td>Honda</td>
-                                <td>Generator</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Equipment Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Equipment" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Equipment" Text="Delete" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <br />
+                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    <asp:ScriptManager ID="smgEquipment" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnEquipment" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="gvEquipment" CssClass="table" runat="server" GridLines="None" OnRowDataBound="gvEquipment_RowDataBound">
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
+                <asp:ObjectDataSource ID="odsType" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.equip_typeTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsCustomer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.customerTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsManufacturer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.manufacturerTableAdapter"></asp:ObjectDataSource>
             </div>
         </div>
     </form>
