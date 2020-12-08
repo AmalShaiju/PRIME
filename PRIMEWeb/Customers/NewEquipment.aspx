@@ -66,7 +66,7 @@
     </style>
 </head>
 <body>
-    <form id="frmNewSale" runat="server">
+    <form id="frmNewSale" runat="server" class="was-validated">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
             <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,17 +121,17 @@
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Manufacturer</asp:Label>
                         <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsManufacturer" DataTextField="Manufacturer" DataValueField="ID">
-                            <asp:ListItem>Select Manufacturer</asp:ListItem>
+                            <asp:ListItem disabled="disabled" Selected="True" Value="0">Select Manufacturer</asp:ListItem>
                         </asp:DropDownList>
-                        <div class="invalid-feedback">Please select the manufacturer</div>
+                        <%--<div class="invalid-feedback">Please select the manufacturer</div>--%>
                         <asp:Label ID="lblManufacturer" runat="server" Text="Select the mafucturer of the equipment from drop down list." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Type</asp:Label>
                         <asp:DropDownList ID="ddlType" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsType" DataTextField="Type" DataValueField="ID">
-                            <asp:ListItem>Select Type</asp:ListItem>
+                            <asp:ListItem disabled="disabled" Selected="True" Value="0" >Select Type</asp:ListItem>
                         </asp:DropDownList>
-                        <div class="invalid-feedback">Please select the equipment type</div>
+                        <%--<div class="invalid-feedback">Please select the equipment type</div>--%>
                         <asp:Label ID="lblType" runat="server" Text="Select the equipment type from the drop down list." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
@@ -139,9 +139,9 @@
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Customer</asp:Label>
                         <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select" AppendDataBoundItems="True" DataSourceID="odsCustomer" DataTextField="Customer" DataValueField="ID">
-                            <asp:ListItem>Select Customer</asp:ListItem>
+                            <asp:ListItem disabled="disabled" Selected="True" Value="0" >Select Customer</asp:ListItem>
                         </asp:DropDownList>
-                        <div class="invalid-feedback">Please select the customer</div>
+                        <%--<div class="invalid-feedback">Please select the customer</div>--%>
                         <asp:Label ID="lblCustomer" runat="server" Text="Select the full name of the customer the equipment belongs to." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
@@ -149,9 +149,9 @@
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">
                     <div id="divBtnEquipments" class="col-md-12">
-                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Equipment" CssClass="btn btn-outline-primary" Text="Create Equipment" OnClick="btnCreate_Click" />
+                        <asp:Button type="submit" ID="btnCreate" runat="server" aria-label="Create Equipment" CssClass="btn btn-outline-primary" Text="Create Equipment" OnClick="btnCreate_Click" />
                         <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
-                        <a class="btn btn-outline-primary" href="/Equipments/" role="button" aria-label="Cancel Creating Equipment">Cancel</a>
+                        <a class="btn btn-outline-primary" href="/Customers/Equipments.aspx" role="button" aria-label="Cancel Creating Equipment">Cancel</a>
                     </div>
                 </div>
                 <asp:Panel ID="pnlEquipmentsHelp" runat="server" Visible="False">
@@ -159,7 +159,7 @@
                         <p>Fill the equipment form and click the "Create Equipment" button to add the equipment record to the database and start creating a new equipment.</p>
                         <p>Click the "Clear Form" button to remove all the text from textboxes and deselect manufacturer, type, customer fields.</p>
                         <p>Click the "Cancel" button to cancel creating the equipment and go to the Equipment page.</p>
-                    </asp:Panel>
+                </asp:Panel>
                 <br />
                 <asp:ObjectDataSource ID="odsType" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.equip_typeTableAdapter"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="odsCustomer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.customerTableAdapter"></asp:ObjectDataSource>

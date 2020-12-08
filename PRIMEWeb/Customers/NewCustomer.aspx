@@ -60,7 +60,7 @@
         }
     </style>
 </head>
-<body>
+<body style="height: 1582px">
     <form id="frmNewCust" runat="server" class="was-validated">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
             <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
@@ -90,7 +90,7 @@
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
         </nav>
-        <div class="container rounded-lg row justify-content-sm-center" style="height: 1086px">
+        <div class="container rounded-lg row justify-content-sm-center" style="height: 1258px">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                 <h1>Create New Customer</h1>
                 <div class="form-group form-control form-check form-check-inline">
