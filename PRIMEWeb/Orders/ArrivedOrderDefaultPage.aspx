@@ -90,6 +90,8 @@
                                 <th scope="col">Arrive Date</th>
                                 <th scope="col">Number in Order</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Inventoty ID</th>
+                                <th scope="col">Product Order</th>
                                 
                             </tr>
                         </thead>
@@ -99,7 +101,8 @@
                                 <td>11/29/2019</td>
                                 <td>###</td>
                                 <td>100$</td>
-                                
+                                <td>500</td>
+                                <td>Abrakadabra</td>
                                 
                                 <td>
                                     <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
@@ -113,6 +116,8 @@
                                 <td>12/1/2019</td>
                                 <td>###</td>
                                 <td>1050$</td>
+                                <td>590</td>
+                                <td>Abrakadabra</td>
                                 
                                 <td>
                                     <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
@@ -126,6 +131,8 @@
                                 <td>12/20/2019</td>
                                 <td>###</td>
                                 <td>105$</td>
+                                <td>501</td>
+                                <td>Abrakadabra</td>
                                 
                                 <td>
                                     <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />

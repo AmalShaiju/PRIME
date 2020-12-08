@@ -51,6 +51,15 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.TextBox txtArriveDate;
 
         /// <summary>
+        /// ddlInventoryID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlInventoryID;
+
+        /// <summary>
         /// txtNumInOrder control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace PRIMEWeb.Orders
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
+
+        /// <summary>
+        /// ddlProdOrderID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProdOrderID;
 
         /// <summary>
         /// pnlBtnItems control.

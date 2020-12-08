@@ -103,9 +103,13 @@
                         <asp:TextBox ID="txtInvoiceNum" runat="server" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label class="control-label">Arrive Date::</label>
+                        <label class="control-label">Arrive Date:</label>
                         <asp:TextBox ID="txtArriveDate" runat="server" CssClass="form-control" TextMode="Date" required="required"></asp:TextBox>
                     </div>
+                    <label class="control-label">Select Inventory Item</label>
+                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select">
+                                <asp:ListItem>Select an Item...</asp:ListItem>
+                        </asp:DropDownList>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
@@ -116,6 +120,10 @@
                         <label class="control-label">Price:</label>
                         <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" required="required"></asp:TextBox>
                     </div>
+                    <label class="control-label">Select Product Order</label>
+                    <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select">
+                                <asp:ListItem>Select a product order...</asp:ListItem>
+                        </asp:DropDownList>
                 </div>
                
                 <div class="form-row">
