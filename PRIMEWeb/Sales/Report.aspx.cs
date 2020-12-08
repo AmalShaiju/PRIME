@@ -54,10 +54,10 @@ namespace PRIMEWeb.Sales
                     lblSales.Text = "No records found.";
                     break;
                 case 1:
-                    lblSales.Text = "1 sale displayed.";
+                    lblSales.Text = "1 paid sale displayed.";
                     break;
                 default:
-                    lblSales.Text = sales.Length.ToString() + " sales displayed.";
+                    lblSales.Text = sales.Length.ToString() + " paid sales displayed.";
                     break;
             }
             DataTable dtSales = new DataTable();

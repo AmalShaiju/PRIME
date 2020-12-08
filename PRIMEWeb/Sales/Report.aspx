@@ -33,7 +33,7 @@
             padding-top: 50px;
         }
         .table {
-            margin-top: 15px;
+            margin: 15px 0 0 0;
         }
         .table td, .table th {
             text-align: center;
