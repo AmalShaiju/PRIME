@@ -1,4 +1,24 @@
-﻿/*INFO and DELETE*/
+﻿/*BODY TAG*/
+.body-high {
+    background-color: #B5B5B5;
+    color:#000000;
+}
+
+/*NAVIGATION  CONTAINER*/
+.nav-high{
+    border-bottom: solid 1.5px #000;
+}
+
+.border-high {
+    border: solid 1.5px #000;
+}
+
+.table-high {
+    border: solid 1.5px #000;
+}
+
+
+/*INFO and DELETE*/
 .btn-danger-high {
     color: #fff;
     background-color: #AE191B;
@@ -40,31 +60,29 @@
 
 
 /*CLEAR button*/
-#btnClear {
+#btnClear, .btn-dependent-page {
     color: #fff;
     background-color: #F07000;
     border-color: #F07000;
 }
 
-#btnClear:hover {
+#btnClear:hover, .btn-dependent-page:hover {
     color: #fff;
     background-color: #D16200;
     border-color: #D16200;
 }
 
-#btnClear.btn-clear-high {
+#btnClear.btn-clear-high, .btn-dependent-page.btn-dependent-high {
     color: #fff;
     background-color: #BD5800;
     border-color: #BD5800;
 }
 
-#btnClear.btn-clear-high:hover {
+#btnClear.btn-clear-high:hover, .btn-dependent-page.btn-dependent-high:hover {
     color: #fff;
     background-color: #7A3900;
     border-color: #7A3900;
 }
-
-
 
 /*CREATE BUTTON*/
 #btnCreate {
@@ -89,4 +107,17 @@
     color: #fff;
     background-color: #3C3C07;
     border-color: #3C3C07;
+}
+
+/*LOGOUT BUTTON*/
+#btnLogout.btn-logout-high {
+    color: #fff;
+    background-color: #DC3545;
+    border-color: #DC3545;
+}
+
+#btnLogout.btn-logout-high:hover {
+    color: #fff;
+    background-color: #C72334;
+    border-color: #C72334;
 }

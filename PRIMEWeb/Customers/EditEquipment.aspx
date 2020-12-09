@@ -60,6 +60,8 @@
             margin: 0 10px;
         }
     </style>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmNewSale" runat="server"  class="was-validated">
@@ -96,6 +98,10 @@
             <div id="wrapper-inner" class="col-lg-9">
                 <h1>Edit Equipment</h1>
                 <div class="form-group form-control form-check form-check-inline">
+                    &nbsp;
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
                     <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
                 </div>

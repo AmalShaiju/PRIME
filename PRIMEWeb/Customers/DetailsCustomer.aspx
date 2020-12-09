@@ -55,7 +55,12 @@
         .col-md-12 input, .col-md-12 a {
             margin: 0 10px;
         }
+        nav{
+            border:solid 1px #000;
+        }
     </style>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmDetailsCust" runat="server">
@@ -90,6 +95,11 @@
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                 <h1>Customer Details</h1>
+                <div class="form-group form-control form-check form-check-inline">
+                    &nbsp;
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
                         <asp:Label runat="server">ID</asp:Label>
