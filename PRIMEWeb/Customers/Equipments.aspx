@@ -6,6 +6,7 @@
 <head runat="server">
     <title>PRIME - Equipments</title>
     <link href="/CSS/bootstrap.css" rel="stylesheet" />
+    <link href="/CSS/highContrast.css" rel="stylesheet" />
     <style type="text/css">
         body {
             background-color: #e0e0e0;
@@ -53,6 +54,7 @@
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    <script src="/Script/WCAG.js"></script>
 </head>
 <body>
     <form id="frmSales" runat="server">
@@ -87,11 +89,14 @@
         <div class="container rounded-lg" style="height: 80%">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" />
+                    <%--<asp:CheckBox Text="Switch to high contrasrt" runat="server" onlick="OnClick_SwitchCss" class="form-check-input" value="1" id="chbSwitch" name="Switch"/>--%>
                     <h1>Equipments</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Equipment" Text="Create New Equipment" PostBackUrl="/Customers/NewEquipment.aspx" />
-                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Equipments">
+                    <button id="btnFilter" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Equipments">
                         Filter Equipments
                     </button>
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Equipment" Text="Create New Equipment" PostBackUrl="/Customers/NewEquipment.aspx" />
+                    
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
