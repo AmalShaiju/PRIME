@@ -20,9 +20,9 @@ namespace PRIMELibrary {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("EmmasDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("OrdersDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class EmmasDataSet : global::System.Data.DataSet {
+    public partial class OrdersDataSet : global::System.Data.DataSet {
         
         private on_orderDataTable tableon_order;
         
@@ -44,7 +44,7 @@ namespace PRIMELibrary {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public EmmasDataSet() {
+        public OrdersDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -55,7 +55,7 @@ namespace PRIMELibrary {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected EmmasDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected OrdersDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -180,7 +180,7 @@ namespace PRIMELibrary {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            EmmasDataSet cln = ((EmmasDataSet)(base.Clone()));
+            OrdersDataSet cln = ((OrdersDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -283,9 +283,9 @@ namespace PRIMELibrary {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "EmmasDataSet";
+            this.DataSetName = "OrdersDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/EmmasDataSet.xsd";
+            this.Namespace = "http://tempuri.org/OrdersDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableon_order = new on_orderDataTable();
@@ -349,7 +349,7 @@ namespace PRIMELibrary {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            EmmasDataSet ds = new EmmasDataSet();
+            OrdersDataSet ds = new OrdersDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -698,7 +698,7 @@ namespace PRIMELibrary {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EmmasDataSet ds = new EmmasDataSet();
+                OrdersDataSet ds = new OrdersDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1003,7 +1003,7 @@ namespace PRIMELibrary {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EmmasDataSet ds = new EmmasDataSet();
+                OrdersDataSet ds = new OrdersDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1355,7 +1355,7 @@ namespace PRIMELibrary {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EmmasDataSet ds = new EmmasDataSet();
+                OrdersDataSet ds = new OrdersDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1660,7 +1660,7 @@ namespace PRIMELibrary {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EmmasDataSet ds = new EmmasDataSet();
+                OrdersDataSet ds = new OrdersDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2484,7 +2484,7 @@ namespace PRIMELibrary {
         }
     }
 }
-namespace PRIMELibrary.EmmasDataSetTableAdapters {
+namespace PRIMELibrary.OrdersDataSetTableAdapters {
     
     
     /// <summary>
@@ -2689,7 +2689,7 @@ SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, invent
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EmmasDataSet.on_orderDataTable dataTable) {
+        public virtual int Fill(OrdersDataSet.on_orderDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2702,9 +2702,9 @@ SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, invent
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EmmasDataSet.on_orderDataTable GetData() {
+        public virtual OrdersDataSet.on_orderDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EmmasDataSet.on_orderDataTable dataTable = new EmmasDataSet.on_orderDataTable();
+            OrdersDataSet.on_orderDataTable dataTable = new OrdersDataSet.on_orderDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2712,14 +2712,14 @@ SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, invent
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet.on_orderDataTable dataTable) {
+        public virtual int Update(OrdersDataSet.on_orderDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet dataSet) {
+        public virtual int Update(OrdersDataSet dataSet) {
             return this.Adapter.Update(dataSet, "on_order");
         }
         
@@ -3118,7 +3118,7 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EmmasDataSet.prod_orderDataTable dataTable) {
+        public virtual int Fill(OrdersDataSet.prod_orderDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3131,9 +3131,9 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EmmasDataSet.prod_orderDataTable GetData() {
+        public virtual OrdersDataSet.prod_orderDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EmmasDataSet.prod_orderDataTable dataTable = new EmmasDataSet.prod_orderDataTable();
+            OrdersDataSet.prod_orderDataTable dataTable = new OrdersDataSet.prod_orderDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3141,14 +3141,14 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet.prod_orderDataTable dataTable) {
+        public virtual int Update(OrdersDataSet.prod_orderDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet dataSet) {
+        public virtual int Update(OrdersDataSet dataSet) {
             return this.Adapter.Update(dataSet, "prod_order");
         }
         
@@ -3527,7 +3527,7 @@ SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, invent
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EmmasDataSet.on_orderCRUDDataTable dataTable) {
+        public virtual int Fill(OrdersDataSet.on_orderCRUDDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3540,9 +3540,9 @@ SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, invent
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EmmasDataSet.on_orderCRUDDataTable GetData() {
+        public virtual OrdersDataSet.on_orderCRUDDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EmmasDataSet.on_orderCRUDDataTable dataTable = new EmmasDataSet.on_orderCRUDDataTable();
+            OrdersDataSet.on_orderCRUDDataTable dataTable = new OrdersDataSet.on_orderCRUDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3550,14 +3550,14 @@ SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, invent
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet.on_orderCRUDDataTable dataTable) {
+        public virtual int Update(OrdersDataSet.on_orderCRUDDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet dataSet) {
+        public virtual int Update(OrdersDataSet dataSet) {
             return this.Adapter.Update(dataSet, "on_orderCRUD");
         }
         
@@ -3956,7 +3956,7 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EmmasDataSet.prod_orderCRUDDataTable dataTable) {
+        public virtual int Fill(OrdersDataSet.prod_orderCRUDDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3969,9 +3969,9 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EmmasDataSet.prod_orderCRUDDataTable GetData() {
+        public virtual OrdersDataSet.prod_orderCRUDDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EmmasDataSet.prod_orderCRUDDataTable dataTable = new EmmasDataSet.prod_orderCRUDDataTable();
+            OrdersDataSet.prod_orderCRUDDataTable dataTable = new OrdersDataSet.prod_orderCRUDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3979,14 +3979,14 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet.prod_orderCRUDDataTable dataTable) {
+        public virtual int Update(OrdersDataSet.prod_orderCRUDDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet dataSet) {
+        public virtual int Update(OrdersDataSet dataSet) {
             return this.Adapter.Update(dataSet, "prod_orderCRUD");
         }
         
@@ -4324,7 +4324,7 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(EmmasDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(OrdersDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._prod_orderTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.prod_order.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -4370,7 +4370,7 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(EmmasDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(OrdersDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._prod_orderTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.prod_order.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -4412,7 +4412,7 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(EmmasDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(OrdersDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._on_orderCRUDTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.on_orderCRUD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -4478,7 +4478,7 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(EmmasDataSet dataSet) {
+        public virtual int UpdateAll(OrdersDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

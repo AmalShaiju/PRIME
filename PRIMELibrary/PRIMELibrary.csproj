@@ -56,9 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrdersDataSet.cs">
-      <DependentUpon>OrdersDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="OrdersDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

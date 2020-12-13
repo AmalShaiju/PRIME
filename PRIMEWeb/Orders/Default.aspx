@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PRIMEWeb.Orders.Default" %>
+﻿    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PRIMEWeb.Orders.Default" %>
 
 <!DOCTYPE html>
 
@@ -83,54 +83,54 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Orders</h1>
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Product Number</th>
-                                <th scope="col">Date Ordered</th>
-                                <th scope="col">Paid money</th>
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Order Form" Text="Create New Order Form" PostBackUrl="/Orders/NewOrderForm1.aspx" />
+                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Customers">
+                        Filter Orders
+                    </button>
+                    
+                    <div class="collapse" id="collapseFilter">
+                        <div class="card card-body bg-light">
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Product Number:</label>
+                                        <asp:TextBox ID="txtProdNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Date Ordered:</label>
+                                        <asp:TextBox ID="txtDateOrdered" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Paid:</label>
+                                        <asp:TextBox ID="txtPaid" runat="server" CssClass="form-control" TextMode="Phone"></asp:TextBox>
+                                    </div>
+                                </div>
                                 
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>###</td>
-                                <td>11/29/2019</td>
-                                <td>100$</td>
-                                
-                                
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Item" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Item" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>###</td>
-                                <td>12/15/2019</td>
-                                <td>1500$</td>
-                                
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Item" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Item" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>###</td>
-                                <td>8/28/2019</td>
-                                <td>190$</td>
-                                
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Item" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Item" Text="Delete" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <div class="auto-style1">
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
+                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnOrder" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="gvOrders" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gvOrders_RowDataBound">
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>
