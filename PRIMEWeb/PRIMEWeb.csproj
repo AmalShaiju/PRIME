@@ -86,6 +86,8 @@
     <Content Include="Orders\ArrivedOrder.aspx" />
     <Content Include="Orders\ArrivedOrderDefaultPage.aspx" />
     <Content Include="Orders\Default.aspx" />
+    <Content Include="Orders\DetailsArrivedOrder.aspx" />
+    <Content Include="Orders\EditArrivedOrder.aspx" />
     <Content Include="Orders\EditOrdersForm1.aspx" />
     <Content Include="Orders\NewOrderForm1.aspx" />
     <Content Include="Repairs\Default.aspx" />
@@ -177,6 +179,20 @@
     </Compile>
     <Compile Include="Orders\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\DetailsArrivedOrder.aspx.cs">
+      <DependentUpon>DetailsArrivedOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\DetailsArrivedOrder.aspx.designer.cs">
+      <DependentUpon>DetailsArrivedOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\EditArrivedOrder.aspx.cs">
+      <DependentUpon>EditArrivedOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\EditArrivedOrder.aspx.designer.cs">
+      <DependentUpon>EditArrivedOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Orders\EditOrdersForm1.aspx.cs">
       <DependentUpon>EditOrdersForm1.aspx</DependentUpon>

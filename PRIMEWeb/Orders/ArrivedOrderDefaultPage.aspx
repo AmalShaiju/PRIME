@@ -83,7 +83,141 @@
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Arrived Item</h1>
                     <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-secondary" aria-label="Add info about Arrived Item" Text="Add info about Arrived Item" PostBackUrl="/Orders/ArrivedOrder.aspx" />
-                    <table class="table">
+                   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Arrived Items">
+                        Filter Arrived Items
+                    </button>
+                    
+                    <div class="collapse" id="collapseFilter">
+                        <div class="card card-body bg-light">
+                            <div class="form-row">
+                                <div class="auto-style1">
+                                    <div class="form-group">
+                                        <label class="control-label">Date In:</label>
+                                        <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Service:</label>
+                                        <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="inventoryID" DataValueField="id">
+                                            <asp:ListItem Selected="True" Value="None">None</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Equipment:</label>
+                                        <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="prodorderID" DataValueField="id">
+                                            <asp:ListItem Selected="True">None</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="auto-style1">
+                                    <div class="form-group">
+                                        <label class="control-label">Date Arrived:</label>
+                                        <asp:TextBox ID="txtDateAttived" runat="server" CssClass="form-control" TextMode ="Date" ></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Number In Order:</label>
+                                        <asp:TextBox ID="txtNumberInOrder" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Number In Order:</label>
+                                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" TextMode ="Number"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                            <div>
+                                <div id="divBtnSearch" class="col-md-6 align-self-end">
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
+                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+              
+                    
+                        <asp:GridView ID="gv_Orders" runat="server" BorderStyle="None" CssClass="table" GridLines="None" OnRowDataBound="gv_Orders_RowDataBound">
+                            <EmptyDataTemplate>
+                                No Records Found
+                            </EmptyDataTemplate>
+                        </asp:GridView>
+                        <asp:Label ID="lbl_Status" runat="server" Text="Label"></asp:Label>
+
+                        <br />
+                    <asp:ObjectDataSource ID="Service" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_orderTableAdapter" UpdateMethod="Update">
+                        <DeleteParameters>
+                            <asp:Parameter Name="Original_id" Type="Int32" />
+                            <asp:Parameter Name="Original_onordInvoiceNum" Type="String" />
+                            <asp:Parameter Name="Original_onordArriveDate" Type="String" />
+                            <asp:Parameter Name="Original_onordPrice" Type="Decimal" />
+                            <asp:Parameter Name="Original_inventoryID" Type="Int32" />
+                            <asp:Parameter Name="Original_prodorderID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="onordInvoiceNum" Type="String" />
+                            <asp:Parameter Name="onordArriveDate" Type="String" />
+                            <asp:Parameter Name="onordPrice" Type="Decimal" />
+                            <asp:Parameter Name="inventoryID" Type="Int32" />
+                            <asp:Parameter Name="prodorderID" Type="Int32" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="onordInvoiceNum" Type="String" />
+                            <asp:Parameter Name="onordArriveDate" Type="String" />
+                            <asp:Parameter Name="onordPrice" Type="Decimal" />
+                            <asp:Parameter Name="inventoryID" Type="Int32" />
+                            <asp:Parameter Name="prodorderID" Type="Int32" />
+                            <asp:Parameter Name="Original_id" Type="Int32" />
+                            <asp:Parameter Name="Original_onordInvoiceNum" Type="String" />
+                            <asp:Parameter Name="Original_onordArriveDate" Type="String" />
+                            <asp:Parameter Name="Original_onordPrice" Type="Decimal" />
+                            <asp:Parameter Name="Original_inventoryID" Type="Int32" />
+                            <asp:Parameter Name="Original_prodorderID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="on_order2" runat="server" DeleteMethod="Delete" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_orderTableAdapter">
+                        <DeleteParameters>
+                            <asp:Parameter Name="Original_id" Type="Int32" />
+                        </DeleteParameters>
+                    </asp:ObjectDataSource>
+                   </div>
+
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <%--  <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Invoice Number</th>
@@ -148,3 +282,4 @@
     </form>
 </body>
 </html>
+--%>

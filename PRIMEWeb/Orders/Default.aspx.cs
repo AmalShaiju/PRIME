@@ -22,6 +22,7 @@ namespace PRIMEWeb.Orders
         {
             try
             {
+                
                 dsOrder = new OrdersDataSet();
                 prod_orderTableAdapter daOrder = new prod_orderTableAdapter();
                 daOrder.Fill(dsOrder.prod_order);
@@ -52,7 +53,7 @@ namespace PRIMEWeb.Orders
                 DataRow record = dt.NewRow();
                 record[0] = r.ItemArray[0].ToString();
                 record[1] = r.ItemArray[1].ToString();
-                record[2] = r.ItemArray[2].ToString();
+                record[2] = Convert.ToDateTime(r.ItemArray[2].ToString()).ToShortDateString();
                 record[3] = r.ItemArray[3].ToString();
                 record[4] = String.Empty;
 
@@ -85,7 +86,7 @@ namespace PRIMEWeb.Orders
             btnEdit.Attributes.Add("class", "btn btn-dark");  //set css class
             btnEdit.InnerText = "Edit";
             btnEdit.Attributes.Add("value", e.Row.Cells[0].Text);
-            btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale"); //set aria label
+            btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this Order"); //set aria label
             btnEdit.ServerClick += new EventHandler(btnEdit_Click);  //click event handler
             e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
 
@@ -94,7 +95,7 @@ namespace PRIMEWeb.Orders
             btnDelete.Attributes.Add("class", "btn btn-danger");  //set css class
             btnDelete.InnerText = "Delete";
             btnDelete.Attributes.Add("value", e.Row.Cells[0].Text);
-            btnDelete.Attributes.Add("aria-label", "Click to delete this sale"); //set aria label
+            btnDelete.Attributes.Add("aria-label", "Click to delete this Order"); //set aria label
             btnDelete.ServerClick += new EventHandler(btnDelete_Click);  //click event handler
             e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
 
