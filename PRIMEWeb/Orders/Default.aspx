@@ -108,7 +108,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label">Paid:</label>
-                                        <asp:TextBox ID="txtPaid" runat="server" CssClass="form-control" TextMode="Phone"></asp:TextBox>
+                                        <asp:TextBox ID="txtPaid" runat="server" CssClass="form-control" ></asp:TextBox>
                                     </div>
                                 </div>
                                 

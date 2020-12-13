@@ -123,21 +123,12 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.Label lbl_Status;
 
         /// <summary>
-        /// Service control.
+        /// on_order control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource Service;
-
-        /// <summary>
-        /// on_order2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource on_order2;
+        protected global::System.Web.UI.WebControls.ObjectDataSource on_order;
     }
 }

@@ -154,45 +154,48 @@
                         <asp:Label ID="lbl_Status" runat="server" Text="Label"></asp:Label>
 
                         <br />
-                    <asp:ObjectDataSource ID="Service" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_orderTableAdapter" UpdateMethod="Update">
-                        <DeleteParameters>
-                            <asp:Parameter Name="Original_id" Type="Int32" />
-                            <asp:Parameter Name="Original_onordInvoiceNum" Type="String" />
-                            <asp:Parameter Name="Original_onordArriveDate" Type="String" />
-                            <asp:Parameter Name="Original_onordPrice" Type="Decimal" />
-                            <asp:Parameter Name="Original_inventoryID" Type="Int32" />
-                            <asp:Parameter Name="Original_prodorderID" Type="Int32" />
-                        </DeleteParameters>
-                        <InsertParameters>
-                            <asp:Parameter Name="onordInvoiceNum" Type="String" />
-                            <asp:Parameter Name="onordArriveDate" Type="String" />
-                            <asp:Parameter Name="onordPrice" Type="Decimal" />
-                            <asp:Parameter Name="inventoryID" Type="Int32" />
-                            <asp:Parameter Name="prodorderID" Type="Int32" />
-                        </InsertParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="onordInvoiceNum" Type="String" />
-                            <asp:Parameter Name="onordArriveDate" Type="String" />
-                            <asp:Parameter Name="onordPrice" Type="Decimal" />
-                            <asp:Parameter Name="inventoryID" Type="Int32" />
-                            <asp:Parameter Name="prodorderID" Type="Int32" />
-                            <asp:Parameter Name="Original_id" Type="Int32" />
-                            <asp:Parameter Name="Original_onordInvoiceNum" Type="String" />
-                            <asp:Parameter Name="Original_onordArriveDate" Type="String" />
-                            <asp:Parameter Name="Original_onordPrice" Type="Decimal" />
-                            <asp:Parameter Name="Original_inventoryID" Type="Int32" />
-                            <asp:Parameter Name="Original_prodorderID" Type="Int32" />
-                        </UpdateParameters>
-                    </asp:ObjectDataSource>
-                    <asp:ObjectDataSource ID="on_order2" runat="server" DeleteMethod="Delete" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_orderTableAdapter">
-                        <DeleteParameters>
-                            <asp:Parameter Name="Original_id" Type="Int32" />
-                        </DeleteParameters>
-                    </asp:ObjectDataSource>
+                    <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
                    </div>
 
             </div>
         </div>
+            <asp:ObjectDataSource ID="on_order" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_orderTableAdapter" UpdateMethod="Update">
+                <DeleteParameters>
+                    <asp:Parameter Name="Original_id" Type="Int32" />
+                    <asp:Parameter Name="Original_onordInvoiceNum" Type="String" />
+                    <asp:Parameter Name="Original_onordArriveDate" Type="DateTime" />
+                    <asp:Parameter Name="Original_onordNumInOrder" Type="Int32" />
+                    <asp:Parameter Name="Original_onordPrice" Type="Decimal" />
+                    <asp:Parameter Name="Original_inventoryID" Type="Int32" />
+                    <asp:Parameter Name="Original_prodorderID" Type="Int32" />
+                </DeleteParameters>
+                <InsertParameters>
+                    <asp:Parameter Name="onordInvoiceNum" Type="String" />
+                    <asp:Parameter Name="onordArriveDate" Type="DateTime" />
+                    <asp:Parameter Name="onordNumInOrder" Type="Int32" />
+                    <asp:Parameter Name="onordPrice" Type="Decimal" />
+                    <asp:Parameter Name="inventoryID" Type="Int32" />
+                    <asp:Parameter Name="prodorderID" Type="Int32" />
+                </InsertParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="onordInvoiceNum" Type="String" />
+                    <asp:Parameter Name="onordArriveDate" Type="DateTime" />
+                    <asp:Parameter Name="onordNumInOrder" Type="Int32" />
+                    <asp:Parameter Name="onordPrice" Type="Decimal" />
+                    <asp:Parameter Name="inventoryID" Type="Int32" />
+                    <asp:Parameter Name="prodorderID" Type="Int32" />
+                    <asp:Parameter Name="Original_id" Type="Int32" />
+                    <asp:Parameter Name="Original_onordInvoiceNum" Type="String" />
+                    <asp:Parameter Name="Original_onordArriveDate" Type="DateTime" />
+                    <asp:Parameter Name="Original_onordNumInOrder" Type="Int32" />
+                    <asp:Parameter Name="Original_onordPrice" Type="Decimal" />
+                    <asp:Parameter Name="Original_inventoryID" Type="Int32" />
+                    <asp:Parameter Name="Original_prodorderID" Type="Int32" />
+                </UpdateParameters>
+            </asp:ObjectDataSource>
+            </div>
     </form>
 </body>
 </html>

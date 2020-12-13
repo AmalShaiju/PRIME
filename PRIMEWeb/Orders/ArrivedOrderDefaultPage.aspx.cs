@@ -16,7 +16,6 @@ namespace PRIMEWeb.Orders
         static OrdersDataSet dsOrder;
         private static DataRow[] rows; 
 
-        private static bool flag = false;
         private static int id = -1;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,7 +26,7 @@ namespace PRIMEWeb.Orders
                 dsOrder = new OrdersDataSet();
                 on_orderTableAdapter daOrder = new on_orderTableAdapter();
                 daOrder.Fill(dsOrder.on_order);
-                rows = (Session["criteria"] != null) ? dsOrder.prod_order.Select(Session["criteria"].ToString()) : dsOrder.prod_order.Select();
+                rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
                 DisplayOn_Order();
             }
             catch (Exception ex)
@@ -45,6 +44,7 @@ namespace PRIMEWeb.Orders
             dt.Columns.Add("Invoice Number");
             dt.Columns.Add("Arrived Date");
             dt.Columns.Add("Number in Order");
+            dt.Columns.Add("Price");
             dt.Columns.Add("Inventory ID");
             dt.Columns.Add("Product Order ID");
             dt.Columns.Add();
@@ -58,7 +58,8 @@ namespace PRIMEWeb.Orders
                 record[3] = r.ItemArray[3].ToString();
                 record[4] = r.ItemArray[4].ToString();
                 record[5] = r.ItemArray[5].ToString();
-                record[6] = String.Empty;
+                record[6] = r.ItemArray[6].ToString();
+                record[7] = String.Empty; 
 
                 dt.Rows.Add(record);
             }
@@ -109,7 +110,7 @@ namespace PRIMEWeb.Orders
         {
             if (e.Row.RowIndex == -1)
             {
-                e.Row.Cells[6].Text = String.Empty;
+                e.Row.Cells[7].Text = String.Empty;
                 //Clear the header for Edit btn
                 return;  //skip the header
             }
@@ -117,7 +118,7 @@ namespace PRIMEWeb.Orders
             //hiding id column
             this.gv_Orders.HeaderRow.Cells[0].Visible = false;
             e.Row.Cells[0].Visible = false;
-            e.Row.Cells[6].Attributes["width"] = "235px";
+            e.Row.Cells[7].Attributes["width"] = "235px";
 
 
 
@@ -128,7 +129,7 @@ namespace PRIMEWeb.Orders
             btnEdit.Attributes.Add("value", e.Row.Cells[0].Text);
             btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this Order"); //set aria label
             btnEdit.ServerClick += new EventHandler(btnEdit_Click);  //click event handler
-            e.Row.Cells[6].Controls.Add(btnEdit);  //add the btn
+            e.Row.Cells[7].Controls.Add(btnEdit);  //add the btn
 
             //delete btn
             HtmlButton btnDelete = new HtmlButton();  //create delete btn
@@ -137,7 +138,7 @@ namespace PRIMEWeb.Orders
             btnDelete.Attributes.Add("value", e.Row.Cells[0].Text);
             btnDelete.Attributes.Add("aria-label", "Click to delete this Order"); //set aria label
             btnDelete.ServerClick += new EventHandler(btnDelete_Click);  //click event handler
-            e.Row.Cells[6].Controls.Add(btnDelete);  //add the btn
+            e.Row.Cells[7].Controls.Add(btnDelete);  //add the btn
 
         }
         protected void btnSearch_Click(object sender, EventArgs e)
