@@ -60,13 +60,22 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.TextBox txtDateOrdered;
 
         /// <summary>
-        /// txtPaid control.
+        /// rdbPaid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPaid;
+        protected global::System.Web.UI.WebControls.RadioButton rdbPaid;
+
+        /// <summary>
+        /// rdbUnPaid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbUnPaid;
 
         /// <summary>
         /// btnSearch control.

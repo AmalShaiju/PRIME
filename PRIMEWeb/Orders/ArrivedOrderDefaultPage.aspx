@@ -91,11 +91,11 @@
                         <div class="card card-body bg-light">
                             <div class="form-row">
                                     <div class="col-md-6 form-group">
-                                        <label class="control-label">Date In:</label>
+                                        <label class="control-label">Invoice Number:</label>
                                         <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 <div class="col-md-6 form-group">
-                                        <label class="control-label">Service:</label>
+                                        <label class="control-label">Inventory ID:</label>
                                         <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="inventoryID" DataValueField="id">
                                             <asp:ListItem Selected="True" Value="None">None</asp:ListItem>
                                         </asp:DropDownList>
@@ -103,7 +103,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
-                                        <label class="control-label">Equipment:</label>
+                                        <label class="control-label">Product Order ID:</label>
                                         <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="prodorderID" DataValueField="id">
                                             <asp:ListItem Selected="True">None</asp:ListItem>
                                        </asp:DropDownList>
@@ -113,14 +113,13 @@
                                         <asp:TextBox ID="txtDateAttived" runat="server" CssClass="form-control" TextMode ="Date" ></asp:TextBox>
                                     </div>
                                 </div>
-                            </div>
                             <div class="form-row">
                                     <div class="col-md-6 form-group">
                                         <label class="control-label">Number In Order:</label>
                                         <asp:TextBox ID="txtNumberInOrder" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label class="control-label">Number In Order:</label>
+                                        <label class="control-label">Price:</label>
                                         <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" TextMode ="Number"></asp:TextBox>
                                     </div>
                                 </div>
@@ -132,6 +131,8 @@
                                 </div>
                             </div>
                         </div>
+                            </div>
+
                             </div>
                             <asp:GridView ID="gv_Orders" runat="server" BorderStyle="None" CssClass="table" GridLines="None" OnRowDataBound="gv_Orders_RowDataBound">
                         </asp:GridView>

@@ -110,9 +110,15 @@
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Paid:</label>
-                                        <asp:TextBox ID="txtPaid" runat="server" CssClass="form-control" ></asp:TextBox>
-                                        
+                                        <asp:RadioButton ID="rdbPaid" runat="server" CssClass="form-check-input" value="true" GroupName="rdbStatus" />
+                                                <label class="form-check-label" for="radPaid">Paid</label>
+                                            </div>
+                                    </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <asp:RadioButton ID="rdbUnPaid" runat="server" CssClass="form-check-input" value="true" GroupName="rdbStatus" />
+                                                <label class="form-check-label" for="rdbUnPaid">Unpaid</label>
+                                            </div>
                                     </div>
                                 </div>
                                 

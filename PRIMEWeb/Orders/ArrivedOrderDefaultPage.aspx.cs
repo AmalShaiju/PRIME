@@ -26,7 +26,7 @@ namespace PRIMEWeb.Orders
                 on_orderTableAdapter daOrder = new on_orderTableAdapter();
                 daOrder.Fill(dsOrder.on_order);
                 rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
-             DisplayOn_Order();
+                DisplayOn_Order();
             
             
         }
@@ -69,10 +69,12 @@ namespace PRIMEWeb.Orders
         {
             string criteria = "";
 
-           
 
 
-            criteria = (this.txtDateAttived.Text.Length > 0 && criteria.Length > 0) ? "and onordArriveDate ='" + this.txtDateAttived.Text + "'"
+
+            criteria = (this.txtInvoiceNumber.Text.Length > 0) ? "onordInvoiceNum = " + this.txtInvoiceNumber.Text : "";
+
+            criteria += (this.txtDateAttived.Text.Length > 0 && criteria.Length > 0) ? "And onordArriveDate ='" + this.txtDateAttived.Text + "'"
                  : (this.txtDateAttived.Text.Length > 0) ? "onordArriveDate ='" + this.txtDateAttived.Text + "' " : "";
 
 
@@ -84,8 +86,6 @@ namespace PRIMEWeb.Orders
                : (this.ddlProdOrderID.Text != "None") ? "prodorderID = " + this.ddlProdOrderID.SelectedValue.ToString() : "";
 
 
-            criteria += (this.txtInvoiceNumber.Text != "None" && criteria.Length > 0) ? "And onordInvoiceNum = " + this.txtInvoiceNumber.Text
-            : (this.txtInvoiceNumber.Text != "None") ? "onordInvoiceNum = " + this.txtInvoiceNumber.Text : "";
 
 
             criteria += (this.txtPrice.Text != "None" && criteria.Length > 0) ? "And onordPrice = " + this.txtPrice.Text
@@ -139,7 +139,7 @@ namespace PRIMEWeb.Orders
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (dsOrder.prod_order.Count > 0)
+            if (dsOrder.on_order.Count > 0)
             {
                 Session["criteria"] = GetOrderCriteria();
                 rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
