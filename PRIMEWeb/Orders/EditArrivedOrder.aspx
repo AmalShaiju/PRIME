@@ -105,63 +105,58 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <div>
                         <asp:Label class="context_help" runat="server">ID</asp:Label>
                         <asp:TextBox ID="txtID" runat="server" placeholder="ID" CssClass="form-control" ReadOnly="false"></asp:TextBox>
                         <asp:Label ID="lblIdHelp" runat="server" Text="ID from database. Cannot be changed." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     </div>
+                <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <div>
                         <asp:Label class="context_help" runat="server">Invoice Number: </asp:Label>
                         <asp:TextBox ID="txtInvoiceNumber" runat="server" placeholder="Eg. 5432" CssClass="form-control" required="required"></asp:TextBox>
                         <div class="invalid-feedback">Please input invoice number number</div>
                         <asp:Label ID="lblInvoiceNumlHelp" runat="server" Text="Invoice number from package" CssClass="lbl-help" Visible="False"></asp:Label>
-                    
                         </div>
-                        <div>
+                   <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Arrive Date:</asp:Label>
                         <asp:TextBox ID="txtArriveDate" runat="server" placeholder="Choose the date" CssClass="form-control" ReadOnly="false"></asp:TextBox>
                         <asp:Label ID="lblArriveDateHelp" runat="server" Text="Select the date from calendar" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
-
-                    </div>
-                    
-                    <div class="col-md-6 form-group">
-                        <div class="form-group">
+                        </div>    
+                <div class="form-row">
+                        <div class="col-md-6 form-group">
                             <label class="control-label">Inventory ID:</label>
                             <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select"  DataTextField="inventoryID" DataValueField="inventoryID" DataSourceID="ods_IDS">
                                 <asp:ListItem>Select Inventory ID...</asp:ListItem>
                             </asp:DropDownList>
                             <asp:Label ID="lblInventoryID" runat="server" Text="Select the Inventory ID from Dropdown List" CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
-                        <div>
+                      <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Number in Order</asp:Label>
                         <asp:TextBox ID="txtNumberInOrder" runat="server" placeholder="eg. 55453" CssClass="form-control" ReadOnly="false"></asp:TextBox>
                         <asp:Label ID="Label1" runat="server" Text="Number from old system" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                         </div>
+                    
+                    <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <div>
-                            <div>
                         <asp:Label class="context_help" runat="server">Date: </asp:Label>
                         <asp:TextBox ID="txtPrice" runat="server" placeholder="Select date" CssClass="form-control" TextMode="Date" required="required"></asp:TextBox>
                         <div class="invalid-feedback">Select Date: </div>
                         <asp:Label ID="lblDateHelp" runat="server" Text="Open the calendar by tapping the textbox and select the date" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
-                                
-                         <div class="form-group">
+                        
+                         <div class="col-md-6 form-group">
                             <label class="control-label">Inventory ID:</label>
                             <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select"  DataTextField="prodorderID" DataValueField="prodorderID" DataSourceID="ods_IDS">
                                 <asp:ListItem>Select Product Order ID...</asp:ListItem>
                             </asp:DropDownList>
                              <asp:Label ID="Label2" runat="server" Text="Select the Product Order ID from Dropdown List  " CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
+                        </div>
                         
-                        </div>
-                        </div>
                 </div>
-                
+                </div>
                 <br />  
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">

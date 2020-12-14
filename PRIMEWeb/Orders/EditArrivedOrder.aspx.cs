@@ -45,7 +45,8 @@ namespace PRIMEWeb.Orders
                             this.txtArriveDate.Text = Convert.ToDateTime(order.ItemArray[2].ToString()).ToShortDateString();
                             this.txtNumberInOrder.Text = order.ItemArray[3].ToString();
                             this.txtPrice.Text = order.ItemArray[4].ToString();
-                            
+                            this.ddlInventoryID.SelectedValue = order.ItemArray[5].ToString();
+                            this.ddlProdOrderID.SelectedValue = order.ItemArray[6].ToString();
 
 
                         }

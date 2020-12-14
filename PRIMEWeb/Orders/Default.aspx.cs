@@ -106,11 +106,11 @@ namespace PRIMEWeb.Orders
         {
             string criteria = "";
             criteria = (this.txtProdNumber.Text.Length > 0) ? "pordNumber = " + this.txtProdNumber.Text : "";
-           // criteria += (this.txtDateOrdered.Text.Length > 0 && criteria.Length > 0) ? "And  Like '%" + this.txtDateOrdered.Text + "%'"
-           //     : (this.txtDateOrdered.Text.Length > 0) ? " Like '%" + this.txtDateOrdered.Text + "%'" : "";
-           // criteria += (this.txtPaid.Text.Length > 0 && criteria.Length > 0) ? "And paid option Like '%" + this.txtPaid.Text + "%'"
-            //    : (this.txtPaid.Text.Length > 0) ? "paid option Like '%" + this.txtPaid.Text + "%'" : "";
-            
+            criteria += (this.txtDateOrdered.Text.Length > 0 && criteria.Length > 0) ? "and  prodDateOrdered='" + this.txtDateOrdered.Text + "'"
+                 : (this.txtDateOrdered.Text.Length > 0) ? "prodDateOrdered ='" + this.txtDateOrdered.Text + "' " : "";
+            criteria += (this.txtPaid.Checked && criteria.Length > 0) ? "And serordWarranty =" + 0
+           : (this.radNoWarranty.Checked) ? "serordWarranty =" + 0 : "";
+
             return criteria;
         }
 
