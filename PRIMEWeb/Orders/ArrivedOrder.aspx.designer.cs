@@ -177,12 +177,12 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.Button btnAddItem;
 
         /// <summary>
-        /// ods_InventoryID control.
+        /// ods_IDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ods_InventoryID;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ods_IDS;
     }
 }

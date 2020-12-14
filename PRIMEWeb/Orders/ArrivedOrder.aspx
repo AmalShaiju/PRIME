@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-md-4 form-group">
                     <label class="control-label">Select Inventory Item</label>
-                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select" DataSourceID="ods_InventoryID" DataTextField="inventoryID" DataValueField="inventoryID">
+                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select" DataSourceID="ods_IDS" DataTextField="inventoryID" DataValueField="inventoryID">
                                 <asp:ListItem>Select an Item...</asp:ListItem>
                         </asp:DropDownList>
                     <asp:Label ID="lblInventoryHelp" runat="server" Text="Select the inventory id from dropdown list" CssClass="lbl-help" Visible="False"></asp:Label>
@@ -136,7 +136,7 @@
                     </div>
                     <div class="col-md-4 form-group">
                     <label class="control-label">Select Product Order</label>
-                    <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select" DataSourceID="ods_InventoryID" DataTextField="prodorderID" DataValueField="prodorderID">
+                    <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select" DataSourceID="ods_IDS" DataTextField="prodorderID" DataValueField="prodorderID">
                                 <asp:ListItem>Select a product order...</asp:ListItem>
                         </asp:DropDownList>
                     <asp:Label ID="lblProdOrderID" runat="server" Text="Select Product from dropdown list" CssClass="lbl-help" Visible="False"></asp:Label>
@@ -145,14 +145,14 @@
                <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">
                     <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
-                        <asp:Button ID="btnAddItem" runat="server" aria-label="Add Info About Arrived Order" CssClass="btn btn-outline-primary" Text="Add the Item" />
+                        <asp:Button ID="btnAddItem" runat="server" aria-label="Add Info About Arrived Order" CssClass="btn btn-outline-primary" Text="Add the Order" />
                         <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
-                        <a class="btn btn-outline-primary" href="/Inventory/" role="button" aria-label="Cancel Adding Inventory Item">Cancel</a>
+                        <a class="btn btn-outline-primary" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Cancel Adding Arrived Order Form">Cancel</a>
                     </asp:Panel>
                 </div>
             </div>
         </div>
-        <asp:ObjectDataSource ID="ods_InventoryID" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="ods_IDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter"></asp:ObjectDataSource>
     </form>
 </body>
 </html>
