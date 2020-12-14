@@ -34,8 +34,8 @@ namespace PRIMEWeb.Orders
 
             //update record with user's input
             order[1] = this.txtProdNumber.Text;
-            order[2] = Convert.ToDateTime(this.txtDate);
-            order[3] = Convert.ToBoolean(this.cbo_Paid).ToString();
+            order[2] = Convert.ToDateTime(this.txtDate.Text);
+            order[3] = Convert.ToBoolean(this.cbo_Paid.Checked);
             
             
             Save();

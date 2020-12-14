@@ -189,6 +189,11 @@ namespace PRIMEWeb.Orders
                 Response.Redirect("EditArrivedOrder.aspx"); // Redirect the user to Edit page on btn click
             }
         }
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            lbl.Visible = lblPaidHelp.Visible = lblProdlHelp.Visible =
+                  cboHelp.Checked;
+        }
 
     }
 }

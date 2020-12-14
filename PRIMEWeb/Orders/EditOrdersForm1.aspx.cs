@@ -65,7 +65,7 @@ namespace PRIMEWeb.Orders
                 {
                     //update record with user's input
                     dsOrder.prod_order.FindByid(id).pordNumber = txtProdNumber.Text.ToString();
-                    dsOrder.prod_order.FindByid(id).pordDateOrdered = Convert.ToDateTime(this.txtDate);
+                    dsOrder.prod_order.FindByid(id).pordDateOrdered = Convert.ToDateTime(this.txtDate.Text);
                     dsOrder.prod_order.FindByid(id).pordPaid = Convert.ToBoolean(this.cbo_Paid);
                     
                     Save();

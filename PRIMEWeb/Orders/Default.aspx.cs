@@ -163,7 +163,7 @@ namespace PRIMEWeb.Orders
                 HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
                 cID.Value = id.ToString();
                 Response.Cookies.Add(cID);
-                Response.Redirect("EditOrder.aspx"); // Redirect the user to Edit page on btn click
+                Response.Redirect("EditOrdersForm1.aspx"); // Redirect the user to Edit page on btn click
             }
         }
 
