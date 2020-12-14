@@ -4,14 +4,76 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using PRIMELibrary;
+using PRIMELibrary.OrdersDataSetTableAdapters;
+using System.Data;
 
 namespace PRIMEWeb.Orders
 {
     public partial class ArrivedOrder : System.Web.UI.Page
     {
+        static OrdersDataSet dsOrder = new OrdersDataSet();
+
+        static ArrivedOrder()
+        {
+            on_orderTableAdapter daOrder = new on_orderTableAdapter();
+
+            try
+            {
+                daOrder.Fill(dsOrder.on_order);
+            }
+            catch { }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+            DataRow order = dsOrder.on_order.NewRow();
+
+            //update record with user's input
+            order[1] = this.txtInvoiceNum.Text;
+            order[2] = Convert.ToDateTime(this.txtArriveDate);
+            order[3] = this.txtNumInOrder.Text;
+            order[4] = this.txtPrice.Text;
+            order[5] = this.ddlInventoryID.SelectedValue;
+            order[6] = this.ddlProdOrderID.SelectedValue;
+
+
+            Save();
+        }
+        private void Save()
+        {
+            on_orderTableAdapter  daOrder = new on_orderTableAdapter();
+
+            try
+            {
+                daOrder.Update(dsOrder.on_order);
+                dsOrder.AcceptChanges();
+                this.lblStatus.Text = "Order Created";
+                Clear();
+            }
+            catch
+            {
+                dsOrder.RejectChanges();
+                this.lblStatus.Text = "Failed";
+            }
+        }
+
+        private void Clear()
+        {
+            this.txtArriveDate.Text = "";
+            this.txtInvoiceNum.Text = "";
+            this.txtNumInOrder.Text = "";
+            this.txtPrice.Text = "";
+
+
+        }
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            lblDateHelp.Visible = lblInventoryHelp.Visible = lblInvoiceNumHelp.Visible = lblNumInOrderHelp.Visible= lblPriceHelp.Visible =
+                  cboHelp.Checked;
         }
     }
 }

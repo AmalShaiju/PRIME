@@ -20,19 +20,15 @@ namespace PRIMEWeb.Orders
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            try
-            {
+            
 
                 dsOrder = new OrdersDataSet();
                 on_orderTableAdapter daOrder = new on_orderTableAdapter();
                 daOrder.Fill(dsOrder.on_order);
                 rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
-                DisplayOn_Order();
-            }
-            catch (Exception ex)
-            {
-
-            }
+             DisplayOn_Order();
+            
+            
         }
         private void DisplayOn_Order()
         {
@@ -59,7 +55,7 @@ namespace PRIMEWeb.Orders
                 record[4] = r.ItemArray[4].ToString();
                 record[5] = r.ItemArray[5].ToString();
                 record[6] = r.ItemArray[6].ToString();
-                record[7] = String.Empty; 
+                
 
                 dt.Rows.Add(record);
             }

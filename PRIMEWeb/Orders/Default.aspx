@@ -83,6 +83,7 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Orders</h1>
+
                     <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Order Form" Text="Create New Order Form" PostBackUrl="/Orders/NewOrderForm1.aspx" />
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Customers">
                         Filter Orders

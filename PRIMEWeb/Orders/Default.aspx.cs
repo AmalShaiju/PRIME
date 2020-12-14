@@ -105,7 +105,7 @@ namespace PRIMEWeb.Orders
         private string GetOrderCriteria()
         {
             string criteria = "";
-            criteria = (this.txtProdNumber.Text.Length > 0) ? "Product Number Like '%" + this.txtProdNumber.Text + "%'" : "";
+            criteria = (this.txtProdNumber.Text.Length > 0) ? "pordNumber = " + this.txtProdNumber.Text : "";
            // criteria += (this.txtDateOrdered.Text.Length > 0 && criteria.Length > 0) ? "And  Like '%" + this.txtDateOrdered.Text + "%'"
            //     : (this.txtDateOrdered.Text.Length > 0) ? " Like '%" + this.txtDateOrdered.Text + "%'" : "";
            // criteria += (this.txtPaid.Text.Length > 0 && criteria.Length > 0) ? "And paid option Like '%" + this.txtPaid.Text + "%'"

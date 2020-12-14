@@ -33,6 +33,15 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
+        /// cboHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cboHelp;
+
+        /// <summary>
         /// txtInvoiceNum control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace PRIMEWeb.Orders
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtInvoiceNum;
+
+        /// <summary>
+        /// lblInvoiceNumHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInvoiceNumHelp;
 
         /// <summary>
         /// txtArriveDate control.
@@ -51,6 +69,15 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.TextBox txtArriveDate;
 
         /// <summary>
+        /// lblDateHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateHelp;
+
+        /// <summary>
         /// ddlInventoryID control.
         /// </summary>
         /// <remarks>
@@ -58,6 +85,15 @@ namespace PRIMEWeb.Orders
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlInventoryID;
+
+        /// <summary>
+        /// lblInventoryHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInventoryHelp;
 
         /// <summary>
         /// txtNumInOrder control.
@@ -69,6 +105,15 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.TextBox txtNumInOrder;
 
         /// <summary>
+        /// lblNumInOrderHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumInOrderHelp;
+
+        /// <summary>
         /// txtPrice control.
         /// </summary>
         /// <remarks>
@@ -78,6 +123,15 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
 
         /// <summary>
+        /// lblPriceHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPriceHelp;
+
+        /// <summary>
         /// ddlProdOrderID control.
         /// </summary>
         /// <remarks>
@@ -85,6 +139,24 @@ namespace PRIMEWeb.Orders
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProdOrderID;
+
+        /// <summary>
+        /// lblProdOrderID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProdOrderID;
+
+        /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
 
         /// <summary>
         /// pnlBtnItems control.
