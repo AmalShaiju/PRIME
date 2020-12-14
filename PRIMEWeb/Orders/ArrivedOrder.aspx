@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-md-4 form-group">
                     <label class="control-label">Select Inventory Item</label>
-                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select">
+                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select" DataSourceID="ods_InventoryID" DataTextField="inventoryID" DataValueField="inventoryID">
                                 <asp:ListItem>Select an Item...</asp:ListItem>
                         </asp:DropDownList>
                     <asp:Label ID="lblInventoryHelp" runat="server" Text="Select the inventory id from dropdown list" CssClass="lbl-help" Visible="False"></asp:Label>
@@ -136,7 +136,7 @@
                     </div>
                     <div class="col-md-4 form-group">
                     <label class="control-label">Select Product Order</label>
-                    <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select">
+                    <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select" DataSourceID="ods_InventoryID" DataTextField="prodorderID" DataValueField="prodorderID">
                                 <asp:ListItem>Select a product order...</asp:ListItem>
                         </asp:DropDownList>
                     <asp:Label ID="lblProdOrderID" runat="server" Text="Select Product from dropdown list" CssClass="lbl-help" Visible="False"></asp:Label>
@@ -152,6 +152,7 @@
                 </div>
             </div>
         </div>
+        <asp:ObjectDataSource ID="ods_InventoryID" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter"></asp:ObjectDataSource>
     </form>
 </body>
 </html>

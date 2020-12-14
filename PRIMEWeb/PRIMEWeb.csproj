@@ -44,7 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="PRIMELibrary">
+    <Reference Include="PRIMELibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PRIMELibrary\bin\Debug\PRIMELibrary.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
