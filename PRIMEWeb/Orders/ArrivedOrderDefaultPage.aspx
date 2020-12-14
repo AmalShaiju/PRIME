@@ -82,10 +82,6 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Arrived Item</h1>
-                    <div class="form-group form-control form-check form-check-inline">
-                    <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
-                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
-                </div>
                     <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-secondary" aria-label="Add info about Arrived Item" Text="Add info about Arrived Item" PostBackUrl="/Orders/ArrivedOrder.aspx" />
                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Arrived Items">
                         Filter Arrived Items
@@ -94,51 +90,41 @@
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
-                                <div class="auto-style1">
-                                    <div class="form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Date In:</label>
                                         <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
-                                </div>
-                                
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
+                                <div class="col-md-6 form-group">
                                         <label class="control-label">Service:</label>
                                         <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="inventoryID" DataValueField="id">
                                             <asp:ListItem Selected="True" Value="None">None</asp:ListItem>
                                         </asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Equipment:</label>
-                                        <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="prodorderID" DataValueField="id">
-                                            <asp:ListItem Selected="True">None</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="auto-style1">
-                                    <div class="form-group">
+                                <div class="col-md-6 form-group">
+                                        <label class="control-label">Equipment:</label>
+                                        <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="prodorderID" DataValueField="id">
+                                            <asp:ListItem Selected="True">None</asp:ListItem>
+                                       </asp:DropDownList>
+                                </div>
+                                 <div class="col-md-6 form-group">
                                         <label class="control-label">Date Arrived:</label>
                                         <asp:TextBox ID="txtDateAttived" runat="server" CssClass="form-control" TextMode ="Date" ></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
+                            </div>
+                            <div class="form-row">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Number In Order:</label>
                                         <asp:TextBox ID="txtNumberInOrder" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Number In Order:</label>
                                         <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" TextMode ="Number"></asp:TextBox>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
+                        <div class="form-row">
                             <div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
                                     <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
@@ -146,19 +132,16 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-              
-                    
-                       
-                        <br />
-                    
- <asp:GridView ID="gv_Orders" runat="server" BorderStyle="None" CssClass="table" GridLines="None" OnRowDataBound="gv_Orders_RowDataBound">
+                            </div>
+                            <asp:GridView ID="gv_Orders" runat="server" BorderStyle="None" CssClass="table" GridLines="None" OnRowDataBound="gv_Orders_RowDataBound">
                         </asp:GridView>
                         <asp:Label ID="lbl_Status" runat="server" Text="Label"></asp:Label>
-
+                    </div>
+                        <br />
             </div>
         </div>
+            
+                
             <asp:ObjectDataSource ID="on_order" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_orderTableAdapter" UpdateMethod="Update">
                 <DeleteParameters>
                     <asp:Parameter Name="Original_id" Type="Int32" />

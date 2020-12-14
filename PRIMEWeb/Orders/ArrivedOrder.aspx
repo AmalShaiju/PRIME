@@ -105,39 +105,43 @@
                     <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-4 form-group">
                         <label class="control-label">Invoice Number:</label>
                         <asp:TextBox ID="txtInvoiceNum" runat="server" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
                     <asp:Label ID="lblInvoiceNumHelp" runat="server" Text="Type in the invoice number (eg. 44557)" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-4 form-group">
                         <label class="control-label">Arrive Date:</label>
                         <asp:TextBox ID="txtArriveDate" runat="server" CssClass="form-control" TextMode="Date" required="required"></asp:TextBox>
                     <asp:Label ID="lblDateHelp" runat="server" Text="Open the calendar by tapping the textbox and select the date" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
+                    <div class="col-md-4 form-group">
                     <label class="control-label">Select Inventory Item</label>
                     <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select">
                                 <asp:ListItem>Select an Item...</asp:ListItem>
                         </asp:DropDownList>
                     <asp:Label ID="lblInventoryHelp" runat="server" Text="Select the inventory id from dropdown list" CssClass="lbl-help" Visible="False"></asp:Label>
                 </div>
+                    </div>
                 <div class="form-row">
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-4 form-group">
                         <label class="control-label">Number in Order:</label>
                         <asp:TextBox ID="txtNumInOrder" runat="server" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
                     <asp:Label ID="lblNumInOrderHelp" runat="server" Text="Type in number in Order (eg. 66454)" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-4 form-group">
                         <label class="control-label">Price:</label>
                         <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" required="required"></asp:TextBox>
                         <asp:Label ID="lblPriceHelp" runat="server" Text="Type in price and dont forget to add 11% to it " CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
+                    <div class="col-md-4 form-group">
                     <label class="control-label">Select Product Order</label>
                     <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select">
                                 <asp:ListItem>Select a product order...</asp:ListItem>
                         </asp:DropDownList>
                     <asp:Label ID="lblProdOrderID" runat="server" Text="Select Product from dropdown list" CssClass="lbl-help" Visible="False"></asp:Label>
                 </div>
+                    </div>
                <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">
                     <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">

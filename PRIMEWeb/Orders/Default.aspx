@@ -96,12 +96,14 @@
                                     <div class="form-group">
                                         <label class="control-label">Product Number:</label>
                                         <asp:TextBox ID="txtProdNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                       
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label">Date Ordered:</label>
                                         <asp:TextBox ID="txtDateOrdered" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -110,6 +112,7 @@
                                     <div class="form-group">
                                         <label class="control-label">Paid:</label>
                                         <asp:TextBox ID="txtPaid" runat="server" CssClass="form-control" ></asp:TextBox>
+                                        
                                     </div>
                                 </div>
                                 
