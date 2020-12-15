@@ -58,6 +58,11 @@
         .col-md-12 input, .col-md-12 a {
             margin: 0 10px;
         }
+        #cid_52 label
+        {
+            display:none;
+            border-left : 100px;
+        }
     </style>
 </head>
 <body style="height: 1582px">
@@ -116,12 +121,12 @@
                         <asp:Label ID="lblProdlHelp" runat="server" Text="Input the number of this item from an old system" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     
-                    <div class="col-md-6 form-group">
-                        
+                    <div class="col-md-6 form-group" >
+                        <div id ="cid_52">
                          <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="True"  />
-                    
+                    </div>
                         <label class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
-                        <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid" CssClass="lbl-help" Visible="False"></asp:Label>
+                        <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid. If not leave blank." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Date: </asp:Label>
