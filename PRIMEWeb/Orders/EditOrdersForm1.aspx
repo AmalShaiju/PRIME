@@ -119,7 +119,8 @@
                     <div class="col-md-6 form-group">
                         
                          <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="True"  />
-                    <label class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
+                    
+                        <label class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
                         <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
@@ -146,7 +147,8 @@
                         <p>Click the "Cancel" button to cancel creating the Order and go to the Order page.</p>
                 </asp:Panel>
             </div>
-        </div>
+            </div>
+        
     </form>
 </body>
 </html>

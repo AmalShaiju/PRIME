@@ -108,18 +108,13 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <asp:RadioButton ID="rdbPaid" runat="server" CssClass="form-check-input" value="true" GroupName="rdbStatus" />
-                                                <label class="form-check-label" for="radPaid">Paid</label>
-                                            </div>
-                                    </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <asp:RadioButton ID="rdbUnPaid" runat="server" CssClass="form-check-input" value="true" GroupName="rdbStatus" />
-                                                <label class="form-check-label" for="rdbUnPaid">Unpaid</label>
-                                            </div>
-                                    </div>
+                                <<div class="col-md-6 form-group">
+                        
+                         <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="True"  />
+                    
+                        <label class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
+                        <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid" CssClass="lbl-help" Visible="False"></asp:Label>
+                    </div>
                                 </div>
                                 
                                 <div class="auto-style1">
@@ -143,7 +138,7 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-        </div>
+        
     </form>
 </body>
 </html>

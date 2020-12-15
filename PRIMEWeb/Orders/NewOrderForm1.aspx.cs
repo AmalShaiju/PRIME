@@ -36,7 +36,7 @@ namespace PRIMEWeb.Orders
             order[1] = this.txtProdNumber.Text;
             order[2] = Convert.ToDateTime(this.txtDate.Text);
             order[3] = Convert.ToBoolean(this.cbo_Paid.Checked);
-            
+            dsOrder.prod_order.Rows.Add(order);
             
             Save();
         }

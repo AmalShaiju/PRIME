@@ -96,7 +96,7 @@
                                     </div>
                                 <div class="col-md-6 form-group">
                                         <label class="control-label">Inventory ID:</label>
-                                        <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="inventoryID" DataValueField="id">
+                                        <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="prodName" DataValueField="inventoryID">
                                             <asp:ListItem Selected="True" Value="None">None</asp:ListItem>
                                         </asp:DropDownList>
                                 </div>
@@ -104,7 +104,7 @@
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
                                         <label class="control-label">Product Order ID:</label>
-                                        <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="prodorderID" DataValueField="id">
+                                        <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="pordNumber" DataValueField="prodorderID">
                                             <asp:ListItem Selected="True">None</asp:ListItem>
                                        </asp:DropDownList>
                                 </div>
@@ -143,39 +143,7 @@
         </div>
             
                 
-            <asp:ObjectDataSource ID="on_order" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_orderTableAdapter" UpdateMethod="Update">
-                <DeleteParameters>
-                    <asp:Parameter Name="Original_id" Type="Int32" />
-                    <asp:Parameter Name="Original_onordInvoiceNum" Type="String" />
-                    <asp:Parameter Name="Original_onordArriveDate" Type="DateTime" />
-                    <asp:Parameter Name="Original_onordNumInOrder" Type="Int32" />
-                    <asp:Parameter Name="Original_onordPrice" Type="Decimal" />
-                    <asp:Parameter Name="Original_inventoryID" Type="Int32" />
-                    <asp:Parameter Name="Original_prodorderID" Type="Int32" />
-                </DeleteParameters>
-                <InsertParameters>
-                    <asp:Parameter Name="onordInvoiceNum" Type="String" />
-                    <asp:Parameter Name="onordArriveDate" Type="DateTime" />
-                    <asp:Parameter Name="onordNumInOrder" Type="Int32" />
-                    <asp:Parameter Name="onordPrice" Type="Decimal" />
-                    <asp:Parameter Name="inventoryID" Type="Int32" />
-                    <asp:Parameter Name="prodorderID" Type="Int32" />
-                </InsertParameters>
-                <UpdateParameters>
-                    <asp:Parameter Name="onordInvoiceNum" Type="String" />
-                    <asp:Parameter Name="onordArriveDate" Type="DateTime" />
-                    <asp:Parameter Name="onordNumInOrder" Type="Int32" />
-                    <asp:Parameter Name="onordPrice" Type="Decimal" />
-                    <asp:Parameter Name="inventoryID" Type="Int32" />
-                    <asp:Parameter Name="prodorderID" Type="Int32" />
-                    <asp:Parameter Name="Original_id" Type="Int32" />
-                    <asp:Parameter Name="Original_onordInvoiceNum" Type="String" />
-                    <asp:Parameter Name="Original_onordArriveDate" Type="DateTime" />
-                    <asp:Parameter Name="Original_onordNumInOrder" Type="Int32" />
-                    <asp:Parameter Name="Original_onordPrice" Type="Decimal" />
-                    <asp:Parameter Name="Original_inventoryID" Type="Int32" />
-                    <asp:Parameter Name="Original_prodorderID" Type="Int32" />
-                </UpdateParameters>
+            <asp:ObjectDataSource ID="on_order" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter">
             </asp:ObjectDataSource>
             </div>
     </form>

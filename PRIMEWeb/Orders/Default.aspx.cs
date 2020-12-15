@@ -108,11 +108,24 @@ namespace PRIMEWeb.Orders
             criteria = (this.txtProdNumber.Text.Length > 0) ? "pordNumber = " + this.txtProdNumber.Text : "";
             criteria += (this.txtDateOrdered.Text.Length > 0 && criteria.Length > 0) ? "and  pordDateOrdered='" + this.txtDateOrdered.Text + "'"
                  : (this.txtDateOrdered.Text.Length > 0) ? "pordDateOrdered ='" + this.txtDateOrdered.Text + "' " : "";
-            criteria += (this.rdbPaid.Checked && criteria.Length > 0) ? "And pordPaid =" + 0
-           : (this.rdbPaid.Checked) ? "pordPaid =" + 0 : "";
 
-            criteria += (this.rdbUnPaid.Checked && criteria.Length > 0) ? "And pordPaid =" + 1
-          : (this.rdbUnPaid.Checked) ? "pordPaid =" + 1 : "";
+            if (this.cbo_Paid.Checked)
+            {
+                criteria += (this.cbo_Paid.Checked && criteria.Length > 0) ? "And pordPaid = True"
+                    : (this.cbo_Paid.Checked) ? "pordPaid = True": "";
+            }
+            else 
+            {
+                criteria += (this.cbo_Paid.Checked && criteria.Length > 0) ? "And pordPaid = False" 
+                       : (this.cbo_Paid.Checked) ? "pordPaid = False" : "";
+            }
+
+
+            //  criteria += (this.rdbPaid.Checked && criteria.Length > 0) ? "And pordPaid =" + 0
+            // : (this.rdbPaid.Checked) ? "pordPaid =" + 0 : "";
+
+            //  criteria += (this.rdbUnPaid.Checked && criteria.Length > 0) ? "And pordPaid =" + 1
+            //: (this.rdbUnPaid.Checked) ? "pordPaid =" + 1 : "";
 
 
             return criteria;

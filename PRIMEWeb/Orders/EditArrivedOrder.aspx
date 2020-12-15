@@ -126,7 +126,7 @@
                 <div class="form-row">
                         <div class="col-md-6 form-group">
                             <label class="control-label">Inventory ID:</label>
-                            <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select"  DataTextField="inventoryID" DataValueField="inventoryID" DataSourceID="ods_IDS">
+                            <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select"  DataTextField="prodName" DataValueField="inventoryID" DataSourceID="ods_IDS">
                                 <asp:ListItem>Select Inventory ID...</asp:ListItem>
                             </asp:DropDownList>
                             <asp:Label ID="lblInventoryID" runat="server" Text="Select the Inventory ID from Dropdown List" CssClass="lbl-help" Visible="False"></asp:Label>
@@ -148,7 +148,7 @@
                         
                          <div class="col-md-6 form-group">
                             <label class="control-label">Inventory ID:</label>
-                            <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select"  DataTextField="prodorderID" DataValueField="prodorderID" DataSourceID="ods_IDS">
+                            <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select"  DataTextField="pordNumber" DataValueField="prodorderID" DataSourceID="ods_IDS">
                                 <asp:ListItem>Select Product Order ID...</asp:ListItem>
                             </asp:DropDownList>
                              <asp:Label ID="Label2" runat="server" Text="Select the Product Order ID from Dropdown List  " CssClass="lbl-help" Visible="False"></asp:Label>
@@ -172,9 +172,9 @@
                         <p>Click the "Clear Form" button to remove all the text from textboxes.</p>
                         <p>Click the "Cancel" button to cancel creating the Order and go to the Order page.</p>
                 </asp:Panel>
-            </div>
+            
             <asp:ObjectDataSource ID="ods_IDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter"></asp:ObjectDataSource>
-        </div>
+        
     </form>
 </body>
 </html>

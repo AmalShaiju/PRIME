@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-md-4 form-group">
                     <label class="control-label">Select Inventory Item</label>
-                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select" DataSourceID="ods_IDS" DataTextField="inventoryID" DataValueField="inventoryID">
+                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select" DataSourceID="ods_IDS" DataTextField="prodName" DataValueField="inventoryID">
                                 <asp:ListItem>Select an Item...</asp:ListItem>
                         </asp:DropDownList>
                     <asp:Label ID="lblInventoryHelp" runat="server" Text="Select the inventory id from dropdown list" CssClass="lbl-help" Visible="False"></asp:Label>
@@ -136,7 +136,7 @@
                     </div>
                     <div class="col-md-4 form-group">
                     <label class="control-label">Select Product Order</label>
-                    <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select" DataSourceID="ods_IDS" DataTextField="prodorderID" DataValueField="prodorderID">
+                    <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select" DataSourceID="ods_IDS" DataTextField="pordNumber" DataValueField="prodorderID">
                                 <asp:ListItem>Select a product order...</asp:ListItem>
                         </asp:DropDownList>
                     <asp:Label ID="lblProdOrderID" runat="server" Text="Select Product from dropdown list" CssClass="lbl-help" Visible="False"></asp:Label>

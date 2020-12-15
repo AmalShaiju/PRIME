@@ -74,25 +74,25 @@ namespace PRIMEWeb.Orders
 
             criteria = (this.txtInvoiceNumber.Text.Length > 0) ? "onordInvoiceNum = " + this.txtInvoiceNumber.Text : "";
 
-            criteria += (this.txtDateAttived.Text.Length > 0 && criteria.Length > 0) ? "And onordArriveDate ='" + this.txtDateAttived.Text + "'"
+            criteria += (this.txtDateAttived.Text.Length > 0 && criteria.Length > 0) ? " And onordArriveDate ='" + this.txtDateAttived.Text + "'"
                  : (this.txtDateAttived.Text.Length > 0) ? "onordArriveDate ='" + this.txtDateAttived.Text + "' " : "";
 
 
-            criteria += (this.ddlInventoryID.Text != "None" && criteria.Length > 0) ? "And inventoryID = " + this.ddlInventoryID.SelectedValue.ToString()
+            criteria += (this.ddlInventoryID.Text != "None" && criteria.Length > 0) ? " And inventoryID = " + this.ddlInventoryID.SelectedValue.ToString()
                : (this.ddlInventoryID.Text != "None") ? "inventoryID = " + this.ddlInventoryID.SelectedValue.ToString() : "";
 
 
-            criteria += (this.ddlProdOrderID.Text != "None" && criteria.Length > 0) ? "And prodorderID = " + this.ddlProdOrderID.SelectedValue.ToString()
+            criteria += (this.ddlProdOrderID.Text != "None" && criteria.Length > 0) ? " And prodorderID = " + this.ddlProdOrderID.SelectedValue.ToString()
                : (this.ddlProdOrderID.Text != "None") ? "prodorderID = " + this.ddlProdOrderID.SelectedValue.ToString() : "";
 
 
 
 
-            criteria += (this.txtPrice.Text != "None" && criteria.Length > 0) ? "And onordPrice = " + this.txtPrice.Text
-            : (this.txtPrice.Text != "None") ? "onordPrice = " + this.txtPrice.Text : "";
+            criteria += (this.txtPrice.Text != "" && criteria.Length > 0) ? " And onordPrice = " + this.txtPrice.Text
+            : (this.txtPrice.Text != "") ? "onordPrice = " + this.txtPrice.Text : "";
 
-            criteria += (this.txtNumberInOrder.Text != "None" && criteria.Length > 0) ? "And onordNumInOrder = " + this.txtNumberInOrder.Text
-             : (this.txtNumberInOrder.Text != "None") ? "onordNumInOrder = " + this.txtNumberInOrder.Text : "";
+            criteria += (this.txtNumberInOrder.Text != "" && criteria.Length > 0) ? " And onordNumInOrder = " + this.txtNumberInOrder.Text
+             : (this.txtNumberInOrder.Text != "") ? "onordNumInOrder = " + this.txtNumberInOrder.Text : "";
 
 
            
