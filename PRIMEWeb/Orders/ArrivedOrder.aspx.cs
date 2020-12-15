@@ -34,7 +34,7 @@ namespace PRIMEWeb.Orders
 
             //update record with user's input
             order[1] = this.txtInvoiceNum.Text;
-            order[2] = Convert.ToDateTime(this.txtArriveDate);
+            order[2] = Convert.ToDateTime(this.txtArriveDate.Text);
             order[3] = this.txtNumInOrder.Text;
             order[4] = this.txtPrice.Text;
             order[5] = Convert.ToInt32(this.ddlInventoryID.SelectedValue);

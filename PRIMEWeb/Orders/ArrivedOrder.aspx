@@ -145,7 +145,7 @@
                <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">
                     <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
-                        <asp:Button ID="btnAddItem" runat="server" aria-label="Add Info About Arrived Order" CssClass="btn btn-outline-primary" Text="Add the Order" />
+                        <asp:Button ID="btnCreate" runat="server" aria-label="Add Info About Arrived Order" CssClass="btn btn-outline-primary" Text="Add the Order"   OnClick="btnCreate_Click"/>
                         <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
                         <a class="btn btn-outline-primary" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Cancel Adding Arrived Order Form">Cancel</a>
                     </asp:Panel>
