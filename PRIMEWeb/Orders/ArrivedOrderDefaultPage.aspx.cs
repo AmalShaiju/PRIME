@@ -143,7 +143,7 @@ namespace PRIMEWeb.Orders
             btnDetail.Attributes.Add("value", e.Row.Cells[0].Text);
             btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale"); //set aria label
             btnDetail.ServerClick += new EventHandler(btnDetail_Click);  //click event handler
-            e.Row.Cells[5].Controls.Add(btnDetail);  //add the btn
+            e.Row.Cells[7].Controls.Add(btnDetail);  //add the btn
 
         }
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -198,7 +198,20 @@ namespace PRIMEWeb.Orders
                 Response.Redirect("EditArrivedOrder.aspx"); // Redirect the user to Edit page on btn click
             }
         }
-       
+
+        protected void btnDetail_Click(object sender, EventArgs e)
+        {
+            HtmlButton btnDelete = (HtmlButton)sender;
+            id = Convert.ToInt32(btnDelete.Attributes["value"]);
+            if (id != -1)
+            {
+                //Send Id using cookie, more seecure I presume
+                HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+                cID.Value = id.ToString();
+                Response.Cookies.Add(cID);
+                Response.Redirect("DetailsArrivedOrder.aspx"); // Redirect the user to Edit page on btn click
+            }
+        }
 
     }
 }

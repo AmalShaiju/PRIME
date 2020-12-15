@@ -92,7 +92,7 @@
                             <div class="form-row">
                                     <div class="col-md-6 form-group">
                                         <label class="control-label">Invoice Number:</label>
-                                        <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control" ></asp:TextBox>
                                     </div>
                                 <div class="col-md-6 form-group">
                                         <label class="control-label">Inventory ID:</label>

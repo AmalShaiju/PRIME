@@ -154,18 +154,19 @@
                              <asp:Label ID="Label2" runat="server" Text="Select the Product Order ID from Dropdown List  " CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
                         </div>
-                        
-                </div>
-                </div>
-                <br />  
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>
-                <div class="form-row">
+                        <div class="form-row">
                     <div class="col-md-12">
                        <asp:Button ID="btnUpdate" runat="server" aria-label="Update Order" CssClass="btn btn-outline-primary" Text="Update Order" OnClick="btnUpdate_Click"/>
                         &nbsp;<a class="btn btn-outline-primary" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Cancel Editing Order">Cancel</a>
                         
                     </div>
                 </div>
+                </div>
+                </div>
+                <br />  
+                
+                
                 <asp:Panel ID="pnlOrderHelp" runat="server" Visible="False">
                         <p>Notes:</p>
                         <p>Edit the Order form and click the "Update Order" button to apply changes to the database </p>
