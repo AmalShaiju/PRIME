@@ -78,24 +78,6 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.TextBox txtDateAttived;
 
         /// <summary>
-        /// txtNumberInOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumberInOrder;
-
-        /// <summary>
-        /// txtPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrice;
-
-        /// <summary>
         /// btnSearch control.
         /// </summary>
         /// <remarks>

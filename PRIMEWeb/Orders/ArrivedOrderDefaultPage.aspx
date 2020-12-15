@@ -39,6 +39,12 @@
         td .btn {
             width: 80px;
         }
+        .btn-danger
+        {
+            margin-left: 5px;
+            margin-right : 5px;
+
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -113,7 +119,7 @@
                                         <asp:TextBox ID="txtDateAttived" runat="server" CssClass="form-control" TextMode ="Date" ></asp:TextBox>
                                     </div>
                                 </div>
-                            <div class="form-row">
+                            <%--<div class="form-row">
                                     <div class="col-md-6 form-group">
                                         <label class="control-label">Number In Order:</label>
                                         <asp:TextBox ID="txtNumberInOrder" runat="server" CssClass="form-control"></asp:TextBox>
@@ -122,7 +128,7 @@
                                         <label class="control-label">Price:</label>
                                         <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" TextMode ="Number"></asp:TextBox>
                                     </div>
-                                </div>
+                                </div>--%>
                         <div class="form-row">
                             <div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
