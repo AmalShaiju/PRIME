@@ -119,7 +119,7 @@
                         </div>
                    <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Arrive Date:</asp:Label>
-                        <asp:TextBox ID="txtArriveDate" runat="server" placeholder="Choose the date" CssClass="form-control" ReadOnly="false"></asp:TextBox>
+                        <asp:TextBox ID="txtArriveDate" runat="server" placeholder="Choose the date" CssClass="form-control" TextMode="Date" ReadOnly="false"></asp:TextBox>
                         <asp:Label ID="lblArriveDateHelp" runat="server" Text="Select the date from calendar" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                         </div>    
@@ -140,8 +140,8 @@
                     
                     <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:Label class="context_help" runat="server">Date: </asp:Label>
-                        <asp:TextBox ID="txtPrice" runat="server" placeholder="Select date" CssClass="form-control" TextMode="Date" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Price: </asp:Label>
+                        <asp:TextBox ID="txtPrice" runat="server" placeholder="Select date" CssClass="form-control"  required="required"></asp:TextBox>
                         <div class="invalid-feedback">Select Date: </div>
                         <asp:Label ID="lblDateHelp" runat="server" Text="Open the calendar by tapping the textbox and select the date" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>

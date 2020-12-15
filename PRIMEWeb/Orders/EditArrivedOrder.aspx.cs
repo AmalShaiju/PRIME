@@ -42,7 +42,7 @@ namespace PRIMEWeb.Orders
                         {
                             this.txtID.Text = order.ItemArray[0].ToString();
                             this.txtInvoiceNumber.Text = order.ItemArray[1].ToString();
-                            this.txtArriveDate.Text = Convert.ToDateTime(order.ItemArray[2].ToString()).ToShortDateString();
+                            this.txtArriveDate.Text = Convert.ToDateTime(order.ItemArray[2]).ToString("yyyy-MM-dd");
                             this.txtNumberInOrder.Text = order.ItemArray[3].ToString();
                             this.txtPrice.Text = order.ItemArray[4].ToString();
                             this.ddlInventoryID.SelectedValue = order.ItemArray[5].ToString();
