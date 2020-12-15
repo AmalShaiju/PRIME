@@ -16,11 +16,11 @@ namespace PRIMEWeb.Orders
 
         static ArrivedOrder()
         {
-            on_orderCRUDTableAdapter daOrder = new on_orderCRUDTableAdapter();
+            on_orderTableAdapter daOrder = new on_orderTableAdapter();
 
             try
             {
-                daOrder.Fill(dsOrder.on_orderCRUD);
+                daOrder.Fill(dsOrder.on_order);
             }
             catch { }
         }
@@ -30,7 +30,7 @@ namespace PRIMEWeb.Orders
         }
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            DataRow order = dsOrder.on_orderCRUD.NewRow();
+            DataRow order = dsOrder.on_order.NewRow();
 
             //update record with user's input
             order[1] = this.txtInvoiceNum.Text;
@@ -39,17 +39,17 @@ namespace PRIMEWeb.Orders
             order[4] = this.txtPrice.Text;
             order[5] = Convert.ToInt32(this.ddlInventoryID.SelectedValue);
             order[6] = Convert.ToInt32(this.ddlProdOrderID.SelectedValue);
-
+            dsOrder.on_order.Rows.Add(order);
 
             Save();
         }
         private void Save()
         {
-            on_orderCRUDTableAdapter daOrder = new on_orderCRUDTableAdapter();
+            on_orderTableAdapter daOrder = new on_orderTableAdapter();
 
             try
             {
-                daOrder.Update(dsOrder.on_orderCRUD);
+                daOrder.Update(dsOrder.on_order);
                 dsOrder.AcceptChanges();
                 this.lblStatus.Text = "Order Created";
                 Clear();

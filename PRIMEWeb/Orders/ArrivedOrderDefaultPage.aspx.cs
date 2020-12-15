@@ -52,7 +52,7 @@ namespace PRIMEWeb.Orders
                 record[1] = r.ItemArray[1].ToString();
                 record[2] = Convert.ToDateTime(r.ItemArray[2].ToString()).ToShortDateString();
                 record[3] = r.ItemArray[3].ToString();
-                record[4] = r.ItemArray[4].ToString();
+                record[4] = Convert.ToDecimal(r.ItemArray[4].ToString()) + "$";
                 record[5] = r.ItemArray[5].ToString();
                 record[6] = r.ItemArray[6].ToString();
                 
