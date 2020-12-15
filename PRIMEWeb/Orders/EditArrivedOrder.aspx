@@ -129,12 +129,12 @@
                             <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select"  DataTextField="prodName" DataValueField="inventoryID" DataSourceID="ods_IDS">
                                 <asp:ListItem>Select Inventory ID...</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:Label ID="lblInventoryID" runat="server" Text="Select the Inventory ID from Dropdown List" CssClass="lbl-help" Visible="False"></asp:Label>
+                            <asp:Label ID="lblInventoryIDHelp" runat="server" Text="Select the Inventory ID from Dropdown List" CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
                       <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Number in Order</asp:Label>
                         <asp:TextBox ID="txtNumberInOrder" runat="server" placeholder="eg. 55453" CssClass="form-control" ReadOnly="false"></asp:TextBox>
-                        <asp:Label ID="Label1" runat="server" Text="Number from old system" CssClass="lbl-help" Visible="False"></asp:Label>
+                        <asp:Label ID="lblNumberInOrderHelp" runat="server" Text="Number from old system" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                         </div>
                     
@@ -151,7 +151,7 @@
                             <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select"  DataTextField="pordNumber" DataValueField="prodorderID" DataSourceID="ods_IDS">
                                 <asp:ListItem>Select Product Order ID...</asp:ListItem>
                             </asp:DropDownList>
-                             <asp:Label ID="Label2" runat="server" Text="Select the Product Order ID from Dropdown List  " CssClass="lbl-help" Visible="False"></asp:Label>
+                             <asp:Label ID="lblProdOrderIDHelp" runat="server" Text="Select the Product Order ID from Dropdown List  " CssClass="lbl-help" Visible="False"></asp:Label>
                         </div>
                         </div>
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>

@@ -25,6 +25,7 @@ namespace PRIMEWeb.Orders
                 dsOrder = new OrdersDataSet();
                 on_orderTableAdapter daOrder = new on_orderTableAdapter();
             on_order1IDSTableAdapter daOrderIDS = new on_order1IDSTableAdapter();
+                 daOrderIDS.Fill(dsOrder.on_order1IDS);
                 daOrder.Fill(dsOrder.on_order);
                 rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
                 DisplayOn_Order();

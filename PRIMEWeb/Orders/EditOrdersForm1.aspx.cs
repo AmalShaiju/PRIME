@@ -91,7 +91,7 @@ namespace PRIMEWeb.Orders
         }
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         {
-            lblDateHelp.Visible = lblPaidHelp.Visible = lblProdlHelp.Visible = lblIdHelp.Visible =
+            lblDateHelp.Visible = lblPaidHelp.Visible = lblProdlHelp.Visible = lblIdHelp.Visible = pnlOrderHelp.Visible = 
                   cboHelp.Checked;
         }
     }

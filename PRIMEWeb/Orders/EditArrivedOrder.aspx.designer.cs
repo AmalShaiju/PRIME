@@ -105,13 +105,13 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.DropDownList ddlInventoryID;
 
         /// <summary>
-        /// lblInventoryID control.
+        /// lblInventoryIDHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInventoryID;
+        protected global::System.Web.UI.WebControls.Label lblInventoryIDHelp;
 
         /// <summary>
         /// txtNumberInOrder control.
@@ -123,13 +123,13 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.TextBox txtNumberInOrder;
 
         /// <summary>
-        /// Label1 control.
+        /// lblNumberInOrderHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblNumberInOrderHelp;
 
         /// <summary>
         /// txtPrice control.
@@ -159,13 +159,13 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.DropDownList ddlProdOrderID;
 
         /// <summary>
-        /// Label2 control.
+        /// lblProdOrderIDHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblProdOrderIDHelp;
 
         /// <summary>
         /// lblStatus control.

@@ -43,9 +43,9 @@ namespace PRIMEWeb.Orders
 
             DataTable dt = new DataTable();
             dt.Columns.Add("id");
-            dt.Columns.Add("prodNumber");
-            dt.Columns.Add("prodDateOrdered");
-            dt.Columns.Add("prodPaid");
+            dt.Columns.Add("Product Number");
+            dt.Columns.Add("Date Ordered");
+            dt.Columns.Add("Paid");
             dt.Columns.Add();
 
             foreach (DataRow r in rows)

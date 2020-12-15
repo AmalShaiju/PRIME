@@ -92,14 +92,14 @@
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Product Number:</label>
                                         <asp:TextBox ID="txtProdNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                        
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Date Ordered:</label>
                                         <asp:TextBox ID="txtDateOrdered" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
@@ -110,7 +110,7 @@
                             <div class="form-row">
                                 <<div class="col-md-6 form-group">
                         
-                         <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="True"  />
+                         <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="False"  />
                     
                         <label class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
                         <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid" CssClass="lbl-help" Visible="False"></asp:Label>
