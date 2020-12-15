@@ -135,6 +135,15 @@ namespace PRIMEWeb.Orders
             btnDelete.Attributes.Add("aria-label", "Click to delete this Order"); //set aria label
             btnDelete.ServerClick += new EventHandler(btnDelete_Click);  //click event handler
             e.Row.Cells[7].Controls.Add(btnDelete);  //add the btn
+            //details btn
+
+            HtmlButton btnDetail = new HtmlButton();  //create detail btn
+            btnDetail.Attributes.Add("class", "btn btn-info");  //set css class
+            btnDetail.InnerText = "Detail";
+            btnDetail.Attributes.Add("value", e.Row.Cells[0].Text);
+            btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale"); //set aria label
+            btnDetail.ServerClick += new EventHandler(btnDetail_Click);  //click event handler
+            e.Row.Cells[5].Controls.Add(btnDetail);  //add the btn
 
         }
         protected void btnSearch_Click(object sender, EventArgs e)
