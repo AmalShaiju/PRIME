@@ -60,24 +60,6 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.Label lblProdlHelp;
 
         /// <summary>
-        /// cbo_Paid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbo_Paid;
-
-        /// <summary>
-        /// lblPaidHelp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPaidHelp;
-
-        /// <summary>
         /// txtDate control.
         /// </summary>
         /// <remarks>
@@ -94,6 +76,24 @@ namespace PRIMEWeb.Orders
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDateHelp;
+
+        /// <summary>
+        /// cbo_Paid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbo_Paid;
+
+        /// <summary>
+        /// lblPaidHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPaidHelp;
 
         /// <summary>
         /// lblStatus control.

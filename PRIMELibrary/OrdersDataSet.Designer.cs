@@ -1181,6 +1181,10 @@ namespace PRIMELibrary {
             
             private global::System.Data.DataColumn columnprodorderID;
             
+            private global::System.Data.DataColumn columnProductName;
+            
+            private global::System.Data.DataColumn columnpordNumber;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public on_orderCRUDDataTable() {
@@ -1272,6 +1276,22 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ProductNameColumn {
+                get {
+                    return this.columnProductName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn pordNumberColumn {
+                get {
+                    return this.columnpordNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1307,7 +1327,7 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public on_orderCRUDRow Addon_orderCRUDRow(string onordInvoiceNum, System.DateTime onordArriveDate, int onordNumInOrder, decimal onordPrice, int inventoryID, prod_orderRow parentprod_orderRowByonorder_fk_prodorderID1) {
+            public on_orderCRUDRow Addon_orderCRUDRow(string onordInvoiceNum, System.DateTime onordArriveDate, int onordNumInOrder, decimal onordPrice, int inventoryID, prod_orderRow parentprod_orderRowByonorder_fk_prodorderID1, string ProductName, string pordNumber) {
                 on_orderCRUDRow rowon_orderCRUDRow = ((on_orderCRUDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1316,7 +1336,9 @@ namespace PRIMELibrary {
                         onordNumInOrder,
                         onordPrice,
                         inventoryID,
-                        null};
+                        null,
+                        ProductName,
+                        pordNumber};
                 if ((parentprod_orderRowByonorder_fk_prodorderID1 != null)) {
                     columnValuesArray[6] = parentprod_orderRowByonorder_fk_prodorderID1[0];
                 }
@@ -1356,6 +1378,8 @@ namespace PRIMELibrary {
                 this.columnonordPrice = base.Columns["onordPrice"];
                 this.columninventoryID = base.Columns["inventoryID"];
                 this.columnprodorderID = base.Columns["prodorderID"];
+                this.columnProductName = base.Columns["ProductName"];
+                this.columnpordNumber = base.Columns["pordNumber"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1375,6 +1399,10 @@ namespace PRIMELibrary {
                 base.Columns.Add(this.columninventoryID);
                 this.columnprodorderID = new global::System.Data.DataColumn("prodorderID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprodorderID);
+                this.columnProductName = new global::System.Data.DataColumn("ProductName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductName);
+                this.columnpordNumber = new global::System.Data.DataColumn("pordNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpordNumber);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -1386,6 +1414,9 @@ namespace PRIMELibrary {
                 this.columnonordInvoiceNum.MaxLength = 20;
                 this.columninventoryID.AllowDBNull = false;
                 this.columnprodorderID.AllowDBNull = false;
+                this.columnProductName.ReadOnly = true;
+                this.columnProductName.MaxLength = 72;
+                this.columnpordNumber.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1828,9 +1859,9 @@ namespace PRIMELibrary {
             
             private global::System.Data.DataColumn columnprodorderID;
             
-            private global::System.Data.DataColumn columnprodName;
-            
             private global::System.Data.DataColumn columnpordNumber;
+            
+            private global::System.Data.DataColumn columnProductName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1883,17 +1914,17 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn prodNameColumn {
+            public global::System.Data.DataColumn pordNumberColumn {
                 get {
-                    return this.columnprodName;
+                    return this.columnpordNumber;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn pordNumberColumn {
+            public global::System.Data.DataColumn ProductNameColumn {
                 get {
-                    return this.columnpordNumber;
+                    return this.columnProductName;
                 }
             }
             
@@ -1934,13 +1965,13 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public on_order1IDSRow Addon_order1IDSRow(int inventoryID, prod_orderRow parentprod_orderRowByonorder_fk_prodorderID4, string prodName, string pordNumber) {
+            public on_order1IDSRow Addon_order1IDSRow(int inventoryID, prod_orderRow parentprod_orderRowByonorder_fk_prodorderID4, string pordNumber, string ProductName) {
                 on_order1IDSRow rowon_order1IDSRow = ((on_order1IDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         inventoryID,
                         null,
-                        prodName,
-                        pordNumber};
+                        pordNumber,
+                        ProductName};
                 if ((parentprod_orderRowByonorder_fk_prodorderID4 != null)) {
                     columnValuesArray[1] = parentprod_orderRowByonorder_fk_prodorderID4[0];
                 }
@@ -1968,8 +1999,8 @@ namespace PRIMELibrary {
             internal void InitVars() {
                 this.columninventoryID = base.Columns["inventoryID"];
                 this.columnprodorderID = base.Columns["prodorderID"];
-                this.columnprodName = base.Columns["prodName"];
                 this.columnpordNumber = base.Columns["pordNumber"];
+                this.columnProductName = base.Columns["ProductName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1979,14 +2010,15 @@ namespace PRIMELibrary {
                 base.Columns.Add(this.columninventoryID);
                 this.columnprodorderID = new global::System.Data.DataColumn("prodorderID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprodorderID);
-                this.columnprodName = new global::System.Data.DataColumn("prodName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnprodName);
                 this.columnpordNumber = new global::System.Data.DataColumn("pordNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpordNumber);
+                this.columnProductName = new global::System.Data.DataColumn("ProductName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductName);
                 this.columninventoryID.AllowDBNull = false;
                 this.columnprodorderID.AllowDBNull = false;
-                this.columnprodName.MaxLength = 50;
                 this.columnpordNumber.MaxLength = 50;
+                this.columnProductName.ReadOnly = true;
+                this.columnProductName.MaxLength = 105;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2944,6 +2976,38 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ProductName {
+                get {
+                    try {
+                        return ((string)(this[this.tableon_orderCRUD.ProductNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductName\' in table \'on_orderCRUD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableon_orderCRUD.ProductNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string pordNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tableon_orderCRUD.pordNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'pordNumber\' in table \'on_orderCRUD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableon_orderCRUD.pordNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public prod_orderRow prod_orderRow {
                 get {
                     return ((prod_orderRow)(this.GetParentRow(this.Table.ParentRelations["onorder_fk_prodorderID1"])));
@@ -3010,6 +3074,30 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetonordPriceNull() {
                 this[this.tableon_orderCRUD.onordPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsProductNameNull() {
+                return this.IsNull(this.tableon_orderCRUD.ProductNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetProductNameNull() {
+                this[this.tableon_orderCRUD.ProductNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IspordNumberNull() {
+                return this.IsNull(this.tableon_orderCRUD.pordNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetpordNumberNull() {
+                this[this.tableon_orderCRUD.pordNumberColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3205,22 +3293,6 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string prodName {
-                get {
-                    try {
-                        return ((string)(this[this.tableon_order1IDS.prodNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'prodName\' in table \'on_order1IDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableon_order1IDS.prodNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string pordNumber {
                 get {
                     try {
@@ -3232,6 +3304,22 @@ namespace PRIMELibrary {
                 }
                 set {
                     this[this.tableon_order1IDS.pordNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ProductName {
+                get {
+                    try {
+                        return ((string)(this[this.tableon_order1IDS.ProductNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductName\' in table \'on_order1IDS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableon_order1IDS.ProductNameColumn] = value;
                 }
             }
             
@@ -3259,18 +3347,6 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsprodNameNull() {
-                return this.IsNull(this.tableon_order1IDS.prodNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetprodNameNull() {
-                this[this.tableon_order1IDS.prodNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IspordNumberNull() {
                 return this.IsNull(this.tableon_order1IDS.pordNumberColumn);
             }
@@ -3279,6 +3355,18 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetpordNumberNull() {
                 this[this.tableon_order1IDS.pordNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsProductNameNull() {
+                return this.IsNull(this.tableon_order1IDS.ProductNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetProductNameNull() {
+                this[this.tableon_order1IDS.ProductNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4712,56 +4800,9 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
             tableMapping.ColumnMappings.Add("onordPrice", "onordPrice");
             tableMapping.ColumnMappings.Add("inventoryID", "inventoryID");
             tableMapping.ColumnMappings.Add("prodorderID", "prodorderID");
+            tableMapping.ColumnMappings.Add("ProductName", "ProductName");
+            tableMapping.ColumnMappings.Add("pordNumber", "pordNumber");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [on_order] WHERE (([id] = @Original_id) AND ((@IsNull_onordInvoiceNum = 1 AND [onordInvoiceNum] IS NULL) OR ([onordInvoiceNum] = @Original_onordInvoiceNum)) AND ((@IsNull_onordArriveDate = 1 AND [onordArriveDate] IS NULL) OR ([onordArriveDate] = @Original_onordArriveDate)) AND ((@IsNull_onordNumInOrder = 1 AND [onordNumInOrder] IS NULL) OR ([onordNumInOrder] = @Original_onordNumInOrder)) AND ((@IsNull_onordPrice = 1 AND [onordPrice] IS NULL) OR ([onordPrice] = @Original_onordPrice)) AND ([inventoryID] = @Original_inventoryID) AND ([prodorderID] = @Original_prodorderID))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_onordInvoiceNum", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordInvoiceNum", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_onordInvoiceNum", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordInvoiceNum", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_onordArriveDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordArriveDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_onordArriveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordArriveDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_onordNumInOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordNumInOrder", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_onordNumInOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordNumInOrder", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_onordPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_onordPrice", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_inventoryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inventoryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prodorderID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodorderID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [on_order] ([onordInvoiceNum], [onordArriveDate], [onordNumInOrder], [onordPrice], [inventoryID], [prodorderID]) VALUES (@onordInvoiceNum, @onordArriveDate, @onordNumInOrder, @onordPrice, @inventoryID, @prodorderID);
-SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, inventoryID, prodorderID FROM on_order WHERE (id = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@onordInvoiceNum", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordInvoiceNum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@onordArriveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordArriveDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@onordNumInOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordNumInOrder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@onordPrice", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inventoryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inventoryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodorderID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodorderID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [on_order] SET [onordInvoiceNum] = @onordInvoiceNum, [onordArriveDate] = @onordArriveDate, [onordNumInOrder] = @onordNumInOrder, [onordPrice] = @onordPrice, [inventoryID] = @inventoryID, [prodorderID] = @prodorderID WHERE (([id] = @Original_id) AND ((@IsNull_onordInvoiceNum = 1 AND [onordInvoiceNum] IS NULL) OR ([onordInvoiceNum] = @Original_onordInvoiceNum)) AND ((@IsNull_onordArriveDate = 1 AND [onordArriveDate] IS NULL) OR ([onordArriveDate] = @Original_onordArriveDate)) AND ((@IsNull_onordNumInOrder = 1 AND [onordNumInOrder] IS NULL) OR ([onordNumInOrder] = @Original_onordNumInOrder)) AND ((@IsNull_onordPrice = 1 AND [onordPrice] IS NULL) OR ([onordPrice] = @Original_onordPrice)) AND ([inventoryID] = @Original_inventoryID) AND ([prodorderID] = @Original_prodorderID));
-SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, inventoryID, prodorderID FROM on_order WHERE (id = @id)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@onordInvoiceNum", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordInvoiceNum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@onordArriveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordArriveDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@onordNumInOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordNumInOrder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@onordPrice", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inventoryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inventoryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodorderID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodorderID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_onordInvoiceNum", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordInvoiceNum", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_onordInvoiceNum", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordInvoiceNum", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_onordArriveDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordArriveDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_onordArriveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordArriveDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_onordNumInOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordNumInOrder", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_onordNumInOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordNumInOrder", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_onordPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_onordPrice", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "onordPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_inventoryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inventoryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prodorderID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodorderID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4777,7 +4818,12 @@ SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, invent
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        on_order.*\r\nFROM            on_order";
+            this._commandCollection[0].CommandText = @"SELECT        on_order.id, on_order.onordInvoiceNum, on_order.onordArriveDate, on_order.onordNumInOrder, on_order.onordPrice, on_order.inventoryID, on_order.prodorderID, product.prodName +
+                         +  '( '+' Brand: '+  product.prodBrand  + ' )' AS ProductName, prod_order.pordNumber
+FROM            on_order INNER JOIN
+                         product ON on_order.id = product.id INNER JOIN
+                         inventory ON on_order.inventoryID = inventory.id AND product.id = inventory.productID INNER JOIN
+                         prod_order ON on_order.prodorderID = prod_order.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4803,229 +4849,6 @@ SELECT id, onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, invent
             OrdersDataSet.on_orderCRUDDataTable dataTable = new OrdersDataSet.on_orderCRUDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(OrdersDataSet.on_orderCRUDDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(OrdersDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "on_orderCRUD");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, string Original_onordInvoiceNum, global::System.Nullable<global::System.DateTime> Original_onordArriveDate, global::System.Nullable<int> Original_onordNumInOrder, global::System.Nullable<decimal> Original_onordPrice, int Original_inventoryID, int Original_prodorderID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
-            if ((Original_onordInvoiceNum == null)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_onordInvoiceNum));
-            }
-            if ((Original_onordArriveDate.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_onordArriveDate.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((Original_onordNumInOrder.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_onordNumInOrder.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((Original_onordPrice.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((decimal)(Original_onordPrice.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_inventoryID));
-            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_prodorderID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string onordInvoiceNum, global::System.Nullable<global::System.DateTime> onordArriveDate, global::System.Nullable<int> onordNumInOrder, global::System.Nullable<decimal> onordPrice, int inventoryID, int prodorderID) {
-            if ((onordInvoiceNum == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(onordInvoiceNum));
-            }
-            if ((onordArriveDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(onordArriveDate.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((onordNumInOrder.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(onordNumInOrder.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((onordPrice.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(onordPrice.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(inventoryID));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(prodorderID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string onordInvoiceNum, global::System.Nullable<global::System.DateTime> onordArriveDate, global::System.Nullable<int> onordNumInOrder, global::System.Nullable<decimal> onordPrice, int inventoryID, int prodorderID, int Original_id, string Original_onordInvoiceNum, global::System.Nullable<global::System.DateTime> Original_onordArriveDate, global::System.Nullable<int> Original_onordNumInOrder, global::System.Nullable<decimal> Original_onordPrice, int Original_inventoryID, int Original_prodorderID, int id) {
-            if ((onordInvoiceNum == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(onordInvoiceNum));
-            }
-            if ((onordArriveDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(onordArriveDate.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((onordNumInOrder.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(onordNumInOrder.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((onordPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(onordPrice.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(inventoryID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(prodorderID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id));
-            if ((Original_onordInvoiceNum == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_onordInvoiceNum));
-            }
-            if ((Original_onordArriveDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_onordArriveDate.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((Original_onordNumInOrder.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_onordNumInOrder.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Original_onordPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_onordPrice.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_inventoryID));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_prodorderID));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string onordInvoiceNum, global::System.Nullable<global::System.DateTime> onordArriveDate, global::System.Nullable<int> onordNumInOrder, global::System.Nullable<decimal> onordPrice, int inventoryID, int prodorderID, int Original_id, string Original_onordInvoiceNum, global::System.Nullable<global::System.DateTime> Original_onordArriveDate, global::System.Nullable<int> Original_onordNumInOrder, global::System.Nullable<decimal> Original_onordPrice, int Original_inventoryID, int Original_prodorderID) {
-            return this.Update(onordInvoiceNum, onordArriveDate, onordNumInOrder, onordPrice, inventoryID, prodorderID, Original_id, Original_onordInvoiceNum, Original_onordArriveDate, Original_onordNumInOrder, Original_onordPrice, Original_inventoryID, Original_prodorderID, Original_id);
         }
     }
     
@@ -5545,8 +5368,8 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
             tableMapping.DataSetTable = "on_order1IDS";
             tableMapping.ColumnMappings.Add("inventoryID", "inventoryID");
             tableMapping.ColumnMappings.Add("prodorderID", "prodorderID");
-            tableMapping.ColumnMappings.Add("prodName", "prodName");
             tableMapping.ColumnMappings.Add("pordNumber", "pordNumber");
+            tableMapping.ColumnMappings.Add("ProductName", "ProductName");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -5563,7 +5386,7 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        on_order.inventoryID, on_order.prodorderID, product.prodName, prod_order.pordNumber
+            this._commandCollection[0].CommandText = @"SELECT        on_order.inventoryID, on_order.prodorderID, product.prodName + '( ' + CAST(inventory.invSize AS varchar) +' '+ inventory.invMeasure + ' )' AS ProductName, prod_order.pordNumber
 FROM            on_order INNER JOIN
                          inventory ON on_order.inventoryID = inventory.id INNER JOIN
                          product ON inventory.productID = product.id INNER JOIN
@@ -5789,8 +5612,6 @@ FROM            prod_order INNER JOIN
         
         private prod_orderTableAdapter _prod_orderTableAdapter;
         
-        private on_orderCRUDTableAdapter _on_orderCRUDTableAdapter;
-        
         private prod_orderCRUDTableAdapter _prod_orderCRUDTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
@@ -5841,20 +5662,6 @@ FROM            prod_order INNER JOIN
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public on_orderCRUDTableAdapter on_orderCRUDTableAdapter {
-            get {
-                return this._on_orderCRUDTableAdapter;
-            }
-            set {
-                this._on_orderCRUDTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public prod_orderCRUDTableAdapter prod_orderCRUDTableAdapter {
             get {
                 return this._prod_orderCRUDTableAdapter;
@@ -5891,10 +5698,6 @@ FROM            prod_order INNER JOIN
                             && (this._prod_orderTableAdapter.Connection != null))) {
                     return this._prod_orderTableAdapter.Connection;
                 }
-                if (((this._on_orderCRUDTableAdapter != null) 
-                            && (this._on_orderCRUDTableAdapter.Connection != null))) {
-                    return this._on_orderCRUDTableAdapter.Connection;
-                }
                 if (((this._prod_orderCRUDTableAdapter != null) 
                             && (this._prod_orderCRUDTableAdapter.Connection != null))) {
                     return this._prod_orderCRUDTableAdapter.Connection;
@@ -5916,9 +5719,6 @@ FROM            prod_order INNER JOIN
                     count = (count + 1);
                 }
                 if ((this._prod_orderTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._on_orderCRUDTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._prod_orderCRUDTableAdapter != null)) {
@@ -5962,15 +5762,6 @@ FROM            prod_order INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._on_orderCRUDTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.on_orderCRUD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._on_orderCRUDTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -6005,14 +5796,6 @@ FROM            prod_order INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._on_orderCRUDTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.on_orderCRUD.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._on_orderCRUDTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -6023,14 +5806,6 @@ FROM            prod_order INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(OrdersDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._on_orderCRUDTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.on_orderCRUD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._on_orderCRUDTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._on_orderTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.on_order.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -6104,11 +5879,6 @@ FROM            prod_order INNER JOIN
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._on_orderCRUDTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._on_orderCRUDTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             if (((this._prod_orderCRUDTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._prod_orderCRUDTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
@@ -6162,15 +5932,6 @@ FROM            prod_order INNER JOIN
                     if (this._prod_orderTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._prod_orderTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._prod_orderTableAdapter.Adapter);
-                    }
-                }
-                if ((this._on_orderCRUDTableAdapter != null)) {
-                    revertConnections.Add(this._on_orderCRUDTableAdapter, this._on_orderCRUDTableAdapter.Connection);
-                    this._on_orderCRUDTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._on_orderCRUDTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._on_orderCRUDTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._on_orderCRUDTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._on_orderCRUDTableAdapter.Adapter);
                     }
                 }
                 if ((this._prod_orderCRUDTableAdapter != null)) {
@@ -6247,10 +6008,6 @@ FROM            prod_order INNER JOIN
                 if ((this._prod_orderTableAdapter != null)) {
                     this._prod_orderTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._prod_orderTableAdapter]));
                     this._prod_orderTableAdapter.Transaction = null;
-                }
-                if ((this._on_orderCRUDTableAdapter != null)) {
-                    this._on_orderCRUDTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._on_orderCRUDTableAdapter]));
-                    this._on_orderCRUDTableAdapter.Transaction = null;
                 }
                 if ((this._prod_orderCRUDTableAdapter != null)) {
                     this._prod_orderCRUDTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._prod_orderCRUDTableAdapter]));

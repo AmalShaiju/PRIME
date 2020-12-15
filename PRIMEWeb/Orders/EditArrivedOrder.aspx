@@ -126,7 +126,7 @@
                 <div class="form-row">
                         <div class="col-md-6 form-group">
                             <label class="control-label">Inventory ID:</label>
-                            <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select"  DataTextField="prodName" DataValueField="inventoryID" DataSourceID="ods_IDS">
+                            <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select"  DataTextField="ProductName" DataValueField="inventoryID" DataSourceID="ods_IDS">
                                 <asp:ListItem>Select Inventory ID...</asp:ListItem>
                             </asp:DropDownList>
                             <asp:Label ID="lblInventoryIDHelp" runat="server" Text="Select the Inventory ID from Dropdown List" CssClass="lbl-help" Visible="False"></asp:Label>

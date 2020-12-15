@@ -103,7 +103,7 @@
         </nav>
         <div class="container rounded-lg row justify-content-sm-center" style="height: 1258px">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
-                <h1>Create New Order</h1>
+                <h1>Edit Order</h1>
                 <div class="form-group form-control form-check form-check-inline">
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
                     <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>

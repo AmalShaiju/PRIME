@@ -104,27 +104,33 @@
                     <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
                 </div>
                 <div class="form-row">
+                   
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Product Number: </asp:Label>
                         <asp:TextBox ID="txtProdNumber" runat="server" placeholder="Eg. 5432" CssClass="form-control" required="required"></asp:TextBox>
                         <div class="invalid-feedback">Please input product number</div>
                         <asp:Label ID="lblProdlHelp" runat="server" Text="Input the number of this item from an old system" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
+                        <div class="col-md-6 form-group" >
+                        <asp:Label class="context_help" runat="server">Date: </asp:Label>
+                        <asp:TextBox ID="txtDate" runat="server" placeholder="Select date" CssClass="form-control" TextMode="Date" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Select Date: </div>
+                        <asp:Label ID="lblDateHelp" runat="server" Text="Open the calendar by tapping the textbox and select the date" CssClass="lbl-help" Visible="False"></asp:Label>
                     
-                    <div class="col-md-6 form-group">
+                    
+                    </div>
+                    </div>
+                
+                <div class="form-row">
+                <div class="col-md-6 form-group">
                         
                          <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
                     <label class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
                         <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
-                    <div class="col-md-6 form-group">
-                        <asp:Label class="context_help" runat="server">Date: </asp:Label>
-                        <asp:TextBox ID="txtDate" runat="server" placeholder="Select date" CssClass="form-control" TextMode="Date" required="required"></asp:TextBox>
-                        <div class="invalid-feedback">Select Date: </div>
-                        <asp:Label ID="lblDateHelp" runat="server" Text="Open the calendar by tapping the textbox and select the date" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
-                </div>
-                
+
+            
                 <br />  
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">
@@ -134,6 +140,8 @@
                         <a class="btn btn-outline-primary" href="/Orders/Default.aspx" role="button" aria-label="Cancel Creating">Cancel</a>
                     </div>
                 </div>
+
+            </div>
                 <asp:Panel ID="pnlOrderHelp" runat="server" Visible="False">
                         <p>Notes:</p>
                         <p>Fill the Order form and click the "Create Order" button to add the Order record to the database and start creating a new Order.</p>
@@ -141,7 +149,7 @@
                         <p>Click the "Cancel" button to cancel creating the Order and go to the Order page.</p>
                 </asp:Panel>
             </div>
-        </div>
+        
     </form>
 </body>
 </html>

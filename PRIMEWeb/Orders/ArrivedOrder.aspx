@@ -58,11 +58,10 @@
             margin: 0 10px;
         }
     </style>
-    <script src="/Script/jquery-3.5.1.min.js"></script>
-    <script src="/Script/bootstrap.min.js"></script>
+    
 </head>
 <body>
-    <form id="frmNewItem" runat="server">
+    <form id="frmNewItem" runat="server"  class="was-validated">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
             <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,7 +97,7 @@
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
-            <div id="wrapper-inner" class="col-lg-9">
+            <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                 <h1>Form about arrived Item</h1>
                 <div class="form-group form-control form-check form-check-inline">
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
@@ -117,7 +116,7 @@
                     </div>
                     <div class="col-md-4 form-group">
                     <label class="control-label">Select Inventory Item</label>
-                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select" DataSourceID="ods_IDS" DataTextField="prodName" DataValueField="inventoryID">
+                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select" DataSourceID="ods_IDS" DataTextField="ProductName" DataValueField="inventoryID">
                                 <asp:ListItem>Select an Item...</asp:ListItem>
                         </asp:DropDownList>
                     <asp:Label ID="lblInventoryHelp" runat="server" Text="Select the inventory id from dropdown list" CssClass="lbl-help" Visible="False"></asp:Label>

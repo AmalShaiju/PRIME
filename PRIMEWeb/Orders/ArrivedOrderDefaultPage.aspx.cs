@@ -23,11 +23,11 @@ namespace PRIMEWeb.Orders
             
 
                 dsOrder = new OrdersDataSet();
-                on_orderTableAdapter daOrder = new on_orderTableAdapter();
-            on_order1IDSTableAdapter daOrderIDS = new on_order1IDSTableAdapter();
-                 daOrderIDS.Fill(dsOrder.on_order1IDS);
-                daOrder.Fill(dsOrder.on_order);
-                rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
+            // on_orderTableAdapter daOrder = new on_orderTableAdapter();
+            on_orderCRUDTableAdapter daOrder = new on_orderCRUDTableAdapter();
+            
+                daOrder.Fill(dsOrder.on_orderCRUD);
+                rows = (Session["criteria"] != null) ? dsOrder.on_orderCRUD.Select(Session["criteria"].ToString()) : dsOrder.on_orderCRUD.Select();
                 DisplayOn_Order();
             
             
@@ -43,8 +43,8 @@ namespace PRIMEWeb.Orders
             dt.Columns.Add("Arrived Date");
             //dt.Columns.Add("Number in Order");
             //dt.Columns.Add("Price");
-            dt.Columns.Add("Inventory ID");
-            dt.Columns.Add("Product Order ID");
+            dt.Columns.Add("Product Name and Brand");
+            dt.Columns.Add("Product Order Number");
             dt.Columns.Add();
 
             foreach (DataRow r in rows)
@@ -55,8 +55,8 @@ namespace PRIMEWeb.Orders
                 record[2] = Convert.ToDateTime(r.ItemArray[2].ToString()).ToShortDateString();
                 //record[3] = r.ItemArray[3].ToString();
                 //record[4] = Convert.ToDecimal(r.ItemArray[4].ToString()) + "$";
-                record[3] = r.ItemArray[5].ToString();
-                record[4] = r.ItemArray[6].ToString();
+                record[3] = r.ItemArray[7].ToString();
+                record[4] = r.ItemArray[8].ToString();
                 
 
                 dt.Rows.Add(record);
@@ -150,10 +150,10 @@ namespace PRIMEWeb.Orders
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (dsOrder.on_order.Count > 0)
+            if (dsOrder.on_orderCRUD.Count > 0)
             {
                 Session["criteria"] = GetOrderCriteria();
-                rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
+                rows = (Session["criteria"] != null) ? dsOrder.on_orderCRUD.Select(Session["criteria"].ToString()) : dsOrder.on_orderCRUD.Select();
                 DisplayOn_Order();
             }
             else

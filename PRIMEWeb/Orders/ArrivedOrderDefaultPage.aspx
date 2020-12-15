@@ -102,7 +102,7 @@
                                     </div>
                                 <div class="col-md-6 form-group">
                                         <label class="control-label">Inventory ID:</label>
-                                        <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="prodName" DataValueField="inventoryID">
+                                        <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="ProductName" DataValueField="inventoryID">
                                             <asp:ListItem Selected="True" Value="None">None</asp:ListItem>
                                         </asp:DropDownList>
                                 </div>
@@ -131,7 +131,7 @@
                                 </div>--%>
                         <div class="form-row">
                             <div>
-                                <div id="divBtnSearch" class="col-md-6 align-self-end">
+                                <div id="divBtnSearch"  class="auto-style1">
                                     <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
