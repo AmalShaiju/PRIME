@@ -73,9 +73,9 @@ namespace PRIMEWeb.Orders
                 {
                     //update record with user's input
                     dsOrder.on_order.FindByid(id).onordInvoiceNum = txtInvoiceNumber.Text.ToString();
-                    dsOrder.on_order.FindByid(id).onordArriveDate = Convert.ToDateTime(this.txtArriveDate);
+                    dsOrder.on_order.FindByid(id).onordArriveDate = Convert.ToDateTime(this.txtArriveDate.Text);
                     dsOrder.on_order.FindByid(id).onordNumInOrder = Convert.ToInt32(txtNumberInOrder.Text);
-                    dsOrder.on_order.FindByid(id).onordPrice = Convert.ToInt32(txtPrice.Text);
+                    dsOrder.on_order.FindByid(id).onordPrice = Convert.ToDecimal(txtPrice.Text);
                     dsOrder.on_order.FindByid(id).inventoryID = Convert.ToInt32(ddlInventoryID.SelectedValue);
                     dsOrder.on_order.FindByid(id).prodorderID = Convert.ToInt32(ddlProdOrderID.SelectedValue);
 
