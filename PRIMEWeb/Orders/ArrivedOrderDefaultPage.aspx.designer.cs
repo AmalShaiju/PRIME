@@ -105,15 +105,6 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
-        /// gv_Orders control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_Orders;
-
-        /// <summary>
         /// lbl_Status control.
         /// </summary>
         /// <remarks>
@@ -121,6 +112,33 @@ namespace PRIMEWeb.Orders
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_Status;
+
+        /// <summary>
+        /// smgOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager smgOrder;
+
+        /// <summary>
+        /// upnOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnOrder;
+
+        /// <summary>
+        /// gv_Orders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_Orders;
 
         /// <summary>
         /// on_order control.

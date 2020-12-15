@@ -134,18 +134,25 @@
                             </div>
 
                             </div>
-                            <asp:GridView ID="gv_Orders" runat="server" BorderStyle="None" CssClass="table" GridLines="None" OnRowDataBound="gv_Orders_RowDataBound">
-                        </asp:GridView>
-                        <asp:Label ID="lbl_Status" runat="server" Text="Label"></asp:Label>
+                     <asp:Label ID="lbl_Status" runat="server"></asp:Label>
+                        <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnOrder" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="gv_Orders" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gv_Orders_RowDataBound">
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                     </div>
-                        <br />
             </div>
         </div>
             
                 
             <asp:ObjectDataSource ID="on_order" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter">
             </asp:ObjectDataSource>
-            </div>
+            
     </form>
 </body>
 </html>
