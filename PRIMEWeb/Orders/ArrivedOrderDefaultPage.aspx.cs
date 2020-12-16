@@ -24,10 +24,10 @@ namespace PRIMEWeb.Orders
 
                 dsOrder = new OrdersDataSet();
             // on_orderTableAdapter daOrder = new on_orderTableAdapter();
-                on_orderTableAdapter daOrder = new on_orderTableAdapter();
+                on_orderCRUDTableAdapter daOrder = new on_orderCRUDTableAdapter();
             
-                daOrder.Fill(dsOrder.on_order);
-                rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
+                daOrder.Fill(dsOrder.on_orderCRUD);
+                rows = (Session["criteria"] != null) ? dsOrder.on_orderCRUD.Select(Session["criteria"].ToString()) : dsOrder.on_orderCRUD.Select();
                 DisplayOn_Order();
             
             
@@ -150,10 +150,10 @@ namespace PRIMEWeb.Orders
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (dsOrder.on_order.Count > 0)
+            if (dsOrder.on_orderCRUD.Count > 0)
             {
                 Session["criteria"] = GetOrderCriteria();
-                rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
+                rows = (Session["criteria"] != null) ? dsOrder.on_orderCRUD.Select(Session["criteria"].ToString()) : dsOrder.on_orderCRUD.Select();
                 DisplayOn_Order();
             }
             else
@@ -170,7 +170,7 @@ namespace PRIMEWeb.Orders
             {
                 try
                 {
-                    DataRow record = dsOrder.on_order.FindByid(id); // Find and add the record to tbe record variable
+                    DataRow record = dsOrder.on_orderCRUD.FindByid(id); // Find and add the record to tbe record variable
                     record.Delete(); // Deletes the record in memory
 
                     on_orderTableAdapter daOrder = new on_orderTableAdapter(); // table adapter to service table (Service adapter)
