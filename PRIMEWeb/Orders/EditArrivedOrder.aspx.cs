@@ -88,8 +88,8 @@ namespace PRIMEWeb.Orders
         {
             try
             {
-                prod_orderTableAdapter daOrder = new prod_orderTableAdapter();
-                daOrder.Update(dsOrder.prod_order); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                on_orderTableAdapter daOrder = new on_orderTableAdapter();
+                daOrder.Update(dsOrder.on_order); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
                 dsOrder.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
                 lblStatus.Text = "Record Successfully Updated";
             }

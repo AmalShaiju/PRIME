@@ -24,10 +24,10 @@ namespace PRIMEWeb.Orders
 
                 dsOrder = new OrdersDataSet();
             // on_orderTableAdapter daOrder = new on_orderTableAdapter();
-            on_orderCRUDTableAdapter daOrder = new on_orderCRUDTableAdapter();
+                on_orderTableAdapter daOrder = new on_orderTableAdapter();
             
-                daOrder.Fill(dsOrder.on_orderCRUD);
-                rows = (Session["criteria"] != null) ? dsOrder.on_orderCRUD.Select(Session["criteria"].ToString()) : dsOrder.on_orderCRUD.Select();
+                daOrder.Fill(dsOrder.on_order);
+                rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
                 DisplayOn_Order();
             
             
@@ -55,8 +55,8 @@ namespace PRIMEWeb.Orders
                 record[2] = Convert.ToDateTime(r.ItemArray[2].ToString()).ToShortDateString();
                 //record[3] = r.ItemArray[3].ToString();
                 //record[4] = Convert.ToDecimal(r.ItemArray[4].ToString()) + "$";
-                record[3] = r.ItemArray[7].ToString();
-                record[4] = r.ItemArray[8].ToString();
+                record[3] = r.ItemArray[5].ToString();
+                record[4] = r.ItemArray[6].ToString();
                 
 
                 dt.Rows.Add(record);
@@ -150,10 +150,10 @@ namespace PRIMEWeb.Orders
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (dsOrder.on_orderCRUD.Count > 0)
+            if (dsOrder.on_order.Count > 0)
             {
                 Session["criteria"] = GetOrderCriteria();
-                rows = (Session["criteria"] != null) ? dsOrder.on_orderCRUD.Select(Session["criteria"].ToString()) : dsOrder.on_orderCRUD.Select();
+                rows = (Session["criteria"] != null) ? dsOrder.on_order.Select(Session["criteria"].ToString()) : dsOrder.on_order.Select();
                 DisplayOn_Order();
             }
             else

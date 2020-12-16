@@ -126,7 +126,7 @@
                 <div class="form-row">
                         <div class="col-md-6 form-group">
                             <label class="control-label">Inventory ID:</label>
-                            <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select"  DataTextField="ProductName" DataValueField="inventoryID" DataSourceID="ods_IDS">
+                            <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="custom-select"  DataTextField="ProductName" DataValueField="id" DataSourceID="ods_IDS">
                                 <asp:ListItem>Select Inventory ID...</asp:ListItem>
                             </asp:DropDownList>
                             <asp:Label ID="lblInventoryIDHelp" runat="server" Text="Select the Inventory ID from Dropdown List" CssClass="lbl-help" Visible="False"></asp:Label>
@@ -148,7 +148,7 @@
                         
                          <div class="col-md-6 form-group">
                             <label class="control-label">Inventory ID:</label>
-                            <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select"  DataTextField="pordNumber" DataValueField="prodorderID" DataSourceID="ods_IDS">
+                            <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select"  DataTextField="pordNumber" DataValueField="id" DataSourceID="ObjectDataSource1">
                                 <asp:ListItem>Select Product Order ID...</asp:ListItem>
                             </asp:DropDownList>
                              <asp:Label ID="lblProdOrderIDHelp" runat="server" Text="Select the Product Order ID from Dropdown List  " CssClass="lbl-help" Visible="False"></asp:Label>
@@ -163,6 +163,7 @@
                     </div>
                 </div>
                 </div>
+                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.prod_order1TableAdapter"></asp:ObjectDataSource>
                 </div>
                 <br />  
                 

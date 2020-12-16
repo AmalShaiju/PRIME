@@ -155,8 +155,8 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
               <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        on_order.id, on_order.onordInvoiceNum, on_order.onordArriveDate, on_order.onordNumInOrder, on_order.onordPrice, on_order.inventoryID, on_order.prodorderID, product.prodName +
-                         +  '( '+' Brand: '+  product.prodBrand  + ' )' AS ProductName, prod_order.pordNumber
+                    <CommandText>SELECT        on_order.id, on_order.onordInvoiceNum, on_order.onordArriveDate, on_order.onordNumInOrder, on_order.onordPrice, on_order.inventoryID, on_order.prodorderID, 
+                         product.prodName + '( ' + ' Brand: ' + product.prodBrand + ' )' AS ProductName, prod_order.pordNumber
 FROM            on_order INNER JOIN
                          product ON on_order.id = product.id INNER JOIN
                          inventory ON on_order.inventoryID = inventory.id AND product.id = inventory.productID INNER JOIN
@@ -245,24 +245,20 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="on_order1IDSTableAdapter" GeneratorDataComponentClassName="on_order1IDSTableAdapter" Name="on_order1IDS" UserDataComponentName="on_order1IDSTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectName="dbo.inventory" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        on_order.inventoryID, on_order.prodorderID, product.prodName + '( ' + CAST(inventory.invSize AS varchar) +' '+ inventory.invMeasure + ' )' AS ProductName, prod_order.pordNumber
-FROM            on_order INNER JOIN
-                         inventory ON on_order.inventoryID = inventory.id INNER JOIN
-                         product ON inventory.productID = product.id INNER JOIN
-                         prod_order ON on_order.prodorderID = prod_order.id</CommandText>
+                    <CommandText>SELECT        product.prodName + '( ' + CAST(inventory.invSize AS varchar) + ' ' + inventory.invMeasure + ' )' + ' '+ product.prodBrand AS ProductName, inventory.id
+FROM            inventory INNER JOIN
+                         product ON inventory.productID = product.id</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="inventoryID" DataSetColumn="inventoryID" />
-              <Mapping SourceColumn="prodorderID" DataSetColumn="prodorderID" />
-              <Mapping SourceColumn="pordNumber" DataSetColumn="pordNumber" />
               <Mapping SourceColumn="ProductName" DataSetColumn="ProductName" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -292,6 +288,24 @@ FROM            prod_order INNER JOIN
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="prod_order1TableAdapter" GeneratorDataComponentClassName="prod_order1TableAdapter" Name="prod_order1" UserDataComponentName="prod_order1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectName="dbo.prod_order" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        pordNumber, id
+FROM            prod_order</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="pordNumber" DataSetColumn="pordNumber" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -300,7 +314,7 @@ FROM            prod_order INNER JOIN
   <xs:element name="OrdersDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="OrdersDataSet" msprop:Generator_UserDSName="OrdersDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="on_order" msprop:Generator_TableClassName="on_orderDataTable" msprop:Generator_TableVarName="tableon_order" msprop:Generator_RowChangedName="on_orderRowChanged" msprop:Generator_TablePropName="on_order" msprop:Generator_RowDeletingName="on_orderRowDeleting" msprop:Generator_RowChangingName="on_orderRowChanging" msprop:Generator_RowEvHandlerName="on_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="on_orderRowDeleted" msprop:Generator_RowClassName="on_orderRow" msprop:Generator_UserTableName="on_order" msprop:Generator_RowEvArgName="on_orderRowChangeEvent">
+        <xs:element name="on_order" msprop:Generator_TableClassName="on_orderDataTable" msprop:Generator_TableVarName="tableon_order" msprop:Generator_TablePropName="on_order" msprop:Generator_RowDeletingName="on_orderRowDeleting" msprop:Generator_RowChangingName="on_orderRowChanging" msprop:Generator_RowEvHandlerName="on_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="on_orderRowDeleted" msprop:Generator_UserTableName="on_order" msprop:Generator_RowChangedName="on_orderRowChanged" msprop:Generator_RowEvArgName="on_orderRowChangeEvent" msprop:Generator_RowClassName="on_orderRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -319,7 +333,7 @@ FROM            prod_order INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="prod_order" msprop:Generator_TableClassName="prod_orderDataTable" msprop:Generator_TableVarName="tableprod_order" msprop:Generator_RowChangedName="prod_orderRowChanged" msprop:Generator_TablePropName="prod_order" msprop:Generator_RowDeletingName="prod_orderRowDeleting" msprop:Generator_RowChangingName="prod_orderRowChanging" msprop:Generator_RowEvHandlerName="prod_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="prod_orderRowDeleted" msprop:Generator_RowClassName="prod_orderRow" msprop:Generator_UserTableName="prod_order" msprop:Generator_RowEvArgName="prod_orderRowChangeEvent">
+        <xs:element name="prod_order" msprop:Generator_TableClassName="prod_orderDataTable" msprop:Generator_TableVarName="tableprod_order" msprop:Generator_TablePropName="prod_order" msprop:Generator_RowDeletingName="prod_orderRowDeleting" msprop:Generator_RowChangingName="prod_orderRowChanging" msprop:Generator_RowEvHandlerName="prod_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="prod_orderRowDeleted" msprop:Generator_UserTableName="prod_order" msprop:Generator_RowChangedName="prod_orderRowChanged" msprop:Generator_RowEvArgName="prod_orderRowChangeEvent" msprop:Generator_RowClassName="prod_orderRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -335,7 +349,7 @@ FROM            prod_order INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="on_orderCRUD" msprop:Generator_TableClassName="on_orderCRUDDataTable" msprop:Generator_TableVarName="tableon_orderCRUD" msprop:Generator_TablePropName="on_orderCRUD" msprop:Generator_RowDeletingName="on_orderCRUDRowDeleting" msprop:Generator_RowChangingName="on_orderCRUDRowChanging" msprop:Generator_RowEvHandlerName="on_orderCRUDRowChangeEventHandler" msprop:Generator_RowDeletedName="on_orderCRUDRowDeleted" msprop:Generator_UserTableName="on_orderCRUD" msprop:Generator_RowChangedName="on_orderCRUDRowChanged" msprop:Generator_RowEvArgName="on_orderCRUDRowChangeEvent" msprop:Generator_RowClassName="on_orderCRUDRow">
+        <xs:element name="on_orderCRUD" msprop:Generator_TableClassName="on_orderCRUDDataTable" msprop:Generator_TableVarName="tableon_orderCRUD" msprop:Generator_RowChangedName="on_orderCRUDRowChanged" msprop:Generator_TablePropName="on_orderCRUD" msprop:Generator_RowDeletingName="on_orderCRUDRowDeleting" msprop:Generator_RowChangingName="on_orderCRUDRowChanging" msprop:Generator_RowEvHandlerName="on_orderCRUDRowChangeEventHandler" msprop:Generator_RowDeletedName="on_orderCRUDRowDeleted" msprop:Generator_RowClassName="on_orderCRUDRow" msprop:Generator_UserTableName="on_orderCRUD" msprop:Generator_RowEvArgName="on_orderCRUDRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -368,7 +382,7 @@ FROM            prod_order INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="prod_orderCRUD" msprop:Generator_TableClassName="prod_orderCRUDDataTable" msprop:Generator_TableVarName="tableprod_orderCRUD" msprop:Generator_TablePropName="prod_orderCRUD" msprop:Generator_RowDeletingName="prod_orderCRUDRowDeleting" msprop:Generator_RowChangingName="prod_orderCRUDRowChanging" msprop:Generator_RowEvHandlerName="prod_orderCRUDRowChangeEventHandler" msprop:Generator_RowDeletedName="prod_orderCRUDRowDeleted" msprop:Generator_UserTableName="prod_orderCRUD" msprop:Generator_RowChangedName="prod_orderCRUDRowChanged" msprop:Generator_RowEvArgName="prod_orderCRUDRowChangeEvent" msprop:Generator_RowClassName="prod_orderCRUDRow">
+        <xs:element name="prod_orderCRUD" msprop:Generator_TableClassName="prod_orderCRUDDataTable" msprop:Generator_TableVarName="tableprod_orderCRUD" msprop:Generator_RowChangedName="prod_orderCRUDRowChanged" msprop:Generator_TablePropName="prod_orderCRUD" msprop:Generator_RowDeletingName="prod_orderCRUDRowDeleting" msprop:Generator_RowChangingName="prod_orderCRUDRowChanging" msprop:Generator_RowEvHandlerName="prod_orderCRUDRowChangeEventHandler" msprop:Generator_RowDeletedName="prod_orderCRUDRowDeleted" msprop:Generator_RowClassName="prod_orderCRUDRow" msprop:Generator_UserTableName="prod_orderCRUD" msprop:Generator_RowEvArgName="prod_orderCRUDRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -384,18 +398,9 @@ FROM            prod_order INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="on_order1IDS" msprop:Generator_TableClassName="on_order1IDSDataTable" msprop:Generator_TableVarName="tableon_order1IDS" msprop:Generator_TablePropName="on_order1IDS" msprop:Generator_RowDeletingName="on_order1IDSRowDeleting" msprop:Generator_RowChangingName="on_order1IDSRowChanging" msprop:Generator_RowEvHandlerName="on_order1IDSRowChangeEventHandler" msprop:Generator_RowDeletedName="on_order1IDSRowDeleted" msprop:Generator_UserTableName="on_order1IDS" msprop:Generator_RowChangedName="on_order1IDSRowChanged" msprop:Generator_RowEvArgName="on_order1IDSRowChangeEvent" msprop:Generator_RowClassName="on_order1IDSRow">
+        <xs:element name="on_order1IDS" msprop:Generator_TableClassName="on_order1IDSDataTable" msprop:Generator_TableVarName="tableon_order1IDS" msprop:Generator_RowChangedName="on_order1IDSRowChanged" msprop:Generator_TablePropName="on_order1IDS" msprop:Generator_RowDeletingName="on_order1IDSRowDeleting" msprop:Generator_RowChangingName="on_order1IDSRowChanging" msprop:Generator_RowEvHandlerName="on_order1IDSRowChangeEventHandler" msprop:Generator_RowDeletedName="on_order1IDSRowDeleted" msprop:Generator_RowClassName="on_order1IDSRow" msprop:Generator_UserTableName="on_order1IDS" msprop:Generator_RowEvArgName="on_order1IDSRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="inventoryID" msprop:Generator_ColumnVarNameInTable="columninventoryID" msprop:Generator_ColumnPropNameInRow="inventoryID" msprop:Generator_ColumnPropNameInTable="inventoryIDColumn" msprop:Generator_UserColumnName="inventoryID" type="xs:int" />
-              <xs:element name="prodorderID" msprop:Generator_ColumnVarNameInTable="columnprodorderID" msprop:Generator_ColumnPropNameInRow="prodorderID" msprop:Generator_ColumnPropNameInTable="prodorderIDColumn" msprop:Generator_UserColumnName="prodorderID" type="xs:int" />
-              <xs:element name="pordNumber" msprop:Generator_ColumnVarNameInTable="columnpordNumber" msprop:Generator_ColumnPropNameInRow="pordNumber" msprop:Generator_ColumnPropNameInTable="pordNumberColumn" msprop:Generator_UserColumnName="pordNumber" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="ProductName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_UserColumnName="ProductName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -403,10 +408,11 @@ FROM            prod_order INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DetailsView" msprop:Generator_TableClassName="DetailsViewDataTable" msprop:Generator_TableVarName="tableDetailsView" msprop:Generator_RowChangedName="DetailsViewRowChanged" msprop:Generator_TablePropName="DetailsView" msprop:Generator_RowDeletingName="DetailsViewRowDeleting" msprop:Generator_RowChangingName="DetailsViewRowChanging" msprop:Generator_RowEvHandlerName="DetailsViewRowChangeEventHandler" msprop:Generator_RowDeletedName="DetailsViewRowDeleted" msprop:Generator_RowClassName="DetailsViewRow" msprop:Generator_UserTableName="DetailsView" msprop:Generator_RowEvArgName="DetailsViewRowChangeEvent">
+        <xs:element name="DetailsView" msprop:Generator_TableClassName="DetailsViewDataTable" msprop:Generator_TableVarName="tableDetailsView" msprop:Generator_TablePropName="DetailsView" msprop:Generator_RowDeletingName="DetailsViewRowDeleting" msprop:Generator_RowChangingName="DetailsViewRowChanging" msprop:Generator_RowEvHandlerName="DetailsViewRowChangeEventHandler" msprop:Generator_RowDeletedName="DetailsViewRowDeleted" msprop:Generator_UserTableName="DetailsView" msprop:Generator_RowChangedName="DetailsViewRowChanged" msprop:Generator_RowEvArgName="DetailsViewRowChangeEvent" msprop:Generator_RowClassName="DetailsViewRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="pordNumber" msprop:Generator_ColumnVarNameInTable="columnpordNumber" msprop:Generator_ColumnPropNameInRow="pordNumber" msprop:Generator_ColumnPropNameInTable="pordNumberColumn" msprop:Generator_UserColumnName="pordNumber" minOccurs="0">
@@ -433,6 +439,20 @@ FROM            prod_order INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="prod_order1" msprop:Generator_TableClassName="prod_order1DataTable" msprop:Generator_TableVarName="tableprod_order1" msprop:Generator_TablePropName="prod_order1" msprop:Generator_RowDeletingName="prod_order1RowDeleting" msprop:Generator_RowChangingName="prod_order1RowChanging" msprop:Generator_RowEvHandlerName="prod_order1RowChangeEventHandler" msprop:Generator_RowDeletedName="prod_order1RowDeleted" msprop:Generator_UserTableName="prod_order1" msprop:Generator_RowChangedName="prod_order1RowChanged" msprop:Generator_RowEvArgName="prod_order1RowChangeEvent" msprop:Generator_RowClassName="prod_order1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="pordNumber" msprop:Generator_ColumnVarNameInTable="columnpordNumber" msprop:Generator_ColumnPropNameInRow="pordNumber" msprop:Generator_ColumnPropNameInTable="pordNumberColumn" msprop:Generator_UserColumnName="pordNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -451,22 +471,32 @@ FROM            prod_order INNER JOIN
       <xs:selector xpath=".//mstns:prod_orderCRUD" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
+    <xs:unique name="on_order1IDS_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:on_order1IDS" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
     <xs:unique name="DetailsView_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DetailsView" />
       <xs:field xpath="mstns:OnOrderID" />
       <xs:field xpath="mstns:ProdOrderID" />
     </xs:unique>
+    <xs:unique name="prod_order1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:prod_order1" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="onorder_fk_prodorderID" msdata:parent="prod_order" msdata:child="on_order" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_order" msprop:Generator_ChildPropName="Geton_orderRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID" msprop:Generator_ParentPropName="prod_orderRow" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID" msprop:Generator_UserParentTable="prod_order" />
-      <msdata:Relationship name="onorder_fk_prodorderID1" msdata:parent="prod_order" msdata:child="on_orderCRUD" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_orderCRUD" msprop:Generator_ChildPropName="Geton_orderCRUDRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID1" msprop:Generator_ParentPropName="prod_orderRow" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID1" msprop:Generator_UserParentTable="prod_order" />
-      <msdata:Relationship name="onorder_fk_prodorderID2" msdata:parent="prod_orderCRUD" msdata:child="on_order" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_order" msprop:Generator_ChildPropName="Geton_orderRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID2" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID2" msprop:Generator_UserParentTable="prod_orderCRUD" msprop:Generator_ParentPropName="prod_orderCRUDRow" />
-      <msdata:Relationship name="onorder_fk_prodorderID3" msdata:parent="prod_orderCRUD" msdata:child="on_orderCRUD" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_orderCRUD" msprop:Generator_ChildPropName="Geton_orderCRUDRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID3" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID3" msprop:Generator_UserParentTable="prod_orderCRUD" msprop:Generator_ParentPropName="prod_orderCRUDRow" />
-      <msdata:Relationship name="onorder_fk_prodorderID4" msdata:parent="prod_order" msdata:child="on_order1IDS" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_order1IDS" msprop:Generator_ChildPropName="Geton_order1IDSRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID4" msprop:Generator_ParentPropName="prod_orderRow" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID4" msprop:Generator_UserParentTable="prod_order" />
-      <msdata:Relationship name="onorder_fk_prodorderID5" msdata:parent="prod_orderCRUD" msdata:child="on_order1IDS" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_order1IDS" msprop:Generator_ChildPropName="Geton_order1IDSRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID5" msprop:Generator_ParentPropName="prod_orderCRUDRow" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID5" msprop:Generator_UserParentTable="prod_orderCRUD" />
-      <msdata:Relationship name="onorder_fk_prodorderID6" msdata:parent="prod_order" msdata:child="DetailsView" msdata:parentkey="id" msdata:childkey="ProdOrderID" msprop:Generator_UserChildTable="DetailsView" msprop:Generator_ChildPropName="GetDetailsViewRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID6" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID6" msprop:Generator_UserParentTable="prod_order" msprop:Generator_ParentPropName="prod_orderRow" />
-      <msdata:Relationship name="onorder_fk_prodorderID7" msdata:parent="prod_orderCRUD" msdata:child="DetailsView" msdata:parentkey="id" msdata:childkey="ProdOrderID" msprop:Generator_UserChildTable="DetailsView" msprop:Generator_ChildPropName="GetDetailsViewRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID7" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID7" msprop:Generator_UserParentTable="prod_orderCRUD" msprop:Generator_ParentPropName="prod_orderCRUDRow" />
+      <msdata:Relationship name="onorder_fk_prodorderID" msdata:parent="prod_order" msdata:child="on_order" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_order" msprop:Generator_ChildPropName="Geton_orderRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID" msprop:Generator_UserParentTable="prod_order" msprop:Generator_ParentPropName="prod_orderRow" />
+      <msdata:Relationship name="onorder_fk_prodorderID1" msdata:parent="prod_order" msdata:child="on_orderCRUD" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_orderCRUD" msprop:Generator_ChildPropName="Geton_orderCRUDRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID1" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID1" msprop:Generator_UserParentTable="prod_order" msprop:Generator_ParentPropName="prod_orderRow" />
+      <msdata:Relationship name="onorder_fk_prodorderID2" msdata:parent="prod_orderCRUD" msdata:child="on_order" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_order" msprop:Generator_ChildPropName="Geton_orderRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID2" msprop:Generator_ParentPropName="prod_orderCRUDRow" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID2" msprop:Generator_UserParentTable="prod_orderCRUD" />
+      <msdata:Relationship name="onorder_fk_prodorderID3" msdata:parent="prod_orderCRUD" msdata:child="on_orderCRUD" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_orderCRUD" msprop:Generator_ChildPropName="Geton_orderCRUDRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID3" msprop:Generator_ParentPropName="prod_orderCRUDRow" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID3" msprop:Generator_UserParentTable="prod_orderCRUD" />
+      <msdata:Relationship name="onorder_fk_prodorderID6" msdata:parent="prod_order" msdata:child="DetailsView" msdata:parentkey="id" msdata:childkey="ProdOrderID" msprop:Generator_UserChildTable="DetailsView" msprop:Generator_ChildPropName="GetDetailsViewRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID6" msprop:Generator_ParentPropName="prod_orderRow" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID6" msprop:Generator_UserParentTable="prod_order" />
+      <msdata:Relationship name="onorder_fk_prodorderID7" msdata:parent="prod_orderCRUD" msdata:child="DetailsView" msdata:parentkey="id" msdata:childkey="ProdOrderID" msprop:Generator_UserChildTable="DetailsView" msprop:Generator_ChildPropName="GetDetailsViewRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID7" msprop:Generator_ParentPropName="prod_orderCRUDRow" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID7" msprop:Generator_UserParentTable="prod_orderCRUD" />
+      <msdata:Relationship name="onorder_fk_inventoryID" msdata:parent="on_order1IDS" msdata:child="on_order" msdata:parentkey="id" msdata:childkey="inventoryID" msprop:Generator_UserChildTable="on_order" msprop:Generator_ChildPropName="Geton_orderRows" msprop:Generator_UserRelationName="onorder_fk_inventoryID" msprop:Generator_RelationVarName="relationonorder_fk_inventoryID" msprop:Generator_UserParentTable="on_order1IDS" msprop:Generator_ParentPropName="on_order1IDSRow" />
+      <msdata:Relationship name="onorder_fk_prodorderID4" msdata:parent="prod_order1" msdata:child="on_order" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_order" msprop:Generator_ChildPropName="Geton_orderRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID4" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID4" msprop:Generator_UserParentTable="prod_order1" msprop:Generator_ParentPropName="prod_order1Row" />
+      <msdata:Relationship name="onorder_fk_inventoryID1" msdata:parent="on_order1IDS" msdata:child="on_orderCRUD" msdata:parentkey="id" msdata:childkey="inventoryID" msprop:Generator_UserChildTable="on_orderCRUD" msprop:Generator_ChildPropName="Geton_orderCRUDRows" msprop:Generator_UserRelationName="onorder_fk_inventoryID1" msprop:Generator_RelationVarName="relationonorder_fk_inventoryID1" msprop:Generator_UserParentTable="on_order1IDS" msprop:Generator_ParentPropName="on_order1IDSRow" />
+      <msdata:Relationship name="onorder_fk_prodorderID5" msdata:parent="prod_order1" msdata:child="on_orderCRUD" msdata:parentkey="id" msdata:childkey="prodorderID" msprop:Generator_UserChildTable="on_orderCRUD" msprop:Generator_ChildPropName="Geton_orderCRUDRows" msprop:Generator_UserRelationName="onorder_fk_prodorderID5" msprop:Generator_RelationVarName="relationonorder_fk_prodorderID5" msprop:Generator_UserParentTable="prod_order1" msprop:Generator_ParentPropName="prod_order1Row" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

@@ -71,16 +71,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Emmas.mdf" />
+    <Content Include="App_Data\Emmas_log.ldf">
+      <DependentUpon>Emmas.mdf</DependentUpon>
+    </Content>
     <Content Include="CSS\bootstrap.css" />
     <Content Include="Customers\Default.aspx" />
     <Content Include="Customers\NewCustomer.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Customers\Equipments.aspx" />
     <Content Include="Customers\NewEquipment.aspx" />
-    <Content Include="App_Data\Emmas.mdf" />
-    <Content Include="App_Data\Emmas_log.ldf">
-      <DependentUpon>Emmas.mdf</DependentUpon>
-    </Content>
     <Content Include="Inventory\NewItem.aspx" />
     <Content Include="Inventory\Default.aspx" />
     <Content Include="Landing.aspx" />
