@@ -11,7 +11,7 @@ namespace PRIMEWeb.Repairs
 {
 
 
-    public partial class NewRepair
+    public partial class EditRepair
     {
 
         /// <summary>
@@ -40,15 +40,6 @@ namespace PRIMEWeb.Repairs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// lblStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatus;
 
         /// <summary>
         /// txtDateIn control.
@@ -222,22 +213,13 @@ namespace PRIMEWeb.Repairs
         protected global::System.Web.UI.WebControls.ObjectDataSource Service;
 
         /// <summary>
-        /// EquipmentLookUp control.
+        /// Reciept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource EquipmentLookUp;
-
-        /// <summary>
-        /// Employee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource Employee;
+        protected global::System.Web.UI.WebControls.ObjectDataSource Reciept;
 
         /// <summary>
         /// Customer control.
@@ -249,12 +231,21 @@ namespace PRIMEWeb.Repairs
         protected global::System.Web.UI.WebControls.ObjectDataSource Customer;
 
         /// <summary>
-        /// Receipt control.
+        /// Employee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource Receipt;
+        protected global::System.Web.UI.WebControls.ObjectDataSource Employee;
+
+        /// <summary>
+        /// Equipment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource Equipment;
     }
 }

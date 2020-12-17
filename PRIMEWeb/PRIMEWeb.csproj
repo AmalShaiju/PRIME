@@ -88,8 +88,13 @@
     <Content Include="Inventory\Default.aspx" />
     <Content Include="Landing.aspx" />
     <Content Include="Repairs\Default.aspx" />
+    <Content Include="Repairs\Details.aspx" />
+    <Content Include="Repairs\EditRepair.aspx" />
+    <Content Include="Repairs\EditService.aspx" />
+    <Content Include="Repairs\images\question.png" />
     <Content Include="Repairs\NewRepair.aspx" />
     <Content Include="Repairs\NewService.aspx" />
+    <Content Include="Repairs\Readme.txt" />
     <Content Include="Repairs\Services.aspx" />
     <Content Include="Repairs\WarrantyReport.aspx" />
     <Content Include="Sales\Default.aspx" />
@@ -97,8 +102,10 @@
     <Content Include="Sales\Report.aspx" />
     <Content Include="Sales\SaleRecord.aspx" />
     <Content Include="Script\bootstrap.min.js" />
+    <Content Include="Script\help_text.js" />
     <Content Include="Script\jquery-3.5.1.min.js" />
     <Content Include="Script\wcag.js" />
+    <Content Include="Script\service-help_text.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +194,27 @@
     <Compile Include="Repairs\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Repairs\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repairs\EditRepair.aspx.cs">
+      <DependentUpon>EditRepair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\EditRepair.aspx.designer.cs">
+      <DependentUpon>EditRepair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repairs\EditService.aspx.cs">
+      <DependentUpon>EditService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\EditService.aspx.designer.cs">
+      <DependentUpon>EditService.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Repairs\NewRepair.aspx.cs">
       <DependentUpon>NewRepair.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -203,7 +231,6 @@
     </Compile>
     <Compile Include="Repairs\Services.aspx.cs">
       <DependentUpon>Services.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Repairs\Services.aspx.designer.cs">
       <DependentUpon>Services.aspx</DependentUpon>
@@ -253,6 +280,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
