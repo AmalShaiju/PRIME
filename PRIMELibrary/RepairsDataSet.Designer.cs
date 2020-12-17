@@ -50,6 +50,8 @@ namespace PRIMELibrary {
         
         private global::System.Data.DataRelation relationserord_fk_serviceID;
         
+        private global::System.Data.DataRelation relationserord_fk_equipID;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -419,6 +421,7 @@ namespace PRIMELibrary {
             this.relationserord_fk_empID = this.Relations["serord_fk_empID"];
             this.relationserord_fk_reseiptID = this.Relations["serord_fk_reseiptID"];
             this.relationserord_fk_serviceID = this.Relations["serord_fk_serviceID"];
+            this.relationserord_fk_equipID = this.Relations["serord_fk_equipID"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -461,6 +464,10 @@ namespace PRIMELibrary {
                         this.tableservice.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableservice_order.serviceIDColumn}, false);
             this.Relations.Add(this.relationserord_fk_serviceID);
+            this.relationserord_fk_equipID = new global::System.Data.DataRelation("serord_fk_equipID", new global::System.Data.DataColumn[] {
+                        this.tableEquipmentLookUp.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableservice_order.equipIDColumn}, false);
+            this.Relations.Add(this.relationserord_fk_equipID);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2107,7 +2114,7 @@ namespace PRIMELibrary {
             
             private global::System.Data.DataColumn columnid;
             
-            private global::System.Data.DataColumn columneqtType;
+            private global::System.Data.DataColumn columnEquipment_Type;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2152,9 +2159,9 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn eqtTypeColumn {
+            public global::System.Data.DataColumn Equipment_TypeColumn {
                 get {
-                    return this.columneqtType;
+                    return this.columnEquipment_Type;
                 }
             }
             
@@ -2195,11 +2202,11 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EquipmentLookUpRow AddEquipmentLookUpRow(string eqtType) {
+            public EquipmentLookUpRow AddEquipmentLookUpRow(string Equipment_Type) {
                 EquipmentLookUpRow rowEquipmentLookUpRow = ((EquipmentLookUpRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        eqtType};
+                        Equipment_Type};
                 rowEquipmentLookUpRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEquipmentLookUpRow);
                 return rowEquipmentLookUpRow;
@@ -2230,7 +2237,7 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnid = base.Columns["id"];
-                this.columneqtType = base.Columns["eqtType"];
+                this.columnEquipment_Type = base.Columns["Equipment Type"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2238,8 +2245,8 @@ namespace PRIMELibrary {
             private void InitClass() {
                 this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
-                this.columneqtType = new global::System.Data.DataColumn("eqtType", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columneqtType);
+                this.columnEquipment_Type = new global::System.Data.DataColumn("Equipment Type", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEquipment_Type);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -2248,7 +2255,8 @@ namespace PRIMELibrary {
                 this.columnid.AllowDBNull = false;
                 this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
-                this.columneqtType.MaxLength = 30;
+                this.columnEquipment_Type.ReadOnly = true;
+                this.columnEquipment_Type.MaxLength = 83;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2819,7 +2827,7 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public service_orderRow Addservice_orderRow(System.DateTime serordDateIn, System.DateTime serordDateOut, string serordIssue, bool serordWarranty, OrderLookUpRow parentOrderLookUpRowByserord_fk_reseiptID, serviceRow parentserviceRowByserord_fk_serviceID, int equipID, EmployeeLookUpRow parentEmployeeLookUpRowByserord_fk_empID) {
+            public service_orderRow Addservice_orderRow(System.DateTime serordDateIn, System.DateTime serordDateOut, string serordIssue, bool serordWarranty, OrderLookUpRow parentOrderLookUpRowByserord_fk_reseiptID, serviceRow parentserviceRowByserord_fk_serviceID, EquipmentLookUpRow parentEquipmentLookUpRowByserord_fk_equipID, EmployeeLookUpRow parentEmployeeLookUpRowByserord_fk_empID) {
                 service_orderRow rowservice_orderRow = ((service_orderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2829,13 +2837,16 @@ namespace PRIMELibrary {
                         serordWarranty,
                         null,
                         null,
-                        equipID,
+                        null,
                         null};
                 if ((parentOrderLookUpRowByserord_fk_reseiptID != null)) {
                     columnValuesArray[5] = parentOrderLookUpRowByserord_fk_reseiptID[0];
                 }
                 if ((parentserviceRowByserord_fk_serviceID != null)) {
                     columnValuesArray[6] = parentserviceRowByserord_fk_serviceID[0];
+                }
+                if ((parentEquipmentLookUpRowByserord_fk_equipID != null)) {
+                    columnValuesArray[7] = parentEquipmentLookUpRowByserord_fk_equipID[0];
                 }
                 if ((parentEmployeeLookUpRowByserord_fk_empID != null)) {
                     columnValuesArray[8] = parentEmployeeLookUpRowByserord_fk_empID[0];
@@ -4844,30 +4855,41 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string eqtType {
+            public string Equipment_Type {
                 get {
                     try {
-                        return ((string)(this[this.tableEquipmentLookUp.eqtTypeColumn]));
+                        return ((string)(this[this.tableEquipmentLookUp.Equipment_TypeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'eqtType\' in table \'EquipmentLookUp\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Equipment Type\' in table \'EquipmentLookUp\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEquipmentLookUp.eqtTypeColumn] = value;
+                    this[this.tableEquipmentLookUp.Equipment_TypeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IseqtTypeNull() {
-                return this.IsNull(this.tableEquipmentLookUp.eqtTypeColumn);
+            public bool IsEquipment_TypeNull() {
+                return this.IsNull(this.tableEquipmentLookUp.Equipment_TypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SeteqtTypeNull() {
-                this[this.tableEquipmentLookUp.eqtTypeColumn] = global::System.Convert.DBNull;
+            public void SetEquipment_TypeNull() {
+                this[this.tableEquipmentLookUp.Equipment_TypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public service_orderRow[] Getservice_orderRows() {
+                if ((this.Table.ChildRelations["serord_fk_equipID"] == null)) {
+                    return new service_orderRow[0];
+                }
+                else {
+                    return ((service_orderRow[])(base.GetChildRows(this.Table.ChildRelations["serord_fk_equipID"])));
+                }
             }
         }
         
@@ -5099,6 +5121,17 @@ namespace PRIMELibrary {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["serord_fk_serviceID"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EquipmentLookUpRow EquipmentLookUpRow {
+                get {
+                    return ((EquipmentLookUpRow)(this.GetParentRow(this.Table.ParentRelations["serord_fk_equipID"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["serord_fk_equipID"]);
                 }
             }
             
@@ -7087,7 +7120,7 @@ FROM            service_order INNER JOIN
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "EquipmentLookUp";
             tableMapping.ColumnMappings.Add("id", "id");
-            tableMapping.ColumnMappings.Add("eqtType", "eqtType");
+            tableMapping.ColumnMappings.Add("Equipment Type", "Equipment Type");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -7104,8 +7137,10 @@ FROM            service_order INNER JOIN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT equipment.id, equip_type.eqtType\r\nFROM     equipment INNER JOIN\r\n         " +
-                "         equip_type ON equipment.equtypeID = equip_type.id";
+            this._commandCollection[0].CommandText = @"SELECT equipment.id, equip_type.eqtType + ' - ' +equipment.equModel AS 'Equipment Type'
+FROM     equipment INNER JOIN
+                  equip_type ON equipment.equtypeID = equip_type.id
+                  group by equipment.id, equip_type.eqtType,equipment.equModel";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

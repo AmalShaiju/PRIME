@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using PRIMELibrary;
 using PRIMELibrary.RepairsDataSetTableAdapters;
+using System.Drawing;
 
 namespace PRIMEWeb.Repairs
 {
@@ -21,26 +22,30 @@ namespace PRIMEWeb.Repairs
         static Services()
         {
             RepairsDataSet = new RepairsDataSet();
-            serviceTableAdapter daservices = new serviceTableAdapter();
-
-
-            try
-            {
-                daservices.Fill(RepairsDataSet.service);
-            }
-            catch { }
         }
 
         private static int id = -1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //refresh the dataset, so the newly created record is shown in index
-            serviceTableAdapter daservices = new serviceTableAdapter();
-            RepairsDataSet.Reset();
-            daservices.Fill(RepairsDataSet.service);
+            try
+            {
+                //refresh the dataset, so the newly created record is shown in index
+                serviceTableAdapter daservices = new serviceTableAdapter();
+                daservices.Fill(RepairsDataSet.service);
+            }
+            catch
+            {
+                this.Label1.Text = "Failed to load Data, Please Contact the system administrator";
+                this.Label1.ForeColor = Color.FromArgb(255, 0, 0);
+                return;
+            }
+            Session["RepairCriteria"] = null;
 
-            rows = RepairsDataSet.service.Select(); //get records
+            //get records
+            rows = (Session["ServiceCriteria"] != null) ? RepairsDataSet.service.Select(Session["ServiceCriteria"].ToString())  //has criteria
+                 : RepairsDataSet.service.Select();  //select all
+
             DisplayServiceTable();
 
         }
@@ -51,11 +56,16 @@ namespace PRIMEWeb.Repairs
             if (RepairsDataSet.service.Count > 0)
             {
                 string criteria = FilterCriteria();
+                Session["ServiceCriteria"] = FilterCriteria();
                 rows = (criteria.Length > 0) ? RepairsDataSet.service.Select(criteria) : RepairsDataSet.service.Select(); // Data satisfying the conditions is saved in rows
                 DisplayServiceTable();
             }
             else
-                this.Label1.Text = "No Records Found";
+            {
+                this.Label1.Text = "Database Error, Please Contact The System Administarator";
+                this.Label1.ForeColor = Color.Red;
+            }
+
         }
 
         // Edit btn 
@@ -70,14 +80,10 @@ namespace PRIMEWeb.Repairs
             //Get rowindex
             int rowindex = gvr.RowIndex;
 
-            this.Label1.Text = rowindex.ToString();
-
-            // Not too secure sending value through query string
-            //Response.Redirect("EditService.aspx?ID=" + GridView1.Rows[e.NewEditIndex].Cells[1].Text
 
             //Send Id using cookie, more seecure I presume
             HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
-            cID.Value = this.GridView1.Rows[rowindex].Cells[0].Text;
+            cID.Value = rows[rowindex].ItemArray[0].ToString();
             Response.Cookies.Add(cID);
             Response.Redirect("EditService.aspx"); // Redirect the user to Edit page on btn click
 
@@ -97,8 +103,8 @@ namespace PRIMEWeb.Repairs
             int rowindex = gvr.RowIndex;
 
             this.Label1.Text = rowindex.ToString();
-
-            id = Convert.ToInt32(GridView1.Rows[rowindex].Cells[0].Text);
+            rows[rowindex].ItemArray[0].ToString();
+            id = Convert.ToInt32(rows[rowindex].ItemArray[0].ToString());
 
             if (id != -1)
             {
@@ -111,15 +117,19 @@ namespace PRIMEWeb.Repairs
                     serviceTableAdapter daservice = new serviceTableAdapter(); // table adapter to service table (Service adapter)
                     daservice.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
                     RepairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
-                    Label1.Text = "deleted";
+                    this.Label1.Text = "deleted";
 
                     //Refresh the page to show the record being deleted
+                    this.Label1.Text = "Record Deleted Successfully";
+
                     Response.Redirect(Request.RawUrl);
 
                 }
                 catch
                 {
-                    Label1.Text = "not deleted";
+                    this.Label1.Text = "Record Deletion Failed";
+                    this.Label1.ForeColor = Color.Red;
+
                 }
             }
         }
@@ -127,65 +137,40 @@ namespace PRIMEWeb.Repairs
         // Method to add edit and delete btn 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e) // Method adding the btns to the table
         {
-            this.Label1.Text = "fired datbound";
             try
             {
                 if (e.Row.RowIndex == -1)
                 {
-                    e.Row.Cells[4].Text = String.Empty;
                     //Clear the header for Detail Edit Delete btn
+                    e.Row.Cells[3].Text = String.Empty;
                     return;  //skip the header
                 }
-             //   this.GridView1.HeaderRow.Cells[0].Visible = false;
-            //    e.Row.Cells[0].Visible = false;
 
                 // Edit btn
                 Button btnEdit = new Button();  //create edit btn
-                                                // btnEdits.Add(btnEdit);  //the list index of the button will also be the row index
                 btnEdit.CssClass = "btn btn-dark";  //set css class
                 btnEdit.Text = "Edit";
                 btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
-
-                //set aria label
-                // btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
-
                 btnEdit.Click += new EventHandler(btnEdit_Click);// Set button click event
-                e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
+                e.Row.Cells[3].Controls.Add(btnEdit);  //add the btn
 
 
 
                 // Delete btn
                 Button btnDelete = new Button();  //create delete btn
-                                                  // btnDetails.Add(btnDelete);  //the list index of the button will also be the row index
                 btnDelete.CssClass = "btn btn-danger";  //set css class
                 btnDelete.Text = "Delete";
                 btnDelete.Attributes.Add("aria-label", "Click to delete this sale");
-                //set aria label
-                // btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
-                btnDelete.Click += new EventHandler(btnDelete_Click);// Set button click event
-
-
-                //if (not admin)
-                //btnDelete.Visible = false;
-                //btnDelete.Enabled = false;
-
-                e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
+                btnDelete.Click += new EventHandler(btnDelete_Click);// Set button click event          
+                e.Row.Cells[3].Controls.Add(btnDelete);  //add the btn
             }
             catch
             {
-                this.Label1.Text = "No record found";
+                this.Label1.Text = "Records Found : " + rows.Length;
 
             }
 
 
-        }
-
-        // Filter Clear btn
-        protected void btnClear_Click(object sender, EventArgs e)
-        {
-            this.txtName.Text = "";
-            this.txtDescription.Text = "";
-            this.txtPrice.Text = "";
         }
 
         // Filter criteria
@@ -207,18 +192,16 @@ namespace PRIMEWeb.Repairs
         //Display Method to fill tables
         private void DisplayServiceTable()
         {
-            this.Label1.Text = "ready";
+            //no record after filter
+            if(rows.Length <= 0)
+                this.Label1.Text = "No reecords Found";
 
-            //HyperLinkField hp = new HyperLinkField();
-            //hp.Text = "Edit";
-            //hp.NavigateUrl = "~/Default.aspx";
-            //hp  .Visible = true;
+            this.Label1.Text = "Records Found : " + rows.Length;
 
             DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
             dt.Columns.Add("Service");
             dt.Columns.Add("Description");
-            dt.Columns.Add("Price");    
+            dt.Columns.Add("Price");
             dt.Columns.Add(""); // column for Edit and Delete btn
 
 
@@ -228,17 +211,17 @@ namespace PRIMEWeb.Repairs
             foreach (DataRow r in rows) // loop through the static DataRow[] row since the records from filter are saved in them.
             {
                 DataRow nr = dt.NewRow();
-                nr[0] = r.ItemArray[0].ToString();
-                nr[1] = r.ItemArray[1].ToString();
-                nr[2] = r.ItemArray[2].ToString();
-                nr[3] = r.ItemArray[3].ToString();
+                nr[0] = r.ItemArray[1].ToString();
+                nr[1] = r.ItemArray[2].ToString();
+                nr[2] = r.ItemArray[3].ToString();
 
                 dt.Rows.Add(nr);
-                //this.GridView1.Columns.Add(hp);
             }
 
             this.GridView1.DataSource = dt;
             this.GridView1.DataBind();
+
+           
         }
 
     }

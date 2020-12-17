@@ -11,45 +11,57 @@
             background-color: #e0e0e0;
             line-height: 1;
         }
+
         .breadcrumb, #navbar {
             margin: 10px;
         }
+
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
             width: 130px;
         }
+
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;
             margin: 15px auto;
             padding: 15px;
         }
+
         h1 {
             text-align: center;
             padding: 10px 0;
         }
+
         .form-check-inline {
             margin-right: 2rem;
         }
+
         #divBtnSearch {
             text-align: right;
             margin-bottom: 1rem;
         }
+
         #btnClear {
             margin-left: 30px;
         }
+
         .table {
             margin: 30px auto 0 auto;
         }
-        .table td, .table th {
-            text-align: center;
-            vertical-align: middle;
-        }
+
+            .table td, .table th {
+                text-align: center;
+                vertical-align: middle;
+            }
+
         td .btn {
             width: 80px;
+            margin: 5px;
         }
-        .auto-style1 {
+
+        /*.auto-style1 {
             position: relative;
             width: 100%;
             -ms-flex: 0 0 50%;
@@ -59,6 +71,26 @@
             top: 0px;
             padding-left: 15px;
             padding-right: 15px;
+        }*/
+
+        #confirm-outer {
+            width: 100%;
+            position: absolute;
+            height: 100%;
+            background-color: rgba(0, 0, 0,0.1);
+            align-items: center;
+            display: none
+        }
+
+        #confirm-inner {
+            background-color: red;
+            width: 32%;
+            height: 40%;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            display: none;
+            transform: translate(105%, -50%);
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -93,29 +125,38 @@
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
         </nav>
+
         <div class="container rounded-lg">
+
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="rounded-lg">
+
                     <h1>Repairs</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Repair" Text="Create New Repair" PostBackUrl="/Repairs/NewRepair.aspx" />
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Repair" Text="Create New Repair" PostBackUrl="/Repairs/NewRepair.aspx" ToolTip="Create new repair" />
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Repairs">
                         Filter Repairs
                     </button>
-                    <asp:Button ID="btnServices" runat="server" CssClass="btn btn-secondary" aria-label="Services" Text="Services" PostBackUrl="/Repairs/Services.aspx" />
-                    <asp:Button ID="btnReport" runat="server" CssClass="btn btn-secondary" aria-label="Warranty Report" Text="Warranty Report" PostBackUrl="/Repairs/WarrantyReport.aspx" />
+                    <asp:Button ID="btnServices" runat="server" CssClass="btn btn-secondary" aria-label="Services" Text="Services" PostBackUrl="/Repairs/Services.aspx" ToolTip="Services" />
+                    <asp:Button ID="btnReport" runat="server" CssClass="btn btn-secondary" aria-label="Warranty Report" Text="Warranty Report" PostBackUrl="/Repairs/WarrantyReport.aspx" ToolTip="Warranty report" />
+                    <br />
+                    <br />
+                    <br />
+                    &nbsp;<strong><asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Green" ToolTip="Records found"></asp:Label></strong>
+
+                    <br />
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
-                                <div class="auto-style1">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Date In:</label>
-                                        <asp:TextBox ID="txtDateIn" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                        <asp:TextBox ID="txtDateIn" runat="server" CssClass="form-control" TextMode="Date" ToolTip="Date in"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Date Out:</label>
-                                        <asp:TextBox ID="txtDateOut" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                        <asp:TextBox ID="txtDateOut" runat="server" CssClass="form-control" TextMode="Date" ToolTip="Date out"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +164,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Service:</label>
-                                        <asp:DropDownList ID="ddlServices" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Service" DataTextField="serName" DataValueField="id">
+                                        <asp:DropDownList ID="ddlServices" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Service" DataTextField="serName" DataValueField="id" ToolTip="Service">
                                             <asp:ListItem Selected="True" Value="None">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -131,17 +172,17 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Equipment:</label>
-                                        <asp:DropDownList ID="ddlEquipments" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Equipment" DataTextField="eqtType" DataValueField="id">
+                                        <asp:DropDownList ID="ddlEquipments" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Equipment" DataTextField="Equipment Type" DataValueField="id" ToolTip="Equipment">
                                             <asp:ListItem Selected="True">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="auto-style1">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Employee:</label>
-                                        <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Employee" DataTextField="Employee Full Name" DataValueField="id">
+                                        <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Employee" DataTextField="Employee Full Name" DataValueField="id" ToolTip="Employee">
                                             <asp:ListItem Selected="True">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -149,7 +190,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Customer:</label>
-                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Customer" DataTextField="Customer Full Name" DataValueField="id">
+                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Customer" DataTextField="Customer Full Name" DataValueField="id" ToolTip="Customer">
                                             <asp:ListItem Selected="True">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -161,37 +202,42 @@
                                         <label class="control-label">Warranty Status:</label>
                                         <div class="form-control">
                                             <div class="form-check form-check-inline" style="left: 0px; top: 0px">
-                                                <asp:RadioButton ID="radInWarranty" runat="server" CssClass="form-check-input" value="true" GroupName="radStatus" />
+                                                <asp:RadioButton ID="radInWarranty" runat="server" CssClass="form-check-input" value="true" GroupName="radStatus" ToolTip="In Warranty" />
                                                 <label class="form-check-label" for="radInWarranty">In Warranty</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <asp:RadioButton ID="radNoWarranty" runat="server" CssClass="form-check-input" value="false" GroupName="radStatus" Checked="True" />
+                                                <asp:RadioButton ID="radNoWarranty" runat="server" CssClass="form-check-input" value="false" GroupName="radStatus" Checked="True" ToolTip="Not in warranty" />
                                                 <label class="form-check-label" for="radNoWarranty">Not In Warranty</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
-                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-warning" Text="Apply Filter" OnClick="btnSearch_Click" ToolTip="Apply Filter" />
+                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-secondary" aria-label="Clear Filter" alt="Clear filter button" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-              
-                    
-                        <asp:GridView ID="GridView1" runat="server" BorderStyle="None" CssClass="table" GridLines="None" OnRowDataBound="GridView1_RowDataBound1">
-                            <EmptyDataTemplate>
-                                No Records Found
-                            </EmptyDataTemplate>
-                        </asp:GridView>
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
-                        <br />
+                    <asp:ScriptManager ID="smgRepair" runat="server"></asp:ScriptManager>
+
+                    <asp:UpdatePanel ID="uplRepair" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="GridView1" runat="server" BorderStyle="None" CssClass="table" GridLines="None" OnRowDataBound="GridView1_RowDataBound1" ToolTip="Repair info grid">
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>  
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch"  EventName="Click"/>
+                        </Triggers>
+                    </asp:UpdatePanel>
 
 
-<%--                    <table class="table">
+                    <br />
+
+
+                    <%--                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Date In</th>
@@ -283,5 +329,40 @@
             </div>
         </div>
     </form>
+    <%-- <script type="text/javascript">
+
+        var dateInBtn = document.querySelector("#btnOk");
+        var dateInlabel = document.querySelector("#btnCancel");
+        dateInBtn.addEventListener('click', () => {   
+            //dateInlabel.style.visibility = "visible";
+            console.log('fired ok ')
+            document.getElementById("confirm-inner").style.display = "None";
+            document.getElementById("confirm-outer").style.display = "None";
+
+            return true;
+        });
+
+        dateInlabel.addEventListener('click', () => {
+            // dateInlabel.style.visibility = "hidden";
+            console.log('fired cancel ')
+
+            document.getElementById("confirm-inner").style.display = "None";
+            document.getElementById("confirm-outer").style.display = "None";
+
+
+            return false;
+        });
+
+
+        function confirmPopUp() {
+            document.getElementById("confirm-outer").style.display = "block";
+            document.getElementById("confirm-inner").style.display = "block";
+           
+
+         
+            return null;
+        }
+    </script>--%>
+
 </body>
 </html>

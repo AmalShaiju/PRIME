@@ -178,12 +178,13 @@ FROM     employee</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EquipmentLookUpTableAdapter" GeneratorDataComponentClassName="EquipmentLookUpTableAdapter" Name="EquipmentLookUp" UserDataComponentName="EquipmentLookUpTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectName="dbo.equipment" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT equipment.id, equip_type.eqtType
+                    <CommandText>SELECT equipment.id, equip_type.eqtType + ' - ' +equipment.equModel AS 'Equipment Type'
 FROM     equipment INNER JOIN
-                  equip_type ON equipment.equtypeID = equip_type.id</CommandText>
+                  equip_type ON equipment.equtypeID = equip_type.id
+                  group by equipment.id, equip_type.eqtType,equipment.equModel</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -191,7 +192,7 @@ FROM     equipment INNER JOIN
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="id" DataSetColumn="id" />
-              <Mapping SourceColumn="eqtType" DataSetColumn="eqtType" />
+              <Mapping SourceColumn="Equipment Type" DataSetColumn="Equipment Type" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -582,10 +583,10 @@ FROM     manufacturer</CommandText>
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
-              <xs:element name="eqtType" msprop:Generator_ColumnVarNameInTable="columneqtType" msprop:Generator_ColumnPropNameInRow="eqtType" msprop:Generator_ColumnPropNameInTable="eqtTypeColumn" msprop:Generator_UserColumnName="eqtType" minOccurs="0">
+              <xs:element name="Equipment_x0020_Type" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEquipment_Type" msprop:Generator_ColumnPropNameInRow="Equipment_Type" msprop:Generator_ColumnPropNameInTable="Equipment_TypeColumn" msprop:Generator_UserColumnName="Equipment Type" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
+                    <xs:maxLength value="83" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -751,6 +752,7 @@ FROM     manufacturer</CommandText>
       <msdata:Relationship name="serord_fk_empID" msdata:parent="EmployeeLookUp" msdata:child="service_order" msdata:parentkey="id" msdata:childkey="empID" msprop:Generator_UserChildTable="service_order" msprop:Generator_ChildPropName="Getservice_orderRows" msprop:Generator_UserRelationName="serord_fk_empID" msprop:Generator_RelationVarName="relationserord_fk_empID" msprop:Generator_UserParentTable="EmployeeLookUp" msprop:Generator_ParentPropName="EmployeeLookUpRow" />
       <msdata:Relationship name="serord_fk_reseiptID" msdata:parent="OrderLookUp" msdata:child="service_order" msdata:parentkey="id" msdata:childkey="receiptID" msprop:Generator_UserChildTable="service_order" msprop:Generator_ChildPropName="Getservice_orderRows" msprop:Generator_UserRelationName="serord_fk_reseiptID" msprop:Generator_RelationVarName="relationserord_fk_reseiptID" msprop:Generator_UserParentTable="OrderLookUp" msprop:Generator_ParentPropName="OrderLookUpRow" />
       <msdata:Relationship name="serord_fk_serviceID" msdata:parent="service" msdata:child="service_order" msdata:parentkey="id" msdata:childkey="serviceID" msprop:Generator_UserChildTable="service_order" msprop:Generator_ChildPropName="Getservice_orderRows" msprop:Generator_UserRelationName="serord_fk_serviceID" msprop:Generator_RelationVarName="relationserord_fk_serviceID" msprop:Generator_UserParentTable="service" msprop:Generator_ParentPropName="serviceRow" />
+      <msdata:Relationship name="serord_fk_equipID" msdata:parent="EquipmentLookUp" msdata:child="service_order" msdata:parentkey="id" msdata:childkey="equipID" msprop:Generator_UserChildTable="service_order" msprop:Generator_ChildPropName="Getservice_orderRows" msprop:Generator_UserRelationName="serord_fk_equipID" msprop:Generator_ParentPropName="EquipmentLookUpRow" msprop:Generator_RelationVarName="relationserord_fk_equipID" msprop:Generator_UserParentTable="EquipmentLookUp" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

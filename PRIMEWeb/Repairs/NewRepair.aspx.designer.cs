@@ -33,6 +33,24 @@ namespace PRIMEWeb.Repairs
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
+
+        /// <summary>
         /// txtDateIn control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace PRIMEWeb.Repairs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateIn;
+
+        /// <summary>
+        /// lblDateInVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateInVal;
 
         /// <summary>
         /// txtDateOut control.
@@ -51,6 +78,15 @@ namespace PRIMEWeb.Repairs
         protected global::System.Web.UI.WebControls.TextBox txtDateOut;
 
         /// <summary>
+        /// lblDateOutVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateOutVal;
+
+        /// <summary>
         /// txtIssue control.
         /// </summary>
         /// <remarks>
@@ -58,6 +94,15 @@ namespace PRIMEWeb.Repairs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIssue;
+
+        /// <summary>
+        /// lblIssueVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIssueVal;
 
         /// <summary>
         /// radInWarranty control.
@@ -87,6 +132,15 @@ namespace PRIMEWeb.Repairs
         protected global::System.Web.UI.WebControls.DropDownList ddlReceipt;
 
         /// <summary>
+        /// lblRecieotVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRecieotVal;
+
+        /// <summary>
         /// ddlService control.
         /// </summary>
         /// <remarks>
@@ -94,6 +148,15 @@ namespace PRIMEWeb.Repairs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlService;
+
+        /// <summary>
+        /// lblServiceVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblServiceVal;
 
         /// <summary>
         /// ddlEquipment control.
@@ -105,6 +168,15 @@ namespace PRIMEWeb.Repairs
         protected global::System.Web.UI.WebControls.DropDownList ddlEquipment;
 
         /// <summary>
+        /// lblEquipmentVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEquipmentVal;
+
+        /// <summary>
         /// ddlEmployee control.
         /// </summary>
         /// <remarks>
@@ -112,6 +184,15 @@ namespace PRIMEWeb.Repairs
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEmployee;
+
+        /// <summary>
+        /// lblEmployeeval control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmployeeval;
 
         /// <summary>
         /// pnlBtnRepairs control.
@@ -132,15 +213,6 @@ namespace PRIMEWeb.Repairs
         protected global::System.Web.UI.WebControls.Button btnCreate;
 
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
         /// Service control.
         /// </summary>
         /// <remarks>
@@ -150,13 +222,13 @@ namespace PRIMEWeb.Repairs
         protected global::System.Web.UI.WebControls.ObjectDataSource Service;
 
         /// <summary>
-        /// Equipment control.
+        /// EquipmentLookUp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource Equipment;
+        protected global::System.Web.UI.WebControls.ObjectDataSource EquipmentLookUp;
 
         /// <summary>
         /// Employee control.

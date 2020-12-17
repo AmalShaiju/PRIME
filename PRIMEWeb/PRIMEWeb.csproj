@@ -87,15 +87,19 @@
     <Content Include="Repairs\Details.aspx" />
     <Content Include="Repairs\EditRepair.aspx" />
     <Content Include="Repairs\EditService.aspx" />
+    <Content Include="Repairs\images\question.png" />
     <Content Include="Repairs\NewRepair.aspx" />
     <Content Include="Repairs\NewService.aspx" />
+    <Content Include="Repairs\Readme.txt" />
     <Content Include="Repairs\Services.aspx" />
     <Content Include="Repairs\WarrantyReport.aspx" />
     <Content Include="Sales\Default.aspx" />
     <Content Include="Sales\NewSale.aspx" />
     <Content Include="Sales\Report.aspx" />
     <Content Include="Script\bootstrap.min.js" />
+    <Content Include="Script\help_text.js" />
     <Content Include="Script\jquery-3.5.1.min.js" />
+    <Content Include="Script\service-help_text.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -200,7 +204,6 @@
     </Compile>
     <Compile Include="Repairs\Services.aspx.cs">
       <DependentUpon>Services.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Repairs\Services.aspx.designer.cs">
       <DependentUpon>Services.aspx</DependentUpon>

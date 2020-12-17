@@ -98,19 +98,27 @@
                 <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Entries">
                     Filter Entries
                 </button>
+                <br />
+                <br />
+                <br />
+                <strong><asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Green" ToolTip="Records found"></asp:Label>
+                <br />
+                <br />
+                </strong>
+
                 <div class="collapse" id="collapseFilter">
                     <div class="card card-body bg-light">
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">From Date:</label>
-                                    <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                    <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" TextMode="Date" ToolTip="From date"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">To Date:</label>
-                                    <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                    <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" TextMode="Date" ToolTip="To date"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -118,14 +126,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Manufacturer:</label>
-                                    <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control" DataSourceID="Manufacturer" DataTextField="manName" DataValueField="id" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddlManufacturer" runat="server" CssClass="form-control" DataSourceID="Manufacturer" DataTextField="manName" DataValueField="id" AppendDataBoundItems="True" ToolTip="manufacturer">
                                         <asp:ListItem>None</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
                             <div id="divBtnSearch" class="col-md-6 form-group align-self-end">
-                                <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
-                                <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter" />
+                                <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-warning" Text="Apply Filter" OnClick="btnSearch_Click" ToolTip="Apply  filter" />
+                                <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-secondary" aria-label="Clear Filter" />
                             </div>
                         </div>
                     </div>
@@ -133,18 +141,17 @@
                 <h4>Detailed Report</h4>
 
 
-                <asp:GridView ID="DetailGrid" runat="server" CssClass="table" BorderStyle="None" EmptyDataText="No Records Found" GridLines="None">
+                <asp:GridView ID="DetailGrid" runat="server" CssClass="table" BorderStyle="None" EmptyDataText="No Records Found" GridLines="None" ToolTip="Detailed report">
                     <EmptyDataTemplate>
                         No Records Found
                     </EmptyDataTemplate>
                 </asp:GridView>
                 <br />
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
                 <h4>Overall Report</h4>
                 <div>
 
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table" DataSourceID="OverallWarranty" GridLines="None">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table" DataSourceID="OverallWarranty" GridLines="None" ToolTip="Overall report">
                         <Columns>
                             <asp:BoundField DataField="manName" HeaderText="Manufacturer" SortExpression="manName" />
                             <asp:BoundField DataField="Total Repairs" HeaderText="Total Repairs" ReadOnly="True" SortExpression="Total Repairs" />

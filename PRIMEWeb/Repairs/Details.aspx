@@ -74,9 +74,10 @@
                 margin: 0 10px;
             }
 
-        .Detail-container{
-            width:100%;
+        .Detail-container {
+            width: 100%;
         }
+
         .wrapper {
             margin: 0px 0px;
         }
@@ -84,11 +85,38 @@
             .wrapper h2 {
                 margin: 30px 0px;
             }
-        .flex-box{
-            display:flex;
-            justify-content:space-around;
-            margin-bottom:20px;
-            
+
+        .flex-box {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+            border: 1px solid #e9e9e9;
+        }
+
+        #wrapper-inner {
+            width: 100%;
+        }
+
+        .details {
+            padding-left: 60px;
+            padding-top: 25px;
+        }
+
+
+        .dark-detail {
+            background: #f9fafa;
+            width: 50%;
+            padding: 45px 50px;
+        }
+
+        .light-detail {
+            width: 50%;
+            padding: 45px 50px;
+            border-left: 1px solid #e9e9e9;
+        }
+
+        .detail-Items {
+            margin-bottom: 40px;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -126,118 +154,191 @@
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner">
-                <h1>Details</h1>
-
+                <h1>Repair Details</h1>
+                <div style="margin:20px 0px;">
+                    <asp:Label ID="redirectMsg" runat="server" ForeColor="Green" Text="Label"></asp:Label>
                 </div>
-                <div class="Detail-container">
-                    <div class="flex-box">
-                        <div class="wrapper">
-                            <h2>Repair Info</h2>
+                
+                <div class="details">
+                    <div class="inner-deatils">
 
-                            <asp:Label ID="Label1" runat="server" Text="Date IN"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblDateIn" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="Label2" runat="server" Text="Date Out"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblDateOut" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="Label3" runat="server" Text="Issue"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblssue" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="Label4" runat="server" Text="In Warrenty"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblWarranty" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="Label18" runat="server" Text="Service Requested"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblService" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="Label5" runat="server" Text="Employee "></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblEmployee" runat="server" Text="Label"></asp:Label>
 
-                        </div>
-                        <div class="wrapper">
+                        <h2>Repair Info</h2>
+                        <hr />
 
-                            <h2>Equipment Info</h2>
+                        <br />
 
-                            <asp:Label ID="Label15" runat="server" Text="Name"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblEquipmentName" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="Label17" runat="server" Text="Type"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblEquipmentType" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="Label13" runat="server" Text="Model"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblEquipmentModel" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="Label14" runat="server" Text="Serial"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblEquipmentSerial" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="Label16" runat="server" Text="Manufacturer"></asp:Label>
-                            &nbsp;:
-                <asp:Label ID="lblEquipmentManufacturer" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <br />
+                        <div class="flex-box">
+                            <div class="dark-detail">
+                                <div class="detail-Items">
+                                    <asp:Label ID="Label1" runat="server" Text="Date In"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+                                    <asp:Label ID="Label2" runat="server" Text="Date Out"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+                                    <asp:Label ID="Label3" runat="server" Text="Issue"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+                                    <asp:Label ID="Label4" runat="server" Text="In Warrenty"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+                                    <asp:Label ID="Label18" runat="server" Text="Service Requested"></asp:Label>
+
+                                </div>
+                                <div class="detail-Items" style="margin-bottom:0;">
+                                    <asp:Label ID="Label5" runat="server" Text="Employee "></asp:Label>
+                                </div>
+
+                            </div>
+                            <div class="light-detail">
+                                <div class="detail-Items">
+                                    <asp:Label ID="lblDateIn" runat="server" Text="Label"></asp:Label>
+                                </div>
+
+                                <div class="detail-Items">
+                                    <asp:Label ID="lblDateOut" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+                                    <asp:Label ID="lblssue" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+                                    <asp:Label ID="lblWarranty" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+                                    <asp:Label ID="lblService" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items" style="margin-bottom:0;">
+                                    <asp:Label ID="lblEmployee" runat="server" Text="Label"></asp:Label>
+                                </div>
+
+
+                            </div>
                         </div>
 
-                <div class="wrapper">
 
-                    <h2>Customer Info</h2>
-                    <asp:Label ID="Label6" runat="server" Text="First Name"></asp:Label>
-                    &nbsp;:
-                <asp:Label ID="lblCustomerFirst" runat="server" Text="Label"></asp:Label>
-                    <br />
-                    <br />
-                    <asp:Label ID="Label7" runat="server" Text="Last Name"></asp:Label>
-                    &nbsp;:
-                <asp:Label ID="lblCustomerLast" runat="server" Text="Label"></asp:Label>
-                    <br />
-                    <br />
-                    <asp:Label ID="Label8" runat="server" Text="Phone"></asp:Label>
-                    &nbsp;:
-                <asp:Label ID="lblCustomerPhone" runat="server" Text="Label"></asp:Label>
-                    <br />
-                    <br />
-                    <asp:Label ID="Label9" runat="server" Text="Email"></asp:Label>
-                    &nbsp;:
-                <asp:Label ID="lblCustomerEmail" runat="server" Text="Label"></asp:Label>
-                    <br />
-                    <br />
-                    <asp:Label ID="Label10" runat="server" Text="Address"></asp:Label>
-                    :
-                <asp:Label ID="lblCustomerAddress" runat="server" Text="Label"></asp:Label>
-                    <br />
-                    <br />
-                    <asp:Label ID="Label11" runat="server" Text="City"></asp:Label>
-                    &nbsp;:
-                <asp:Label ID="lblCustomerCity" runat="server" Text="Label"></asp:Label>
-                    <br />
-                    <br />
-                    <asp:Label ID="Label12" runat="server" Text="Postal"></asp:Label>
-                    &nbsp;:
-                <asp:Label ID="lblCustomerPostal" runat="server" Text="Label"></asp:Label>
+                        <h2>Equipment Info</h2>
+                        <hr />
+                        <br />
+                        <div class="flex-box">
+                            <div class="dark-detail">
+                               
+                                <div class="detail-Items">
+                                    <asp:Label ID="Label17" runat="server" Text="Type"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+                                    <asp:Label ID="Label13" runat="server" Text="Model"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+                                    <asp:Label ID="Label14" runat="server" Text="Serial"></asp:Label>
+                                </div>
+                                <div class="detail-Items" style="margin-bottom:0;">
+
+                                    <asp:Label ID="Label16" runat="server" Text="Manufacturer"></asp:Label>
+                                </div>
+                            </div>
+
+                            <div class="light-detail">
+                               
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="lblEquipmentType" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                    <div class="detail-Items">
+
+                                        <asp:Label ID="lblEquipmentModel" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="detail-Items">
+
+                                        <asp:Label ID="lblEquipmentSerial" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="detail-Items" style="margin-bottom:0;">
+
+                                        <asp:Label ID="lblEquipmentManufacturer" runat="server" Text="Label"></asp:Label>
+                                    </div>
+
+                                </div>
+                        </div>
+
+                        <h2>Customer Info</h2>
+                        <hr />
+                        <br />
+                        <div class="flex-box">
+                            <div class="dark-detail">
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="Label6" runat="server" Text="First Name"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="Label7" runat="server" Text="Last Name"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="Label8" runat="server" Text="Phone"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="Label9" runat="server" Text="Email"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+
+                                    <asp:Label ID="Label10" runat="server" Text="Address"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="Label11" runat="server" Text="City"></asp:Label>
+                                </div>
+                                <div class="detail-Items" style="margin-bottom:0;">
+
+                                    <asp:Label ID="Label12" runat="server" Text="Postal"></asp:Label>
+                                </div>
+
+
+                            </div>
+                            <div class="light-detail">
+
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="lblCustomerFirst" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="lblCustomerLast" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="lblCustomerPhone" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="lblCustomerEmail" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="lblCustomerCity" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="lblCustomerAddress" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items" style="margin-bottom:0;">
+
+                                    <asp:Label ID="lblCustomerPostal" runat="server" Text="Label"></asp:Label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                </div>
 
-                </div>
-
+            </div>
         </div>
+
+
+
     </form>
 </body>
 </html>

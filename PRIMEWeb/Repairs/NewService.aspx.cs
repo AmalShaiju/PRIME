@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using PRIMELibrary;
 using PRIMELibrary.RepairsDataSetTableAdapters;
+using System.Drawing;
 
 namespace PRIMEWeb.Repairs
 {
@@ -16,6 +17,7 @@ namespace PRIMEWeb.Repairs
 
         static RepairsDataSet RepairsDataSet;
         //private static DataRow[] rows;
+        private static bool flag = false;
 
 
         static NewService()
@@ -27,72 +29,96 @@ namespace PRIMEWeb.Repairs
             {
                 daservices.Fill(RepairsDataSet.service);
             }
-            catch { }
+            catch 
+            {
+                flag = true;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (flag)
+            {
+                this.Label1.Visible = true;
+                this.Label1.Text = "Database Error, Please Contact The system Administrator";
+                this.Label1.ForeColor = Color.Red;
+            }
 
+            if (IsPostBack)
+            {
+                Servicevalidation();
+            }
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DataRow service = RepairsDataSet.service.NewRow(); // Create a new row of service table in memory
-                //update record with user's input
-                service[1] = this.txtName.Text;
-                service[2] = this.txtDescription.Text;
-                service[3] = this.txtPrice.Text;
-                RepairsDataSet.service.Rows.Add(service); // add the rows to the dataset
+            if(Servicevalidation())
+                try
+                {
+                    DataRow service = RepairsDataSet.service.NewRow(); // Create a new row of service table in memory
+                    //update record with user's input
+                    service[1] = this.txtName.Text;
+                    service[2] = this.txtDescription.Text;
+                    service[3] = this.txtPrice.Text;
+                    RepairsDataSet.service.Rows.Add(service); // add the rows to the dataset
 
 
-                serviceTableAdapter daService = new serviceTableAdapter();
-                daService.Update(service); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
-                RepairsDataSet.AcceptChanges();// Call accept method on the dataset so it update the chanmges to the database
+                    serviceTableAdapter daService = new serviceTableAdapter();
+                    daService.Update(service); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                    RepairsDataSet.AcceptChanges();// Call accept method on the dataset so it update the chanmges to the database
 
-                //Refresh the page to show the record being deleted
-                Response.Redirect("Services.aspx"); // Redirect the user to dexpage on to show created data
+                    //Refresh the page to show the record being deleted
+                    // Response.Redirect("Services.aspx"); // Redirect the user to dexpage on to show created data
+                    this.Label1.Visible = true;
+                    this.Label1.Text = "&#10004; Record Successfully Created";
+                    this.Label1.ForeColor = Color.Green;
 
-                Label1.Text = "Created";
-            }
-            catch
-            {
-                Label1.Text = "Failed";
+                }
+                catch
+                {
+                    this.Label1.Visible = true;
+                    this.Label1.Text = "&#x274C; Record Creation Failed";
+                    this.Label1.ForeColor = Color.Red;
 
-            }
+
+                }
 
 
         }
-          
-        // Usse this code if the page has multiple places updating the data
-        //private void Save()
+
+        //protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         //{
-        //    AllserviceDataTableAdapter daservices = new AllserviceDataTableAdapter();
-
-        //    try
-        //    {
-        //        daservices.Update(RepairsDataSet.AllserviceData);
-        //        RepairsDataSet.AcceptChanges();
-        //        this.Label1.Text = "saved";
-        //    }
-        //    catch
-        //    {
-        //        RepairsDataSet.RejectChanges();
-        //        this.Label1.Text = "not saved";
-
-        //    }
-        //    finally
-        //    {
-        //        Clear();
-        //    }
+        //    lblServiceDescription.Visible = lblServiceName.Visible = lblServicePrice.Visible 
+        //       = cboHelp.Checked;
         //}
 
-        private void Clear()
+        //method to validate fields
+
+        //method to validate fields
+        private bool Servicevalidation()
         {
-            this.txtName.Text = "";
-            this.txtDescription.Text = "";
-            this.txtPrice.Text = "";
+            bool control = true;
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch( Math.Round(Convert.ToDecimal(this.txtPrice.Text)).ToString(), "^[0-9]*$"))
+            {
+                this.lblPriceVal.Visible = true;
+                this.lblPriceVal.Text = "*  Please Enter a number (Eg: $24)";
+                control = false;
+
+            }
+            else
+            {
+                this.lblPriceVal.Visible = false;
+            }
+
+           
+
+            if (control == true)
+            {
+                this.Label1.Visible = false;
+            }
+
+            return control;
         }
     }
 }

@@ -20,22 +20,18 @@ namespace PRIMEWeb.Repairs
         static WarrantyReport()
         {
             RepairsDataSet = new RepairsDataSet();
-            DetailWarrantyLookUpTableAdapter daWarrenty = new DetailWarrantyLookUpTableAdapter();
-
-
-            try
-            {
-                daWarrenty.Fill(RepairsDataSet.DetailWarrantyLookUp);
-            }
-            catch { }
+           
         }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Set the criteria so that the grid is refreshed 
+            Session["RepairCriteria"] = null;
+            Session["ServiceCriteria"] = null;
+
             //refresh the dataset, so the newly created record is shown in index
             DetailWarrantyLookUpTableAdapter daWarrenty = new DetailWarrantyLookUpTableAdapter();
-            RepairsDataSet.Reset();
             daWarrenty.Fill(RepairsDataSet.DetailWarrantyLookUp);
 
             rows = RepairsDataSet.DetailWarrantyLookUp.Select(); //get records
@@ -70,12 +66,7 @@ namespace PRIMEWeb.Repairs
         //Display Method to fill tables
         private void DisplayWarrentyeTable()
         {
-            this.Label1.Text = "ready";
-
-            //HyperLinkField hp = new HyperLinkField();
-            //hp.Text = "Edit";
-            //hp.NavigateUrl = "~/Default.aspx";
-            //hp  .Visible = true;
+            this.Label1.Text = "Records Found : " + rows.Length;
 
             DataTable dt = new DataTable();
             dt.Columns.Add("Manufacturer");

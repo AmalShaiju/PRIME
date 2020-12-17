@@ -55,6 +55,7 @@
                 text-align: center;
                 vertical-align: middle;
             }
+           
 
         td .btn {
             width: 70px;
@@ -96,25 +97,30 @@
         </nav>
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
-                <div id="wrapper-inner" class="rounded-lg">
+                <div id="wrapper-inner" class="col-lg-11 rounded-lg">
                     <h1>Services</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Service" Text="Create New Service" PostBackUrl="/Repairs/NewService.aspx" />
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Service" Text="Create New Service" PostBackUrl="/Repairs/NewService.aspx" ToolTip="Create new service" />
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Services">
                         Filter Services
                     </button>
+                    <br />
+                    <br />
+                    <br />
+                    <strong> <asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Green" ToolTip="Status"></asp:Label></strong>
+                    <br />
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Service Name:</label>
-                                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" ToolTip="Service name"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Service Description:</label>
-                                        <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" ToolTip="service description"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -122,24 +128,23 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Service Price:</label>
-                                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" ToolTip="service price"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
-                                    <asp:Button ID="btnClear" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Clear Filter" OnClick="btnClear_Click" />
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-warning" Text="Apply Filter" OnClick="btnSearch_Click" ToolTip="Apply filter" />
+                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <asp:GridView ID="GridView1" runat="server" CssClass="table" EmptyDataText="No Records Found" OnRowDataBound="GridView1_RowDataBound" GridLines="None">
+                    <asp:GridView ID="GridView1" runat="server" CssClass="table" EmptyDataText="No Records Found" OnRowDataBound="GridView1_RowDataBound" GridLines="None" ToolTip="Service info grid">
                         <EmptyDataTemplate>
                             No Records Found
                         </EmptyDataTemplate>
                     </asp:GridView>
                     <br />  
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                 </div>
 
             </div>

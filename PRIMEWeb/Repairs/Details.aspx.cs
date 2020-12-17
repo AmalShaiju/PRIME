@@ -17,13 +17,8 @@ namespace PRIMEWeb.Repairs
         static Details()
         {
             repairsDataSet = new RepairsDataSet();
-            RepairLookUpTableAdapter daRepair = new RepairLookUpTableAdapter();
 
-            try
-            {
-                daRepair.Fill(repairsDataSet.RepairLookUp);
-            }
-            catch { }
+
         }
         private static int id = -1;
 
@@ -31,12 +26,26 @@ namespace PRIMEWeb.Repairs
         {
             if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
 
-            id = Convert.ToInt32(Request.Cookies["ID"].Value);
+                id = Convert.ToInt32(Request.Cookies["ID"].Value);
+
+
+            if (Session["editRedirect"] != null)
+            {
+                this.redirectMsg.Text = "&#10004; Record Successfully Updated";
+            }
+            if (Session["createRedirect"] != null)
+            {
+                this.redirectMsg.Text = "&#10004; Record Successfully Created";
+            }
+
 
             if (id != -1)
             {
                 try
                 {
+                    RepairLookUpTableAdapter daRepair = new RepairLookUpTableAdapter();
+                    daRepair.Fill(repairsDataSet.RepairLookUp);
+
                     DataRow record = repairsDataSet.RepairLookUp.FindByid(id); // Find the related Record and fill the fields in the page with the data
 
                     if (record != null)
@@ -45,9 +54,9 @@ namespace PRIMEWeb.Repairs
                         this.lblDateOut.Text = Convert.ToDateTime(record.ItemArray[8].ToString()).ToShortDateString();
                         this.lblssue.Text = record.ItemArray[1].ToString();
                         if (record.ItemArray[2].ToString() == "False")
-                            this.lblWarranty.Text = "NO";
+                            this.lblWarranty.Text = "&#x274C;";
                         else
-                            this.lblWarranty.Text =  "YES";
+                            this.lblWarranty.Text = "&#10004;";
                         this.lblService.Text = record.ItemArray[3].ToString();
                         this.lblEmployee.Text = record.ItemArray[5].ToString();
 
@@ -68,13 +77,13 @@ namespace PRIMEWeb.Repairs
                     else
                     {
                         // this.Clear();
-                        Label1.Text = "Please Try Again";
+                        Label1.Text = "&#x274C; 5Please Try Again";
 
                     }
                 }
                 catch
                 {
-                    Label1.Text = "Database Error";
+                    Label1.Text = "&#x274C; Database Eror, Contact System Administrator";
 
                 }
             }
