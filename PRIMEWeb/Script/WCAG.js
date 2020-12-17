@@ -15,7 +15,7 @@
     var table = document.getElementsByClassName("table");
 
     if (element.checked) {
-
+        btnLogOut.classList.add("btn-logout-high");
         for (var i = 0; i < btnDangers.length; i++) {
             btnDangers[i].classList.add("btn-danger-high");
         }
@@ -47,14 +47,15 @@
         for (var i = 0; i < table.length; i++) {
             table[i].classList.add("table-high");
         }
-
+        
         btnSearch.classList.add("btn-search-high");
         btnFilter.classList.add("btn-search-high");
         btnCreate.classList.add("btn-create-high");
         btnClear.classList.add("btn-clear-high");
-        btnLogOut.classList.add("btn-logout-high");
+        
     }
     else {
+        btnLogOut.classList.remove("btn-logout-high");
         for (var i = 0; i < btnDangers.length; i++) {
             btnDangers[i].classList.remove("btn-danger-high");
         }
@@ -86,11 +87,11 @@
         for (var i = 0; i < table.length; i++) {
             table[i].classList.remove("table-high");
         }
-
+        
         btnSearch.classList.remove("btn-search-high");
         btnFilter.classList.remove("btn-search-high");
         btnCreate.classList.remove("btn-create-high");
         btnClear.classList.remove("btn-clear-high");
-        btnLogOut.classList.remove("btn-logout-high");
+        
     }
 }

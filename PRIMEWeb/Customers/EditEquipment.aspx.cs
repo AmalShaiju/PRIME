@@ -36,6 +36,7 @@ namespace PRIMEWeb.Customers
                     ddlCustomer.Enabled = false;
                     ddlManufacturer.Enabled = false;
                     ddlType.Enabled = false;
+                    divBtnEquipments.Visible = false;
                 }
                 else
                 {
