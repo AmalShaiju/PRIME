@@ -27,6 +27,15 @@ namespace PRIMEWeb.Customers
 
                 if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
                     id = Convert.ToInt32(Request.Cookies["ID"].Value);
+                if (Request.Cookies["Action"] != null && Request.Cookies["Action"].Value == "Delete")
+                {
+                    pnlDeleteConfirm.Visible = true;
+                    lblTitle.Text = "Delete Sale";
+                }
+                else
+                {
+                    pnlDeleteConfirm.Visible = false;
+                }
             }
             catch { return; }
 
@@ -67,6 +76,28 @@ namespace PRIMEWeb.Customers
                 cID.Value = id.ToString();
                 Response.Cookies.Add(cID);
                 Response.Redirect("EditCustomer.aspx"); // Redirect the user to Edit page on btn click
+            }
+        }
+
+        protected void btnDeleteConfirm_Click(object sender, EventArgs e)
+        {
+            if (id != -1)
+            {
+                try
+                {
+                    DataRow record = dsCustomer.customer.FindByID(id); // Find and add the record to tbe record variable
+                    record.Delete(); // Deletes the record in memory
+
+                    customerTableAdapter daCustomer = new customerTableAdapter(); // table adapter to service table (Service adapter)
+                    daCustomer.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                    dsCustomer.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+                                                //Refresh the page to show the record being deleted
+                    Response.Redirect("Default.aspx");
+                }
+                catch
+                {
+                    lblStatus.Text = "Delete failed. The customer has an equipment asigned.";
+                }
             }
         }
     }

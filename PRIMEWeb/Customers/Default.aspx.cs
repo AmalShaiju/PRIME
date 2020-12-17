@@ -127,6 +127,7 @@ namespace PRIMEWeb.Customers
             e.Row.Cells[5].Controls.Add(btnEdit);  //add the btn
 
             //delete btn
+
             HtmlButton btnDelete = new HtmlButton();  //create delete btn
             btnDelete.Attributes.Add("class", "btn btn-danger");  //set css class
             btnDelete.InnerText = "Delete";
@@ -134,33 +135,25 @@ namespace PRIMEWeb.Customers
             btnDelete.Attributes.Add("aria-label", "Click to delete this sale"); //set aria label
             btnDelete.ServerClick += new EventHandler(btnDelete_Click);  //click event handler
             e.Row.Cells[5].Controls.Add(btnDelete);  //add the btn
-
         }
 
-        // Delete btn 
+        //Delete btn
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            
             HtmlButton btnDelete = (HtmlButton)sender;
             id = Convert.ToInt32(btnDelete.Attributes["value"]);
-
             if (id != -1)
             {
-                try
-                {
-                    DataRow record = dsCustomer.customer.FindByID(id); // Find and add the record to tbe record variable
-                    record.Delete(); // Deletes the record in memory
+                //Send Id using cookie, more seecure I presume
+                HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+                cID.Value = id.ToString();
 
-                    customerTableAdapter daCustomer = new customerTableAdapter(); // table adapter to service table (Service adapter)
-                    daCustomer.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
-                    dsCustomer.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
-                    //Refresh the page to show the record being deleted
-                    Response.Redirect(Request.RawUrl);
-                }
-                catch
-                {
-                    
-                }
+                HttpCookie action = new HttpCookie("Action"); // Cokkie variable named cID to hold a value 
+                action.Value = "Delete";
+                
+                Response.Cookies.Add(action);
+                Response.Cookies.Add(cID);
+                Response.Redirect("DetailsCustomer.aspx"); // Redirect the user to Edit page on btn click
             }
         }
 
@@ -189,6 +182,11 @@ namespace PRIMEWeb.Customers
                 //Send Id using cookie, more seecure I presume
                 HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
                 cID.Value = id.ToString();
+
+                HttpCookie action = new HttpCookie("Action"); // Cokkie variable named cID to hold a value 
+                action.Value = "Details";
+
+                Response.Cookies.Add(action);
                 Response.Cookies.Add(cID);
                 Response.Redirect("DetailsCustomer.aspx"); // Redirect the user to Edit page on btn click
             }

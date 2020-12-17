@@ -139,10 +139,10 @@
                         </div>
                     </div>
                     <br />
-                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
                     <asp:ScriptManager ID="smgCustomer" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="upnCustomer" runat="server">
                         <ContentTemplate>
+                            <asp:Label ID="lblStatus" runat="server"></asp:Label>
                             <asp:GridView ID="gvCustomers" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gvCustomers_RowDataBound">
                             </asp:GridView>
                         </ContentTemplate>

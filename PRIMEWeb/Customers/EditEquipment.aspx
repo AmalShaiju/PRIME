@@ -96,7 +96,19 @@
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9">
-                <h1>Edit Equipment</h1>
+                <h1><asp:Label ID="lblTitle" runat="server">Edit Equipment</asp:Label></h1>
+                <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
+                    <h4 class="alert-heading">Do you really want to delete this equipment?</h4>
+                    <hr />
+                    <p>The equipment wont be deleted if it has repairs assigned deleted.</p>
+                    <p>Check the repair page first.</p>
+                    <p>You will not be able to undo the changes.</p>
+                    <p>If you are sure, click the "Delete" button.</p>
+                    <hr />
+                    <a href="/Customers/Equipments.aspx" type="button" class="btn btn-secondary">Cancel</a>
+                    <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDeleteConfirm_Click" />
+                </asp:Panel>
+                <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-group form-control form-check form-check-inline">
                     &nbsp;
                     <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
@@ -166,7 +178,7 @@
                         <p>You will be notified of the success or failure of the operation</p>
                         <p>Click the "Cancel" button to cancel editing the equipment and go to the Equipment page.</p>
                     </asp:Panel>
-                <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                
                 <asp:ObjectDataSource ID="odsType" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.equip_typeTableAdapter"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="odsCustomer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.customerTableAdapter"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="odsManufacturer" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EquipmentDataSetTableAdapters.manufacturerTableAdapter"></asp:ObjectDataSource>

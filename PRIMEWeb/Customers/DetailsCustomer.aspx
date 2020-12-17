@@ -94,7 +94,19 @@
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
-                <h1>Customer Details</h1>
+                <h1><asp:Label ID="lblTitle" runat="server">Sale Details</asp:Label></h1>
+                <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
+                    <h4 class="alert-heading">Do you really want to delete this customer?</h4>
+                    <hr />
+                    <p>You will not be allowed to delete the customer if he has been assigned to the equipment.</p>
+                    <p>Please check out the equipment page and delete the equipment record before doing so.</p>
+                    <p>Click the "Delete" button.</p>
+                    <hr />
+                    <a href="/Customers/Default.aspx" type="button" class="btn btn-secondary">Cancel</a>
+                    <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDeleteConfirm_Click" />
+                </asp:Panel>
+                <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                <br />
                 <div class="form-group form-control form-check form-check-inline">
                     &nbsp;
                     <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
@@ -146,7 +158,7 @@
                         <a class="btn btn-outline-primary" href="/Customers/" role="button" aria-label="Go back to Customer page">Back to Customers</a>
                     </div>
                 </div>
-                <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                
             </div>
         </div>
     </form>

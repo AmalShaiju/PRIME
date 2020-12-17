@@ -151,10 +151,11 @@
                         </div>
                     </div>
                     <br />
-                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    
                     <asp:ScriptManager ID="smgEquipment" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="upnEquipment" runat="server">
                         <ContentTemplate>
+                            <asp:Label ID="lblStatus" runat="server"></asp:Label>
                             <asp:GridView ID="gvEquipment" CssClass="table" runat="server" GridLines="None" OnRowDataBound="gvEquipment_RowDataBound">
                             </asp:GridView>
                         </ContentTemplate>

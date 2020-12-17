@@ -25,6 +25,22 @@ namespace PRIMEWeb.Customers
                 daEquipment.Fill(dsEquipment.equipmentCRUD);
                 if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
                     id = Convert.ToInt32(Request.Cookies["ID"].Value);
+
+                if (Request.Cookies["Action"] != null && Request.Cookies["Action"].Value == "Delete")
+                {
+                    pnlDeleteConfirm.Visible = true;
+                    lblTitle.Text = "Delete Equipment";
+                    txtID.ReadOnly = true;
+                    txtModel.ReadOnly = true;
+                    txtSerialNum.ReadOnly = true;
+                    ddlCustomer.Enabled = false;
+                    ddlManufacturer.Enabled = false;
+                    ddlType.Enabled = false;
+                }
+                else
+                {
+                    pnlDeleteConfirm.Visible = false;
+                }
             }
             catch { return; }
 
@@ -100,6 +116,29 @@ namespace PRIMEWeb.Customers
             lblCustomer.Visible = lblManufacturer.Visible = lblModelHelp.Visible =
             lblSerialHelp.Visible = lblType.Visible = lblIdHelp.Visible =
             pnlEquipmentsHelp.Visible = cboHelp.Checked;
+        }
+
+        protected void btnDeleteConfirm_Click(object sender, EventArgs e)
+        {
+            if (id != -1)
+            {
+                try
+                {
+                    DataRow equipment = dsEquipment.equipmentCRUD.FindByID(id); // Find and add the record to tbe record variable
+                    equipment.Delete(); // Deletes the record in memory
+
+                    equipmentCRUDTableAdapter daEquipment = new equipmentCRUDTableAdapter(); // table adapter to service table (Service adapter)
+                    daEquipment.Update(equipment); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                    dsEquipment.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+                    //Refresh the page to show the record being deleted
+                    
+                    Response.Redirect("Equipments.aspx");
+                }
+                catch
+                {
+                    lblStatus.Text = "Delete failed. The equipment has a repair asigned.";
+                }
+        }
         }
     }
 }
