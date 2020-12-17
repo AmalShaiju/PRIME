@@ -11,17 +11,17 @@ namespace PRIMEWeb.Repairs
 {
 
 
-    public partial class WarrantyReport
+    public partial class EditService
     {
 
         /// <summary>
-        /// frmReport control.
+        /// frmNewService control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmReport;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmNewService;
 
         /// <summary>
         /// btnLogout control.
@@ -42,75 +42,57 @@ namespace PRIMEWeb.Repairs
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// txtFromDate control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFromDate;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
-        /// txtToDate control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtToDate;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
 
         /// <summary>
-        /// ddlManufacturer control.
+        /// txtPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlManufacturer;
+        protected global::System.Web.UI.WebControls.TextBox txtPrice;
 
         /// <summary>
-        /// btnSearch control.
+        /// lblPriceVal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.Label lblPriceVal;
 
         /// <summary>
-        /// DetailGrid control.
+        /// pnlBtnRepairs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView DetailGrid;
+        protected global::System.Web.UI.WebControls.Panel pnlBtnRepairs;
 
         /// <summary>
-        /// GridView1 control.
+        /// btnCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-
-        /// <summary>
-        /// Manufacturer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource Manufacturer;
-
-        /// <summary>
-        /// OverallWarranty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource OverallWarranty;
+        protected global::System.Web.UI.WebControls.Button btnCreate;
     }
 }
