@@ -135,25 +135,17 @@ namespace PRIMEWeb.Customers
         {
             HtmlButton btnDelete = (HtmlButton)sender;
             id = Convert.ToInt32(btnDelete.Attributes["value"]);
+            //Send Id using cookie
+            HttpCookie action = new HttpCookie("Action"); // Cokkie variable named cID to hold a value 
+            action.Value = "Delete";
 
-            if (id != -1)
-            {
-                try
-                {
-                    DataRow record = dsEquipment.equipment.FindByID(id); // Find and add the record to tbe record variable
-                    record.Delete(); // Deletes the record in memory
+            HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+            cID.Value = id.ToString();
 
-                    equipmentCRUDTableAdapter daEquipmentCRUD = new equipmentCRUDTableAdapter(); // table adapter to service table (Service adapter)
-                    daEquipmentCRUD.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
-                    dsEquipment.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
-                    //Refresh the page to show the record being deleted
-                    Response.Redirect(Request.RawUrl);
-                }
-                catch
-                {
-                    
-                }
-            }
+            Response.Cookies.Add(action);
+            Response.Cookies.Add(cID);
+            Response.Redirect("EditEquipment.aspx"); // Redirect the user to Edit page on btn click
+            
         }
 
         // Edit btn 
@@ -162,8 +154,13 @@ namespace PRIMEWeb.Customers
             HtmlButton btnDelete = (HtmlButton)sender;
             id = Convert.ToInt32(btnDelete.Attributes["value"]);
             //Send Id using cookie
+            HttpCookie action = new HttpCookie("Action"); // Cokkie variable named cID to hold a value 
+            action.Value = "Edit";
+
             HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
             cID.Value = id.ToString();
+
+            Response.Cookies.Add(action);
             Response.Cookies.Add(cID);
             Response.Redirect("EditEquipment.aspx"); // Redirect the user to Edit page on btn click
         }

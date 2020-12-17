@@ -51,8 +51,10 @@
             height: 25px;
         }
     </style>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmSales" runat="server">
@@ -88,10 +90,16 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Equipments</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Equipment" Text="Create New Equipment" PostBackUrl="/Customers/NewEquipment.aspx" />
-                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Equipments">
+                    <div class="form-group form-control form-check form-check-inline">
+                        &nbsp;
+                        <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch"/>
+                        <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                    </div>
+                    <button id="btnFilter" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Equipments">
                         Filter Equipments
                     </button>
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Equipment" Text="Create New Equipment" PostBackUrl="/Customers/NewEquipment.aspx" />
+                    
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
@@ -143,10 +151,11 @@
                         </div>
                     </div>
                     <br />
-                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    
                     <asp:ScriptManager ID="smgEquipment" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="upnEquipment" runat="server">
                         <ContentTemplate>
+                            <asp:Label ID="lblStatus" runat="server"></asp:Label>
                             <asp:GridView ID="gvEquipment" CssClass="table" runat="server" GridLines="None" OnRowDataBound="gvEquipment_RowDataBound">
                             </asp:GridView>
                         </ContentTemplate>

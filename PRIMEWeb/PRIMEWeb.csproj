@@ -75,6 +75,7 @@
       <DependentUpon>Emmas.mdf</DependentUpon>
     </Content>
     <Content Include="CSS\bootstrap.css" />
+    <Content Include="CSS\wcag.css" />
     <Content Include="Customers\Default.aspx" />
     <Content Include="Customers\DetailsCustomer.aspx" />
     <Content Include="Customers\EditCustomer.aspx" />
@@ -97,6 +98,7 @@
     <Content Include="Sales\SaleRecord.aspx" />
     <Content Include="Script\bootstrap.min.js" />
     <Content Include="Script\jquery-3.5.1.min.js" />
+    <Content Include="Script\wcag.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -64,6 +64,8 @@
             margin: 0 10px;
         }
     </style>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmNewSale" runat="server" class="was-validated">
@@ -100,6 +102,10 @@
             <div id="wrapper-inner" class="col-lg-9">
                 <h1>Create New Equipment</h1>
                 <div class="form-group form-control form-check form-check-inline">
+                    &nbsp;
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                    <br />
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
                     <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
                 </div>
@@ -150,8 +156,8 @@
                 <div class="form-row">
                     <div id="divBtnEquipments" class="col-md-12">
                         <asp:Button type="submit" ID="btnCreate" runat="server" aria-label="Create Equipment" CssClass="btn btn-outline-primary" Text="Create Equipment" OnClick="btnCreate_Click" />
-                        <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
-                        <a class="btn btn-outline-primary" href="/Customers/Equipments.aspx" role="button" aria-label="Cancel Creating Equipment">Cancel</a>
+                        <input type="reset" id="btnFilter" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
+                        <a class="btn btn-danger" href="/Customers/Equipments.aspx" role="button" aria-label="Cancel Creating Equipment">Cancel</a>
                     </div>
                 </div>
                 <asp:Panel ID="pnlEquipmentsHelp" runat="server" Visible="False">
