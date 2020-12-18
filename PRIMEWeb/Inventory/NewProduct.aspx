@@ -125,7 +125,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label class="control-label">Brand:</label>
-                        <asp:DropDownList ID="ddlBrand" CssClass="custom-select" runat="server" DataSourceID="dsBrands" DataTextField="prodBrand" DataValueField="id" required="required">
+                        <asp:DropDownList ID="ddlBrand" CssClass="custom-select" runat="server" DataSourceID="dsBrands" DataTextField="prodBrand" DataValueField="prodBrand" required="required">
                         </asp:DropDownList>
                         <div class="invalid-feedback">Please select the product brand</div>
                         <asp:Label ID="lblBrandHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
