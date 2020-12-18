@@ -75,6 +75,9 @@ namespace PRIMEWeb.Repairs
         // Filter Search Btn
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            serviceTableAdapter daservices = new serviceTableAdapter();
+            daservices.Fill(RepairsDataSet.service);
+
             if (RepairsDataSet.service.Count > 0)
             {
                 string criteria = FilterCriteria();
@@ -164,7 +167,7 @@ namespace PRIMEWeb.Repairs
             catch
             {
                 this.Label1.Text = "Records Found : " + rows.Length;
-
+                this.Label1.ForeColor = Color.Red;
             }
 
 
@@ -191,32 +194,46 @@ namespace PRIMEWeb.Repairs
         {
             //no record after filter
             if (rows.Length <= 0)
+            {
                 this.Label1.Text = "No reecords Found";
+                this.Label1.ForeColor = Color.Red;
+
+            }
 
             this.Label1.Text = "Records Found : " + rows.Length;
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Service");
-            dt.Columns.Add("Description");
-            dt.Columns.Add("Price");
-            dt.Columns.Add(""); // column for Edit and Delete btn
-
-
-            DataRow dr = dt.NewRow();
-
-
-            foreach (DataRow r in rows) // loop through the static DataRow[] row since the records from filter are saved in them.
+            try
             {
-                DataRow nr = dt.NewRow();
-                nr[0] = r.ItemArray[1].ToString();
-                nr[1] = r.ItemArray[2].ToString();
-                nr[2] = r.ItemArray[3].ToString();
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Service");
+                dt.Columns.Add("Description");
+                dt.Columns.Add("Price");
+                dt.Columns.Add(""); // column for Edit and Delete btn
 
-                dt.Rows.Add(nr);
+
+                DataRow dr = dt.NewRow();
+
+
+                foreach (DataRow r in rows) // loop through the static DataRow[] row since the records from filter are saved in them.
+                {
+                    DataRow nr = dt.NewRow();
+                    nr[0] = r.ItemArray[1].ToString();
+                    nr[1] = r.ItemArray[2].ToString();
+                    nr[2] = r.ItemArray[3].ToString();
+
+                    dt.Rows.Add(nr);
+                }
+
+                this.GridView1.DataSource = dt;
+                this.GridView1.DataBind();
+
+
             }
-
-            this.GridView1.DataSource = dt;
-            this.GridView1.DataBind();
+            catch
+            {
+                this.Label1.Text = "Database Error, Please Contact The system Administrator";
+                this.Label1.ForeColor = Color.Red;
+            }
 
 
         }
@@ -237,7 +254,7 @@ namespace PRIMEWeb.Repairs
 
                     //Refresh the page to show the record being deleted
                     Session["deleteMsg"] = "true";
-                    this.Label1.Text = "Record Deleted Successfully";
+                    this.Label1.Text = "&#10004; Record Deleted Successfully";
 
 
                 }
@@ -250,7 +267,7 @@ namespace PRIMEWeb.Repairs
                     }
                     else
                     {
-                        this.Label1.Text = "Record Deletion Failed";
+                        this.Label1.Text = "&#x274C; Record Deletion Failed";
                         this.Label1.ForeColor = Color.Red;
 
                     }
@@ -264,7 +281,7 @@ namespace PRIMEWeb.Repairs
 
             }
         }
-    
+
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;

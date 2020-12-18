@@ -194,7 +194,7 @@
             <div id="wrapper-inner">
                 <h1>Repair Details</h1>
                 <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
-                    <h4 class="alert-heading">Do you really want to delete this sale?</h4>
+                    <h4 class="alert-heading">Do you really want to delete this repair?</h4>
                     <hr />
                     <p>Doing this will also delete all orders and repairs under this repair.</p>
                     <p>Please check out the orders and repairs before doing so.</p>

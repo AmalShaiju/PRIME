@@ -71,10 +71,20 @@ namespace PRIMEWeb.Repairs
 
                 }
 
+            try
+            {
+                //get records
+                rows = (Session["RepairCriteria"] != null) ? RepairsDataSet.RepairLookUp.Select(Session["RepairCriteria"].ToString())  //has criteria
+                      : RepairsDataSet.RepairLookUp.Select();  //select all
 
-            //get records
-            rows = (Session["RepairCriteria"] != null) ? RepairsDataSet.RepairLookUp.Select(Session["RepairCriteria"].ToString())  //has criteria
-                  : RepairsDataSet.RepairLookUp.Select();  //select all
+            }
+            catch
+            {
+                this.Label1.Text = "&#x274C; Database Error,Please try again";
+                this.Label1.ForeColor = Color.Red;
+                return;
+            }
+
 
 
             DisplayRepairTable();
@@ -207,6 +217,10 @@ namespace PRIMEWeb.Repairs
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+
+            RepairLookUpTableAdapter daRepair = new RepairLookUpTableAdapter();
+            daRepair.Fill(RepairsDataSet.RepairLookUp);
+
             if (RepairsDataSet.RepairLookUp.Count > 0)
             {
                 string criteria = FilterCriteria();
@@ -214,6 +228,8 @@ namespace PRIMEWeb.Repairs
                 Session["RepairCriteria"] = FilterCriteria();
                 rows = (criteria.Length > 0) ? RepairsDataSet.RepairLookUp.Select(criteria) : RepairsDataSet.RepairLookUp.Select(); // Data satisfying the conditions is saved in rows
                 DisplayRepairTable();
+
+                Response.Redirect("default.aspx");
             }
             else
             {
@@ -235,49 +251,60 @@ namespace PRIMEWeb.Repairs
             }
 
             this.Label1.Text = "Records Found : " + rows.Length;
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Issue");
-            dt.Columns.Add("InWarrenty");
-            dt.Columns.Add("Equipment");
-            dt.Columns.Add("Status");
 
-            dt.Columns.Add(""); // column for Edit and Delete btn
-
-
-            DataRow dr = dt.NewRow();
-
-
-            foreach (DataRow r in rows) // loop through the static DataRow[] row sinc   e the records from filter are saved in them.
+            try 
             {
-                DataRow nr = dt.NewRow();
-              
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Issue");
+                dt.Columns.Add("InWarrenty");
+                dt.Columns.Add("Equipment");
+                dt.Columns.Add("Status");
 
-             
-                nr[0] = r.ItemArray[1].ToString();
-                if (r.ItemArray[2].ToString() == "True")
-                    nr[1] = "Yes";
-                else
-                    nr[1] = "No";
-                nr[2] = r.ItemArray[6].ToString();
+                dt.Columns.Add(""); // column for Edit and Delete btn
 
-                dt.Rows.Add(nr);
 
-                if (r.ItemArray[8].ToString() != "")
+                DataRow dr = dt.NewRow();
+
+
+                foreach (DataRow r in rows) // loop through the static DataRow[] row sinc   e the records from filter are saved in them.
                 {
-                    nr[3] = "Repair finished";
+                    DataRow nr = dt.NewRow();
+
+
+
+                    nr[0] = r.ItemArray[1].ToString();
+                    if (r.ItemArray[2].ToString() == "True")
+                        nr[1] = "Yes";
+                    else
+                        nr[1] = "No";
+                    nr[2] = r.ItemArray[6].ToString();
+
+                    dt.Rows.Add(nr);
+
+                    if (r.ItemArray[8].ToString() != "")
+                    {
+                        nr[3] = "Repair finished";
+                    }
+                    else if ((r.ItemArray[8].ToString() == "") && (r.ItemArray[7].ToString() != ""))
+                    {
+                        nr[3] = "Reparir in progress";
+                    }
+                    else
+                    {
+                        nr[3] = "Repair Not started";
+                    }
                 }
-                else if ((r.ItemArray[8].ToString() == "") && (r.ItemArray[7].ToString() != ""))
-                {
-                    nr[3] = "Reparir in progress";
-                }
-                else
-                {
-                    nr[3] = "Repair Not started";
-                }
+
+                this.GridView1.DataSource = dt;
+                this.GridView1.DataBind();
+            }
+            catch
+            {
+                this.Label1.Text = "&#x274C; Database Error, Please Contact The system Administrator";
+                this.Label1.ForeColor = Color.Red;
             }
 
-            this.GridView1.DataSource = dt;
-            this.GridView1.DataBind();
+
         }
 
 

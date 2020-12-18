@@ -37,6 +37,9 @@ namespace PRIMEWeb.Repairs
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            Session["ServiceCriteria"] = null;
+
             if (!User.Identity.IsAuthenticated)  //if not logged in
                 Response.Redirect("/");
 
