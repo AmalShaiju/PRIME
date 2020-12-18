@@ -43,21 +43,21 @@ namespace PRIMEWeb.Repairs
                         service_orderTableAdapter daServiceOrder = new service_orderTableAdapter();
                         daServiceOrder.Fill(repairsDataSet.service_order);
 
-                        DataRow ServiceOrder = repairsDataSet.service_order.FindByid(id); // Find the related Record and fill the fields in the page with the data
+                        DataRow record = repairsDataSet.service_order.FindByid(id); // Find the related Record and fill the fields in the page with the data
 
-                        if (Service != null)
+                        if (record != null)
                         {
-                            this.txtDateIn.Text = Convert.ToDateTime(ServiceOrder.ItemArray[1].ToString()).ToShortDateString();
-                            this.txtDateOut.Text = Convert.ToDateTime(ServiceOrder.ItemArray[2].ToString()).ToShortDateString();
-                            this.txtIssue.Text = ServiceOrder.ItemArray[3].ToString();
-                            if (ServiceOrder.ItemArray[4].ToString() == "False")
+                            this.txtIssue.Text = record.ItemArray[3].ToString();
+
+                            if (record.ItemArray[4].ToString() == "False")
                                 this.radNoWarranty.Checked = true;
                             else
                                 this.radInWarranty.Checked = true;
-                            this.ddlReceipt.SelectedValue = ServiceOrder.ItemArray[5].ToString();
-                            this.ddlService.SelectedValue = ServiceOrder.ItemArray[6].ToString();
-                            this.ddlEquipment.SelectedValue = ServiceOrder.ItemArray[7].ToString();
-                            this.ddlEmployee.SelectedValue = ServiceOrder.ItemArray[8].ToString();
+
+                            this.ddlReceipt.SelectedValue = record.ItemArray[5].ToString();
+                            this.ddlService.SelectedValue = record.ItemArray[6].ToString();
+                            this.ddlEquipment.SelectedValue = record.ItemArray[7].ToString();
+                            this.ddlEmployee.SelectedValue = record.ItemArray[8].ToString();
 
                         }
                         else
@@ -72,6 +72,7 @@ namespace PRIMEWeb.Repairs
                     {
                         this.Label1.Visible = true;
                         this.Label1.Text = "&#x274C; Database Eror, Contact System Administrator";
+                        this.Label1.ForeColor = Color.Red;
 
                     }
                 }
@@ -96,8 +97,6 @@ namespace PRIMEWeb.Repairs
                     DataRow record = repairsDataSet.service_order.FindByid(id); // find the related Record
 
                     //update the record with user's input
-                    record[1] = this.txtDateIn.Text;
-                    record[2] = this.txtDateOut.Text;
                     record[3] = this.txtIssue.Text;
                     if (this.radInWarranty.Checked)
                         record[4] = 1;
@@ -135,20 +134,6 @@ namespace PRIMEWeb.Repairs
             bool control = true;
 
             this.Label1.Visible = true;
-            if (Convert.ToDateTime(this.txtDateIn.Text) > Convert.ToDateTime(this.txtDateOut.Text))
-            {
-                this.lblDateInVal.Visible = true;
-                this.lblDateInVal.Text = "* The date In should be before date out";
-                this.lblDateOutVal.Visible = true;
-                this.lblDateOutVal.Text = "* The date out should be after date in";
-                control = false;
-            }
-            else
-            {
-                this.lblDateInVal.Visible = false;
-                this.lblDateOutVal.Visible = false;
-
-            }
 
             if (this.ddlReceipt.SelectedValue == "None")
             {
@@ -220,6 +205,11 @@ namespace PRIMEWeb.Repairs
             }
 
             return control;
+        }
+
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            this.lblEmployeeHelp.Visible = this.lblEquipmentHelp.Visible = this.lblIssueHelp.Visible = this.lblRecieptHelp.Visible = this.lblServiceHelp.Visible = lblWarrantyHelp.Visible = cboHelp.Checked;
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)

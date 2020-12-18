@@ -148,6 +148,12 @@ namespace PRIMEWeb.Repairs
             return control;
         }
 
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            this.lblServiceName.Visible = this.lblServiceDesc.Visible = this.lblServicePrice.Visible = cboHelp.Checked;
+
+        }
+
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;

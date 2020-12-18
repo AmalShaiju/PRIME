@@ -50,6 +50,8 @@ namespace PRIMEWeb.Repairs
             Session["ServiceCriteria"] = null;
             Session["editRedirect"] = null;
             Session["createRedirect"] = null;
+            Session["Resumed"] = null;
+            Session["Paused"] = null;
 
 
             //get records
@@ -158,7 +160,7 @@ namespace PRIMEWeb.Repairs
             {
                 if (e.Row.RowIndex == -1)
                 {
-                    e.Row.Cells[5].Text = String.Empty;
+                    e.Row.Cells[4].Text = String.Empty;
                     //Clear the header for Detail Edit Delete btn
                     return;  //skip the header
                 }
@@ -173,7 +175,7 @@ namespace PRIMEWeb.Repairs
                 btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale");
                 btnDetail.ToolTip = "Details";
                 btnDetail.Click += new EventHandler(btnDetail_Click);// Set button click event
-                e.Row.Cells[5].Controls.Add(btnDetail);  //add the btn
+                e.Row.Cells[4].Controls.Add(btnDetail);  //add the btn
 
 
                 // Edit btn
@@ -183,7 +185,7 @@ namespace PRIMEWeb.Repairs
                 btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
                 btnEdit.ToolTip = "Edit";
                 btnEdit.Click += new EventHandler(btnEdit_Click);// Set button click event
-                e.Row.Cells[5].Controls.Add(btnEdit);  //add the btn
+                e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
 
 
 
@@ -195,7 +197,7 @@ namespace PRIMEWeb.Repairs
                 btnDelete.ToolTip = "Delete";
                 btnDelete.OnClientClick = "return confirm('Do you want to delete it? Click OK to proceed.');"; // client side call
                 btnDelete.Click += new EventHandler(btnDelete_Click);// Set button click event
-                e.Row.Cells[5].Controls.Add(btnDelete);  //add the btn
+                e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
             }
             catch
             {
@@ -236,30 +238,44 @@ namespace PRIMEWeb.Repairs
 
             this.Label1.Text = "Records Found : " + rows.Length;
             DataTable dt = new DataTable();
-            dt.Columns.Add("DateIn");
-            dt.Columns.Add("DateOut");
             dt.Columns.Add("Issue");
             dt.Columns.Add("InWarrenty");
             dt.Columns.Add("Equipment");
+            dt.Columns.Add("Status");
+
             dt.Columns.Add(""); // column for Edit and Delete btn
 
 
             DataRow dr = dt.NewRow();
 
 
-            foreach (DataRow r in rows) // loop through the static DataRow[] row since the records from filter are saved in them.
+            foreach (DataRow r in rows) // loop through the static DataRow[] row sinc   e the records from filter are saved in them.
             {
                 DataRow nr = dt.NewRow();
-                nr[0] = Convert.ToDateTime(r.ItemArray[7].ToString()).ToShortDateString();
-                nr[1] = Convert.ToDateTime(r.ItemArray[8].ToString()).ToShortDateString();
-                nr[2] = r.ItemArray[1].ToString();
+              
+
+             
+                nr[0] = r.ItemArray[1].ToString();
                 if (r.ItemArray[2].ToString() == "True")
-                    nr[3] = "Yes";
+                    nr[1] = "Yes";
                 else
-                    nr[3] = "No";
-                nr[4] = r.ItemArray[6].ToString();
+                    nr[1] = "No";
+                nr[2] = r.ItemArray[6].ToString();
 
                 dt.Rows.Add(nr);
+
+                if (r.ItemArray[8].ToString() != "")
+                {
+                    nr[3] = "Repair finished";
+                }
+                else if ((r.ItemArray[8].ToString() == "") && (r.ItemArray[7].ToString() != ""))
+                {
+                    nr[3] = "Reparir in progress";
+                }
+                else
+                {
+                    nr[3] = "Repair Not started";
+                }
             }
 
             this.GridView1.DataSource = dt;

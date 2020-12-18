@@ -147,10 +147,8 @@
     <Content Include="Sales\Report.aspx" />
     <Content Include="Sales\SaleRecord.aspx" />
     <Content Include="Script\bootstrap.min.js" />
-    <Content Include="Script\help_text.js" />
     <Content Include="Script\jquery-3.5.1.min.js" />
     <Content Include="Script\wcag.js" />
-    <Content Include="Script\service-help_text.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

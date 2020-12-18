@@ -118,6 +118,29 @@
         .detail-Items {
             margin-bottom: 40px;
         }
+
+
+        #pnlTimer {
+            margin-bottom: 40px;
+        }
+
+        #Repair-shop-details {
+            margin-bottom: 20px;
+        }
+
+        .repair-summary-items {
+            margin-bottom: 10px;
+        }
+
+        #repair-summary-heading {
+            margin-bottom: 20px;
+        }
+
+        .flex-box-repair-summary-items {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -153,14 +176,83 @@
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
+
             <div id="wrapper-inner">
                 <h1>Repair Details</h1>
-                <div style="margin:20px 0px;">
-                    <asp:Label ID="redirectMsg" runat="server" ForeColor="Green" Text="Label"></asp:Label>
+                <div style="margin: 20px 0px;">
+                    <asp:Label ID="redirectMsg" runat="server" ForeColor="Green" Text="Label" Visible="False"></asp:Label>
                 </div>
-                
                 <div class="details">
                     <div class="inner-deatils">
+                        <asp:Panel ID="pnlTimer" runat="server">
+
+                            <div class="flex-box">
+                                <div class="dark-detail">
+
+                                    <div class="detail-Items">
+                                        <asp:Label runat="server" Text="Repair Status : "></asp:Label>
+                                    </div>
+                                    <div class="detail-Items">
+                                        <asp:Label ID="Label20" runat="server" Text="Repair Started : " Visible="False"></asp:Label>
+                                    </div>
+                                    <div>
+                                        <div class="detail-Items">
+                                            <asp:Label ID="Label15" runat="server" Text="Repair Paused : " Visible="False"></asp:Label>
+
+                                        </div>
+                                        <div class="detail-Items">
+                                            <asp:Label ID="Label19" runat="server" Text="Repair Resumed : " Visible="False"></asp:Label>
+                                        </div>
+                                        <div class="detail-Items">
+                                            <asp:Label ID="Label21" runat="server" Text="Repair Stoped : " Visible="False"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="flex-box-repair-summary-items">
+                                        <div>
+                                            <asp:Button ID="btnStart" runat="server" Text="Start Repair" CssClass="btn btn-success" Width="150px" OnClick="btnStart_Click" Visible="False" />
+                                        </div>
+                                        <div>
+                                            <asp:Button ID="btnPause" runat="server" Text="Pause Repair" CssClass="btn btn-warning" OnClick="btnPause_Click" Width="150px" Visible="False" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="light-detail">
+                                    <div class="detail-Items">
+
+                                        <asp:Label ID="lblStatus" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="detail-Items">
+                                        <asp:Label ID="lblStart" runat="server" Text="Label" Visible="False"></asp:Label>
+
+                                    </div>
+                                    <div class="detail-Items">
+                                        <asp:Label ID="lblpaused" runat="server" Text="Label" Visible="False"></asp:Label>
+
+                                    </div>
+                                    <div class="detail-Items">
+                                        <asp:Label ID="lblResumed" runat="server" Text="Label" Visible="False"></asp:Label>
+
+                                    </div>
+                                    <div class="detail-Items">
+                                        <asp:Label ID="lblStop" runat="server" Text="Label" Visible="False"></asp:Label>
+
+                                    </div>
+                                    <div class="flex-box-repair-summary-items">
+                                        <div>
+                                            <asp:Button ID="btnResume" runat="server" Text="Resume Repair" CssClass="btn btn-success" OnClick="btnResume_Click" Width="150px" />
+                                        </div>
+
+                                        <div>
+                                            <asp:Button ID="btnStop" runat="server" Text="Stop Repair" CssClass="btn btn-danger" Width="150px" OnClick="btnStop_Click" Visible="False" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </asp:Panel>
 
 
                         <h2>Repair Info</h2>
@@ -186,7 +278,7 @@
                                     <asp:Label ID="Label18" runat="server" Text="Service Requested"></asp:Label>
 
                                 </div>
-                                <div class="detail-Items" style="margin-bottom:0;">
+                                <div class="detail-Items" style="margin-bottom: 0;">
                                     <asp:Label ID="Label5" runat="server" Text="Employee "></asp:Label>
                                 </div>
 
@@ -208,7 +300,7 @@
                                 <div class="detail-Items">
                                     <asp:Label ID="lblService" runat="server" Text="Label"></asp:Label>
                                 </div>
-                                <div class="detail-Items" style="margin-bottom:0;">
+                                <div class="detail-Items" style="margin-bottom: 0;">
                                     <asp:Label ID="lblEmployee" runat="server" Text="Label"></asp:Label>
                                 </div>
 
@@ -222,7 +314,7 @@
                         <br />
                         <div class="flex-box">
                             <div class="dark-detail">
-                               
+
                                 <div class="detail-Items">
                                     <asp:Label ID="Label17" runat="server" Text="Type"></asp:Label>
                                 </div>
@@ -232,32 +324,32 @@
                                 <div class="detail-Items">
                                     <asp:Label ID="Label14" runat="server" Text="Serial"></asp:Label>
                                 </div>
-                                <div class="detail-Items" style="margin-bottom:0;">
+                                <div class="detail-Items" style="margin-bottom: 0;">
 
                                     <asp:Label ID="Label16" runat="server" Text="Manufacturer"></asp:Label>
                                 </div>
                             </div>
 
                             <div class="light-detail">
-                               
+
                                 <div class="detail-Items">
 
                                     <asp:Label ID="lblEquipmentType" runat="server" Text="Label"></asp:Label>
                                 </div>
-                                    <div class="detail-Items">
+                                <div class="detail-Items">
 
-                                        <asp:Label ID="lblEquipmentModel" runat="server" Text="Label"></asp:Label>
-                                    </div>
-                                    <div class="detail-Items">
-
-                                        <asp:Label ID="lblEquipmentSerial" runat="server" Text="Label"></asp:Label>
-                                    </div>
-                                    <div class="detail-Items" style="margin-bottom:0;">
-
-                                        <asp:Label ID="lblEquipmentManufacturer" runat="server" Text="Label"></asp:Label>
-                                    </div>
-
+                                    <asp:Label ID="lblEquipmentModel" runat="server" Text="Label"></asp:Label>
                                 </div>
+                                <div class="detail-Items">
+
+                                    <asp:Label ID="lblEquipmentSerial" runat="server" Text="Label"></asp:Label>
+                                </div>
+                                <div class="detail-Items" style="margin-bottom: 0;">
+
+                                    <asp:Label ID="lblEquipmentManufacturer" runat="server" Text="Label"></asp:Label>
+                                </div>
+
+                            </div>
                         </div>
 
                         <h2>Customer Info</h2>
@@ -290,7 +382,7 @@
 
                                     <asp:Label ID="Label11" runat="server" Text="City"></asp:Label>
                                 </div>
-                                <div class="detail-Items" style="margin-bottom:0;">
+                                <div class="detail-Items" style="margin-bottom: 0;">
 
                                     <asp:Label ID="Label12" runat="server" Text="Postal"></asp:Label>
                                 </div>
@@ -323,7 +415,7 @@
 
                                     <asp:Label ID="lblCustomerAddress" runat="server" Text="Label"></asp:Label>
                                 </div>
-                                <div class="detail-Items" style="margin-bottom:0;">
+                                <div class="detail-Items" style="margin-bottom: 0;">
 
                                     <asp:Label ID="lblCustomerPostal" runat="server" Text="Label"></asp:Label>
                                 </div>

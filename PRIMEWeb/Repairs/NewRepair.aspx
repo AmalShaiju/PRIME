@@ -91,23 +91,11 @@
             margin-top: 3px;
         }
 
-        .inner-flex-box {
-        }
 
-        .question {
-            width: 18px;
-            margin-right: 3px;
-        }
-
-        img {
-            width: 18px;
-            margin-right: 3px;
-            margin-top: 12px;
-        }
 
         .help-text {
             color: #5bc8de;
-            font-size: 12px;
+            font-size: 13px;
             margin-top: 4px;
             margin-right: 5px;
             width: 95%;
@@ -117,6 +105,7 @@
             margin-top: 10px;
             font-size: 12px;
             color: red;
+            margin-bottom: 10px;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -155,13 +144,16 @@
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9">
                 <h1>Create New Repair</h1>
-
+                <div class="form-group form-control form-check form-check-inline">
+                    &nbsp;
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design</label>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
+                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form</label>
+                </div>
                 <br />
 
-                <%--   <div class="form-group form-control form-check form-check-inline">
-                    <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
-                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
-                </div>--%>
                 <div id="validation">
                     <asp:Label ID="Label1" runat="server" Text="Please Correct the following Errors :" Visible="False" ForeColor="Red"></asp:Label>
                 </div>
@@ -173,66 +165,36 @@
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Date In:</label>
-                            <div class="flex-box">
-                                <div style="width: 100%;">
-                                    <asp:TextBox ID="txtDateIn" runat="server" CssClass="form-control" TextMode="Date" required="required" ToolTip="Date in "></asp:TextBox>
-                                    <div class="invalid-feedback">Please select the date in</div>
-                                </div>
-                                <div>
-                                    <img id="DateInImg" src="images/question.png" alt="Question mark" />
-                                </div>
-
-                            </div>
-                            <div class="validation-child">
-                                <asp:Label ID="lblDateInVal" runat="server" Text="Label" Visible="False"></asp:Label>
-                            </div>
-                            <div style="visibility: hidden" class="help-text" id="lblDateIn">
-                                <p>Input the Date equipment came into store (Eg. 12/12/2020)</p>
-                            </div>
-
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Date Out:</label>
-                            <div class="flex-box">
-                                <div style="width: 100%;">
-                                    <asp:TextBox ID="txtDateOut" runat="server" CssClass="form-control" TextMode="Date" required="required" ToolTip="Date out"></asp:TextBox>
-                                    <div class="invalid-feedback">Please select a date out</div>
-                                </div>
-                                <div>
-                                    <img id="DateOutImg" src="images/question.png" alt="Question mark" />
-                                </div>
-                            </div>
-                             <div class="validation-child">
-                                <asp:Label ID="lblDateOutVal" runat="server" Text="Label" Visible="False"></asp:Label>
-                            </div>
-                            <div style="visibility: hidden" class="help-text" id="lblDateOut">
-                                <p>Input the Date equipment went out of store (Eg:12/12/2020)</p>
-                            </div>
-
-
-                        </div>
-                        <div class="form-group">
                             <label class="control-label">Issue:</label>
-
-
                             <div class="flex-box">
                                 <div style="width: 100%;">
                                     <asp:TextBox ID="txtIssue" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Issue for this repair..." required="required" ToolTip="Issue" MaxLength="100"></asp:TextBox>
                                     <div class="invalid-feedback">Please enter the issue</div>
                                 </div>
-                                <div>
-                                    <img style="margin-top: 9px;" id="IssueImg" src="images/question.png" alt="Question mark" />
-                                </div>
                             </div>
                             <div class="validation-child">
                                 <asp:Label ID="lblIssueVal" runat="server" Text="Label" Visible="False"></asp:Label>
                             </div>
-                            <div style="visibility: hidden" class="help-text" id="lblIssue">
-                                <p>Input the issue of the equipment (Eg. oil change)</p>
-                            </div>
-
+                            <asp:Label ID="lblIssueHelp" runat="server" Text="Input the Issues of the equipment (Eg. oil change)." CssClass="help-text" Visible="False"></asp:Label>
                         </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Equipment:</label>
+                            <div class="flex-box">
+                                <div style="width: 100%;">
+                                    <asp:DropDownList ID="ddlEquipment" runat="server" CssClass="custom-select" DataSourceID="EquipmentLookUp" DataTextField="Equipment Type" DataValueField="id" AppendDataBoundItems="True" required="required" ToolTip="Equipment">
+                                        <asp:ListItem Selected="True">None</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <div class="invalid-feedback">Please select the equipment</div>
+                                </div>
+
+                            </div>
+                            <div class="validation-child">
+                                <asp:Label ID="lblEquipmentVal" runat="server" Text="Label" Visible="False"></asp:Label>
+                            </div>
+                            <asp:Label ID="lblEquipmentHelp" runat="server" Text="Select an equipment type for repair." CssClass="help-text" Visible="False"></asp:Label>
+                        </div>
+
                         <div class="form-group">
                             <label class="control-label">Warranty Status:</label>
                             <div class="flex-box">
@@ -242,21 +204,17 @@
                                     <asp:RadioButton ID="radNoWarranty" runat="server" CssClass="form-check-input" value="false" GroupName="radStatus" required="required" Checked="True" ToolTip="Not in warranty" />
                                     <label class="form-check-label" for="radInWarranty" id="lblNoWarranty">Not In Warranty</label>
                                 </div>
-                                <div>
-                                    <img style="margin-top: 9px;" id="WarrantyImg" src="images/question.png" alt="Question mark" />
-                                </div>
+
                             </div>
-                            <div style="visibility: hidden" class="help-text" id="lblWarranty">
-                                <p>Select if the equipment is in warranty</p>
+                            <div class="validation-child">
+                                <asp:Label ID="lblrWarrantyVal" runat="server" Text="Label" Visible="False"></asp:Label>
                             </div>
+                            <asp:Label ID="lblWarrantyHelp" runat="server" Text="Select if the equipment is in warranty." CssClass="help-text" Visible="False"></asp:Label>
                         </div>
                     </div>
-                    <div class="auto-style1">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Receipt:</label>
-
-
-
                             <div class="flex-box">
                                 <div style="width: 100%;">
                                     <asp:DropDownList ID="ddlReceipt" runat="server" CssClass="custom-select" DataSourceID="Receipt" DataTextField="ordNumber" DataValueField="id" AppendDataBoundItems="True" required="required" ToolTip="Reciept">
@@ -264,20 +222,15 @@
                                     </asp:DropDownList>
                                     <div class="invalid-feedback">Please select a date in</div>
                                 </div>
-                                <div>
-                                    <img id="RecieptImg" src="images/question.png" alt="Question mark" />
 
-                                </div>
                             </div>
                             <div class="validation-child">
                                 <asp:Label ID="lblRecieotVal" runat="server" Text="Label" Visible="False"></asp:Label>
                             </div>
-                            <div style="visibility: hidden" class="help-text" id="lblRecipet">
-                                <p>Select the Reciept Number (Eg: 1)</p>
-                            </div>
-
-
+                            <asp:Label ID="lblRecieptHelp" runat="server" Text="select a Reciept related to this repair." CssClass="help-text" Visible="False"></asp:Label>
                         </div>
+
+
                         <div class="form-group">
                             <label class="control-label">Service:</label>
 
@@ -289,46 +242,19 @@
                                     </asp:DropDownList>
                                     <div class="invalid-feedback">Please select a date out</div>
                                 </div>
-                                <div>
-                                    <img id="ServiceImg" src="images/question.png" alt="Question mark" />
-                                </div>
+
                             </div>
                             <div class="validation-child">
                                 <asp:Label ID="lblServiceVal" runat="server" Text="Label" Visible="False"></asp:Label>
                             </div>
-                            <div style="visibility: hidden" class="help-text" id="lblService">
-                                <p>Select a service (Eg. oil change)</p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Equipment:</label>
-
-
-
-                            <div class="flex-box">
-                                <div style="width: 100%;">
-                                    <asp:DropDownList ID="ddlEquipment" runat="server" CssClass="custom-select" DataSourceID="EquipmentLookUp" DataTextField="Equipment Type" DataValueField="id" AppendDataBoundItems="True" required="required" ToolTip="Equipment">
-                                        <asp:ListItem Selected="True">None</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <div class="invalid-feedback">Please select the equipment</div>
-                                </div>
-                                <div>
-                                    <img id="EquipmentImg" src="images/question.png" alt="Question mark" />
-
-                                </div>
-                            </div>
-                            <div class="validation-child">
-                                <asp:Label ID="lblEquipmentVal" runat="server" Text="Label" Visible="False"></asp:Label>
-                            </div>
-                            <div style="visibility: hidden" class="help-text" id="lblEquipment">
-                                <p>Select an Equipment (Eg: lawn Mower)</p>
-                            </div>
+                            <asp:Label ID="lblServiceHelp" runat="server" Text="Select the service required for the repair." CssClass="help-text" Visible="False"></asp:Label>
 
                         </div>
+
+
+
                         <div class="form-group">
                             <label class="control-label">Employee:</label>
-
-
                             <div class="flex-box">
                                 <div style="width: 100%;">
                                     <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="custom-select" DataSourceID="Employee" DataTextField="Employee Full Name" DataValueField="id" AppendDataBoundItems="True" required="required" ToolTip="Employee1">
@@ -336,24 +262,17 @@
                                     </asp:DropDownList>
                                     <div class="invalid-feedback">Please select the employee</div>
                                 </div>
-                                <div>
-                                    <img id="EmployeeImg" src="images/question.png" alt="Question mark" />
-
-
-                                </div>
                             </div>
                             <div class="validation-child">
                                 <asp:Label ID="lblEmployeeval" runat="server" Text="Label" Visible="False"></asp:Label>
                             </div>
-                            <div style="visibility: hidden" class="help-text" id="lblEmployee">
-                                <p>Select an Employee (Eg: Sarah Kendell)</p>
-                            </div>
+                            <asp:Label ID="lblEmployeeHelp" runat="server" Text="Select the Employee who is creating the repair ." CssClass="help-text" Visible="False"></asp:Label>
 
                         </div>
-
                     </div>
                 </div>
             </div>
+
             <div class="form-row">
                 <asp:Panel ID="pnlBtnRepairs" CssClass="col-md-12" runat="server">
                     <asp:Button ID="btnCreate" runat="server" aria-label="Create Repair" CssClass="btn btn-success" Text="Create" OnClick="btnCreate_Click" ToolTip="Create Repair" Width="100px" />
@@ -411,7 +330,6 @@
             </div>
         </div>
     </form>
-    <script src="/Script/help_text.js"></script>
 
 </body>
 </html>
