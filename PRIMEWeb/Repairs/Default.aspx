@@ -11,7 +11,7 @@
             background-color: #e0e0e0;
             line-height: 1;
         }
-
+        
         .breadcrumb, #navbar {
             margin: 10px;
         }
