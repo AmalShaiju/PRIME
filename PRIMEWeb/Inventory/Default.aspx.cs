@@ -13,30 +13,37 @@ namespace PRIMEWeb.Inventory
 {
     public partial class Default : System.Web.UI.Page
     {
+        private static int id;
         static EmmasDataSet dsInventory = new EmmasDataSet();
         static InventoryLookUpTableAdapter daInventory = new InventoryLookUpTableAdapter();
         static bool flag = false;
         private static DataRow[] rows;
 
-        static Default()
-        {
-            try
-            {
-                daInventory.Fill(dsInventory.InventoryLookUp);
+        ////static Default()
+        ////{
+        ////    try
+        ////    {
 
-            }
-            catch
-            {
-                flag = true;
-            }
-        }
+        ////    }
+        ////    catch
+        ////    {
+        ////        flag = true;
+        ////    }
+        ////}
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            productTableAdapter daProduct = new productTableAdapter();
+            InventoryLookUpTableAdapter inventoryTable = new InventoryLookUpTableAdapter();
+            inventoryTableAdapter inventoryCRUD = new inventoryTableAdapter();
+
+            inventoryCRUD.Fill(dsInventory.inventory);
+
             // No data loaded
             if (flag)
                 return;
+            daInventory.Fill(dsInventory.InventoryLookUp);
 
             rows = dsInventory.InventoryLookUp.Select();
             DisplayTable();
@@ -63,11 +70,11 @@ namespace PRIMEWeb.Inventory
             {
                 DataRow nr = dt.NewRow();
                 nr[0] = r.ItemArray[0].ToString();
-                nr[1] = r.ItemArray[6].ToString();
+                nr[1] = r.ItemArray[4].ToString();
                 nr[2] = r.ItemArray[1].ToString();
                 nr[3] = r.ItemArray[2].ToString();
-                nr[4] = r.ItemArray[7].ToString();
-                nr[5] = r.ItemArray[4].ToString();
+                nr[4] = r.ItemArray[5].ToString();
+                nr[5] = r.ItemArray[3].ToString();
 
                 dt.Rows.Add(nr);
 
@@ -90,14 +97,7 @@ namespace PRIMEWeb.Inventory
                 this.GridView1.HeaderRow.Cells[0].Visible = false;
                 e.Row.Cells[0].Visible = false;
 
-                // Detail btn
-                Button btnDeail = new Button();  //create edit btn
-                                                 // btnEdits.Add(btnEdit);  //the list index of the button will also be the row index
-                btnDeail.CssClass = "btn btn-info";  //set css class
-                btnDeail.Text = "Detail";
-                btnDeail.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
-                e.Row.Cells[6].Controls.Add(btnDeail);  //add the btn
-
+               
 
 
                 // Edit btn
@@ -108,9 +108,9 @@ namespace PRIMEWeb.Inventory
                 btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this sale");
 
                 //set aria label
-                // btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
+                btnEdit.Attributes.Add("OnClick", "btnEdit_Click");  //click event handler
 
-               // btnEdit.Click += new EventHandler(btnEdit_Click);// Set button click event
+                btnEdit.Click += new EventHandler(btnEdit_Click);// Set button click event
                 e.Row.Cells[6].Controls.Add(btnEdit);  //add the btn
 
 
@@ -121,9 +121,11 @@ namespace PRIMEWeb.Inventory
                 btnDelete.CssClass = "btn btn-danger";  //set css class
                 btnDelete.Text = "Delete";
                 btnDelete.Attributes.Add("aria-label", "Click to delete this sale");
+
+               
                 //set aria label
-                // btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
-              //  btnDelete.Click += new EventHandler(btnDelete_Click);// Set button click event
+                 btnDelete.Attributes.Add("OnClick", "btnDelete_Click");  //click event handler
+                      btnDelete.Click += new EventHandler(btnDelete_Click);// Set button click event
 
 
                 //if (not admin)
@@ -136,6 +138,75 @@ namespace PRIMEWeb.Inventory
             {
                 
             }
+        }
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            // Get the button that raised the event
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Get rowindex
+            int rowindex = gvr.RowIndex;
+
+
+            //Send Id using cookie, more seecure I presume
+            // Cokkie variable named cID to hold a value 
+            Session["InventoryId"] = rows[rowindex].ItemArray[0].ToString();
+           
+            Response.Redirect("EditItem.aspx"); // Redirect the user to Edit page on btn click
+
+
+        }
+
+       
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Get the button that raised the event
+            Button btn = (Button)sender;
+
+            ////Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            ////Get rowindex
+            int rowindex = gvr.RowIndex;
+
+            this.Label1.Text = rowindex.ToString();
+            rows = dsInventory.InventoryLookUp.Select();
+
+            id = Convert.ToInt32(rows[rowindex].ItemArray[0].ToString());
+
+            //get confirmation from client side
+            // call js script 
+            // get the return bool
+            // use bool to execute the below code
+
+            // do this after geting confirmation from client side
+           // if (id != -1)
+
+            //{
+
+               // try
+                //{
+                    DataRow record = dsInventory.inventory.FindByid(id); // Find the requested record 
+                    record.Delete(); // Deletes the record in memory
+
+                    inventoryTableAdapter inventoryTable = new inventoryTableAdapter();
+                    // No data lo // table adapter to Repair table (Repair adapter)
+                    inventoryTable.Update(record); // Call update method on the Repair adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                    dsInventory.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+                    Label1.Text = "deleted";
+
+                    //Refresh the page to show the record being deleted
+                    Response.Redirect("Default.aspx");
+
+              //   }
+                // catch
+               /// {
+                   //  Label1.Text = "not deleted";
+                //}
+           // }
         }
 
         private string FilterCriteria()

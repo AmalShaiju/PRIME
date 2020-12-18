@@ -36,8 +36,10 @@
             text-align: center;
             vertical-align: middle;
         }
+        
         td .btn {
             width: 80px;
+            margin: 5px;
         }
         .auto-style1 {
             width: 100%;
