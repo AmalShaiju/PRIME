@@ -160,14 +160,14 @@
                         <a class="btn btn-danger" href="/Orders/Default.aspx" role="button" aria-label="Cancel Creating">Cancel</a>
                     </div>
                 </div>
-
-            </div>
                 <asp:Panel ID="pnlOrderHelp" runat="server" Visible="False">
                         <p>Notes:</p>
                         <p>Fill the Order form and click the "Create Order" button to add the Order record to the database and start creating a new Order.</p>
                         <p>Click the "Clear Form" button to remove all the text from textboxes.</p>
                         <p>Click the "Cancel" button to cancel creating the Order and go to the Order page.</p>
                 </asp:Panel>
+            </div>
+                
             </div>
         
     </form>

@@ -186,6 +186,15 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.Button btnClearOrder;
 
         /// <summary>
+        /// pnlHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlHelp;
+
+        /// <summary>
         /// ods_IDS control.
         /// </summary>
         /// <remarks>

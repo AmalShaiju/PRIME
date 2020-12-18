@@ -141,6 +141,16 @@
             justify-content: space-around;
             width: 100%;
         }
+
+        #pnlDeleteConfirm {
+            margin-top: 30px;
+            margin-left: 56px;
+            width: 95%;
+        }
+
+        #btnDelete {
+            margin-left: 13px;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -183,14 +193,25 @@
 
             <div id="wrapper-inner">
                 <h1>Repair Details</h1>
-                
+                <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
+                    <h4 class="alert-heading">Do you really want to delete this sale?</h4>
+                    <hr />
+                    <p>Doing this will also delete all orders and repairs under this repair.</p>
+                    <p>Please check out the orders and repairs before doing so.</p>
+                    <p>If you're sure about this, click the "Delete" button.</p>
+                    <hr />
+                    <a href="/Repairs/" type="button" class="btn btn-secondary">Cancel</a>
+                    <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDeleteConfirm_Click" />
+                </asp:Panel>
                 <div style="margin: 20px 0px;">
                     <asp:Label ID="redirectMsg" runat="server" ForeColor="Green" Text="Label" Visible="False"></asp:Label>
                 </div>
                 <div class="details">
                     <div class="inner-deatils">
                         <asp:Panel ID="pnlTimer" runat="server">
-
+                            <h2>Repair Summary</h2>
+                            <hr />
+                            <br />
                             <div class="flex-box">
                                 <div class="dark-detail">
 
@@ -428,10 +449,14 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-info" Text="Edit" Width="100px" OnClick="Button1_Click" />
+                        <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger" Width="100px" OnClick="btnDelete_Click" />
+                    </div>
+
                 </div>
-
-
             </div>
+
         </div>
 
 

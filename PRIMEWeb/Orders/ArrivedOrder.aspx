@@ -172,6 +172,12 @@
                     </asp:Panel>
                    </div>
                 </div>
+                <asp:Panel ID="pnlHelp" runat="server" Visible="False">
+                        <p>Notes:</p>
+                        <p>Input inforamtion to the fields and click the "Add the Order" button to create the arrived order record and update the database.</p>
+                        <p>You will be notified of the success or failure of the operation</p>
+                        <p>Click the "Cancel" button to cancel creating the arrived order record and go to the Arrived order page.</p>
+                </asp:Panel>
             </div>
         </div>
         <asp:ObjectDataSource ID="ods_IDS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter"></asp:ObjectDataSource>

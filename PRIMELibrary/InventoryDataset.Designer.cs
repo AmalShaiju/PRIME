@@ -20,17 +20,17 @@ namespace PRIMELibrary {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("EmmasDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("InventoryDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class EmmasDataSet : global::System.Data.DataSet {
+    public partial class InventoryDataSet : global::System.Data.DataSet {
         
         private InventoryLookUpDataTable tableInventoryLookUp;
         
         private BrandLookUpDataTable tableBrandLookUp;
         
-        private productDataTable tableproduct;
+        private ProductDataTable tableProduct;
         
-        private inventoryDataTable tableinventory;
+        private InventoryDataTable tableInventory;
         
         private global::System.Data.DataRelation relationinventory_fk_productID;
         
@@ -44,7 +44,7 @@ namespace PRIMELibrary {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public EmmasDataSet() {
+        public InventoryDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -55,7 +55,7 @@ namespace PRIMELibrary {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected EmmasDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected InventoryDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -74,11 +74,11 @@ namespace PRIMELibrary {
                 if ((ds.Tables["BrandLookUp"] != null)) {
                     base.Tables.Add(new BrandLookUpDataTable(ds.Tables["BrandLookUp"]));
                 }
-                if ((ds.Tables["product"] != null)) {
-                    base.Tables.Add(new productDataTable(ds.Tables["product"]));
+                if ((ds.Tables["Product"] != null)) {
+                    base.Tables.Add(new ProductDataTable(ds.Tables["Product"]));
                 }
-                if ((ds.Tables["inventory"] != null)) {
-                    base.Tables.Add(new inventoryDataTable(ds.Tables["inventory"]));
+                if ((ds.Tables["Inventory"] != null)) {
+                    base.Tables.Add(new InventoryDataTable(ds.Tables["Inventory"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -122,9 +122,9 @@ namespace PRIMELibrary {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public productDataTable product {
+        public ProductDataTable Product {
             get {
-                return this.tableproduct;
+                return this.tableProduct;
             }
         }
         
@@ -132,9 +132,9 @@ namespace PRIMELibrary {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public inventoryDataTable inventory {
+        public InventoryDataTable Inventory {
             get {
-                return this.tableinventory;
+                return this.tableInventory;
             }
         }
         
@@ -180,7 +180,7 @@ namespace PRIMELibrary {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            EmmasDataSet cln = ((EmmasDataSet)(base.Clone()));
+            InventoryDataSet cln = ((InventoryDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -211,11 +211,11 @@ namespace PRIMELibrary {
                 if ((ds.Tables["BrandLookUp"] != null)) {
                     base.Tables.Add(new BrandLookUpDataTable(ds.Tables["BrandLookUp"]));
                 }
-                if ((ds.Tables["product"] != null)) {
-                    base.Tables.Add(new productDataTable(ds.Tables["product"]));
+                if ((ds.Tables["Product"] != null)) {
+                    base.Tables.Add(new ProductDataTable(ds.Tables["Product"]));
                 }
-                if ((ds.Tables["inventory"] != null)) {
-                    base.Tables.Add(new inventoryDataTable(ds.Tables["inventory"]));
+                if ((ds.Tables["Inventory"] != null)) {
+                    base.Tables.Add(new InventoryDataTable(ds.Tables["Inventory"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -262,16 +262,16 @@ namespace PRIMELibrary {
                     this.tableBrandLookUp.InitVars();
                 }
             }
-            this.tableproduct = ((productDataTable)(base.Tables["product"]));
+            this.tableProduct = ((ProductDataTable)(base.Tables["Product"]));
             if ((initTable == true)) {
-                if ((this.tableproduct != null)) {
-                    this.tableproduct.InitVars();
+                if ((this.tableProduct != null)) {
+                    this.tableProduct.InitVars();
                 }
             }
-            this.tableinventory = ((inventoryDataTable)(base.Tables["inventory"]));
+            this.tableInventory = ((InventoryDataTable)(base.Tables["Inventory"]));
             if ((initTable == true)) {
-                if ((this.tableinventory != null)) {
-                    this.tableinventory.InitVars();
+                if ((this.tableInventory != null)) {
+                    this.tableInventory.InitVars();
                 }
             }
             this.relationinventory_fk_productID = this.Relations["inventory_fk_productID"];
@@ -283,33 +283,33 @@ namespace PRIMELibrary {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "EmmasDataSet";
+            this.DataSetName = "InventoryDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/EmmasDataSet.xsd";
+            this.Namespace = "http://tempuri.org/InventoryDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableInventoryLookUp = new InventoryLookUpDataTable();
             base.Tables.Add(this.tableInventoryLookUp);
             this.tableBrandLookUp = new BrandLookUpDataTable();
             base.Tables.Add(this.tableBrandLookUp);
-            this.tableproduct = new productDataTable();
-            base.Tables.Add(this.tableproduct);
-            this.tableinventory = new inventoryDataTable();
-            base.Tables.Add(this.tableinventory);
+            this.tableProduct = new ProductDataTable();
+            base.Tables.Add(this.tableProduct);
+            this.tableInventory = new InventoryDataTable();
+            base.Tables.Add(this.tableInventory);
             this.relationinventory_fk_productID = new global::System.Data.DataRelation("inventory_fk_productID", new global::System.Data.DataColumn[] {
                         this.tableBrandLookUp.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableinventory.productIDColumn}, false);
+                        this.tableInventory.productIDColumn}, false);
             this.Relations.Add(this.relationinventory_fk_productID);
             this.relationinventory_fk_productID1 = new global::System.Data.DataRelation("inventory_fk_productID1", new global::System.Data.DataColumn[] {
-                        this.tableproduct.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableinventory.productIDColumn}, false);
+                        this.tableProduct.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInventory.productIDColumn}, false);
             this.Relations.Add(this.relationinventory_fk_productID1);
             this.relationinventory_fk_productID2 = new global::System.Data.DataRelation("inventory_fk_productID2", new global::System.Data.DataColumn[] {
                         this.tableBrandLookUp.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventoryLookUp.productIDColumn}, false);
             this.Relations.Add(this.relationinventory_fk_productID2);
             this.relationinventory_fk_productID3 = new global::System.Data.DataRelation("inventory_fk_productID3", new global::System.Data.DataColumn[] {
-                        this.tableproduct.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableProduct.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventoryLookUp.productIDColumn}, false);
             this.Relations.Add(this.relationinventory_fk_productID3);
         }
@@ -328,13 +328,13 @@ namespace PRIMELibrary {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeproduct() {
+        private bool ShouldSerializeProduct() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeinventory() {
+        private bool ShouldSerializeInventory() {
             return false;
         }
         
@@ -349,7 +349,7 @@ namespace PRIMELibrary {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            EmmasDataSet ds = new EmmasDataSet();
+            InventoryDataSet ds = new InventoryDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -400,10 +400,10 @@ namespace PRIMELibrary {
         public delegate void BrandLookUpRowChangeEventHandler(object sender, BrandLookUpRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void productRowChangeEventHandler(object sender, productRowChangeEvent e);
+        public delegate void ProductRowChangeEventHandler(object sender, ProductRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void inventoryRowChangeEventHandler(object sender, inventoryRowChangeEvent e);
+        public delegate void InventoryRowChangeEventHandler(object sender, InventoryRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -744,7 +744,7 @@ namespace PRIMELibrary {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EmmasDataSet ds = new EmmasDataSet();
+                InventoryDataSet ds = new InventoryDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1021,7 +1021,7 @@ namespace PRIMELibrary {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EmmasDataSet ds = new EmmasDataSet();
+                InventoryDataSet ds = new InventoryDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1085,7 +1085,7 @@ namespace PRIMELibrary {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class productDataTable : global::System.Data.TypedTableBase<productRow> {
+        public partial class ProductDataTable : global::System.Data.TypedTableBase<ProductRow> {
             
             private global::System.Data.DataColumn columnid;
             
@@ -1097,8 +1097,8 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public productDataTable() {
-                this.TableName = "product";
+            public ProductDataTable() {
+                this.TableName = "Product";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1106,7 +1106,7 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal productDataTable(global::System.Data.DataTable table) {
+            internal ProductDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1123,7 +1123,7 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected productDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ProductDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1171,55 +1171,55 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public productRow this[int index] {
+            public ProductRow this[int index] {
                 get {
-                    return ((productRow)(this.Rows[index]));
+                    return ((ProductRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event productRowChangeEventHandler productRowChanging;
+            public event ProductRowChangeEventHandler ProductRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event productRowChangeEventHandler productRowChanged;
+            public event ProductRowChangeEventHandler ProductRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event productRowChangeEventHandler productRowDeleting;
+            public event ProductRowChangeEventHandler ProductRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event productRowChangeEventHandler productRowDeleted;
+            public event ProductRowChangeEventHandler ProductRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddproductRow(productRow row) {
+            public void AddProductRow(ProductRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public productRow AddproductRow(string prodName, string prodDescription, string prodBrand) {
-                productRow rowproductRow = ((productRow)(this.NewRow()));
+            public ProductRow AddProductRow(string prodName, string prodDescription, string prodBrand) {
+                ProductRow rowProductRow = ((ProductRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         prodName,
                         prodDescription,
                         prodBrand};
-                rowproductRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowproductRow);
-                return rowproductRow;
+                rowProductRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowProductRow);
+                return rowProductRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public productRow FindByid(int id) {
-                return ((productRow)(this.Rows.Find(new object[] {
+            public ProductRow FindByid(int id) {
+                return ((ProductRow)(this.Rows.Find(new object[] {
                             id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                productDataTable cln = ((productDataTable)(base.Clone()));
+                ProductDataTable cln = ((ProductDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1227,7 +1227,7 @@ namespace PRIMELibrary {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new productDataTable();
+                return new ProductDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1265,28 +1265,28 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public productRow NewproductRow() {
-                return ((productRow)(this.NewRow()));
+            public ProductRow NewProductRow() {
+                return ((ProductRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new productRow(builder);
+                return new ProductRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(productRow);
+                return typeof(ProductRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.productRowChanged != null)) {
-                    this.productRowChanged(this, new productRowChangeEvent(((productRow)(e.Row)), e.Action));
+                if ((this.ProductRowChanged != null)) {
+                    this.ProductRowChanged(this, new ProductRowChangeEvent(((ProductRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1294,8 +1294,8 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.productRowChanging != null)) {
-                    this.productRowChanging(this, new productRowChangeEvent(((productRow)(e.Row)), e.Action));
+                if ((this.ProductRowChanging != null)) {
+                    this.ProductRowChanging(this, new ProductRowChangeEvent(((ProductRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1303,8 +1303,8 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.productRowDeleted != null)) {
-                    this.productRowDeleted(this, new productRowChangeEvent(((productRow)(e.Row)), e.Action));
+                if ((this.ProductRowDeleted != null)) {
+                    this.ProductRowDeleted(this, new ProductRowChangeEvent(((ProductRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1312,14 +1312,14 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.productRowDeleting != null)) {
-                    this.productRowDeleting(this, new productRowChangeEvent(((productRow)(e.Row)), e.Action));
+                if ((this.ProductRowDeleting != null)) {
+                    this.ProductRowDeleting(this, new ProductRowChangeEvent(((ProductRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveproductRow(productRow row) {
+            public void RemoveProductRow(ProductRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1328,7 +1328,7 @@ namespace PRIMELibrary {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EmmasDataSet ds = new EmmasDataSet();
+                InventoryDataSet ds = new InventoryDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1346,7 +1346,7 @@ namespace PRIMELibrary {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "productDataTable";
+                attribute2.FixedValue = "ProductDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1392,7 +1392,7 @@ namespace PRIMELibrary {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class inventoryDataTable : global::System.Data.TypedTableBase<inventoryRow> {
+        public partial class InventoryDataTable : global::System.Data.TypedTableBase<InventoryRow> {
             
             private global::System.Data.DataColumn columnid;
             
@@ -1408,8 +1408,8 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public inventoryDataTable() {
-                this.TableName = "inventory";
+            public InventoryDataTable() {
+                this.TableName = "Inventory";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1417,7 +1417,7 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal inventoryDataTable(global::System.Data.DataTable table) {
+            internal InventoryDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1434,7 +1434,7 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected inventoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected InventoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1498,34 +1498,34 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public inventoryRow this[int index] {
+            public InventoryRow this[int index] {
                 get {
-                    return ((inventoryRow)(this.Rows[index]));
+                    return ((InventoryRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event inventoryRowChangeEventHandler inventoryRowChanging;
+            public event InventoryRowChangeEventHandler InventoryRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event inventoryRowChangeEventHandler inventoryRowChanged;
+            public event InventoryRowChangeEventHandler InventoryRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event inventoryRowChangeEventHandler inventoryRowDeleting;
+            public event InventoryRowChangeEventHandler InventoryRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event inventoryRowChangeEventHandler inventoryRowDeleted;
+            public event InventoryRowChangeEventHandler InventoryRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddinventoryRow(inventoryRow row) {
+            public void AddInventoryRow(InventoryRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public inventoryRow AddinventoryRow(int invQuantity, decimal invSize, string invMeasure, decimal invPrice, BrandLookUpRow parentBrandLookUpRowByinventory_fk_productID) {
-                inventoryRow rowinventoryRow = ((inventoryRow)(this.NewRow()));
+            public InventoryRow AddInventoryRow(int invQuantity, decimal invSize, string invMeasure, decimal invPrice, BrandLookUpRow parentBrandLookUpRowByinventory_fk_productID) {
+                InventoryRow rowInventoryRow = ((InventoryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         invQuantity,
@@ -1536,22 +1536,22 @@ namespace PRIMELibrary {
                 if ((parentBrandLookUpRowByinventory_fk_productID != null)) {
                     columnValuesArray[5] = parentBrandLookUpRowByinventory_fk_productID[0];
                 }
-                rowinventoryRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowinventoryRow);
-                return rowinventoryRow;
+                rowInventoryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowInventoryRow);
+                return rowInventoryRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public inventoryRow FindByid(int id) {
-                return ((inventoryRow)(this.Rows.Find(new object[] {
+            public InventoryRow FindByid(int id) {
+                return ((InventoryRow)(this.Rows.Find(new object[] {
                             id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                inventoryDataTable cln = ((inventoryDataTable)(base.Clone()));
+                InventoryDataTable cln = ((InventoryDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1559,7 +1559,7 @@ namespace PRIMELibrary {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new inventoryDataTable();
+                return new InventoryDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1602,28 +1602,28 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public inventoryRow NewinventoryRow() {
-                return ((inventoryRow)(this.NewRow()));
+            public InventoryRow NewInventoryRow() {
+                return ((InventoryRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new inventoryRow(builder);
+                return new InventoryRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(inventoryRow);
+                return typeof(InventoryRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.inventoryRowChanged != null)) {
-                    this.inventoryRowChanged(this, new inventoryRowChangeEvent(((inventoryRow)(e.Row)), e.Action));
+                if ((this.InventoryRowChanged != null)) {
+                    this.InventoryRowChanged(this, new InventoryRowChangeEvent(((InventoryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1631,8 +1631,8 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.inventoryRowChanging != null)) {
-                    this.inventoryRowChanging(this, new inventoryRowChangeEvent(((inventoryRow)(e.Row)), e.Action));
+                if ((this.InventoryRowChanging != null)) {
+                    this.InventoryRowChanging(this, new InventoryRowChangeEvent(((InventoryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1640,8 +1640,8 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.inventoryRowDeleted != null)) {
-                    this.inventoryRowDeleted(this, new inventoryRowChangeEvent(((inventoryRow)(e.Row)), e.Action));
+                if ((this.InventoryRowDeleted != null)) {
+                    this.InventoryRowDeleted(this, new InventoryRowChangeEvent(((InventoryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1649,14 +1649,14 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.inventoryRowDeleting != null)) {
-                    this.inventoryRowDeleting(this, new inventoryRowChangeEvent(((inventoryRow)(e.Row)), e.Action));
+                if ((this.InventoryRowDeleting != null)) {
+                    this.InventoryRowDeleting(this, new InventoryRowChangeEvent(((InventoryRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveinventoryRow(inventoryRow row) {
+            public void RemoveInventoryRow(InventoryRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1665,7 +1665,7 @@ namespace PRIMELibrary {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EmmasDataSet ds = new EmmasDataSet();
+                InventoryDataSet ds = new InventoryDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1683,7 +1683,7 @@ namespace PRIMELibrary {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "inventoryDataTable";
+                attribute2.FixedValue = "InventoryDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1901,9 +1901,9 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public productRow productRow {
+            public ProductRow ProductRow {
                 get {
-                    return ((productRow)(this.GetParentRow(this.Table.ParentRelations["inventory_fk_productID3"])));
+                    return ((ProductRow)(this.GetParentRow(this.Table.ParentRelations["inventory_fk_productID3"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["inventory_fk_productID3"]);
@@ -2062,12 +2062,12 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public inventoryRow[] GetinventoryRows() {
+            public InventoryRow[] GetInventoryRows() {
                 if ((this.Table.ChildRelations["inventory_fk_productID"] == null)) {
-                    return new inventoryRow[0];
+                    return new InventoryRow[0];
                 }
                 else {
-                    return ((inventoryRow[])(base.GetChildRows(this.Table.ChildRelations["inventory_fk_productID"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["inventory_fk_productID"])));
                 }
             }
             
@@ -2086,25 +2086,25 @@ namespace PRIMELibrary {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class productRow : global::System.Data.DataRow {
+        public partial class ProductRow : global::System.Data.DataRow {
             
-            private productDataTable tableproduct;
+            private ProductDataTable tableProduct;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal productRow(global::System.Data.DataRowBuilder rb) : 
+            internal ProductRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableproduct = ((productDataTable)(this.Table));
+                this.tableProduct = ((ProductDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int id {
                 get {
-                    return ((int)(this[this.tableproduct.idColumn]));
+                    return ((int)(this[this.tableProduct.idColumn]));
                 }
                 set {
-                    this[this.tableproduct.idColumn] = value;
+                    this[this.tableProduct.idColumn] = value;
                 }
             }
             
@@ -2113,14 +2113,14 @@ namespace PRIMELibrary {
             public string prodName {
                 get {
                     try {
-                        return ((string)(this[this.tableproduct.prodNameColumn]));
+                        return ((string)(this[this.tableProduct.prodNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'prodName\' in table \'product\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'prodName\' in table \'Product\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableproduct.prodNameColumn] = value;
+                    this[this.tableProduct.prodNameColumn] = value;
                 }
             }
             
@@ -2129,14 +2129,14 @@ namespace PRIMELibrary {
             public string prodDescription {
                 get {
                     try {
-                        return ((string)(this[this.tableproduct.prodDescriptionColumn]));
+                        return ((string)(this[this.tableProduct.prodDescriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'prodDescription\' in table \'product\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'prodDescription\' in table \'Product\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableproduct.prodDescriptionColumn] = value;
+                    this[this.tableProduct.prodDescriptionColumn] = value;
                 }
             }
             
@@ -2145,61 +2145,61 @@ namespace PRIMELibrary {
             public string prodBrand {
                 get {
                     try {
-                        return ((string)(this[this.tableproduct.prodBrandColumn]));
+                        return ((string)(this[this.tableProduct.prodBrandColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'prodBrand\' in table \'product\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'prodBrand\' in table \'Product\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableproduct.prodBrandColumn] = value;
+                    this[this.tableProduct.prodBrandColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsprodNameNull() {
-                return this.IsNull(this.tableproduct.prodNameColumn);
+                return this.IsNull(this.tableProduct.prodNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetprodNameNull() {
-                this[this.tableproduct.prodNameColumn] = global::System.Convert.DBNull;
+                this[this.tableProduct.prodNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsprodDescriptionNull() {
-                return this.IsNull(this.tableproduct.prodDescriptionColumn);
+                return this.IsNull(this.tableProduct.prodDescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetprodDescriptionNull() {
-                this[this.tableproduct.prodDescriptionColumn] = global::System.Convert.DBNull;
+                this[this.tableProduct.prodDescriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsprodBrandNull() {
-                return this.IsNull(this.tableproduct.prodBrandColumn);
+                return this.IsNull(this.tableProduct.prodBrandColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetprodBrandNull() {
-                this[this.tableproduct.prodBrandColumn] = global::System.Convert.DBNull;
+                this[this.tableProduct.prodBrandColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public inventoryRow[] GetinventoryRows() {
+            public InventoryRow[] GetInventoryRows() {
                 if ((this.Table.ChildRelations["inventory_fk_productID1"] == null)) {
-                    return new inventoryRow[0];
+                    return new InventoryRow[0];
                 }
                 else {
-                    return ((inventoryRow[])(base.GetChildRows(this.Table.ChildRelations["inventory_fk_productID1"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["inventory_fk_productID1"])));
                 }
             }
             
@@ -2218,25 +2218,25 @@ namespace PRIMELibrary {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class inventoryRow : global::System.Data.DataRow {
+        public partial class InventoryRow : global::System.Data.DataRow {
             
-            private inventoryDataTable tableinventory;
+            private InventoryDataTable tableInventory;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal inventoryRow(global::System.Data.DataRowBuilder rb) : 
+            internal InventoryRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableinventory = ((inventoryDataTable)(this.Table));
+                this.tableInventory = ((InventoryDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int id {
                 get {
-                    return ((int)(this[this.tableinventory.idColumn]));
+                    return ((int)(this[this.tableInventory.idColumn]));
                 }
                 set {
-                    this[this.tableinventory.idColumn] = value;
+                    this[this.tableInventory.idColumn] = value;
                 }
             }
             
@@ -2245,14 +2245,14 @@ namespace PRIMELibrary {
             public int invQuantity {
                 get {
                     try {
-                        return ((int)(this[this.tableinventory.invQuantityColumn]));
+                        return ((int)(this[this.tableInventory.invQuantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invQuantity\' in table \'inventory\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'invQuantity\' in table \'Inventory\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableinventory.invQuantityColumn] = value;
+                    this[this.tableInventory.invQuantityColumn] = value;
                 }
             }
             
@@ -2261,14 +2261,14 @@ namespace PRIMELibrary {
             public decimal invSize {
                 get {
                     try {
-                        return ((decimal)(this[this.tableinventory.invSizeColumn]));
+                        return ((decimal)(this[this.tableInventory.invSizeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invSize\' in table \'inventory\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'invSize\' in table \'Inventory\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableinventory.invSizeColumn] = value;
+                    this[this.tableInventory.invSizeColumn] = value;
                 }
             }
             
@@ -2277,14 +2277,14 @@ namespace PRIMELibrary {
             public string invMeasure {
                 get {
                     try {
-                        return ((string)(this[this.tableinventory.invMeasureColumn]));
+                        return ((string)(this[this.tableInventory.invMeasureColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invMeasure\' in table \'inventory\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'invMeasure\' in table \'Inventory\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableinventory.invMeasureColumn] = value;
+                    this[this.tableInventory.invMeasureColumn] = value;
                 }
             }
             
@@ -2293,14 +2293,14 @@ namespace PRIMELibrary {
             public decimal invPrice {
                 get {
                     try {
-                        return ((decimal)(this[this.tableinventory.invPriceColumn]));
+                        return ((decimal)(this[this.tableInventory.invPriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invPrice\' in table \'inventory\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'invPrice\' in table \'Inventory\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableinventory.invPriceColumn] = value;
+                    this[this.tableInventory.invPriceColumn] = value;
                 }
             }
             
@@ -2308,10 +2308,10 @@ namespace PRIMELibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int productID {
                 get {
-                    return ((int)(this[this.tableinventory.productIDColumn]));
+                    return ((int)(this[this.tableInventory.productIDColumn]));
                 }
                 set {
-                    this[this.tableinventory.productIDColumn] = value;
+                    this[this.tableInventory.productIDColumn] = value;
                 }
             }
             
@@ -2328,9 +2328,9 @@ namespace PRIMELibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public productRow productRow {
+            public ProductRow productRow {
                 get {
-                    return ((productRow)(this.GetParentRow(this.Table.ParentRelations["inventory_fk_productID1"])));
+                    return ((ProductRow)(this.GetParentRow(this.Table.ParentRelations["inventory_fk_productID1"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["inventory_fk_productID1"]);
@@ -2340,49 +2340,49 @@ namespace PRIMELibrary {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsinvQuantityNull() {
-                return this.IsNull(this.tableinventory.invQuantityColumn);
+                return this.IsNull(this.tableInventory.invQuantityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetinvQuantityNull() {
-                this[this.tableinventory.invQuantityColumn] = global::System.Convert.DBNull;
+                this[this.tableInventory.invQuantityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsinvSizeNull() {
-                return this.IsNull(this.tableinventory.invSizeColumn);
+                return this.IsNull(this.tableInventory.invSizeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetinvSizeNull() {
-                this[this.tableinventory.invSizeColumn] = global::System.Convert.DBNull;
+                this[this.tableInventory.invSizeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsinvMeasureNull() {
-                return this.IsNull(this.tableinventory.invMeasureColumn);
+                return this.IsNull(this.tableInventory.invMeasureColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetinvMeasureNull() {
-                this[this.tableinventory.invMeasureColumn] = global::System.Convert.DBNull;
+                this[this.tableInventory.invMeasureColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsinvPriceNull() {
-                return this.IsNull(this.tableinventory.invPriceColumn);
+                return this.IsNull(this.tableInventory.invPriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetinvPriceNull() {
-                this[this.tableinventory.invPriceColumn] = global::System.Convert.DBNull;
+                this[this.tableInventory.invPriceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2458,22 +2458,22 @@ namespace PRIMELibrary {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class productRowChangeEvent : global::System.EventArgs {
+        public class ProductRowChangeEvent : global::System.EventArgs {
             
-            private productRow eventRow;
+            private ProductRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public productRowChangeEvent(productRow row, global::System.Data.DataRowAction action) {
+            public ProductRowChangeEvent(ProductRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public productRow Row {
+            public ProductRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2492,22 +2492,22 @@ namespace PRIMELibrary {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class inventoryRowChangeEvent : global::System.EventArgs {
+        public class InventoryRowChangeEvent : global::System.EventArgs {
             
-            private inventoryRow eventRow;
+            private InventoryRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public inventoryRowChangeEvent(inventoryRow row, global::System.Data.DataRowAction action) {
+            public InventoryRowChangeEvent(InventoryRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public inventoryRow Row {
+            public InventoryRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2523,7 +2523,7 @@ namespace PRIMELibrary {
         }
     }
 }
-namespace PRIMELibrary.EmmasDataSetTableAdapters {
+namespace PRIMELibrary.InventoryDataSetTableAdapters {
     
     
     /// <summary>
@@ -2684,7 +2684,7 @@ FROM     inventory INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EmmasDataSet.InventoryLookUpDataTable dataTable) {
+        public virtual int Fill(InventoryDataSet.InventoryLookUpDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2697,9 +2697,9 @@ FROM     inventory INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EmmasDataSet.InventoryLookUpDataTable GetData() {
+        public virtual InventoryDataSet.InventoryLookUpDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EmmasDataSet.InventoryLookUpDataTable dataTable = new EmmasDataSet.InventoryLookUpDataTable();
+            InventoryDataSet.InventoryLookUpDataTable dataTable = new InventoryDataSet.InventoryLookUpDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2852,7 +2852,7 @@ FROM     inventory INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EmmasDataSet.BrandLookUpDataTable dataTable) {
+        public virtual int Fill(InventoryDataSet.BrandLookUpDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2865,9 +2865,9 @@ FROM     inventory INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EmmasDataSet.BrandLookUpDataTable GetData() {
+        public virtual InventoryDataSet.BrandLookUpDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EmmasDataSet.BrandLookUpDataTable dataTable = new EmmasDataSet.BrandLookUpDataTable();
+            InventoryDataSet.BrandLookUpDataTable dataTable = new InventoryDataSet.BrandLookUpDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2882,7 +2882,7 @@ FROM     inventory INNER JOIN
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class productTableAdapter : global::System.ComponentModel.Component {
+    public partial class ProductTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -2896,7 +2896,7 @@ FROM     inventory INNER JOIN
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public productTableAdapter() {
+        public ProductTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -2993,7 +2993,7 @@ FROM     inventory INNER JOIN
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "product";
+            tableMapping.DataSetTable = "Product";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("prodName", "prodName");
             tableMapping.ColumnMappings.Add("prodDescription", "prodDescription");
@@ -3058,7 +3058,7 @@ SELECT id, prodName, prodDescription, prodBrand FROM product WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EmmasDataSet.productDataTable dataTable) {
+        public virtual int Fill(InventoryDataSet.ProductDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3071,9 +3071,9 @@ SELECT id, prodName, prodDescription, prodBrand FROM product WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EmmasDataSet.productDataTable GetData() {
+        public virtual InventoryDataSet.ProductDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EmmasDataSet.productDataTable dataTable = new EmmasDataSet.productDataTable();
+            InventoryDataSet.ProductDataTable dataTable = new InventoryDataSet.ProductDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3081,15 +3081,15 @@ SELECT id, prodName, prodDescription, prodBrand FROM product WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet.productDataTable dataTable) {
+        public virtual int Update(InventoryDataSet.ProductDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "product");
+        public virtual int Update(InventoryDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Product");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3275,7 +3275,7 @@ SELECT id, prodName, prodDescription, prodBrand FROM product WHERE (id = @id)";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class inventoryTableAdapter : global::System.ComponentModel.Component {
+    public partial class InventoryTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3289,7 +3289,7 @@ SELECT id, prodName, prodDescription, prodBrand FROM product WHERE (id = @id)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public inventoryTableAdapter() {
+        public InventoryTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3386,7 +3386,7 @@ SELECT id, prodName, prodDescription, prodBrand FROM product WHERE (id = @id)";
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "inventory";
+            tableMapping.DataSetTable = "Inventory";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("invQuantity", "invQuantity");
             tableMapping.ColumnMappings.Add("invSize", "invSize");
@@ -3462,7 +3462,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EmmasDataSet.inventoryDataTable dataTable) {
+        public virtual int Fill(InventoryDataSet.InventoryDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3475,9 +3475,9 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EmmasDataSet.inventoryDataTable GetData() {
+        public virtual InventoryDataSet.InventoryDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EmmasDataSet.inventoryDataTable dataTable = new EmmasDataSet.inventoryDataTable();
+            InventoryDataSet.InventoryDataTable dataTable = new InventoryDataSet.InventoryDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3485,15 +3485,15 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet.inventoryDataTable dataTable) {
+        public virtual int Update(InventoryDataSet.InventoryDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EmmasDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "inventory");
+        public virtual int Update(InventoryDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Inventory");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3714,9 +3714,9 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         
         private UpdateOrderOption _updateOrder;
         
-        private productTableAdapter _productTableAdapter;
+        private ProductTableAdapter _productTableAdapter;
         
-        private inventoryTableAdapter _inventoryTableAdapter;
+        private InventoryTableAdapter _inventoryTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -3738,7 +3738,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public productTableAdapter productTableAdapter {
+        public ProductTableAdapter ProductTableAdapter {
             get {
                 return this._productTableAdapter;
             }
@@ -3752,7 +3752,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public inventoryTableAdapter inventoryTableAdapter {
+        public InventoryTableAdapter InventoryTableAdapter {
             get {
                 return this._inventoryTableAdapter;
             }
@@ -3816,10 +3816,10 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(EmmasDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(InventoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._productTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.product.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                global::System.Data.DataRow[] updatedRows = dataSet.Product.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
@@ -3828,7 +3828,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
                 }
             }
             if ((this._inventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.inventory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                global::System.Data.DataRow[] updatedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
@@ -3844,10 +3844,10 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(EmmasDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(InventoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._productTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.product.Select(null, null, global::System.Data.DataViewRowState.Added);
+                global::System.Data.DataRow[] addedRows = dataSet.Product.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._productTableAdapter.Update(addedRows));
@@ -3855,7 +3855,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
                 }
             }
             if ((this._inventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.inventory.Select(null, null, global::System.Data.DataViewRowState.Added);
+                global::System.Data.DataRow[] addedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._inventoryTableAdapter.Update(addedRows));
@@ -3870,10 +3870,10 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(EmmasDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(InventoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._inventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.inventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                global::System.Data.DataRow[] deletedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._inventoryTableAdapter.Update(deletedRows));
@@ -3881,7 +3881,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
                 }
             }
             if ((this._productTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.product.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                global::System.Data.DataRow[] deletedRows = dataSet.Product.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._productTableAdapter.Update(deletedRows));
@@ -3920,7 +3920,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(EmmasDataSet dataSet) {
+        public virtual int UpdateAll(InventoryDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
