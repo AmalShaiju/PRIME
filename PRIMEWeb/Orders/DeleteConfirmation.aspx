@@ -92,9 +92,11 @@
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
-                    <h1><asp:Label ID="lblTitle" runat="server">Order Delete</asp:Label></h1>
+                    <h1><asp:Label ID="lblTitle" runat="server">Arrived Order Delete</asp:Label></h1>
                     <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
-                    <h4 class="alert-heading">Do you really want to delete this Order?</h4>   
+                    <h4 class="alert-heading">Do you really want to delete this Order?</h4>
+                        <p>Notice this is an Arrived order delete section</p>
+
                     <a href="/Orders/ArrivedOrderDefaultPage.aspx" type="button" class="btn btn-secondary">Cancel</a>
                     <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDeleteConfirm_Click" />
                 </asp:Panel>
