@@ -114,9 +114,9 @@
 
                     <br />
                      <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
-                    <h4 class="alert-heading">Do you really want to delete this sale?</h4>
+                    <h4 class="alert-heading">Do you really want to delete this Service?</h4>
                     <hr />
-                    <p>Doing this will also delete all orders and repairs under this sale.</p>
+                    <p>Doing this will also delete all repairs under this service.</p>
                     <p>Please check out the orders and repairs before doing so.</p>
                     <p>If you're sure about this, click the "Delete" button.</p>
                     <hr />

@@ -37,7 +37,7 @@ namespace PRIMEWeb.Repairs
             catch
             {
                 this.Label1.Text = "Failed to load Data, Please Contact the system administrator";
-                this.Label1.ForeColor = Color.FromArgb(255, 0, 0);
+                this.Label1.ForeColor = Color.Red;
                 return;
             }
             Session["RepairCriteria"] = null;
@@ -46,7 +46,7 @@ namespace PRIMEWeb.Repairs
                 if (Session["deleteMsg"].ToString() == "true")
                 {
                     this.lblDeleteMsg.Visible = true;
-                    this.lblDeleteMsg.Text = "&#10004; Record deleted";
+                    this.lblDeleteMsg.Text = "&#10004; Record deleted Successfully";
                     Session["deleteMsg"] = null;
                     this.pnlDeleteConfirm.Visible = false;
 
@@ -54,7 +54,7 @@ namespace PRIMEWeb.Repairs
                 else
                 {
                     this.lblDeleteMsg.Visible = true;
-                    this.lblDeleteMsg.Text = "&#x274C; Record not deleted";
+                    this.lblDeleteMsg.Text = "&#x274C; Record not deleted, please check if this service is related to any repairs";
                     Session["deleteMsg"] = null;
                     this.lblDeleteMsg.ForeColor = Color.Red;
                     this.pnlDeleteConfirm.Visible = false;
@@ -187,7 +187,7 @@ namespace PRIMEWeb.Repairs
         private void DisplayServiceTable()
         {
             //no record after filter
-            if(rows.Length <= 0)
+            if (rows.Length <= 0)
                 this.Label1.Text = "No reecords Found";
 
             this.Label1.Text = "Records Found : " + rows.Length;
@@ -215,7 +215,7 @@ namespace PRIMEWeb.Repairs
             this.GridView1.DataSource = dt;
             this.GridView1.DataBind();
 
-           
+
         }
 
         protected void btnDeleteConfirm_Click(object sender, EventArgs e)
@@ -233,20 +233,32 @@ namespace PRIMEWeb.Repairs
                     RepairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
 
                     //Refresh the page to show the record being deleted
-                    Session["deleteMsg"] = true;
+                    Session["deleteMsg"] = "true";
                     this.Label1.Text = "Record Deleted Successfully";
 
+
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.Contains("constraint"))
+                    {
+                        Session["deleteMsg"] = "false";
+
+                    }
+                    else
+                    {
+                        this.Label1.Text = "Record Deletion Failed";
+                        this.Label1.ForeColor = Color.Red;
+
+                    }
+
+                }
+                finally
+                {
                     Response.Redirect(Request.RawUrl);
 
                 }
-                catch
-                {
-                    Session["deleteMsg"] = false;
 
-                    this.Label1.Text = "Record Deletion Failed";
-                    this.Label1.ForeColor = Color.Red;
-
-                }
             }
         }
     }

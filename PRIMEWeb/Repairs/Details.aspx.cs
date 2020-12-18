@@ -26,17 +26,21 @@ namespace PRIMEWeb.Repairs
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["deleteId"] != null) 
+
+            if (Request.Cookies["ID"] != null)
+            {
+
+                // Request the cookies which contaions the ID Of thr record that was carried over from the index page
+                id = Convert.ToInt32(Request.Cookies["ID"].Value);
+            }
+            if (Session["deleteId"] != null)
             {
                 deleteId = Convert.ToInt32(Session["deleteId"]);
                 this.pnlDeleteConfirm.Visible = true;
-              
-            } 
+
+            }
 
 
-            if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
-
-                id = Convert.ToInt32(Request.Cookies["ID"].Value);
 
             if (Session["editRedirect"] != null)
             {
@@ -121,7 +125,7 @@ namespace PRIMEWeb.Repairs
 
                             this.Label20.Visible = true;
                             this.lblStart.Visible = true;
-           
+
 
                             this.Label21.Visible = true;
                             this.lblStop.Visible = true;
@@ -131,12 +135,12 @@ namespace PRIMEWeb.Repairs
                         {
                             this.lblDateIn.Text = Convert.ToDateTime(record.ItemArray[7].ToString()).ToShortDateString();
                             this.lblStart.Text = Convert.ToDateTime(record.ItemArray[7]).ToString("dddd, dd MMMM yyyy hh:mm tt");
-                            this.lblDateOut.Text = "Reparir in progress";
-                            this.lblStatus.Text = "Reparir in progress";
+                            this.lblDateOut.Text = "Repari in progress";
+                            this.lblStatus.Text = "Repari in progress";
                             this.lblStatus.ForeColor = Color.Orange;
 
 
-                            this.btnStart.Visible = false;  
+                            this.btnStart.Visible = false;
                             this.btnResume.Visible = false;
                             this.btnStop.Visible = true;
                             this.btnPause.Visible = true;
@@ -231,7 +235,7 @@ namespace PRIMEWeb.Repairs
                     else
                     {
                         // this.Clear();
-                        Label1.Text = "&#x274C; 5Please Try Again";
+                        Label1.Text = "&#x274C; Please Try Again";
 
                     }
                 }
@@ -352,7 +356,6 @@ namespace PRIMEWeb.Repairs
                     redirectMsg.Text = "&#10004; Record deleted";
                     //Refresh the page to show the record being deleted
                     Session["deleteMsg"] = "true";
-                    Response.Redirect("default.aspx");
 
                 }
                 catch
@@ -362,15 +365,23 @@ namespace PRIMEWeb.Repairs
                     redirectMsg.Text = "&#x274C; Record not deleted";
                     this.redirectMsg.ForeColor = Color.Red;
 
+
+
                 }
+                finally
+                {
+                    Response.Redirect("default.aspx");
+
+                }
+
             }
         }
 
-      
+
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            
+
             Session["deleteId"] = id;
             Response.Redirect("Details.aspx"); // Redirect the user to Edit page on btn click
         }

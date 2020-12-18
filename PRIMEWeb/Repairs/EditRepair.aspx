@@ -94,7 +94,6 @@
         }
 
         .help-text {
-            color: #5bc8de;
             font-size: 13px;
             margin-top: 4px;
             margin-right: 5px;

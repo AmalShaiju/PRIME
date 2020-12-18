@@ -55,14 +55,14 @@ namespace PRIMEWeb.Repairs
                 if (Session["deleteMsg"].ToString() == "true")
                 {
                     this.lblDeleteMsg.Visible = true;
-                    this.lblDeleteMsg.Text = "&#10004; Record deleted";
+                    this.lblDeleteMsg.Text = "&#10004; Record deleted Successfully";
                     Session["deleteMsg"] = null;
 
                 }
                 else
                 {
                     this.lblDeleteMsg.Visible = true;
-                    this.lblDeleteMsg.Text = "&#x274C; Record not deleted";
+                    this.lblDeleteMsg.Text = "&#x274C; Record not deleted. Please check if this record is related to any sales";
                     Session["deleteMsg"] = null;
                     this.lblDeleteMsg.ForeColor = Color.Red;
 
@@ -136,12 +136,16 @@ namespace PRIMEWeb.Repairs
             ////Get rowindex
             int rowindex = gvr.RowIndex;
 
-            this.Label1.Text = rowindex.ToString();
 
             id = Convert.ToInt32(rows[rowindex].ItemArray[0].ToString());
 
             Session["deleteId"] = id;
+
+            HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+            cID.Value = rows[rowindex].ItemArray[0].ToString();
+            Response.Cookies.Add(cID);
             Response.Redirect("Details.aspx"); // Redirect the user to Edit page on btn click
+
 
 
         }
