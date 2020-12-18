@@ -17,6 +17,9 @@
             padding: 10px 0;
             width: 130px;
         }
+        label{
+            width:100%;
+        }
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;
