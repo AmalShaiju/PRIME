@@ -96,7 +96,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Add New Inventory Item</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
