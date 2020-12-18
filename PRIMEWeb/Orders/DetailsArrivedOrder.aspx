@@ -69,14 +69,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Orders/">Orders</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a>
-                    </li>
-
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                    <li class="breadcrumb-item"><a href="/Orders/">Orders</a></li>
+                    <li class="breadcrumb-item"><a href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Details Arrived Order</li>
                 </ol>
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />

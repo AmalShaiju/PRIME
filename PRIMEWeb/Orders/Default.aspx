@@ -39,6 +39,10 @@
         td .btn {
             width: 80px;
         }
+        .btn-dark
+        {
+            margin-right : 5px;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -69,10 +73,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Orders/">Orders</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a>
-                    </li>
-
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
@@ -81,7 +81,7 @@
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
-        <div class="container rounded-lg">
+             <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Orders</h1>
@@ -94,7 +94,7 @@
                         Filter Orders
                     </button>
                     <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Order Form" Text="Create New Order Form" PostBackUrl="/Orders/NewOrderForm1.aspx" />
-                  
+                  <asp:Button ID="btnArrivingOrders" runat="server" CssClass="btn btn-secondary btn-dependent-page" aria-label="Arriving Orders Page" Text="Arriving Orders" PostBackUrl="/Orders/ArrivedOrderDefaultPage.aspx" />
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
@@ -129,12 +129,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                     <br />
-                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    
                     <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="upnOrder" runat="server">
                         <ContentTemplate>
+                            <asp:Label ID="lblStatus" runat="server"></asp:Label>
                             <asp:GridView ID="gvOrders" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gvOrders_RowDataBound">
                             </asp:GridView>
                         </ContentTemplate>
@@ -144,7 +145,7 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-        
+        </div>
     </form>
 </body>
 </html>
