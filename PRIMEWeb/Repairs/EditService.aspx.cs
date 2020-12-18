@@ -146,5 +146,11 @@ namespace PRIMEWeb.Repairs
 
             return control;
         }
+
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            this.lblServiceName.Visible = this.lblServiceDesc.Visible = this.lblServicePrice.Visible = cboHelp.Checked;
+
+        }
     }
 }
