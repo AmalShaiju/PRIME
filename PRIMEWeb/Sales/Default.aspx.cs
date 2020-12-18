@@ -168,6 +168,12 @@ namespace PRIMEWeb.Sales
                 daReceipt.Update(dsSales.Receipt);
                 dsSales.AcceptChanges();
             }
+            else if (User.IsInRole("Admin"))
+            {
+                sale["ordPaid"] = false;
+                daReceipt.Update(dsSales.Receipt);
+                dsSales.AcceptChanges();
+            }
             btnStatus.InnerText = "Paid";
             if (!User.IsInRole("Admin"))  //if not admin
                 btnStatus.Attributes.Add("disabled", "disabled");
