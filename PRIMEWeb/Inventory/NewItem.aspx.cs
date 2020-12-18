@@ -57,17 +57,17 @@ namespace PRIMEWeb.Inventory
                 // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
                 dsInventory.AcceptChanges();
                 // Call accept method on the dataset so it update the chanmges to the database
-                Label1.Text = "Created 1";
+                lblMessage.Text = "Created 1";
 
                 //Refresh the page to show the record being deleted
                 Response.Redirect("Default.aspx"); // Redirect the user to dexpage on to show created data
 
-                Label1.Text = "Created";
+                lblMessage.Text = "Created";
 
             }
             catch
             {
-                Label1.Text = "Failed";
+                lblMessage.Text = "Failed";
             }
         }
         private static int id;
@@ -96,7 +96,10 @@ namespace PRIMEWeb.Inventory
 
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         {
-            lblPriceHelp.Visible = lblBrandHelp.Visible = lblDescriptionHelp.Visible = lblMeasuerHelp.Visible = lblProducthelp.Visible = lblQuantityuHelp.Visible= lblSizeHelp.Visible = cboHelp.Checked;
+            lblPriceHelp.Visible = lblBrandHelp.Visible =
+                lblDescriptionHelp.Visible = lblMeasureHelp.Visible =
+                lblProducthelp.Visible = lblQuantityHelp.Visible =
+                lblSizeHelp.Visible  = cboHelp.Checked;
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)

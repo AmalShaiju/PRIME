@@ -241,26 +241,26 @@
                                 <label class="control-label">Product:</label>
                                 <asp:DropDownList ID="ddlProducts" runat="server" CssClass="custom-select" DataSourceID="dsInvLookUp" DataTextField="prodName" DataValueField="id" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ddlProducts_SelectedIndexChanged">
                                 </asp:DropDownList>
-                                <asp:Label ID="lblProducthelp" runat="server" Text="Please select the product" CssClass="lbl-help" Visible="False"></asp:Label>
+                                <asp:Label ID="lblProducthelp" runat="server" Text="Please select the product" Visible="False"></asp:Label>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="control-label">Measure:</label>
                                 <asp:DropDownList ID="ddlMeasures" runat="server" CssClass="custom-select" DataSourceID="dsInvLookUp" DataTextField="InvMeaPrice" DataValueField="invMeasure">
                                 </asp:DropDownList>
-                                <asp:Label ID="lblMeasureHelp" runat="server" Text="Please select the measure" CssClass="lbl-help" Visible="False"></asp:Label>
+                                <asp:Label ID="lblMeasureHelp" runat="server" Text="Please select the measure" Visible="False"></asp:Label>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 form-group">
                                 <label class="control-label">Quantity:</label>
                                 <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
-                                <asp:Label ID="lblQtyHelp" runat="server" Text="Please input the quantity" CssClass="lbl-help" Visible="False"></asp:Label>
+                                <asp:Label ID="lblQtyHelp" runat="server" Text="Please input the quantity" Visible="False"></asp:Label>
                                 <div class="invalid-feedback">Please input the quantity</div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="control-label">Size:</label>
                                 <asp:TextBox ID="txtSize" runat="server" CssClass="form-control" required="required"></asp:TextBox>
-                                <asp:Label ID="lblSizeHelp" runat="server" Text="Please input the size" CssClass="lbl-help" Visible="False"></asp:Label>
+                                <asp:Label ID="lblSizeHelp" runat="server" Text="Please input the size" Visible="False"></asp:Label>
                                 <div class="invalid-feedback">Please input the size</div>
                             </div>
                         </div>
@@ -268,19 +268,19 @@
                             <div class="col-md-6 form-group">
                                 <label class="control-label">Description:</label>
                                 <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                                <asp:Label ID="lblDescHelp" runat="server" Text="Description of the product you selected" CssClass="lbl-help" Visible="False"></asp:Label>
+                                <asp:Label ID="lblDescHelp" runat="server" Text="Description of the product you selected" Visible="False"></asp:Label>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="control-label">Brand:</label>
                                 <asp:TextBox ID="txtBrand" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                                <asp:Label ID="lblBrandHelp" runat="server" Text="Brand of the product you selected" CssClass="lbl-help" Visible="False"></asp:Label>
+                                <asp:Label ID="lblBrandHelp" runat="server" Text="Brand of the product you selected" Visible="False"></asp:Label>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 form-group">
                                 <label class="control-label">Price:</label>
                                 <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" required="required"></asp:TextBox>
-                                <asp:Label ID="lblPriceHelp" runat="server" Text="Please input the price" CssClass="lbl-help" Visible="False"></asp:Label>
+                                <asp:Label ID="lblPriceHelp" runat="server" Text="Please input the price" Visible="False"></asp:Label>
                                 <div class="invalid-feedback">Please input the price</div>
                             </div>
                         </div>

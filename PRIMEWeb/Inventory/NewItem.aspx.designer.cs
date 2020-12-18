@@ -42,6 +42,33 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.CheckBox cboHelp;
 
         /// <summary>
+        /// smgInvNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager smgInvNew;
+
+        /// <summary>
+        /// uplInvNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel uplInvNew;
+
+        /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
+
+        /// <summary>
         /// ddlProducts control.
         /// </summary>
         /// <remarks>
@@ -69,13 +96,13 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.DropDownList ddlMeasures;
 
         /// <summary>
-        /// lblMeasuerHelp control.
+        /// lblMeasureHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMeasuerHelp;
+        protected global::System.Web.UI.WebControls.Label lblMeasureHelp;
 
         /// <summary>
         /// txtQuantity control.
@@ -87,13 +114,13 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.TextBox txtQuantity;
 
         /// <summary>
-        /// lblQuantityuHelp control.
+        /// lblQuantityHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQuantityuHelp;
+        protected global::System.Web.UI.WebControls.Label lblQuantityHelp;
 
         /// <summary>
         /// txtSize control.
@@ -168,15 +195,6 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.Label lblPriceHelp;
 
         /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-
-        /// <summary>
         /// pnlBtnItems control.
         /// </summary>
         /// <remarks>
@@ -195,39 +213,30 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.Button btnCreate;
 
         /// <summary>
-        /// ObjectDataSource3 control.
+        /// odsInventory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource3;
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsInventory;
 
         /// <summary>
-        /// Label1 control.
+        /// odsProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsProduct;
 
         /// <summary>
-        /// ObjectDataSource2 control.
+        /// odsInvLookUp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource2;
-
-        /// <summary>
-        /// ObjectDataSource4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource4;
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsInvLookUp;
     }
 }

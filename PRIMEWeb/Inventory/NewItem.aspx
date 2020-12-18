@@ -38,6 +38,11 @@
             padding: 2rem 0;
         }
 
+        #lblMessage {
+            display: block;
+            margin-bottom: 10px;
+        }
+
         .form-row [class*="col-"] {
             padding: 0 15px;
         }
@@ -120,127 +125,114 @@
                 <h1>Add New Product</h1>
                 <div class="form-group form-control form-check form-check-inline">
                     &nbsp;
-                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
-                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design</label>
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="cboSwitch" name="cboSwitch" />
+                    <label class="form-check-label" for="cboSwitch">Check this to switch to high contrast design</label>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
                     <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form</label>
                 </div>
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Product:</label>
-                        <asp:DropDownList ID="ddlProducts" runat="server" CssClass="custom-select" DataSourceID="ObjectDataSource2" DataTextField="prodName" DataValueField="id" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ddlProducts_SelectedIndexChanged">
-                            <asp:ListItem Selected="True" Value="-1">Select a Product</asp:ListItem>
-                            <asp:ListItem Value="new_item">Add New Product</asp:ListItem>
-                        </asp:DropDownList>
-                        <label class="form-check-label" for="ddlProducts" id="lblProduct"></label>
-                        <asp:Label ID="lblProducthelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-                        <div class="invalid-feedback">Please input Product</div>
-
-                    </div>
-
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Measure:</label>
-                        <asp:DropDownList ID="ddlMeasures" runat="server" CssClass="custom-select" DataSourceID="ObjectDataSource4" DataTextField="InvMeaPrice" DataValueField="invMeasure">
-                            <asp:ListItem>Select a Measure</asp:ListItem>
-                        </asp:DropDownList>
-                        <div class="invalid-feedback">Please input Measure</div>
-                        <asp:Label ID="lblMeasuerHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-                    </div>
-                </div>
-                <div class="form-row">
-
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Quantity:</label>
-                        <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
-                        <div class="invalid-feedback">Please input Quantity</div>
-
-                        <asp:Label ID="lblQuantityuHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-                    </div>
-
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Size:</label>
-                        <asp:TextBox ID="txtSize" runat="server" CssClass="form-control" required="required" TextMode="Number"></asp:TextBox>
-                        <div class="invalid-feedback">Please input Size</div>
-                        <asp:Label ID="lblSizeHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-
-                    </div>
-                </div>
-
-
-                <div class="form-row">
-
-
-                    <div class="col-md-6 form-group">
-                        &nbsp;<label class="control-label">Description:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                        <div class="invalid-feedback">Please input product description</div>
-
-                        <asp:Label ID="lblDescriptionHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Brand:</label>
-                        <asp:TextBox ID="txtBrand" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                        <div class="invalid-feedback">Please select the product brand</div>
-                        <asp:Label ID="lblBrandHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-
-                    </div>
-                </div>
-
-                <div class="form-row">
-
-
-                    <div class="col-md-6 form-group">
-                        &nbsp;<label class="control-label">Price:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                         <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" required="required" TextMode="Number"></asp:TextBox>
-                        <div class="invalid-feedback">Please input Number</div>
-                        <asp:Label ID="lblPriceHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-                        <asp:Label ID="Label2" runat="server" Text="Please input a price" CssClass="lbl-help" Visible="False"></asp:Label>
-
-
-                    </div>
-                </div>
-                <div class="form-row">
-                    <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
-
-                        <br />
-                        <asp:Button ID="btnCreate" runat="server" aria-label="Add the Inventory Item" CssClass="btn btn-outline-primary" OnClick="btnAddItem_Click" Text="Add the Item" />
-                        <input id="btnClear" type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
-                        <a aria-label="Cancel Adding Inventory Item" class="btn btn-danger" href="/Inventory/" role="button">Cancel</a>
-                        <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.inventoryTableAdapter" UpdateMethod="Update">
-                            <DeleteParameters>
-                                <asp:Parameter Name="Original_id" Type="Int32" />
-                                <asp:Parameter Name="Original_invQuantity" Type="Int32" />
-                                <asp:Parameter Name="Original_invSize" Type="Decimal" />
-                                <asp:Parameter Name="Original_invMeasure" Type="String" />
-                                <asp:Parameter Name="Original_invPrice" Type="Decimal" />
-                                <asp:Parameter Name="Original_productID" Type="Int32" />
-                            </DeleteParameters>
-                            <InsertParameters>
-                                <asp:Parameter Name="invQuantity" Type="Int32" />
-                                <asp:Parameter Name="invSize" Type="Decimal" />
-                                <asp:Parameter Name="invMeasure" Type="String" />
-                                <asp:Parameter Name="invPrice" Type="Decimal" />
-                                <asp:Parameter Name="productID" Type="Int32" />
-                            </InsertParameters>
-                            <UpdateParameters>
-                                <asp:Parameter Name="invQuantity" Type="Int32" />
-                                <asp:Parameter Name="invSize" Type="Decimal" />
-                                <asp:Parameter Name="invMeasure" Type="String" />
-                                <asp:Parameter Name="invPrice" Type="Decimal" />
-                                <asp:Parameter Name="productID" Type="Int32" />
-                                <asp:Parameter Name="Original_id" Type="Int32" />
-                                <asp:Parameter Name="Original_invQuantity" Type="Int32" />
-                                <asp:Parameter Name="Original_invSize" Type="Decimal" />
-                                <asp:Parameter Name="Original_invMeasure" Type="String" />
-                                <asp:Parameter Name="Original_invPrice" Type="Decimal" />
-                                <asp:Parameter Name="Original_productID" Type="Int32" />
-                            </UpdateParameters>
-                        </asp:ObjectDataSource>
-                    </asp:Panel>
-                </div>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.productTableAdapter" UpdateMethod="Update">
+                <asp:ScriptManager ID="smgInvNew" runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="uplInvNew" runat="server">
+                    <ContentTemplate>
+                        <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Product:</label>
+                                <asp:DropDownList ID="ddlProducts" runat="server" CssClass="custom-select" DataSourceID="odsProduct" DataTextField="prodName" DataValueField="id" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ddlProducts_SelectedIndexChanged" required="required">
+                                    <asp:ListItem Selected="True" Value="">Select a Product</asp:ListItem>
+                                    <asp:ListItem Value="new_item">Add New Product</asp:ListItem>
+                                </asp:DropDownList>
+                                <label class="form-check-label" for="ddlProducts" id="lblProduct"></label>
+                                <asp:Label ID="lblProducthelp" runat="server" Text="Please select a product" Visible="False"></asp:Label>
+                                <div class="invalid-feedback">Please select a product</div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Measure:</label>
+                                <asp:DropDownList ID="ddlMeasures" runat="server" CssClass="custom-select" DataSourceID="odsInvLookUp" DataTextField="InvMeaPrice" DataValueField="invMeasure">
+                                    <asp:ListItem>Select a Measure</asp:ListItem>
+                                </asp:DropDownList>
+                                <div class="invalid-feedback">Please select the measure</div>
+                                <asp:Label ID="lblMeasureHelp" runat="server" Text="Please select the measure" Visible="False"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Quantity:</label>
+                                <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
+                                <div class="invalid-feedback">Please input the quantity</div>
+                                <asp:Label ID="lblQuantityHelp" runat="server" Text="Please input the quantity" Visible="False"></asp:Label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Size:</label>
+                                <asp:TextBox ID="txtSize" runat="server" CssClass="form-control" required="required" TextMode="Number"></asp:TextBox>
+                                <div class="invalid-feedback">Please input the size</div>
+                                <asp:Label ID="lblSizeHelp" runat="server" Text="Please input the size" Visible="False"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Description:</label>
+                                <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:Label ID="lblDescriptionHelp" runat="server" Text="Description of the product you selected" Visible="False"></asp:Label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Brand:</label>
+                                <asp:TextBox ID="txtBrand" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:Label ID="lblBrandHelp" runat="server" Text="Brand of the product you selected" Visible="False"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Price:</label>
+                                <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" required="required"></asp:TextBox>
+                                <div class="invalid-feedback">Please input the price</div>
+                                <asp:Label ID="lblPriceHelp" runat="server" Text="Please input the price" Visible="False"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
+                                <asp:Button ID="btnCreate" runat="server" aria-label="Add the Inventory Item" CssClass="btn btn-outline-primary" OnClick="btnAddItem_Click" Text="Add the Item" />
+                                <input id="btnClear" type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
+                                <a aria-label="Cancel Adding Inventory Item" class="btn btn-danger" href="/Inventory/" role="button">Cancel</a>
+                            </asp:Panel>
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="cboHelp" EventName="CheckedChanged" />
+                        <asp:AsyncPostBackTrigger ControlID="ddlProducts" EventName="SelectedIndexChanged" />
+                    </Triggers>
+                </asp:UpdatePanel>
+                <asp:ObjectDataSource ID="odsInventory" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.InventoryDataSetTableAdapters.InventoryTableAdapter" UpdateMethod="Update">
+                    <DeleteParameters>
+                        <asp:Parameter Name="Original_id" Type="Int32" />
+                        <asp:Parameter Name="Original_invQuantity" Type="Int32" />
+                        <asp:Parameter Name="Original_invSize" Type="Decimal" />
+                        <asp:Parameter Name="Original_invMeasure" Type="String" />
+                        <asp:Parameter Name="Original_invPrice" Type="Decimal" />
+                        <asp:Parameter Name="Original_productID" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="invQuantity" Type="Int32" />
+                        <asp:Parameter Name="invSize" Type="Decimal" />
+                        <asp:Parameter Name="invMeasure" Type="String" />
+                        <asp:Parameter Name="invPrice" Type="Decimal" />
+                        <asp:Parameter Name="productID" Type="Int32" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="invQuantity" Type="Int32" />
+                        <asp:Parameter Name="invSize" Type="Decimal" />
+                        <asp:Parameter Name="invMeasure" Type="String" />
+                        <asp:Parameter Name="invPrice" Type="Decimal" />
+                        <asp:Parameter Name="productID" Type="Int32" />
+                        <asp:Parameter Name="Original_id" Type="Int32" />
+                        <asp:Parameter Name="Original_invQuantity" Type="Int32" />
+                        <asp:Parameter Name="Original_invSize" Type="Decimal" />
+                        <asp:Parameter Name="Original_invMeasure" Type="String" />
+                        <asp:Parameter Name="Original_invPrice" Type="Decimal" />
+                        <asp:Parameter Name="Original_productID" Type="Int32" />
+                    </UpdateParameters>
+                </asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsProduct" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.InventoryDataSetTableAdapters.ProductTableAdapter" UpdateMethod="Update">
                     <DeleteParameters>
                         <asp:Parameter Name="Original_id" Type="Int32" />
                         <asp:Parameter Name="Original_prodName" Type="String" />
@@ -262,7 +254,7 @@
                         <asp:Parameter Name="Original_prodBrand" Type="String" />
                     </UpdateParameters>
                 </asp:ObjectDataSource>
-                <asp:ObjectDataSource ID="ObjectDataSource4" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.InventoryLookUpTableAdapter"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="odsInvLookUp" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.InventoryDataSetTableAdapters.InventoryLookUpTableAdapter"></asp:ObjectDataSource>
             </div>
         </div>
         </div>
