@@ -37,7 +37,7 @@ namespace PRIMEWeb.Orders
             order[1] = this.txtInvoiceNum.Text;
             order[2] = Convert.ToDateTime(this.txtArriveDate.Text);
             order[3] = this.txtNumInOrder.Text;
-            order[4] = this.txtPrice.Text ;
+            order[4] = Convert.ToDecimal(this.txtPrice.Text) + (Convert.ToDecimal(this.txtPrice.Text) * 11/100) ;
             order[5] = Convert.ToInt32(this.ddlInventoryID.SelectedValue);
             order[6] = Convert.ToInt32(this.ddlProdOrderID.SelectedValue);
             dsOrder.on_order.Rows.Add(order);

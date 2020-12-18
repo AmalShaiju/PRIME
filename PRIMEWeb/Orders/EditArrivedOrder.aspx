@@ -168,7 +168,7 @@
                     </div>
                         
                          <div class="col-md-6 form-group">
-                            <label class="control-label">Inventory ID:</label>
+                            <label class="control-label">Product Order:</label>
                             <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="custom-select"  DataTextField="pordNumber" DataValueField="id" DataSourceID="ObjectDataSource1">
                                 <asp:ListItem>Select Product Order ID...</asp:ListItem>
                             </asp:DropDownList>

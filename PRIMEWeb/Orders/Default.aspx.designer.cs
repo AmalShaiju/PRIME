@@ -87,6 +87,24 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.Label lblPaidHelp;
 
         /// <summary>
+        /// cbo_UnPaid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbo_UnPaid;
+
+        /// <summary>
+        /// lblHelpUnPaid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHelpUnPaid;
+
+        /// <summary>
         /// btnSearch control.
         /// </summary>
         /// <remarks>

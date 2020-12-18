@@ -105,7 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Emmas.mdf" />
-    <Content Include="App_Data\Emmas_log.ldf" />
+    <Content Include="App_Data\Emmas_log.ldf">
+      <DependentUpon>Emmas.mdf</DependentUpon>
+    </Content>
     <Content Include="CSS\bootstrap.css" />
     <Content Include="CSS\wcag.css" />
     <Content Include="Customers\Default.aspx" />
@@ -357,6 +359,7 @@
     </Compile>
     <Compile Include="Repairs\Services.aspx.cs">
       <DependentUpon>Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Repairs\Services.aspx.designer.cs">
       <DependentUpon>Services.aspx</DependentUpon>

@@ -126,12 +126,19 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <<div class="col-md-6 form-group">
+                                <div class="col-md-6 form-group">
                         
                          <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="False"  />
                     
-                        <label class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
+                        <label class="form-check-label" for="cboHelp">Check this to see what orders are paid</label>
                         <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid" CssClass="lbl-help" Visible="False"></asp:Label>
+                    </div>
+                                 <div class="col-md-6 form-group">
+                        
+                         <asp:CheckBox ID="cbo_UnPaid" runat="server" CssClass="form-check-input" AutoPostBack="False"  />
+                    
+                        <label class="form-check-label" for="cboHelp">Check this to see what orders are unpaid</label>
+                        <asp:Label ID="lblHelpUnPaid" runat="server" Text="Check this to see what orders are unpaid" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                                 </div>
                                 

@@ -117,10 +117,10 @@ namespace PRIMEWeb.Orders
                 criteria += (this.cbo_Paid.Checked && criteria.Length > 0) ? "And pordPaid = True"
                     : (this.cbo_Paid.Checked) ? "pordPaid = True": "";
             }
-            else 
+            else if (this.cbo_UnPaid.Checked)
             {
-                criteria += (this.cbo_Paid.Checked && criteria.Length > 0) ? "And pordPaid = False" 
-                       : (this.cbo_Paid.Checked) ? "pordPaid = False" : "";
+                criteria += (this.cbo_UnPaid.Checked && criteria.Length > 0) ? "And pordPaid = False" 
+                       : (this.cbo_UnPaid.Checked) ? "pordPaid = False" : "";
             }
 
 
