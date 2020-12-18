@@ -17,8 +17,22 @@
             padding: 10px 0;
             width: 130px;
         }
+        .col-md-12 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
         label{
             width:100%;
+        }
+        .form-control, .custom-select {
+            border: none;
+            border-bottom: 2px solid #6c757d;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-radius: 0;
+            height: 45px;
+            padding: 0.375rem 0.75rem;
         }
         .container {
             background-color: #fff;
@@ -150,11 +164,13 @@
                     </div>
                <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">
+                    <div class="col-md-12">
                     <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Add Info About Arrived Order" CssClass="btn btn-outline-primary" Text="Add the Order"   OnClick="btnCreate_Click"/>
                         <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-secondary btn-dependent-page" Text="Clear Form" UseSubmitBehavior="False" OnClick="btnClear_Click" />
                         <a class="btn btn-danger" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Cancel Adding Arrived Order Form">Cancel</a>
                     </asp:Panel>
+                   </div>
                 </div>
             </div>
         </div>

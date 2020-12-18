@@ -22,6 +22,15 @@
         label{
             width:100%;
         }
+        .form-control, .custom-select {
+            border: none;
+            border-bottom: 2px solid #6c757d;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-radius: 0;
+            height: 45px;
+            padding: 0.375rem 0.75rem;
+        }
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;

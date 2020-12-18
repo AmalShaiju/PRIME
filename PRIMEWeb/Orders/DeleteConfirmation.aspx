@@ -19,6 +19,15 @@
             padding: 10px 0;
             width: 130px;
         }
+        .form-control, .custom-select {
+            border: none;
+            border-bottom: 2px solid #6c757d;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-radius: 0;
+            height: 45px;
+            padding: 0.375rem 0.75rem;
+        }
         label{
             width:100%;
         }
