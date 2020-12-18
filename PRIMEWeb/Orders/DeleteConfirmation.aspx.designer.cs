@@ -7,21 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIMEWeb
+namespace PRIMEWeb.Orders
 {
 
 
-    public partial class Landing
+    public partial class DeleteConfirmation
     {
 
         /// <summary>
-        /// frmLanding control.
+        /// frmOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmLanding;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmOrders;
 
         /// <summary>
         /// btnLogout control.
@@ -33,57 +33,39 @@ namespace PRIMEWeb
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// lblUser control.
+        /// lblTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUser;
+        protected global::System.Web.UI.WebControls.Label lblTitle;
 
         /// <summary>
-        /// btnCustomers control.
+        /// pnlDeleteConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCustomers;
+        protected global::System.Web.UI.WebControls.Panel pnlDeleteConfirm;
 
         /// <summary>
-        /// btnSales control.
+        /// btnDeleteConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSales;
+        protected global::System.Web.UI.WebControls.Button btnDeleteConfirm;
 
         /// <summary>
-        /// btnRepairs control.
+        /// lblStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRepairs;
-
-        /// <summary>
-        /// btnInventory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInventory;
-
-        /// <summary>
-        /// btnOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOrder;
+        protected global::System.Web.UI.WebControls.Label lblStatus;
     }
 }

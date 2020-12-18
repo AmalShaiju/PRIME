@@ -7,21 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIMEWeb
+namespace PRIMEWeb.Orders
 {
 
 
-    public partial class Landing
+    public partial class Default
     {
 
         /// <summary>
-        /// frmLanding control.
+        /// frmOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmLanding;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmOrders;
 
         /// <summary>
         /// btnLogout control.
@@ -33,57 +33,93 @@ namespace PRIMEWeb
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// lblUser control.
+        /// btnCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUser;
+        protected global::System.Web.UI.WebControls.Button btnCreate;
 
         /// <summary>
-        /// btnCustomers control.
+        /// txtProdNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCustomers;
+        protected global::System.Web.UI.WebControls.TextBox txtProdNumber;
 
         /// <summary>
-        /// btnSales control.
+        /// txtDateOrdered control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSales;
+        protected global::System.Web.UI.WebControls.TextBox txtDateOrdered;
 
         /// <summary>
-        /// btnRepairs control.
+        /// cbo_Paid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRepairs;
+        protected global::System.Web.UI.WebControls.CheckBox cbo_Paid;
 
         /// <summary>
-        /// btnInventory control.
+        /// lblPaidHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInventory;
+        protected global::System.Web.UI.WebControls.Label lblPaidHelp;
 
         /// <summary>
-        /// btnOrder control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOrder;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
+
+        /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
+
+        /// <summary>
+        /// smgOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager smgOrder;
+
+        /// <summary>
+        /// upnOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnOrder;
+
+        /// <summary>
+        /// gvOrders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvOrders;
     }
 }

@@ -46,7 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,6 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrdersDataSet.cs">
+      <DependentUpon>OrdersDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="OrdersDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrdersDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CustomerDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,6 +135,17 @@
     </None>
     <None Include="EquipmentDataSet.xss">
       <DependentUpon>EquipmentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OrdersDataSet.xsc">
+      <DependentUpon>OrdersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OrdersDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrdersDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OrdersDataSet.xss">
+      <DependentUpon>OrdersDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

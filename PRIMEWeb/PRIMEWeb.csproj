@@ -89,6 +89,15 @@
     <Content Include="Inventory\Default.aspx" />
     <Content Include="Inventory\NewProduct.aspx" />
     <Content Include="Landing.aspx" />
+    <Content Include="Orders\ArrivedOrder.aspx" />
+    <Content Include="Orders\ArrivedOrderDefaultPage.aspx" />
+    <Content Include="Orders\Default.aspx" />
+    <Content Include="Orders\DeleteConfirmation.aspx" />
+    <Content Include="Orders\DeleteConfirmationPOrders.aspx" />
+    <Content Include="Orders\DetailsArrivedOrder.aspx" />
+    <Content Include="Orders\EditArrivedOrder.aspx" />
+    <Content Include="Orders\EditOrdersForm1.aspx" />
+    <Content Include="Orders\NewOrderForm1.aspx" />
     <Content Include="Repairs\Default.aspx" />
     <Content Include="Repairs\Details.aspx" />
     <Content Include="Repairs\EditRepair.aspx" />
@@ -201,6 +210,69 @@
     </Compile>
     <Compile Include="Landing.aspx.designer.cs">
       <DependentUpon>Landing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\ArrivedOrder.aspx.cs">
+      <DependentUpon>ArrivedOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\ArrivedOrder.aspx.designer.cs">
+      <DependentUpon>ArrivedOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\ArrivedOrderDefaultPage.aspx.cs">
+      <DependentUpon>ArrivedOrderDefaultPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\ArrivedOrderDefaultPage.aspx.designer.cs">
+      <DependentUpon>ArrivedOrderDefaultPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\DeleteConfirmation.aspx.cs">
+      <DependentUpon>DeleteConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\DeleteConfirmation.aspx.designer.cs">
+      <DependentUpon>DeleteConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\DeleteConfirmationPOrders.aspx.cs">
+      <DependentUpon>DeleteConfirmationPOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\DeleteConfirmationPOrders.aspx.designer.cs">
+      <DependentUpon>DeleteConfirmationPOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\DetailsArrivedOrder.aspx.cs">
+      <DependentUpon>DetailsArrivedOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\DetailsArrivedOrder.aspx.designer.cs">
+      <DependentUpon>DetailsArrivedOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\EditArrivedOrder.aspx.cs">
+      <DependentUpon>EditArrivedOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\EditArrivedOrder.aspx.designer.cs">
+      <DependentUpon>EditArrivedOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\EditOrdersForm1.aspx.cs">
+      <DependentUpon>EditOrdersForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\EditOrdersForm1.aspx.designer.cs">
+      <DependentUpon>EditOrdersForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\NewOrderForm1.aspx.cs">
+      <DependentUpon>NewOrderForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\NewOrderForm1.aspx.designer.cs">
+      <DependentUpon>NewOrderForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repairs\Default.aspx.cs">

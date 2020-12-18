@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PRIMEWeb.Inventory.Default" %>
+﻿    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PRIMEWeb.Orders.Default" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-   <title>PRIME - Inventory</title>
+   <title>PRIME - Orders</title>
     <link href="/CSS/bootstrap.css" rel="stylesheet" />
     <style type="text/css">
         body {
@@ -36,28 +36,17 @@
             text-align: center;
             vertical-align: middle;
         }
-        
         td .btn {
             width: 80px;
-            margin: 5px;
-        }
-        .auto-style1 {
-            width: 100%;
-            color: #212529;
-            border-collapse: collapse;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 31px;
-            margin-bottom: 0;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
 </head>
 <body>
-    <form id="frmInventory" runat="server">
+    <form id="frmOrders" runat="server">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
-            z<a class="navbar-brand" href="/Landing.aspx">PRIME</a>
+            <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -81,10 +70,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a>
                     </li>
+
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Inventory</li>
+                    <li class="breadcrumb-item active" aria-current="page">Orders</li>
                 </ol>
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
@@ -92,63 +82,63 @@
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
-                    <h1>Inventory</h1>
-                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-secondary" aria-label="Add New Inventory Item" Text="Add New Item" PostBackUrl="/Inventory/NewItem.aspx" />
-                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Inventory Items">
-                        Filter Inventory
+                    <h1>Orders</h1>
+
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Order Form" Text="Create New Order Form" PostBackUrl="/Orders/NewOrderForm1.aspx" />
+                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Customers">
+                        Filter Orders
                     </button>
+                    
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Product Name:</label>
-                                        <asp:TextBox ID="txtItemName" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <label class="control-label">Product Number:</label>
+                                        <asp:TextBox ID="txtProdNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                       
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Brand:</label>
-                                        <asp:DropDownList ID="ddlBrands" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Brands" DataTextField="prodBrand" DataValueField="id">
-                                            <asp:ListItem Selected="True">None</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <label class="control-label">Date Ordered:</label>
+                                        <asp:TextBox ID="txtDateOrdered" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                       
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">From Price:</label>
-                                        <asp:TextBox ID="txtFromPrice" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
+                                <<div class="col-md-6 form-group">
+                        
+                         <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="False"  />
+                    
+                        <label class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
+                        <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid" CssClass="lbl-help" Visible="False"></asp:Label>
+                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">To Price:</label>
-                                        <asp:TextBox ID="txtToPrice" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
+                                
+                                <div class="auto-style1">
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
+                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                        <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
-                                        <asp:Button ID="Button1" runat="server" CssClass="btn btn-outline-secondary" OnClick="Button1_Click" style="width: 62px" Text="Clear" />
-&nbsp;</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div>
-                        <asp:GridView ID="GridView1" runat="server" CssClass="auto-style1" GridLines="None" OnRowDataBound="GridView1_RowDataBound">
-                        </asp:GridView>
-                        <br />
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                        <br />
-                        <asp:ObjectDataSource ID="Brands" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.BrandLookUpTableAdapter"></asp:ObjectDataSource>
-                    </div>
+                    <br />
+                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnOrder" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="gvOrders" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gvOrders_RowDataBound">
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
             </div>
-        </div>
+        
     </form>
 </body>
 </html>
