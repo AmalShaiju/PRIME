@@ -51,11 +51,23 @@ namespace PRIMEWeb.Repairs
             Session["Paused"] = null;
             Session["deleteId"] = null;
 
-            if(Session["deleteMsg"] != null)
-            {
-                this.lblDeleteMsg.Text = "&#10004; Record deleted";
-                Session["deleteMsg"] = null;
-            }
+            if (Session["deleteMsg"] != null)
+                if (Session["deleteMsg"].ToString() == "true")
+                {
+                    this.lblDeleteMsg.Visible = true;
+                    this.lblDeleteMsg.Text = "&#10004; Record deleted";
+                    Session["deleteMsg"] = null;
+
+                }
+                else
+                {
+                    this.lblDeleteMsg.Visible = true;
+                    this.lblDeleteMsg.Text = "&#x274C; Record not deleted";
+                    Session["deleteMsg"] = null;
+                    this.lblDeleteMsg.ForeColor = Color.Red;
+
+                }
+
 
             //get records
             rows = (Session["RepairCriteria"] != null) ? RepairsDataSet.RepairLookUp.Select(Session["RepairCriteria"].ToString())  //has criteria

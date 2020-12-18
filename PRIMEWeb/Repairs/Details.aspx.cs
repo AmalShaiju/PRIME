@@ -357,6 +357,8 @@ namespace PRIMEWeb.Repairs
                 }
                 catch
                 {
+                    Session["deleteMsg"] = "false";
+
                     redirectMsg.Text = "&#x274C; Record not deleted";
                     this.redirectMsg.ForeColor = Color.Red;
 

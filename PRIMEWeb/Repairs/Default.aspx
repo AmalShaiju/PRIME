@@ -144,8 +144,11 @@
                     &nbsp;<strong><asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Green" ToolTip="Records found"></asp:Label>
                     <br />
                     </strong>
-
+                    
+                    <div style="margin-top:20px;">
                     <strong> <asp:Label ID="lblDeleteMsg" runat="server" ForeColor="Green" Visible ="false" Text="Label" ToolTip="Record delete msg"></asp:Label></strong>
+                    </div>
+                   
 
                     <br />
                     <div class="collapse" id="collapseFilter">
