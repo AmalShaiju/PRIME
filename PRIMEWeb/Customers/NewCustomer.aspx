@@ -36,7 +36,11 @@
             padding: 0 15px;
         }
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+        .lbl-help {
+            display: inline-block;
+            margin: 5px 0;
         }
         .form-control {
             border: none;
@@ -55,9 +59,110 @@
             margin: 0 10px;
         }
     </style>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script>
+        function SwitchCss(element) {
+            var btnDangers = document.getElementsByClassName("btn-danger");
+            var btnInfos = document.getElementsByClassName("btn-info");
+            var btnInfos = document.getElementsByClassName("btn-info");
+            var btnSearch = document.getElementById("btnSearch");
+            var btnFilter = document.getElementById("btnFilter");
+            var btnCreate = document.getElementById("btnCreate");
+            var btnClear = document.getElementById("btnClear");
+            var btnLogOut = document.getElementById("btnLogout");
+            var btnDependents = document.getElementsByClassName("btn btn-secondary btn-dependent-page");
+            var body = document.getElementsByTagName("body");
+            var navigation = document.getElementsByTagName("nav");
+            var ol = document.getElementsByTagName("ol");
+            var container = document.getElementsByClassName("container");
+            var table = document.getElementsByClassName("table");
+
+            if (element.checked) {
+                btnLogOut.classList.add("btn-logout-high");
+                for (var i = 0; i < btnDangers.length; i++) {
+                    btnDangers[i].classList.add("btn-danger-high");
+                }
+
+                for (var i = 0; i < btnInfos.length; i++) {
+                    btnInfos[i].classList.add("btn-info-high");
+                }
+
+                for (var i = 0; i < btnDependents.length; i++) {
+                    btnDependents[i].classList.add("btn-dependent-high");
+                }
+
+                for (var i = 0; i < body.length; i++) {
+                    body[i].classList.add("body-high");
+                }
+
+                for (var i = 0; i < navigation.length; i++) {
+                    navigation[i].classList.add("nav-high");
+                }
+
+                for (var i = 0; i < ol.length; i++) {
+                    ol[i].classList.add("border-high");
+                }
+
+                for (var i = 0; i < container.length; i++) {
+                    container[i].classList.add("border-high");
+                }
+
+                for (var i = 0; i < table.length; i++) {
+                    table[i].classList.add("table-high");
+                }
+
+                btnSearch.classList.add("btn-search-high");
+                btnFilter.classList.add("btn-search-high");
+                btnCreate.classList.add("btn-create-high");
+                btnClear.classList.add("btn-clear-high");
+
+            }
+            else {
+                btnLogOut.classList.remove("btn-logout-high");
+                for (var i = 0; i < btnDangers.length; i++) {
+                    btnDangers[i].classList.remove("btn-danger-high");
+                }
+
+                for (var i = 0; i < btnInfos.length; i++) {
+                    btnInfos[i].classList.remove("btn-info-high");
+                }
+
+                for (var i = 0; i < btnDependents.length; i++) {
+                    btnDependents[i].classList.remove("btn-dependent-high");
+                }
+
+                for (var i = 0; i < body.length; i++) {
+                    body[i].classList.remove("body-high");
+                }
+
+                for (var i = 0; i < navigation.length; i++) {
+                    navigation[i].classList.remove("nav-high");
+                }
+
+                for (var i = 0; i < ol.length; i++) {
+                    ol[i].classList.remove("border-high");
+                }
+
+                for (var i = 0; i < container.length; i++) {
+                    container[i].classList.remove("border-high");
+                }
+
+                for (var i = 0; i < table.length; i++) {
+                    table[i].classList.remove("table-high");
+                }
+
+                btnSearch.classList.remove("btn-search-high");
+                btnFilter.classList.remove("btn-search-high");
+                btnCreate.classList.remove("btn-create-high");
+                btnClear.classList.remove("btn-clear-high");
+
+            }
+        }
+    </script> 
+    <%--<script src="/Script/wcag.js"></script>--%>
 </head>
-<body>
-    <form id="frmNewCust" runat="server">
+<body style="height: 1582px">
+    <form id="frmNewCust" runat="server" class="was-validated">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
             <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,45 +191,82 @@
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
         </nav>
-        <div class="container rounded-lg row justify-content-sm-center">
+        <div class="container rounded-lg row justify-content-sm-center" style="height: 1258px">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                 <h1>Create New Customer</h1>
+                <div class="form-group form-control form-check form-check-inline">
+                    &nbsp;
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
+                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
+                </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtFName" runat="server" placeholder="First Name" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">First</asp:Label>
+                        <asp:TextBox ID="txtFName" runat="server" placeholder="Eg. John" CssClass="form-control" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Please input first name</div>
+                        <asp:Label ID="lblFirstlHelp" runat="server" Text="Input the customer's first name (Eg. John)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtLName" runat="server" placeholder="Last Name" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Last</asp:Label>
+                        <asp:TextBox ID="txtLName" runat="server" placeholder="Eg. Smith" CssClass="form-control" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Please input last name</div>
+                        <asp:Label ID="lblLastHelp" runat="server" Text="Input the customer's last name (Eg. Smith)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtPhone" runat="server" placeholder="Phone Number" CssClass="form-control" TextMode="Phone" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Phone</asp:Label>
+                        <asp:TextBox ID="txtPhone" runat="server" placeholder="Eg. 2897771414" CssClass="form-control" TextMode="Phone" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Please input phone number. 10 digits without +1 or spaces</div>
+                        <asp:Label ID="lblPhoneHelp" runat="server" Text="Input the customer's phone number. 10 digits without +1 or spaces (Eg. 2897771414)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Email</asp:Label>
+                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Eg. email@gmail.com" CssClass="form-control" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Please input email address</div>
+                        <asp:Label ID="lblEmailHelp" runat="server" Text="Input the customer's email address (Eg. email@gmail.com)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtAddress" runat="server" placeholder="Address" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Address</asp:Label>
+                        <asp:TextBox ID="txtAddress" runat="server" placeholder="Eg. 123 Real Street" CssClass="form-control" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Please input address</div>
+                        <asp:Label ID="lblAddressHelp" runat="server" Text="Input the customer's address (Eg. 123 Real Street)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtCity" runat="server" placeholder="City" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">City</asp:Label>
+                        <asp:TextBox ID="txtCity" runat="server" placeholder="Eg. Welland" CssClass="form-control" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Please input city</div>
+                        <asp:Label ID="lblCityHelp" runat="server" Text="Input the city customer lives in(Eg. Welland)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
-                        <asp:TextBox ID="txtPCode" runat="server" placeholder="Postal Code" CssClass="form-control" required="required"></asp:TextBox>
+                        <asp:Label class="context_help" runat="server">Postal</asp:Label>
+                        <asp:TextBox ID="txtPCode" runat="server" placeholder="Eg. L3C7H2" CssClass="form-control" required="required"></asp:TextBox>
+                        <div class="invalid-feedback">Please input postal code. 6 characters, no spaces</div>
+                        <asp:Label ID="lblPostalHelp" runat="server" Text="Input the customer's postal code. 6 characters, no spaces (Eg. L3C7H2)." CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                 </div>
+                <br />  
+                <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">
                     <div class="col-md-12">
-                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Customer" CssClass="btn btn-outline-primary" Text="Create Customer" PostBackUrl="/Customers/" />
-                        <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
-                        <a class="btn btn-outline-primary" href="/Customers/" role="button" aria-label="Cancel Creating Customer">Cancel</a>
+                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Customer" CssClass="btn btn-outline-primary" Text="Create Customer" OnClick="btnCreate_Click" />
+                        <input type="reset" id="btnFilter" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
+                        <a class="btn btn-danger" href="/Customers/" role="button" aria-label="Cancel Creating Customer">Cancel</a>
                     </div>
                 </div>
+                <asp:Panel ID="pnlCustomerHelp" runat="server" Visible="False">
+                        <p>Notes:</p>
+                        <p>Fill the customer form and click the "Create Customer" button to add the customer record to the database and start creating a new customer.</p>
+                        <p>Click the "Clear Form" button to remove all the text from textboxes.</p>
+                        <p>Click the "Cancel" button to cancel creating the customer and go to the Customer page.</p>
+                </asp:Panel>
             </div>
         </div>
     </form>

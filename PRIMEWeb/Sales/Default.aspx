@@ -29,6 +29,9 @@
             text-align: center;
             padding: 10px 0;
         }
+        #collapseFilter {
+            margin: 5px auto;
+        }
         #divBtnSearch {
             text-align: right;
             margin-bottom: 1rem;
@@ -36,15 +39,19 @@
         #btnClear {
             margin-left: 30px;
         }
+        #upnSales {
+            padding-top: 20px;
+        }
         .table {
-            margin: 30px auto 0 auto;
+            margin: 5px auto 0 auto;
         }
         .table td, .table th {
             text-align: center;
             vertical-align: middle;
         }
         td .btn {
-            width: 80px;
+            width: 70px;
+            margin: 0 5px;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -89,26 +96,24 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Sales</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Sale" Text="Create New Sale" PostBackUrl="/Sales/NewSale.aspx" />
+                    <a type="button" href="SalesUpdate.aspx" class="btn btn-secondary" aria-label="Create New Sale">Create New Sale</a>
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Sales">
                         Filter Sales
                     </button>
-                    <asp:Button ID="btnReport" runat="server" CssClass="btn btn-secondary" aria-label="Sales Report" Text="Sales Report" PostBackUrl="/Sales/Report.aspx" />
+                    <a type="button" href="Report.aspx" class="btn btn-secondary" aria-label="Sales Report">Sales Report</a>
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Sale Number:</label>
-                                        <asp:TextBox ID="txtSaleNum" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtSaleNum" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Customer:</label>
-                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Customers...</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
@@ -122,9 +127,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Employee:</label>
-                                        <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control">
-                                            <asp:ListItem>Employees...</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
@@ -145,64 +148,22 @@
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Sale Number</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Customer</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>123</td>
-                                <td>2020-01-23</td>
-                                <td>Mark Otto</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-success" aria-label="Sale Paid" Text="Paid" Enabled="False" />
-                                </td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Sale Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Sale" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Sale" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>456</td>
-                                <td>2020-10-15</td>
-                                <td>Jacob Thornton</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-success" aria-label="Pay for Sale" Text="Pay" />
-                                </td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Sale Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Sale" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Sale" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>789</td>
-                                <td>2020-04-13</td>
-                                <td>Larry Bird</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-success" aria-label="Sale Paid" Text="Paid" Enabled="False" />
-                                </td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Sale Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Sale" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Sale" Text="Delete" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <asp:ScriptManager ID="smgSales" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnSales" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lblCount" runat="server"></asp:Label>
+                            <asp:GridView ID="gvSales" runat="server" CssClass="table" CellPadding="0" GridLines="None" OnRowDataBound="gvSales_RowDataBound"></asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>

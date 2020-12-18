@@ -7,21 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIMEWeb.Sales
+namespace PRIMEWeb.Inventory
 {
 
 
-    public partial class NewSale
+    public partial class EditItem
     {
 
         /// <summary>
-        /// frmNewSale control.
+        /// frmNewItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmNewSale;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmNewItem;
 
         /// <summary>
         /// btnLogout control.
@@ -33,112 +33,103 @@ namespace PRIMEWeb.Sales
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// ddlCustomer control.
+        /// cboHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCustomer;
+        protected global::System.Web.UI.WebControls.CheckBox cboHelp;
 
         /// <summary>
-        /// ddlPayment control.
+        /// ddlProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPayment;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProducts;
 
         /// <summary>
-        /// txtDate control.
+        /// lblProducthelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::System.Web.UI.WebControls.Label lblProducthelp;
 
         /// <summary>
-        /// ddlEmployee control.
+        /// ddlMeasures control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEmployee;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMeasures;
 
         /// <summary>
-        /// radPaid control.
+        /// lblMeasuerHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radPaid;
+        protected global::System.Web.UI.WebControls.Label lblMeasuerHelp;
 
         /// <summary>
-        /// radUnpaid control.
+        /// txtQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radUnpaid;
+        protected global::System.Web.UI.WebControls.TextBox txtQuantity;
 
         /// <summary>
-        /// smgOrder control.
+        /// lblQuantityuHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager smgOrder;
+        protected global::System.Web.UI.WebControls.Label lblQuantityuHelp;
 
         /// <summary>
-        /// pnlOrder control.
+        /// txtSize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlOrder;
+        protected global::System.Web.UI.WebControls.TextBox txtSize;
 
         /// <summary>
-        /// upnOrder control.
+        /// lblSizeHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnOrder;
+        protected global::System.Web.UI.WebControls.Label lblSizeHelp;
 
         /// <summary>
-        /// ddlProduct control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProduct;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
 
         /// <summary>
-        /// txtQty control.
+        /// txtBrand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQty;
-
-        /// <summary>
-        /// txtNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNote;
+        protected global::System.Web.UI.WebControls.TextBox txtBrand;
 
         /// <summary>
         /// txtPrice control.
@@ -150,57 +141,48 @@ namespace PRIMEWeb.Sales
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
 
         /// <summary>
-        /// txtStock control.
+        /// lblPriceHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStock;
+        protected global::System.Web.UI.WebControls.Label lblPriceHelp;
 
         /// <summary>
-        /// upnSavedOrders control.
+        /// pnlBtnItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnSavedOrders;
+        protected global::System.Web.UI.WebControls.Panel pnlBtnItems;
 
         /// <summary>
-        /// lsbOrders control.
+        /// btnAddItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lsbOrders;
+        protected global::System.Web.UI.WebControls.Button btnAddItem;
 
         /// <summary>
-        /// btnCreate control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreate;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// btnSaveOrder control.
+        /// inventorylookup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveOrder;
-
-        /// <summary>
-        /// btnDeleteOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeleteOrder;
+        protected global::System.Web.UI.WebControls.ObjectDataSource inventorylookup;
     }
 }
