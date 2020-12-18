@@ -71,8 +71,7 @@
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
                     <li class="breadcrumb-item"><a href="/Orders/">Orders</a></li>
-                    <li class="breadcrumb-item"><a href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Delete Arrived Order</li>
+                    <li class="breadcrumb-item active" aria-current="page">Delete Order</li>
                 </ol>
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />

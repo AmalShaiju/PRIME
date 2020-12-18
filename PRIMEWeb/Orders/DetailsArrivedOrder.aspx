@@ -73,6 +73,7 @@
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
                     <li class="breadcrumb-item"><a href="/Orders/">Orders</a></li>
+                    <li class="breadcrumb-item"><a href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Details Arrived Order</li>
                 </ol>
             </div>
