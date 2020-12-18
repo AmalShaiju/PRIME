@@ -39,7 +39,7 @@
         td .btn {
             width: 80px;
         }
-        .btn-danger
+        .btn-dark
         {
             margin-left: 5px;
             margin-right : 5px;
@@ -75,13 +75,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Orders/">Orders</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a>
-                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Arrived Order</li>
+                    <li class="breadcrumb-item"><a href="/Orders/">Orders</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" class="breadcrumb-item">Arriving Orders</li>
                 </ol>
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
@@ -147,10 +145,11 @@
                             </div>
 
                             </div>
-                     <asp:Label ID="lbl_Status" runat="server"></asp:Label>
+                     
                         <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="upnOrder" runat="server">
                         <ContentTemplate>
+                            <asp:Label ID="lbl_Status" runat="server"></asp:Label>
                             <asp:GridView ID="gv_Orders" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gv_Orders_RowDataBound">
                             </asp:GridView>
                         </ContentTemplate>
