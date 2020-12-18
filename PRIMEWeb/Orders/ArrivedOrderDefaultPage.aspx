@@ -4,46 +4,52 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-   <title>PRIME - Orders</title>
+    <title>PRIME - Orders</title>
     <link href="/CSS/bootstrap.css" rel="stylesheet" />
     <style type="text/css">
         body {
             background-color: #e0e0e0;
             line-height: 1;
         }
+
         .breadcrumb, #navbar {
             margin: 10px;
         }
+
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
             width: 130px;
         }
+
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;
             margin: 15px auto;
             padding: 15px;
         }
+
         h1 {
             text-align: center;
             padding: 10px 0;
         }
+
         .table {
             margin: 30px auto 0 auto;
         }
-        .table td, .table th {
-            text-align: center;
-            vertical-align: middle;
-        }
+
+            .table td, .table th {
+                text-align: center;
+                vertical-align: middle;
+            }
+
         td .btn {
             width: 80px;
         }
-        .btn-danger
-        {
-            margin-left: 5px;
-            margin-right : 5px;
 
+        .btn-danger {
+            margin-left: 5px;
+            margin-right: 5px;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -86,62 +92,48 @@
         </nav>
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
-                <div id="wrapper-inner" class="col-lg-9 rounded-lg">
+                <div id="wrapper-inner" class="col-lg-11 rounded-lg">
                     <h1>Arrived Item</h1>
                     <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-secondary" aria-label="Add info about Arrived Item" Text="Add info about Arrived Item" PostBackUrl="/Orders/ArrivedOrder.aspx" />
-                   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Arrived Items">
+                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Arrived Items">
                         Filter Arrived Items
                     </button>
-                    
+
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
-                                    <div class="col-md-6 form-group">
-                                        <label class="control-label">Invoice Number:</label>
-                                        <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control" ></asp:TextBox>
-                                    </div>
                                 <div class="col-md-6 form-group">
-                                        <label class="control-label">Inventory ID:</label>
-                                        <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="ProductName" DataValueField="id">
-                                            <asp:ListItem Selected="True" Value="None">None</asp:ListItem>
-                                        </asp:DropDownList>
+                                    <label style="width: 100%" class="control-label">Invoice Number:</label>
+                                    <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label style="width: 100%" class="control-label">Inventory ID:</label>
+                                    <asp:DropDownList ID="ddlInventoryID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="on_order" DataTextField="ProductName" DataValueField="id">
+                                        <asp:ListItem Selected="True" Value="None">None</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <%--<div class="col-md-6 form-group">
-                                        <label class="control-label">Product Order ID:</label>
-                                        <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="ObjectDataSource1" DataTextField="pordNumber" DataValueField="id">
-                                            <asp:ListItem Selected="True">None</asp:ListItem>
-                                       </asp:DropDownList>
-                                </div>--%>
-                                 <div class="col-md-6 form-group">
-                                        <label class="control-label">Date Arrived:</label>
-                                        <asp:TextBox ID="txtDateAttived" runat="server" CssClass="form-control" TextMode ="Date" ></asp:TextBox>
-                                    </div>
+
+                                <div class="col-md-6 form-group">
+                                    <label style="width: 100%" class="control-label">Date Arrived:</label>
+                                    <asp:TextBox ID="txtDateAttived" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                                 </div>
-                            <%--<div class="form-row">
-                                    <div class="col-md-6 form-group">
-                                        <label class="control-label">Number In Order:</label>
-                                        <asp:TextBox ID="txtNumberInOrder" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label class="control-label">Price:</label>
-                                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" TextMode ="Number"></asp:TextBox>
-                                    </div>
-                                </div>--%>
-                        <div class="form-row">
-                            <div>
-                                <div id="divBtnSearch"  class="auto-style1">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
-                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
-                                </div>
-                            </div>
-                        </div>
                             </div>
 
+                            <div class="form-row">
+                                    <div id="divBtnSearch">
+                                        <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
+                                        <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter" />
+                                    </div>
                             </div>
-                     <asp:Label ID="lbl_Status" runat="server"></asp:Label>
-                        <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
+                        </div>
+
+                    </div>
+                    <div style="margin-top: 30px; margin-bottom: 20px;"><strong>
+                        <asp:Label ID="lbl_Status" runat="server" ForeColor="Green"></asp:Label></strong></div>
+
+                    <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="upnOrder" runat="server">
                         <ContentTemplate>
                             <asp:GridView ID="gv_Orders" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gv_Orders_RowDataBound">
@@ -151,40 +143,41 @@
                             <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
                         </Triggers>
                     </asp:UpdatePanel>
-                    </div>
-            <%--</div>
+                </div>
+                <%--</div>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.prod_order1TableAdapter"></asp:ObjectDataSource>
         </div>--%>
-            
-                
-            <asp:ObjectDataSource ID="on_order" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter">
-            </asp:ObjectDataSource>
-            
+
+
+                <asp:ObjectDataSource ID="on_order" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter"></asp:ObjectDataSource>
+
+            </div>
+        </div>
     </form>
 </body>
 </html>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <%--  <table class="table">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%--  <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Invoice Number</th>

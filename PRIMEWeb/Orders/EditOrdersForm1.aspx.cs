@@ -35,7 +35,6 @@ namespace PRIMEWeb.Orders
 
                         if (order != null)
                         {
-                            this.txtID.Text = order.ItemArray[0].ToString();
                             this.txtProdNumber.Text = order.ItemArray[1].ToString();
                             this.txtDate.Text = order.ItemArray[2].ToString();
                             this.cbo_Paid.Text = order.ItemArray[3].ToString();
@@ -91,7 +90,7 @@ namespace PRIMEWeb.Orders
         }
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         {
-            lblDateHelp.Visible = lblPaidHelp.Visible = lblProdlHelp.Visible = lblIdHelp.Visible = pnlOrderHelp.Visible = 
+            lblDateHelp.Visible = lblPaidHelp.Visible = lblProdlHelp.Visible =  pnlOrderHelp.Visible = 
                   cboHelp.Checked;
         }
     }

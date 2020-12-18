@@ -11,37 +11,46 @@
             background-color: #e0e0e0;
             line-height: 1;
         }
+
         .breadcrumb, #navbar {
             margin: 10px;
         }
+
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
             width: 130px;
         }
+
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;
             margin: 15px auto;
             padding: 15px;
         }
+
         #wrapper-inner {
             padding: 30px;
         }
+
         h1 {
             text-align: center;
             padding: 2rem 0;
         }
+
         .form-row .col-md-6 {
             padding: 0 15px;
         }
+
         .form-group {
             margin-bottom: 3rem;
         }
+
         .lbl-help {
             display: inline-block;
             margin: 5px 0;
         }
+
         .form-control {
             border: none;
             border-bottom: 2px solid #6c757d;
@@ -50,14 +59,20 @@
             border-radius: 0;
             height: 45px;
         }
+
         .col-md-12 {
             text-align: center;
             margin-top: 20px;
             margin-bottom: 20px;
         }
-        .col-md-12 input, .col-md-12 a {
-            margin: 0 10px;
-        }
+
+            .col-md-12 input, .col-md-12 a {
+                margin: 0 10px;
+            }
+           .help-txt{
+                margin-top:14px;
+                font-size:13px;
+            }
     </style>
 </head>
 <body style="height: 1582px">
@@ -99,57 +114,76 @@
         <div class="container rounded-lg row justify-content-sm-center" style="height: 1258px">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                 <h1>Create New Order</h1>
-                <div class="form-group form-control form-check form-check-inline">
+
+                <strong><asp:Label ID="lblStatus" runat="server" ForeColor="Green"></asp:Label></strong>   
+                <br />
+                <br />
+                <br />
+
+                <div style="margin-bottom: 60px;" class="form-group form-control form-check form-check-inline">
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
-                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
+                    <div>
+
+                        <label style="width: 100%" class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
+                    </div>
                 </div>
                 <div class="form-row">
-                   
+
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Product Number: </asp:Label>
                         <asp:TextBox ID="txtProdNumber" runat="server" placeholder="Eg. 5432" CssClass="form-control" required="required"></asp:TextBox>
                         <div class="invalid-feedback">Please input product number</div>
-                        <asp:Label ID="lblProdlHelp" runat="server" Text="Input the number of this item from an old system" CssClass="lbl-help" Visible="False"></asp:Label>
+                        <div class="help-txt">
+
+                            <asp:Label ID="lblProdlHelp" runat="server" Text="Input the number of this item from an old system" CssClass="lbl-help" Visible="False"></asp:Label>
+                        </div>
                     </div>
-                        <div class="col-md-6 form-group" >
+
+                    <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">Date: </asp:Label>
                         <asp:TextBox ID="txtDate" runat="server" placeholder="Select date" CssClass="form-control" TextMode="Date" required="required"></asp:TextBox>
                         <div class="invalid-feedback">Select Date: </div>
-                        <asp:Label ID="lblDateHelp" runat="server" Text="Open the calendar by tapping the textbox and select the date" CssClass="lbl-help" Visible="False"></asp:Label>
-                    
-                    
-                    </div>
-                    </div>
-                
-                <div class="form-row">
-                <div class="col-md-6 form-group">
-                        
-                         <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
-                    <label class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
-                        <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid" CssClass="lbl-help" Visible="False"></asp:Label>
-                    </div>
+                        <div class="help-txt">
+
+                            <asp:Label ID="lblDateHelp" runat="server" Text="Open the calendar by tapping the textbox and select the date" CssClass="lbl-help" Visible="False"></asp:Label>
+                        </div>
+
                     </div>
 
-            
-                <br />  
-                <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <asp:CheckBox ID="cbo_Paid" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
+                            <label style="width: 100%" class="form-check-label" for="cboHelp">Check this to point out that order is paid</label>
+                        <div class="help-txt">
+                            
+                            <asp:Label ID="lblPaidHelp" runat="server" Text="Check this checkbox if order is paid" CssClass="lbl-help" Visible="False"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
                 <div class="form-row">
                     <div class="col-md-12">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Create Order" CssClass="btn btn-outline-primary" Text="Create Order" OnClick="btnCreate_Click" />
-                        <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
+                        <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
                         <a class="btn btn-outline-primary" href="/Orders/Default.aspx" role="button" aria-label="Cancel Creating">Cancel</a>
                     </div>
                 </div>
 
-            </div>
                 <asp:Panel ID="pnlOrderHelp" runat="server" Visible="False">
-                        <p>Notes:</p>
-                        <p>Fill the Order form and click the "Create Order" button to add the Order record to the database and start creating a new Order.</p>
-                        <p>Click the "Clear Form" button to remove all the text from textboxes.</p>
-                        <p>Click the "Cancel" button to cancel creating the Order and go to the Order page.</p>
+                    <p>Notes:</p>
+                    <p>Fill the Order form and click the "Create Order" button to add the Order record to the database and start creating a new Order.</p>
+                    <p>Click the "Clear Form" button to remove all the text from textboxes.</p>
+                    <p>Click the "Cancel" button to cancel creating the Order and go to the Order page.</p>
                 </asp:Panel>
+
             </div>
-        
+        </div>
+
     </form>
+
 </body>
 </html>

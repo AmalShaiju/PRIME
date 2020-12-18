@@ -40,7 +40,6 @@ namespace PRIMEWeb.Orders
 
                         if (order != null)
                         {
-                            this.txtID.Text = order.ItemArray[0].ToString();
                             this.txtInvoiceNumber.Text = order.ItemArray[1].ToString();
                             this.txtArriveDate.Text = Convert.ToDateTime(order.ItemArray[2]).ToString("yyyy-MM-dd");
                             this.txtNumberInOrder.Text = order.ItemArray[3].ToString();
@@ -101,7 +100,8 @@ namespace PRIMEWeb.Orders
         }
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         {
-            lblDateHelp.Visible = lblArriveDateHelp.Visible = lblIdHelp.Visible = lblInvoiceNumlHelp.Visible =
+            lblDateHelp.Visible = lblArriveDateHelp.Visible = lblInvoiceNumlHelp.Visible = lblInventoryIDHelp.Visible = lblNumberInOrderHelp.Visible = lblProdOrderIDHelp.Visible =
+
                   cboHelp.Checked;
         }
     }
