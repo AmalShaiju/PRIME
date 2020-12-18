@@ -52,6 +52,24 @@ namespace PRIMEWeb.Repairs
             Session["createRedirect"] = null;
             Session["Resumed"] = null;
             Session["Paused"] = null;
+            Session["deleteId"] = null;
+
+            if (Session["deleteMsg"] != null)
+                if (Session["deleteMsg"].ToString() == "true")
+                {
+                    this.lblDeleteMsg.Visible = true;
+                    this.lblDeleteMsg.Text = "&#10004; Record deleted Successfully";
+                    Session["deleteMsg"] = null;
+
+                }
+                else
+                {
+                    this.lblDeleteMsg.Visible = true;
+                    this.lblDeleteMsg.Text = "&#x274C; Record not deleted. Please check if this record is related to any sales";
+                    Session["deleteMsg"] = null;
+                    this.lblDeleteMsg.ForeColor = Color.Red;
+
+                }
 
 
             //get records
@@ -121,37 +139,18 @@ namespace PRIMEWeb.Repairs
             ////Get rowindex
             int rowindex = gvr.RowIndex;
 
-            this.Label1.Text = rowindex.ToString();
 
             id = Convert.ToInt32(rows[rowindex].ItemArray[0].ToString());
 
-            
-            
-            // do this after geting confirmation from client side
-            if (id != -1)
+            Session["deleteId"] = id;
 
-            {
+            HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+            cID.Value = rows[rowindex].ItemArray[0].ToString();
+            Response.Cookies.Add(cID);
+            Response.Redirect("Details.aspx"); // Redirect the user to Edit page on btn click
 
-                try
-                {
-                    DataRow record = RepairsDataSet.service_order.FindByid(id); // Find the requested record 
-                    record.Delete(); // Deletes the record in memory
 
-                    service_orderTableAdapter daServiceOrder = new service_orderTableAdapter(); // table adapter to Repair table (Repair adapter)
-                    daServiceOrder.Update(record); // Call update method on the Repair adapter so it updates the table in memory ( All changes made are applied - CRUD)
-                    RepairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
-                    Label1.Text = "&#10004; Record deleted";
-                    //Refresh the page to show the record being deleted
-                    Response.Redirect(Request.RawUrl);
 
-                }
-                catch
-                {
-                    Label1.Text = "&#x274C; Record not deleted";
-                    this.Label1.ForeColor = Color.Red;
-
-                }
-            }
         }
 
         protected void GridView1_RowDataBound1(object sender, GridViewRowEventArgs e) // Method adding the btns to the table
@@ -195,7 +194,6 @@ namespace PRIMEWeb.Repairs
                 btnDelete.Text = "Delete";
                 btnDelete.Attributes.Add("aria-label", "Click to delete this sale");
                 btnDelete.ToolTip = "Delete";
-                btnDelete.OnClientClick = "return confirm('Do you want to delete it? Click OK to proceed.');"; // client side call
                 btnDelete.Click += new EventHandler(btnDelete_Click);// Set button click event
                 e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
             }
