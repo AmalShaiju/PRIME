@@ -39,6 +39,7 @@ namespace PRIMEWeb
             if (user == null)
             {
                 lblMessage.Text = "Username or password is not correct";
+                lblMessage.Visible = true;
             }
             else
             {
