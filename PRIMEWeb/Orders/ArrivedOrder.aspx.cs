@@ -79,6 +79,14 @@ namespace PRIMEWeb.Orders
                   cboHelp.Checked;
         }
 
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            ddlInventoryID.SelectedIndex = 0;
+            ddlProdOrderID.SelectedIndex = 0;
+            txtArriveDate.Text = txtInvoiceNum.Text = txtPrice.Text = txtNumInOrder.Text = String.Empty;
+        }
+
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;

@@ -19,6 +19,9 @@
             padding: 10px 0;
             width: 130px;
         }
+        label{
+            width:100%;
+        }
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;
@@ -144,6 +147,7 @@
                 <div class="form-row">
                     <div class="col-md-12">
                        <asp:Button ID="btnCreate" runat="server" aria-label="Update Order" CssClass="btn btn-outline-primary" Text="Update Order" OnClick="btnUpdate_Click"/>
+                        <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-secondary btn-dependent-page" Text="Clear Form" UseSubmitBehavior="False" OnClick="btnClear_Click" />
                         &nbsp;<a class="btn btn-danger" href="/Orders/Default.aspx" role="button" aria-label="Cancel Editing Order">Cancel</a>
                         
                     </div>

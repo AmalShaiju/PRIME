@@ -73,6 +73,12 @@ namespace PRIMEWeb.Orders
                   cboHelp.Checked;
         }
 
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+
+            txtDate.Text = txtProdNumber.Text = String.Empty;
+        }
+
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
