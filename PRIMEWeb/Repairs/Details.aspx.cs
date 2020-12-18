@@ -22,9 +22,18 @@ namespace PRIMEWeb.Repairs
 
         }
         private static int id = -1;
+        private static int deleteId = -1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["deleteId"] != null) 
+            {
+                deleteId = Convert.ToInt32(Session["deleteId"]);
+                this.pnlDeleteConfirm.Visible = true;
+              
+            } 
+
+
             if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
 
                 id = Convert.ToInt32(Request.Cookies["ID"].Value);
@@ -70,6 +79,11 @@ namespace PRIMEWeb.Repairs
                 {
                     RepairLookUpTableAdapter daRepair = new RepairLookUpTableAdapter();
                     daRepair.Fill(repairsDataSet.RepairLookUp);
+
+                    service_orderTableAdapter daServiceOrder = new service_orderTableAdapter();
+
+                    daRepair.Fill(repairsDataSet.RepairLookUp);
+                    daServiceOrder.Fill(repairsDataSet.service_order);
 
                     DataRow record = repairsDataSet.RepairLookUp.FindByid(id); // Find the related Record and fill the fields in the page with the data
 
@@ -319,6 +333,53 @@ namespace PRIMEWeb.Repairs
                 Response.Redirect("details.aspx");
 
             }
+        }
+
+        protected void btnDeleteConfirm_Click(object sender, EventArgs e)
+        {
+            if (deleteId != -1)
+
+            {
+
+                try
+                {
+                    DataRow record = repairsDataSet.service_order.FindByid(deleteId); // Find the requested record 
+                    record.Delete(); // Deletes the record in memory
+
+                    service_orderTableAdapter daServiceOrder = new service_orderTableAdapter(); // table adapter to Repair table (Repair adapter)
+                    daServiceOrder.Update(record); // Call update method on the Repair adapter so it updates the table in memory ( All changes made are applied - CRUD)
+                    repairsDataSet.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+                    redirectMsg.Text = "&#10004; Record deleted";
+                    //Refresh the page to show the record being deleted
+                    Session["deleteMsg"] = "true";
+                    Response.Redirect("default.aspx");
+
+                }
+                catch
+                {
+                    redirectMsg.Text = "&#x274C; Record not deleted";
+                    this.redirectMsg.ForeColor = Color.Red;
+
+                }
+            }
+        }
+
+      
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            
+            Session["deleteId"] = id;
+            Response.Redirect("Details.aspx"); // Redirect the user to Edit page on btn click
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            //Send Id using cookie, more seecure I presume
+            HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+            cID.Value = id.ToString();
+            Response.Cookies.Add(cID);
+            Response.Redirect("EditRepair.aspx"); // Redirect the user to Edit page on btn click
         }
     }
 }
