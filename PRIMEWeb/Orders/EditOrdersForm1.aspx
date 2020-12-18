@@ -64,6 +64,8 @@
             border-left : 100px;
         }
     </style>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body style="height: 1582px">
     <form id="frmNewOrderForm" runat="server" class="was-validated">
@@ -105,8 +107,12 @@
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                 <h1>Edit Order</h1>
                 <div class="form-group form-control form-check form-check-inline">
+                    &nbsp;
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design</label>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
-                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
+                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form</label>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
@@ -140,8 +146,8 @@
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">
                     <div class="col-md-12">
-                       <asp:Button ID="btnUpdate" runat="server" aria-label="Update Order" CssClass="btn btn-outline-primary" Text="Update Order" OnClick="btnUpdate_Click"/>
-                        &nbsp;<a class="btn btn-outline-primary" href="/Orders/Default.aspx" role="button" aria-label="Cancel Editing Order">Cancel</a>
+                       <asp:Button ID="btnCreate" runat="server" aria-label="Update Order" CssClass="btn btn-outline-primary" Text="Update Order" OnClick="btnUpdate_Click"/>
+                        &nbsp;<a class="btn btn-danger" href="/Orders/Default.aspx" role="button" aria-label="Cancel Editing Order">Cancel</a>
                         
                     </div>
                 </div>

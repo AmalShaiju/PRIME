@@ -57,6 +57,10 @@
             margin: 0 10px;
         }
     </style>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
+    <script src="/Script/jquery-3.5.1.min.js"></script>
+    <script src="/Script/bootstrap.min.js"></script>
 </head>
 <body>
     <form id="frmNewItem" runat="server"  class="was-validated">
@@ -96,10 +100,14 @@
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
-                <h1>Form about arrived Item</h1>
+                <h1>Arrived Item Form</h1>
                 <div class="form-group form-control form-check form-check-inline">
+                    &nbsp;
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design</label>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
-                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
+                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form</label>
                 </div>
                 <div class="form-row">
                     <div class="col-md-4 form-group">
@@ -143,8 +151,8 @@
                 <div class="form-row">
                     <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Add Info About Arrived Order" CssClass="btn btn-outline-primary" Text="Add the Order"   OnClick="btnCreate_Click"/>
-                        <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
-                        <a class="btn btn-outline-primary" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Cancel Adding Arrived Order Form">Cancel</a>
+                        <input id="btnClear" type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
+                        <a class="btn btn-danger" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Cancel Adding Arrived Order Form">Cancel</a>
                     </asp:Panel>
                 </div>
             </div>

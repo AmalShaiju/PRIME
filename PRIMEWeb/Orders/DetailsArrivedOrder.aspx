@@ -42,6 +42,8 @@
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmOrders" runat="server">
@@ -83,7 +85,11 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1><asp:Label ID="lblTitle" runat="server">Order Details</asp:Label></h1>
-                    
+                    <div class="form-group form-control form-check form-check-inline">
+                        &nbsp;
+                        <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                        <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                    </div>
                  <div class="form-row">
                     <div class="col-md-6 form-group">
                         <asp:Label runat="server">ID</asp:Label>
@@ -123,8 +129,8 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-12">
-                        <asp:Button ID="btnEdit" runat="server" aria-label="Create Order" CssClass="btn btn-outline-primary" Text="Edit Order" OnClick="btnEdit_Click" />
-                        <a class="btn btn-outline-primary" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Go back to Orders page">Back to Orders</a>
+                        <asp:Button ID="btnEdit" runat="server" aria-label="Create Order" CssClass="btn btn-dark" Text="Edit Order" OnClick="btnEdit_Click" />
+                        <a class="btn btn-danger" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Go back to Orders page">Back to Orders</a>
                     </div>
                 </div>
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>

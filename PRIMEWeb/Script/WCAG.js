@@ -6,6 +6,7 @@
     var btnFilter = document.getElementById("btnFilter");
     var btnCreate = document.getElementById("btnCreate");
     var btnClear = document.getElementById("btnClear");
+    var btnClear2 = document.getElementsByName("btnClear");
     var btnLogOut = document.getElementById("btnLogout");
     var btnDependents = document.getElementsByClassName("btn btn-secondary btn-dependent-page");
     var body = document.getElementsByTagName("body");
@@ -53,6 +54,7 @@
         btnFilter.classList.add("btn-search-high");
         btnCreate.classList.add("btn-create-high");
         btnClear.classList.add("btn-clear-high");
+        btnClear2.classList.add("btn-clear-high");
         createZicheng.classList.add("btn-create-high");
     }
     else {
@@ -93,6 +95,7 @@
         btnFilter.classList.remove("btn-search-high");
         btnCreate.classList.remove("btn-create-high");
         btnClear.classList.remove("btn-clear-high");
+        btnClear2.classList.remove("btn-clear-high");
         createZicheng.classList.remove("btn-create-high");
     }
 }
