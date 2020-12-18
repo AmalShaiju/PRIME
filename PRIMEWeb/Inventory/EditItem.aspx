@@ -21,11 +21,13 @@
             padding: 10px 0;
             width: 130px;
         }
+
         label {
             display: inline-block;
             margin-bottom: 0.5rem;
             width: 100%;
         }
+
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;
@@ -33,13 +35,18 @@
             padding: 15px;
         }
 
-        #wrapper-inner, #pnlOrder {
+        #wrapper-inner {
             padding: 30px;
         }
 
         h1 {
             text-align: center;
             padding: 2rem 0;
+        }
+
+        #lblMessage {
+            display: block;
+            margin-bottom: 10px;
         }
 
         .form-row [class*="col-"] {
@@ -82,7 +89,7 @@
             var btnInfos = document.getElementsByClassName("btn-info");
             var btnSearch = document.getElementById("btnSearch");
             var btnFilter = document.getElementById("btnFilter");
-            var btnCreate = document.getElementById("btnCreate");
+            var btnUpdate = document.getElementById("btnUpdate");
             var btnClear = document.getElementById("btnClear");
             var btnLogOut = document.getElementById("btnLogout");
             var btnDependents = document.getElementsByClassName("btn btn-secondary btn-dependent-page");
@@ -129,7 +136,7 @@
 
                 btnSearch.classList.add("btn-search-high");
                 btnFilter.classList.add("btn-search-high");
-                btnCreate.classList.add("btn-create-high");
+                btnUpdate.classList.add("btn-create-high");
                 btnClear.classList.add("btn-clear-high");
                 createZicheng.classList.add("btn-create-high");
             }
@@ -169,7 +176,7 @@
 
                 btnSearch.classList.remove("btn-search-high");
                 btnFilter.classList.remove("btn-search-high");
-                btnCreate.classList.remove("btn-create-high");
+                btnUpdate.classList.remove("btn-create-high");
                 btnClear.classList.remove("btn-clear-high");
                 createZicheng.classList.remove("btn-create-high");
             }
@@ -207,7 +214,7 @@
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
                     <li class="breadcrumb-item"><a href="/Inventory/">Inventory</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Add New Inventory Item</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Inventory Item</li>
                 </ol>
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
@@ -215,84 +222,79 @@
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9">
                 <h1>Edit Product</h1>
-                 <div class="form-group form-control form-check form-check-inline">
-                    &nbsp;
-                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
-                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design</label>
+                <div class="form-group form-control form-check form-check-inline">
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="cboSwitch" name="cboSwitch" />
+                    <label class="form-check-label" for="cboSwitch">Check this to switch to high contrast design</label>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
                     <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form</label>
                 </div>
-                <div class="form-row">
-                    <div class="col-md-6 form-group" style="left: 2px; top: -4px">
-                        <label class="control-label">Product:</label>
-                        <asp:DropDownList ID="ddlProducts" runat="server" CssClass="custom-select" DataSourceID="inventorylookup" DataTextField="prodName" DataValueField="id" AppendDataBoundItems="True" AutoPostBack="True">
-                            <asp:ListItem Selected="True" Value="-1">Select a Product</asp:ListItem>
-                            <asp:ListItem Value="new_item">Add New Product</asp:ListItem>
-                        </asp:DropDownList>
-                        <asp:Label ID="lblProducthelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Measure:</label>
-                        <asp:DropDownList ID="ddlMeasures" runat="server" CssClass="custom-select" DataSourceID="inventorylookup" DataTextField="InvMeaPrice" DataValueField="invMeasure">
-                            <asp:ListItem>Select a Measure</asp:ListItem>
-                        </asp:DropDownList>
-                        <asp:Label ID="lblMeasuerHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-
-                        <div class="invalid-feedback">Please input Measure</div>
-
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Quantity:</label>
-                        <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
-                        <div class="invalid-feedback">Please input a quantity</div>
-                        <asp:Label ID="lblQuantityuHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Size:</label>
-                        <asp:TextBox ID="txtSize" runat="server" CssClass="form-control" required="required"></asp:TextBox>
-                        <div class="invalid-feedback">Please input a size</div>
-                        <asp:Label ID="lblSizeHelp" runat="server" Text="Please select the product brand" CssClass="lbl-help" Visible="False"></asp:Label>
-
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        &nbsp;<label class="control-label">Description:</label><asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Brand:</label>
-                        <asp:TextBox ID="txtBrand" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Price:</label>
-                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" required="required"></asp:TextBox>
-                        <div class="invalid-feedback">Please input a price</div>
-                        <asp:Label ID="lblPriceHelp" runat="server" Text="Please input a price" CssClass="lbl-help" Visible="False"></asp:Label>
-
-
-                    </div>
-                </div>
-
-
-                <div class="form-row">
-                    <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
-
-                        <asp:Button ID="btnCreate" runat="server" aria-label="Add the Inventory Item" CssClass="btn btn-outline-primary" OnClick="btnAddItem_Click" Text="Add the Item" />
-                        <input id="btnClear" type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
-                        <a aria-label="Cancel Adding Inventory Item" class="btn btn-danger" href="/Inventory/" role="button">Cancel</a>
-                    </asp:Panel>
-                </div>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                <asp:ObjectDataSource ID="inventorylookup" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.InventoryLookUpTableAdapter"></asp:ObjectDataSource>
+                <asp:ScriptManager ID="smgEditInv" runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="uplEditInv" runat="server">
+                    <ContentTemplate>
+                        <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Product:</label>
+                                <asp:DropDownList ID="ddlProducts" runat="server" CssClass="custom-select" DataSourceID="dsInvLookUp" DataTextField="prodName" DataValueField="id" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ddlProducts_SelectedIndexChanged">
+                                </asp:DropDownList>
+                                <asp:Label ID="lblProducthelp" runat="server" Text="Please select the product" Visible="False"></asp:Label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Measure:</label>
+                                <asp:DropDownList ID="ddlMeasures" runat="server" CssClass="custom-select" DataSourceID="dsInvLookUp" DataTextField="InvMeaPrice" DataValueField="invMeasure">
+                                </asp:DropDownList>
+                                <asp:Label ID="lblMeasureHelp" runat="server" Text="Please select the measure" Visible="False"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Quantity:</label>
+                                <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
+                                <asp:Label ID="lblQtyHelp" runat="server" Text="Please input the quantity" Visible="False"></asp:Label>
+                                <div class="invalid-feedback">Please input the quantity</div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Size:</label>
+                                <asp:TextBox ID="txtSize" runat="server" CssClass="form-control" required="required"></asp:TextBox>
+                                <asp:Label ID="lblSizeHelp" runat="server" Text="Please input the size" Visible="False"></asp:Label>
+                                <div class="invalid-feedback">Please input the size</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Description:</label>
+                                <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:Label ID="lblDescHelp" runat="server" Text="Description of the product you selected" Visible="False"></asp:Label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Brand:</label>
+                                <asp:TextBox ID="txtBrand" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:Label ID="lblBrandHelp" runat="server" Text="Brand of the product you selected" Visible="False"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Price:</label>
+                                <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" required="required"></asp:TextBox>
+                                <asp:Label ID="lblPriceHelp" runat="server" Text="Please input the price" Visible="False"></asp:Label>
+                                <div class="invalid-feedback">Please input the price</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
+                                <asp:Button ID="btnUpdate" runat="server" aria-label="Update the Inventory Item" CssClass="btn btn-outline-primary" OnClick="btnUpdate_Click" Text="Save Changes" />
+                                <input id="btnClear" type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
+                                <a aria-label="Cancel Editing Inventory Item" class="btn btn-danger" href="/Inventory/" role="button">Cancel</a>
+                            </asp:Panel>
+                        </div>
+                        <asp:ObjectDataSource ID="dsInvLookUp" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.InventoryDataSetTableAdapters.InventoryLookUpTableAdapter"></asp:ObjectDataSource>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="cboHelp" EventName="CheckedChanged" />
+                        <asp:AsyncPostBackTrigger ControlID="ddlProducts" EventName="SelectedIndexChanged" />
+                    </Triggers>
+                </asp:UpdatePanel>
             </div>
         </div>
     </form>

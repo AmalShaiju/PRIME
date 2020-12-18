@@ -11,17 +11,17 @@ namespace PRIMEWeb.Inventory
 {
 
 
-    public partial class Default
+    public partial class DeleteItem
     {
 
         /// <summary>
-        /// frmInventory control.
+        /// frmInvDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmInventory;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmInvDelete;
 
         /// <summary>
         /// btnLogout control.
@@ -33,85 +33,13 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// btnCreate control.
+        /// btnDeleteConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreate;
-
-        /// <summary>
-        /// txtItemName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtItemName;
-
-        /// <summary>
-        /// ddlBrands control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBrands;
-
-        /// <summary>
-        /// txtFromPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFromPrice;
-
-        /// <summary>
-        /// txtToPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtToPrice;
-
-        /// <summary>
-        /// btnSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
-
-        /// <summary>
-        /// dsBrands control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsBrands;
-
-        /// <summary>
-        /// smgInventory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager smgInventory;
-
-        /// <summary>
-        /// upnInventory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnInventory;
+        protected global::System.Web.UI.WebControls.Button btnDeleteConfirm;
 
         /// <summary>
         /// lblMessage control.
@@ -123,12 +51,48 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.Label lblMessage;
 
         /// <summary>
-        /// gvInventory control.
+        /// lblInvName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvInventory;
+        protected global::System.Web.UI.WebControls.Label lblInvName;
+
+        /// <summary>
+        /// lblInvQty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInvQty;
+
+        /// <summary>
+        /// lblInvSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInvSize;
+
+        /// <summary>
+        /// lblInvBrand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInvBrand;
+
+        /// <summary>
+        /// lblInvPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInvPrice;
     }
 }

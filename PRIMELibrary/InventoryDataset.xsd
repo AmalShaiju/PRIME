@@ -53,7 +53,7 @@ FROM     product</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="productTableAdapter" GeneratorDataComponentClassName="productTableAdapter" Name="product" UserDataComponentName="productTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductTableAdapter" GeneratorDataComponentClassName="ProductTableAdapter" Name="Product" UserDataComponentName="ProductTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectName="dbo.product" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
@@ -117,7 +117,7 @@ SELECT id, prodName, prodDescription, prodBrand FROM product WHERE (id = @id)</C
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="inventoryTableAdapter" GeneratorDataComponentClassName="inventoryTableAdapter" Name="inventory" UserDataComponentName="inventoryTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InventoryTableAdapter" GeneratorDataComponentClassName="InventoryTableAdapter" Name="Inventory" UserDataComponentName="InventoryTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="EmmasConnectionString (Settings)" DbObjectName="dbo.inventory" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
@@ -201,7 +201,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
   <xs:element name="EmmasDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="EmmasDataSet" msprop:Generator_UserDSName="EmmasDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="InventoryLookUp" msprop:Generator_TableClassName="InventoryLookUpDataTable" msprop:Generator_TableVarName="tableInventoryLookUp" msprop:Generator_RowChangedName="InventoryLookUpRowChanged" msprop:Generator_TablePropName="InventoryLookUp" msprop:Generator_RowDeletingName="InventoryLookUpRowDeleting" msprop:Generator_RowChangingName="InventoryLookUpRowChanging" msprop:Generator_RowEvHandlerName="InventoryLookUpRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryLookUpRowDeleted" msprop:Generator_RowClassName="InventoryLookUpRow" msprop:Generator_UserTableName="InventoryLookUp" msprop:Generator_RowEvArgName="InventoryLookUpRowChangeEvent">
+        <xs:element name="InventoryLookUp" msprop:Generator_TableClassName="InventoryLookUpDataTable" msprop:Generator_TableVarName="tableInventoryLookUp" msprop:Generator_TablePropName="InventoryLookUp" msprop:Generator_RowDeletingName="InventoryLookUpRowDeleting" msprop:Generator_RowChangingName="InventoryLookUpRowChanging" msprop:Generator_RowEvHandlerName="InventoryLookUpRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryLookUpRowDeleted" msprop:Generator_UserTableName="InventoryLookUp" msprop:Generator_RowChangedName="InventoryLookUpRowChanged" msprop:Generator_RowEvArgName="InventoryLookUpRowChangeEvent" msprop:Generator_RowClassName="InventoryLookUpRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -247,7 +247,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="BrandLookUp" msprop:Generator_TableClassName="BrandLookUpDataTable" msprop:Generator_TableVarName="tableBrandLookUp" msprop:Generator_TablePropName="BrandLookUp" msprop:Generator_RowDeletingName="BrandLookUpRowDeleting" msprop:Generator_RowChangingName="BrandLookUpRowChanging" msprop:Generator_RowEvHandlerName="BrandLookUpRowChangeEventHandler" msprop:Generator_RowDeletedName="BrandLookUpRowDeleted" msprop:Generator_UserTableName="BrandLookUp" msprop:Generator_RowChangedName="BrandLookUpRowChanged" msprop:Generator_RowEvArgName="BrandLookUpRowChangeEvent" msprop:Generator_RowClassName="BrandLookUpRow">
+        <xs:element name="BrandLookUp" msprop:Generator_TableClassName="BrandLookUpDataTable" msprop:Generator_TableVarName="tableBrandLookUp" msprop:Generator_RowChangedName="BrandLookUpRowChanged" msprop:Generator_TablePropName="BrandLookUp" msprop:Generator_RowDeletingName="BrandLookUpRowDeleting" msprop:Generator_RowChangingName="BrandLookUpRowChanging" msprop:Generator_RowEvHandlerName="BrandLookUpRowChangeEventHandler" msprop:Generator_RowDeletedName="BrandLookUpRowDeleted" msprop:Generator_RowClassName="BrandLookUpRow" msprop:Generator_UserTableName="BrandLookUp" msprop:Generator_RowEvArgName="BrandLookUpRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -261,7 +261,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="product" msprop:Generator_TableClassName="productDataTable" msprop:Generator_TableVarName="tableproduct" msprop:Generator_TablePropName="product" msprop:Generator_RowDeletingName="productRowDeleting" msprop:Generator_RowChangingName="productRowChanging" msprop:Generator_RowEvHandlerName="productRowChangeEventHandler" msprop:Generator_RowDeletedName="productRowDeleted" msprop:Generator_UserTableName="product" msprop:Generator_RowChangedName="productRowChanged" msprop:Generator_RowEvArgName="productRowChangeEvent" msprop:Generator_RowClassName="productRow">
+        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_TablePropName="Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_RowClassName="ProductRow" msprop:Generator_UserTableName="Product" msprop:Generator_RowEvArgName="ProductRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -289,7 +289,7 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="inventory" msprop:Generator_TableClassName="inventoryDataTable" msprop:Generator_TableVarName="tableinventory" msprop:Generator_TablePropName="inventory" msprop:Generator_RowDeletingName="inventoryRowDeleting" msprop:Generator_RowChangingName="inventoryRowChanging" msprop:Generator_RowEvHandlerName="inventoryRowChangeEventHandler" msprop:Generator_RowDeletedName="inventoryRowDeleted" msprop:Generator_UserTableName="inventory" msprop:Generator_RowChangedName="inventoryRowChanged" msprop:Generator_RowEvArgName="inventoryRowChangeEvent" msprop:Generator_RowClassName="inventoryRow">
+        <xs:element name="Inventory" msprop:Generator_TableClassName="InventoryDataTable" msprop:Generator_TableVarName="tableInventory" msprop:Generator_RowChangedName="InventoryRowChanged" msprop:Generator_TablePropName="Inventory" msprop:Generator_RowDeletingName="InventoryRowDeleting" msprop:Generator_RowChangingName="InventoryRowChanging" msprop:Generator_RowEvHandlerName="InventoryRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryRowDeleted" msprop:Generator_RowClassName="InventoryRow" msprop:Generator_UserTableName="Inventory" msprop:Generator_RowEvArgName="InventoryRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -317,21 +317,21 @@ SELECT id, invQuantity, invSize, invMeasure, invPrice, productID FROM inventory 
       <xs:selector xpath=".//mstns:BrandLookUp" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
-    <xs:unique name="product_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:product" />
+    <xs:unique name="Product_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Product" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
-    <xs:unique name="inventory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:inventory" />
+    <xs:unique name="Inventory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Inventory" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="inventory_fk_productID" msdata:parent="BrandLookUp" msdata:child="inventory" msdata:parentkey="id" msdata:childkey="productID" msprop:Generator_UserChildTable="inventory" msprop:Generator_ChildPropName="GetinventoryRows" msprop:Generator_UserRelationName="inventory_fk_productID" msprop:Generator_ParentPropName="BrandLookUpRow" msprop:Generator_RelationVarName="relationinventory_fk_productID" msprop:Generator_UserParentTable="BrandLookUp" />
-      <msdata:Relationship name="inventory_fk_productID1" msdata:parent="product" msdata:child="inventory" msdata:parentkey="id" msdata:childkey="productID" msprop:Generator_UserChildTable="inventory" msprop:Generator_ChildPropName="GetinventoryRows" msprop:Generator_UserRelationName="inventory_fk_productID1" msprop:Generator_ParentPropName="productRow" msprop:Generator_RelationVarName="relationinventory_fk_productID1" msprop:Generator_UserParentTable="product" />
-      <msdata:Relationship name="inventory_fk_productID2" msdata:parent="BrandLookUp" msdata:child="InventoryLookUp" msdata:parentkey="id" msdata:childkey="productID" msprop:Generator_UserChildTable="InventoryLookUp" msprop:Generator_ChildPropName="GetInventoryLookUpRows" msprop:Generator_UserRelationName="inventory_fk_productID2" msprop:Generator_ParentPropName="BrandLookUpRow" msprop:Generator_RelationVarName="relationinventory_fk_productID2" msprop:Generator_UserParentTable="BrandLookUp" />
-      <msdata:Relationship name="inventory_fk_productID3" msdata:parent="product" msdata:child="InventoryLookUp" msdata:parentkey="id" msdata:childkey="productID" msprop:Generator_UserChildTable="InventoryLookUp" msprop:Generator_ChildPropName="GetInventoryLookUpRows" msprop:Generator_UserRelationName="inventory_fk_productID3" msprop:Generator_ParentPropName="productRow" msprop:Generator_RelationVarName="relationinventory_fk_productID3" msprop:Generator_UserParentTable="product" />
+      <msdata:Relationship name="inventory_fk_productID" msdata:parent="BrandLookUp" msdata:child="Inventory" msdata:parentkey="id" msdata:childkey="productID" msprop:Generator_UserChildTable="Inventory" msprop:Generator_ChildPropName="GetInventoryRows" msprop:Generator_UserRelationName="inventory_fk_productID" msprop:Generator_RelationVarName="relationinventory_fk_productID" msprop:Generator_UserParentTable="BrandLookUp" msprop:Generator_ParentPropName="BrandLookUpRow" />
+      <msdata:Relationship name="inventory_fk_productID1" msdata:parent="Product" msdata:child="Inventory" msdata:parentkey="id" msdata:childkey="productID" msprop:Generator_UserChildTable="Inventory" msprop:Generator_ChildPropName="GetInventoryRows" msprop:Generator_UserRelationName="inventory_fk_productID1" msprop:Generator_RelationVarName="relationinventory_fk_productID1" msprop:Generator_UserParentTable="Product" msprop:Generator_ParentPropName="productRow" />
+      <msdata:Relationship name="inventory_fk_productID2" msdata:parent="BrandLookUp" msdata:child="InventoryLookUp" msdata:parentkey="id" msdata:childkey="productID" msprop:Generator_UserChildTable="InventoryLookUp" msprop:Generator_ChildPropName="GetInventoryLookUpRows" msprop:Generator_UserRelationName="inventory_fk_productID2" msprop:Generator_RelationVarName="relationinventory_fk_productID2" msprop:Generator_UserParentTable="BrandLookUp" msprop:Generator_ParentPropName="BrandLookUpRow" />
+      <msdata:Relationship name="inventory_fk_productID3" msdata:parent="Product" msdata:child="InventoryLookUp" msdata:parentkey="id" msdata:childkey="productID" msprop:Generator_UserChildTable="InventoryLookUp" msprop:Generator_ChildPropName="GetInventoryLookUpRows" msprop:Generator_UserRelationName="inventory_fk_productID3" msprop:Generator_RelationVarName="relationinventory_fk_productID3" msprop:Generator_UserParentTable="Product" msprop:Generator_ParentPropName="ProductRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
