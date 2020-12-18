@@ -94,7 +94,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Edit New Order</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center" style="height: 1258px">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
