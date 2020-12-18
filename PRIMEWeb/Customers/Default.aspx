@@ -14,6 +14,10 @@
         .breadcrumb, #navbar {
             margin: 10px;
         }
+
+        label{
+            width:100%;
+        }
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
