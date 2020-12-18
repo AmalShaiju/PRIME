@@ -93,7 +93,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Services</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">

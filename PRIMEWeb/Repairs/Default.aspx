@@ -61,18 +61,6 @@
             margin: 5px;
         }
 
-        /*.auto-style1 {
-            position: relative;
-            width: 100%;
-            -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-            max-width: 50%;
-            left: 0px;
-            top: 0px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }*/
-
         #confirm-outer {
             width: 100%;
             position: absolute;
@@ -129,7 +117,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Repairs</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
 
         <div class="container rounded-lg">
