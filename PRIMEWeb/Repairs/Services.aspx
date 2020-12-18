@@ -154,7 +154,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Service Price:</label>
-                                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" ToolTip="service price"></asp:TextBox>
+                                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" ToolTip="service price" TextMode="Number"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">

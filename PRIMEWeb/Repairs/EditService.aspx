@@ -206,7 +206,7 @@
                 </div>
                 <div class="form-row">
                     <asp:Panel ID="pnlBtnRepairs" CssClass="col-md-12" runat="server">
-                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Service" CssClass="btn btn-success" Text="Save" OnClick="btnCreate_Click" ToolTip="Create Service" Width="100px" />
+                        <asp:Button ID="btnCreate" runat="server" aria-label="Create Service" CssClass="btn btn-success" Text="Save" OnClick="btnCreate_Click" ToolTip="Create Service" Width="100px" OnClientClick="return confirm('Are you sure you want to edit this record ?');" />
                         <input id="btnClear" class="btn btn-secondary" type="reset" value="Clear Form" aria-label="Clear Form" width="100px" />
                         <a class="btn btn-danger" href="/Repairs/Services.aspx" role="button" aria-label="Cancel Creating Service" style="width: 100px;">Cancel</a>
                     </asp:Panel>

@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using PRIMELibrary;
 using PRIMELibrary.RepairsDataSetTableAdapters;
+using System.Drawing;
 
 namespace PRIMEWeb.Repairs
 {
@@ -33,12 +34,22 @@ namespace PRIMEWeb.Repairs
             Session["RepairCriteria"] = null;
             Session["ServiceCriteria"] = null;
 
-            //refresh the dataset, so the newly created record is shown in index
-            DetailWarrantyLookUpTableAdapter daWarrenty = new DetailWarrantyLookUpTableAdapter();
-            daWarrenty.Fill(RepairsDataSet.DetailWarrantyLookUp);
+            try
+            {
+                //refresh the dataset, so the newly created record is shown in index
+                DetailWarrantyLookUpTableAdapter daWarrenty = new DetailWarrantyLookUpTableAdapter();
+                daWarrenty.Fill(RepairsDataSet.DetailWarrantyLookUp);
 
-            rows = RepairsDataSet.DetailWarrantyLookUp.Select(); //get records
-            DisplayWarrentyeTable();
+                rows = RepairsDataSet.DetailWarrantyLookUp.Select(); //get records
+                DisplayWarrentyeTable();
+            }
+            catch
+            {
+                this.Label1.Text = "&#x274C; Database Error,Please try again";
+                this.Label1.ForeColor = Color.Red;
+                return;
+            }
+            
         }
 
         // Filter Search btn 
@@ -69,36 +80,54 @@ namespace PRIMEWeb.Repairs
         //Display Method to fill tables
         private void DisplayWarrentyeTable()
         {
-            this.Label1.Text = "Records Found : " + rows.Length;
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Manufacturer");
-            dt.Columns.Add("Type");
-            dt.Columns.Add("Model");
-            dt.Columns.Add("Serial"); 
-            dt.Columns.Add("Issue"); 
-            dt.Columns.Add("Price");
-
-
-            DataRow dr = dt.NewRow();
-
-
-            foreach (DataRow r in rows) // loop through the static DataRow[] row since the records from filter are saved in them.
+            //no record after filter
+            if (rows.Length <= 0)
             {
-                DataRow nr = dt.NewRow();
-                nr[0] = r.ItemArray[0].ToString();
-                nr[3] = r.ItemArray[2].ToString();
-                nr[2] = r.ItemArray[1].ToString();
-                nr[1] = r.ItemArray[3].ToString();
-                nr[4] = r.ItemArray[4].ToString();
-                nr[5] = r.ItemArray[5].ToString();
+                this.Label1.Text = "No reecords Found";
+                this.Label1.ForeColor = Color.Red;
 
-                dt.Rows.Add(nr);
-                //this.GridView1.Columns.Add(hp);
             }
 
-            this.DetailGrid.DataSource = dt;
-            this.DetailGrid.DataBind();
+            this.Label1.Text = "Records Found : " + rows.Length;
+            try
+            {
+              
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Manufacturer");
+                dt.Columns.Add("Type");
+                dt.Columns.Add("Model");
+                dt.Columns.Add("Serial");
+                dt.Columns.Add("Issue");
+                dt.Columns.Add("Price");
+
+
+                DataRow dr = dt.NewRow();
+
+
+                foreach (DataRow r in rows) // loop through the static DataRow[] row since the records from filter are saved in them.
+                {
+                    DataRow nr = dt.NewRow();
+                    nr[0] = r.ItemArray[0].ToString();
+                    nr[3] = r.ItemArray[2].ToString();
+                    nr[2] = r.ItemArray[1].ToString();
+                    nr[1] = r.ItemArray[3].ToString();
+                    nr[4] = r.ItemArray[4].ToString();
+                    nr[5] = r.ItemArray[5].ToString();
+
+                    dt.Rows.Add(nr);
+                    //this.GridView1.Columns.Add(hp);
+                }
+
+                this.DetailGrid.DataSource = dt;
+                this.DetailGrid.DataBind();
+            }
+            catch
+            {
+                this.Label1.Text = "&#x274C; Database Error, Please Contact The system Administrator";
+                this.Label1.ForeColor = Color.Red;
+            }
+
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
