@@ -42,7 +42,7 @@ namespace PRIMEWeb.Orders
             this.gvOrders.DataBind();
 
             DataTable dt = new DataTable();
-            dt.Columns.Add("id");
+            dt.Columns.Add("ID");
             dt.Columns.Add("Product Number");
             dt.Columns.Add("Date Ordered");
             dt.Columns.Add("Paid");
@@ -154,7 +154,7 @@ namespace PRIMEWeb.Orders
                 try
                 {
                     DataRow record = dsOrder.prod_order.FindByid(id); // Find and add the record to tbe record variable
-                    record.Delete(); // Deletes the record in memory
+                    
 
                    // Deletes the record in memory
                                      //Send Id using cookie, more seecure I presume
@@ -168,10 +168,9 @@ namespace PRIMEWeb.Orders
                     Response.Cookies.Add(cID);
 
                     prod_orderTableAdapter daOrder = new prod_orderTableAdapter(); // table adapter to service table (Service adapter)
-                    daOrder.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
-                    dsOrder.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+                   
                     //Refresh the page to show the record being deleted
-                    Response.Redirect("DetailsArrivedOrder.aspx");
+                    Response.Redirect("DeleteConfirmationPOrders.aspx");
                 }
                 catch
                 {

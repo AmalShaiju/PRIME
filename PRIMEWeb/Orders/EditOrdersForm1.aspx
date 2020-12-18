@@ -111,7 +111,7 @@
                 <div class="form-row">
                     <div class="col-md-6 form-group">
                         <asp:Label class="context_help" runat="server">ID</asp:Label>
-                        <asp:TextBox ID="txtID" runat="server" placeholder="ID" CssClass="form-control" ReadOnly="false"></asp:TextBox>
+                        <asp:TextBox ID="txtID" runat="server" placeholder="ID" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                         <asp:Label ID="lblIdHelp" runat="server" Text="Place here a number from older system!" CssClass="lbl-help" Visible="False"></asp:Label>
                     </div>
                     <div class="col-md-6 form-group">

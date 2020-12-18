@@ -87,6 +87,8 @@
     <Content Include="Orders\ArrivedOrder.aspx" />
     <Content Include="Orders\ArrivedOrderDefaultPage.aspx" />
     <Content Include="Orders\Default.aspx" />
+    <Content Include="Orders\DeleteConfirmation.aspx" />
+    <Content Include="Orders\DeleteConfirmationPOrders.aspx" />
     <Content Include="Orders\DetailsArrivedOrder.aspx" />
     <Content Include="Orders\EditArrivedOrder.aspx" />
     <Content Include="Orders\EditOrdersForm1.aspx" />
@@ -180,6 +182,20 @@
     </Compile>
     <Compile Include="Orders\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\DeleteConfirmation.aspx.cs">
+      <DependentUpon>DeleteConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\DeleteConfirmation.aspx.designer.cs">
+      <DependentUpon>DeleteConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\DeleteConfirmationPOrders.aspx.cs">
+      <DependentUpon>DeleteConfirmationPOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orders\DeleteConfirmationPOrders.aspx.designer.cs">
+      <DependentUpon>DeleteConfirmationPOrders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Orders\DetailsArrivedOrder.aspx.cs">
       <DependentUpon>DetailsArrivedOrder.aspx</DependentUpon>

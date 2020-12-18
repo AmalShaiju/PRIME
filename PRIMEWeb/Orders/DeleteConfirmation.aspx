@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetailsArrivedOrder.aspx.cs" Inherits="PRIMEWeb.Orders.DetailsArrivedOrder" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DeleteConfirmation.aspx.cs" Inherits="PRIMEWeb.Orders.DeleteConfirmation" %>
 
 <!DOCTYPE html>
 
@@ -82,51 +82,12 @@
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
-                    <h1><asp:Label ID="lblTitle" runat="server">Order Details</asp:Label></h1>
-                    
-                 <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <asp:Label runat="server">ID</asp:Label>
-                        <asp:TextBox ID="txtID" runat="server" placeholder="ID" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <asp:Label runat="server">Invoice Number</asp:Label>
-                        <asp:TextBox ID="txtInvoiceNum" runat="server" placeholder="Invoice Number" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <asp:Label runat="server">Arrive Date</asp:Label>
-                        <asp:TextBox ID="txtArriveDate" runat="server" placeholder="Arrive Date" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <asp:Label runat="server">Number in Order</asp:Label>
-                        <asp:TextBox ID="txtNumInOrder" runat="server" placeholder="Number in Order" CssClass="form-control" TextMode="Number" ReadOnly="true"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <asp:Label runat="server">Price</asp:Label>
-                        <asp:TextBox ID="txtPrice" runat="server" placeholder="Price" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <asp:Label runat="server">Inventory ID</asp:Label>
-                        <asp:TextBox ID="txtInventoryID" runat="server" placeholder="InventoryID" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <asp:Label runat="server">Product Order ID</asp:Label>
-                        <asp:TextBox ID="txtProdOrderID" runat="server" placeholder="Prouct Order ID" CssClass="form-control" ReadOnly="true" ></asp:TextBox>
-                    </div>
-                    
-                </div>
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <asp:Button ID="btnEdit" runat="server" aria-label="Create Order" CssClass="btn btn-outline-primary" Text="Edit Order" OnClick="btnEdit_Click" />
-                        <a class="btn btn-outline-primary" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Go back to Orders page">Back to Orders</a>
-                    </div>
-                </div>
+                    <h1><asp:Label ID="lblTitle" runat="server">Order Delete</asp:Label></h1>
+                    <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
+                    <h4 class="alert-heading">Do you really want to delete this Order?</h4>   
+                    <a href="/Orders/ArrivedOrderDefaultPage.aspx" type="button" class="btn btn-secondary">Cancel</a>
+                    <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDeleteConfirm_Click" />
+                </asp:Panel>
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>
             </div>
         </div>

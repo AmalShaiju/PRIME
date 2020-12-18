@@ -44,7 +44,7 @@ namespace PRIMEWeb.Orders
             //dt.Columns.Add("Number in Order");
             //dt.Columns.Add("Price");
             dt.Columns.Add("Product Name and Brand");
-            //dt.Columns.Add("Product Order Number");
+            dt.Columns.Add("Product Order ID");
             dt.Columns.Add();
 
             foreach (DataRow r in rows)
@@ -56,7 +56,7 @@ namespace PRIMEWeb.Orders
                 //record[3] = r.ItemArray[3].ToString();
                 //record[4] = Convert.ToDecimal(r.ItemArray[4].ToString()) + "$";
                 record[3] = r.ItemArray[7].ToString();
-                //record[4] = r.ItemArray[6].ToString();
+                record[4] = r.ItemArray[6].ToString();
                 
 
                 dt.Rows.Add(record);
@@ -108,7 +108,7 @@ namespace PRIMEWeb.Orders
         {
             if (e.Row.RowIndex == -1)
             {
-                e.Row.Cells[4].Text = String.Empty;
+                e.Row.Cells[5].Text = String.Empty;
                 //Clear the header for Edit btn
                 return;  //skip the header
             }
@@ -116,7 +116,7 @@ namespace PRIMEWeb.Orders
             //hiding id column
             this.gv_Orders.HeaderRow.Cells[0].Visible = false;
             e.Row.Cells[0].Visible = false;
-            e.Row.Cells[4].Attributes["width"] = "310px";
+            e.Row.Cells[5].Attributes["width"] = "310px";
 
 
 
@@ -127,7 +127,7 @@ namespace PRIMEWeb.Orders
             btnEdit.Attributes.Add("value", e.Row.Cells[0].Text);
             btnEdit.Attributes.Add("aria-label", "Click to go to the edit page for this Order"); //set aria label
             btnEdit.ServerClick += new EventHandler(btnEdit_Click);  //click event handler
-            e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
+            e.Row.Cells[5].Controls.Add(btnEdit);  //add the btn
 
             //delete btn
             HtmlButton btnDelete = new HtmlButton();  //create delete btn
@@ -136,7 +136,7 @@ namespace PRIMEWeb.Orders
             btnDelete.Attributes.Add("value", e.Row.Cells[0].Text);
             btnDelete.Attributes.Add("aria-label", "Click to delete this Order"); //set aria label
             btnDelete.ServerClick += new EventHandler(btnDelete_Click);  //click event handler
-            e.Row.Cells[4].Controls.Add(btnDelete);  //add the btn
+            e.Row.Cells[5].Controls.Add(btnDelete);  //add the btn
             //details btn
 
             HtmlButton btnDetail = new HtmlButton();  //create detail btn
@@ -145,7 +145,7 @@ namespace PRIMEWeb.Orders
             btnDetail.Attributes.Add("value", e.Row.Cells[0].Text);
             btnDetail.Attributes.Add("aria-label", "Click to go to the detail page for this sale"); //set aria label
             btnDetail.ServerClick += new EventHandler(btnDetail_Click);  //click event handler
-            e.Row.Cells[4].Controls.Add(btnDetail);  //add the btn
+            e.Row.Cells[5].Controls.Add(btnDetail);  //add the btn
 
         }
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -171,7 +171,7 @@ namespace PRIMEWeb.Orders
                 try
                 {
                     DataRow record = dsOrder.on_orderCRUD.FindByid(id); // Find and add the record to tbe record variable
-                    record.Delete(); // Deletes the record in memory
+                    
                                      //Send Id using cookie, more seecure I presume
                     HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
                     cID.Value = id.ToString();
@@ -184,11 +184,10 @@ namespace PRIMEWeb.Orders
                      // Redirect the user to Edit page on btn click
 
                     on_orderTableAdapter daOrder = new on_orderTableAdapter(); // table adapter to service table (Service adapter)
-                    daOrder.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
-                    dsOrder.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
+                   
                     //Refresh the page to show the record being deleted
                     //Response.Redirect(Request.RawUrl);
-                    Response.Redirect("DetailsArrivedOrder.aspx");
+                    Response.Redirect("DeleteConfirmation.aspx");
                 }
                 catch
                 {
