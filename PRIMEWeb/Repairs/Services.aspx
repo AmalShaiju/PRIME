@@ -11,43 +11,55 @@
             background-color: #e0e0e0;
             line-height: 1;
         }
+
         .breadcrumb, #navbar {
             margin: 10px;
         }
+
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
             width: 130px;
         }
+
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;
             margin: 15px auto;
             padding: 15px;
         }
+
         h1 {
             text-align: center;
             padding: 10px 0;
         }
+
         .form-check-inline {
             margin-right: 2rem;
         }
+
         #divBtnSearch {
             text-align: right;
             margin-bottom: 1rem;
         }
+
         #btnClear {
             margin-left: 30px;
         }
+
         .table {
             margin: 30px auto 0 auto;
         }
-        .table td, .table th {
-            text-align: center;
-            vertical-align: middle;
-        }
+
+            .table td, .table th {
+                text-align: center;
+                vertical-align: middle;
+            }
+           
+
         td .btn {
-            width: 80px;
+            width: 70px;
+            margin: 0 5px;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -85,25 +97,30 @@
         </nav>
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
-                <div id="wrapper-inner" class="rounded-lg">
+                <div id="wrapper-inner" class="col-lg-11 rounded-lg">
                     <h1>Services</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Service" Text="Create New Service" PostBackUrl="/Repairs/NewService.aspx" />
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Service" Text="Create New Service" PostBackUrl="/Repairs/NewService.aspx" ToolTip="Create new service" />
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Services">
                         Filter Services
                     </button>
+                    <br />
+                    <br />
+                    <br />
+                    <strong> <asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Green" ToolTip="Status"></asp:Label></strong>
+                    <br />
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Service Name:</label>
-                                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" ToolTip="Service name"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Service Description:</label>
-                                        <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" ToolTip="service description"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -111,56 +128,25 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Service Price:</label>
-                                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" ToolTip="service price"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div id="divBtnSearch" class="col-md-6 align-self-end">
-                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-warning" Text="Apply Filter" OnClick="btnSearch_Click" ToolTip="Apply filter" />
                                     <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Service Name</th>
-                                <th scope="col">Service Description</th>
-                                <th scope="col">Service Price</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Oil Change</td>
-                                <td>Standard oil change for most makes and models.</td>
-                                <td>$25.50</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Service" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Service" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Winter Service</td>
-                                <td>Package deal with oil change and other winter preparation.</td>
-                                <td>$45.00</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Service" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Service" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Blade Sharpening</td>
-                                <td>Sharpening and balancing of standard cutting blade or chain.</td>
-                                <td>$15.00</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Service" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Service" Text="Delete" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                    <asp:GridView ID="GridView1" runat="server" CssClass="table" EmptyDataText="No Records Found" OnRowDataBound="GridView1_RowDataBound" GridLines="None" ToolTip="Service info grid">
+                        <EmptyDataTemplate>
+                            No Records Found
+                        </EmptyDataTemplate>
+                    </asp:GridView>
+                    <br />  
                 </div>
+
             </div>
         </div>
     </form>

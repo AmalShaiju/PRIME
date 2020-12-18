@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PRIMELibrary">
+      <HintPath>..\PRIMELibrary\bin\Debug\PRIMELibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -72,7 +75,11 @@
       <DependentUpon>Emmas.mdf</DependentUpon>
     </Content>
     <Content Include="CSS\bootstrap.css" />
+    <Content Include="CSS\wcag.css" />
     <Content Include="Customers\Default.aspx" />
+    <Content Include="Customers\DetailsCustomer.aspx" />
+    <Content Include="Customers\EditCustomer.aspx" />
+    <Content Include="Customers\EditEquipment.aspx" />
     <Content Include="Customers\NewCustomer.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Customers\Equipments.aspx" />
@@ -83,15 +90,24 @@
     <Content Include="Inventory\NewProduct.aspx" />
     <Content Include="Landing.aspx" />
     <Content Include="Repairs\Default.aspx" />
+    <Content Include="Repairs\Details.aspx" />
+    <Content Include="Repairs\EditRepair.aspx" />
+    <Content Include="Repairs\EditService.aspx" />
+    <Content Include="Repairs\images\question.png" />
     <Content Include="Repairs\NewRepair.aspx" />
     <Content Include="Repairs\NewService.aspx" />
+    <Content Include="Repairs\Readme.txt" />
     <Content Include="Repairs\Services.aspx" />
     <Content Include="Repairs\WarrantyReport.aspx" />
     <Content Include="Sales\Default.aspx" />
-    <Content Include="Sales\NewSale.aspx" />
+    <Content Include="Sales\SalesUpdate.aspx" />
     <Content Include="Sales\Report.aspx" />
+    <Content Include="Sales\SaleRecord.aspx" />
     <Content Include="Script\bootstrap.min.js" />
+    <Content Include="Script\help_text.js" />
     <Content Include="Script\jquery-3.5.1.min.js" />
+    <Content Include="Script\wcag.js" />
+    <Content Include="Script\service-help_text.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +117,27 @@
     </Compile>
     <Compile Include="Customers\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\DetailsCustomer.aspx.cs">
+      <DependentUpon>DetailsCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customers\DetailsCustomer.aspx.designer.cs">
+      <DependentUpon>DetailsCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\EditCustomer.aspx.cs">
+      <DependentUpon>EditCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customers\EditCustomer.aspx.designer.cs">
+      <DependentUpon>EditCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\EditEquipment.aspx.cs">
+      <DependentUpon>EditEquipment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customers\EditEquipment.aspx.designer.cs">
+      <DependentUpon>EditEquipment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customers\NewCustomer.aspx.cs">
       <DependentUpon>NewCustomer.aspx</DependentUpon>
@@ -173,6 +210,27 @@
     <Compile Include="Repairs\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Repairs\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repairs\EditRepair.aspx.cs">
+      <DependentUpon>EditRepair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\EditRepair.aspx.designer.cs">
+      <DependentUpon>EditRepair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repairs\EditService.aspx.cs">
+      <DependentUpon>EditService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repairs\EditService.aspx.designer.cs">
+      <DependentUpon>EditService.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Repairs\NewRepair.aspx.cs">
       <DependentUpon>NewRepair.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -189,7 +247,6 @@
     </Compile>
     <Compile Include="Repairs\Services.aspx.cs">
       <DependentUpon>Services.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Repairs\Services.aspx.designer.cs">
       <DependentUpon>Services.aspx</DependentUpon>
@@ -208,12 +265,12 @@
     <Compile Include="Sales\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Sales\NewSale.aspx.cs">
-      <DependentUpon>NewSale.aspx</DependentUpon>
+    <Compile Include="Sales\SalesUpdate.aspx.cs">
+      <DependentUpon>SalesUpdate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sales\NewSale.aspx.designer.cs">
-      <DependentUpon>NewSale.aspx</DependentUpon>
+    <Compile Include="Sales\SalesUpdate.aspx.designer.cs">
+      <DependentUpon>SalesUpdate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sales\Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
@@ -221,6 +278,13 @@
     </Compile>
     <Compile Include="Sales\Report.aspx.designer.cs">
       <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SaleRecord.aspx.cs">
+      <DependentUpon>SaleRecord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\SaleRecord.aspx.designer.cs">
+      <DependentUpon>SaleRecord.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
