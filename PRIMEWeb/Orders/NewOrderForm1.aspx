@@ -142,7 +142,7 @@
                 <div class="form-row">
                     <div class="col-md-12">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Create Order" CssClass="btn btn-outline-primary" Text="Create Order" OnClick="btnCreate_Click" />
-                        <input id="btnClear" type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
+                               <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-secondary btn-dependent-page" Text="Clear Form" UseSubmitBehavior="False" OnClick="btnClear_Click" />
                         <a class="btn btn-danger" href="/Orders/Default.aspx" role="button" aria-label="Cancel Creating">Cancel</a>
                     </div>
                 </div>

@@ -151,7 +151,7 @@
                 <div class="form-row">
                     <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Add Info About Arrived Order" CssClass="btn btn-outline-primary" Text="Add the Order"   OnClick="btnCreate_Click"/>
-                        <input id="btnClear" type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
+                        <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-secondary btn-dependent-page" Text="Clear Form" UseSubmitBehavior="False" OnClick="btnClear_Click" />
                         <a class="btn btn-danger" href="/Orders/ArrivedOrderDefaultPage.aspx" role="button" aria-label="Cancel Adding Arrived Order Form">Cancel</a>
                     </asp:Panel>
                 </div>
