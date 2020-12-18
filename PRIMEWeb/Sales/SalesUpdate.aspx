@@ -115,7 +115,7 @@
                     <li class="breadcrumb-item active" aria-current="page"><%=lblTitle.Text %></li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <asp:ScriptManager ID="smgOrder" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="upnOrder" class="container rounded-lg row justify-content-sm-center" runat="server">

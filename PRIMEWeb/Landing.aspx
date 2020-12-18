@@ -45,7 +45,7 @@
             <ol class="collapse navbar-collapse breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
             </ol>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container">
             <div id="wrapper" class="row align-items-center justify-content-sm-center">

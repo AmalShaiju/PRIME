@@ -33,12 +33,18 @@ namespace PRIMEWeb.Sales
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             if (Request.QueryString["Mode"] == "Edit")
             {
-                //if employee doesn't match redirect to details
-
                 edit = true;
                 receiptID = Request.QueryString["ID"];
+
+                if (!User.IsInRole("Admin") && ddlEmployee.SelectedValue != User.Identity.Name)
+                    Response.Redirect("SaleRecord.aspx?ID=" + receiptID);
+                //if not admin nor creator, redirect to details
+
                 lblTitle.Text = "Edit Sale";
                 btnModify.Text = "Save Changes";
                 btnModify.Attributes["aria-label"] = "Save changes made for this sale along with the orders";
@@ -312,6 +318,13 @@ namespace PRIMEWeb.Sales
                         r[0].ToString())
                 );
             ddlProduct.SelectedIndex = 0; //make Select a Product as default
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

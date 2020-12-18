@@ -19,7 +19,6 @@ namespace PRIMEWeb.Inventory
         {
             dsInventory = new EmmasDataSet();
 
-
             try
             {
                 inventoryTableAdapter daInventory = new inventoryTableAdapter();
@@ -27,9 +26,13 @@ namespace PRIMEWeb.Inventory
             }
             catch { }
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-          InventoryLookUpTableAdapter dainventoryLookUpTable = new InventoryLookUpTableAdapter();
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
+            InventoryLookUpTableAdapter dainventoryLookUpTable = new InventoryLookUpTableAdapter();
             dainventoryLookUpTable.Fill(dsInventory.InventoryLookUp);
             id = Convert.ToInt32(Session["InventoryId"]);
             Label1.Text = Session["InventoryId"].ToString();
@@ -104,6 +107,13 @@ namespace PRIMEWeb.Inventory
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         {
              lblMeasuerHelp.Visible = lblProducthelp.Visible = lblQuantityuHelp.Visible = lblSizeHelp.Visible = lblPriceHelp.Visible = cboHelp.Checked;
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

@@ -18,19 +18,14 @@ namespace PRIMEWeb.Inventory
         static NewItem()
         {
             dsInventory = new EmmasDataSet();
-          
-
-            try
-            {
-
-            }
-            catch { }
         }
 
-      
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(this.IsPostBack)
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
+            if (this.IsPostBack)
             {
                 return;
             }
@@ -39,15 +34,12 @@ namespace PRIMEWeb.Inventory
 
             daInventory.Fill(dsInventory.InventoryLookUp);
             daProduct.Fill(dsInventory.product);
-
         }
 
         protected void btnAddItem_Click(object sender, EventArgs e)
         {
             try
             {
-
-
                 DataRow Inventorydata = dsInventory.inventory.NewRow(); // Create a new row of service_order table in memory
                 //update record with user's input
                 Inventorydata[5] = this.ddlProducts.SelectedValue;
@@ -77,11 +69,6 @@ namespace PRIMEWeb.Inventory
             {
                 Label1.Text = "Failed";
             }
-
-            
-            
-
-           
         }
         private static int id;
         protected void ddlProducts_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,17 +91,19 @@ namespace PRIMEWeb.Inventory
                     this.txtBrand.Text = r.ItemArray[3].ToString();
                     this.txtDescription.Text = r.ItemArray[2].ToString();
                 }
-               
-
             }
-
-
-
         }
 
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         {
             lblPriceHelp.Visible = lblBrandHelp.Visible = lblDescriptionHelp.Visible = lblMeasuerHelp.Visible = lblProducthelp.Visible = lblQuantityuHelp.Visible= lblSizeHelp.Visible = cboHelp.Checked;
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }
