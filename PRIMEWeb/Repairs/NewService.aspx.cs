@@ -86,32 +86,26 @@ namespace PRIMEWeb.Repairs
 
         }
 
-        //protected void cboHelp_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    lblServiceDescription.Visible = lblServiceName.Visible = lblServicePrice.Visible 
-        //       = cboHelp.Checked;
-        //}
-
-        //method to validate fields
+      
 
         //method to validate fields
         private bool Servicevalidation()
         {
             bool control = true;
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch( Math.Round(Convert.ToDecimal(this.txtPrice.Text)).ToString(), "^[0-9]*$"))
+            if (this.txtPrice.Text != "")
             {
-                this.lblPriceVal.Visible = true;
-                this.lblPriceVal.Text = "*  Please Enter a number (Eg: $24)";
-                control = false;
+                if (!System.Text.RegularExpressions.Regex.IsMatch(Math.Round(Convert.ToDecimal(this.txtPrice.Text)).ToString(), "^[0-9]*$"))
+                {
+                    this.lblPriceVal.Visible = true;
+                    this.lblPriceVal.Text = "*  Please Enter a number (Eg: $24)";
+                    control = false;
 
+                }
+                else
+                {
+                    this.lblPriceVal.Visible = false;
+                }
             }
-            else
-            {
-                this.lblPriceVal.Visible = false;
-            }
-
-           
 
             if (control == true)
             {
@@ -119,6 +113,11 @@ namespace PRIMEWeb.Repairs
             }
 
             return control;
+        }
+
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            this.lblServiceName.Visible = this.lblServiceDesc.Visible = this.lblServicePrice.Visible = cboHelp.Checked;
         }
     }
 }
