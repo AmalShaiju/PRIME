@@ -84,8 +84,10 @@
     <Content Include="Default.aspx" />
     <Content Include="Customers\Equipments.aspx" />
     <Content Include="Customers\NewEquipment.aspx" />
+    <Content Include="Inventory\EditItem.aspx" />
     <Content Include="Inventory\NewItem.aspx" />
     <Content Include="Inventory\Default.aspx" />
+    <Content Include="Inventory\NewProduct.aspx" />
     <Content Include="Landing.aspx" />
     <Content Include="Repairs\Default.aspx" />
     <Content Include="Repairs\Details.aspx" />
@@ -165,6 +167,13 @@
     <Compile Include="Customers\NewEquipment.aspx.designer.cs">
       <DependentUpon>NewEquipment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Inventory\EditItem.aspx.cs">
+      <DependentUpon>EditItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inventory\EditItem.aspx.designer.cs">
+      <DependentUpon>EditItem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Inventory\NewItem.aspx.cs">
       <DependentUpon>NewItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -178,6 +187,13 @@
     </Compile>
     <Compile Include="Inventory\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\NewProduct.aspx.cs">
+      <DependentUpon>NewProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inventory\NewProduct.aspx.designer.cs">
+      <DependentUpon>NewProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Landing.aspx.cs">
       <DependentUpon>Landing.aspx</DependentUpon>
@@ -280,7 +296,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PRIMELibrary\PRIMELibrary.csproj">
+      <Project>{6a140611-c542-4f15-b737-2b7c5a4f427e}</Project>
+      <Name>PRIMELibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

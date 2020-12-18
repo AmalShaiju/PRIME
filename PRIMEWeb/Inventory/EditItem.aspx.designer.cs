@@ -11,7 +11,7 @@ namespace PRIMEWeb.Inventory
 {
 
 
-    public partial class NewItem
+    public partial class EditItem
     {
 
         /// <summary>
@@ -123,15 +123,6 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
 
         /// <summary>
-        /// lblDescriptionHelp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescriptionHelp;
-
-        /// <summary>
         /// txtBrand control.
         /// </summary>
         /// <remarks>
@@ -139,15 +130,6 @@ namespace PRIMEWeb.Inventory
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBrand;
-
-        /// <summary>
-        /// lblBrandHelp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBrandHelp;
 
         /// <summary>
         /// txtPrice control.
@@ -168,15 +150,6 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.Label lblPriceHelp;
 
         /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-
-        /// <summary>
         /// pnlBtnItems control.
         /// </summary>
         /// <remarks>
@@ -195,15 +168,6 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.Button btnAddItem;
 
         /// <summary>
-        /// ObjectDataSource3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource3;
-
-        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -213,21 +177,12 @@ namespace PRIMEWeb.Inventory
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// ObjectDataSource2 control.
+        /// inventorylookup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource2;
-
-        /// <summary>
-        /// ObjectDataSource4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource4;
+        protected global::System.Web.UI.WebControls.ObjectDataSource inventorylookup;
     }
 }
