@@ -110,6 +110,8 @@
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmNewRepair" runat="server" class="was-validated">
@@ -276,7 +278,7 @@
             <div class="form-row">
                 <asp:Panel ID="pnlBtnRepairs" CssClass="col-md-12" runat="server">
                     <asp:Button ID="btnCreate" runat="server" aria-label="Create Repair" CssClass="btn btn-success" Text="Create" OnClick="btnCreate_Click" ToolTip="Create Repair" Width="100px" />
-                    <input class="btn btn-secondary" type="reset" value="Clear Form" aria-label="Clear Form" width="100px" />
+                    <input id="btnClear" class="btn btn-secondary" type="reset" value="Clear Form" aria-label="Clear Form" width="100px" />
                     <a class="btn btn-danger" href="/Repairs/" role="button" aria-label="Cancel Creating Sale" style="width: 100px;">Cancel</a><br />
 
                 </asp:Panel>

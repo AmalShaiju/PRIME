@@ -144,6 +144,7 @@
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    
 </head>
 <body>
     <form id="frmNewRepair" runat="server">
@@ -179,6 +180,7 @@
 
             <div id="wrapper-inner">
                 <h1>Repair Details</h1>
+                
                 <div style="margin: 20px 0px;">
                     <asp:Label ID="redirectMsg" runat="server" ForeColor="Green" Text="Label" Visible="False"></asp:Label>
                 </div>

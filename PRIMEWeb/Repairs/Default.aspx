@@ -83,6 +83,8 @@
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmRepairs" runat="server">
@@ -126,12 +128,18 @@
                 <div id="wrapper-inner" class="rounded-lg">
 
                     <h1>Repairs</h1>
-                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Repair" Text="Create New Repair" PostBackUrl="/Repairs/NewRepair.aspx" ToolTip="Create new repair" />
-                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Repairs">
+                    <div class="form-group form-control form-check form-check-inline">
+                        &nbsp;
+                        <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                        <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                    </div>
+                    <button id="btnFilter" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Repairs">
                         Filter Repairs
                     </button>
-                    <asp:Button ID="btnServices" runat="server" CssClass="btn btn-secondary" aria-label="Services" Text="Services" PostBackUrl="/Repairs/Services.aspx" ToolTip="Services" />
-                    <asp:Button ID="btnReport" runat="server" CssClass="btn btn-secondary" aria-label="Warranty Report" Text="Warranty Report" PostBackUrl="/Repairs/WarrantyReport.aspx" ToolTip="Warranty report" />
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Repair" Text="Create New Repair" PostBackUrl="/Repairs/NewRepair.aspx" ToolTip="Create new repair" />
+                    
+                    <asp:Button ID="btnServices" runat="server" CssClass="btn btn-secondary btn-dependent-page" aria-label="Services" Text="Services" PostBackUrl="/Repairs/Services.aspx" ToolTip="Services" />
+                    <asp:Button ID="btnReport" runat="server" CssClass="btn btn-secondary btn-dependent-page" aria-label="Warranty Report" Text="Warranty Report" PostBackUrl="/Repairs/WarrantyReport.aspx" ToolTip="Warranty report" />
                     <br />
                     <br />
                     <br />
