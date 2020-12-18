@@ -33,7 +33,7 @@ namespace PRIMEWeb.Orders
                 if (Request.Cookies["Action"] != null && Request.Cookies["Action"].Value == "Delete")
                 {
                     pnlDeleteConfirm.Visible = true;
-                    lblTitle.Text = "Delete Sale";
+                    lblTitle.Text = "Delete Order";
                 }
                 else
                 {

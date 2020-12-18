@@ -83,12 +83,14 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1><asp:Label ID="lblTitle" runat="server">Order Delete</asp:Label></h1>
-                    <hr />
+                    
+                    <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
+                        <hr />
                     <p>You will not be allowed to delete the this order if he has been assigned to the Arrived order.</p>
-                    <p>Please check out the Arrived Order page and delete the equipment record before doing so.</p>
+                    <p>Please check out the Arrived Order page and delete an Arrived order record before doing so.</p>
                     <p>Click the "Delete" button.</p>
                     <hr />
-                    <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
+                        <br />
                     <h4 class="alert-heading">Do you really want to delete this Order?</h4>   
                     <a href="/Orders/Default.aspx" type="button" class="btn btn-secondary">Cancel</a>
                     <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDeleteConfirm_Click" />
