@@ -22,6 +22,9 @@ namespace PRIMEWeb.Sales
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             try
             {
                 dsSales.Clear();
@@ -66,10 +69,12 @@ namespace PRIMEWeb.Sales
             {
                 btnStatus.InnerText = "Paid";
 
-                //if (not admin)
-                btnStatus.Attributes.Add("disabled", "disabled");
-                btnStatus.Attributes.Add("aria-label", "Click to set this sale as unpaid");
-                //set aria label
+                if (!User.IsInRole("Admin"))
+                {
+                    btnStatus.Attributes.Add("disabled", "disabled");
+                    btnStatus.Attributes.Add("aria-label", "Click to set this sale as unpaid");
+                    //set aria label
+                }
             }
             else
             {
@@ -108,12 +113,12 @@ namespace PRIMEWeb.Sales
             btnDelete.InnerText = "Delete";  //set text
             btnDelete.HRef = "SaleRecord.aspx?ID=" + e.Row.Cells[4].Text + "&Delete=1";
                 //redirect to delete page
-
-            /*
-            //if (not admin)
-            btnDelete.Visible = false;
-            btnDelete.Attributes.Add("disabled", "disabled");
-            */
+                
+            if (!User.IsInRole("Admin"))
+            {
+                btnDelete.Visible = false;
+                btnDelete.Attributes.Add("disabled", "disabled");
+            }
 
             e.Row.Cells[4].Controls.Add(btnDetail);  //add the btn
             e.Row.Cells[4].Controls.Add(btnEdit);  //add the btn
@@ -164,8 +169,8 @@ namespace PRIMEWeb.Sales
                 dsSales.AcceptChanges();
             }
             btnStatus.InnerText = "Paid";
-            //if not admin
-            btnStatus.Attributes.Add("disabled", "disabled");
+            if (!User.IsInRole("Admin"))  //if not admin
+                btnStatus.Attributes.Add("disabled", "disabled");
         }
 
         //helpers
@@ -216,6 +221,13 @@ namespace PRIMEWeb.Sales
                     lblCount.Text = gvSales.Rows.Count.ToString() + " records found.";
                     break;
             }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

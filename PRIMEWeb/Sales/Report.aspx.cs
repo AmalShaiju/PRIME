@@ -23,6 +23,10 @@ namespace PRIMEWeb.Sales
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated || !User.IsInRole("Admin"))
+                    //if not admin or even not logged in
+                Response.Redirect("/");
+
             try
             {
                 dsSales.Clear();
@@ -188,6 +192,13 @@ namespace PRIMEWeb.Sales
                     lblOrdered.Text = dtBreakDown.Rows.Count.ToString() + " records displayed.";
                     break;
             }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }
