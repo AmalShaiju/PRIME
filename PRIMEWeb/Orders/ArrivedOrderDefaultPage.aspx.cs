@@ -172,12 +172,23 @@ namespace PRIMEWeb.Orders
                 {
                     DataRow record = dsOrder.on_orderCRUD.FindByid(id); // Find and add the record to tbe record variable
                     record.Delete(); // Deletes the record in memory
+                                     //Send Id using cookie, more seecure I presume
+                    HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+                    cID.Value = id.ToString();
+
+                    HttpCookie action = new HttpCookie("Action"); // Cokkie variable named cID to hold a value 
+                    action.Value = "Delete";
+
+                    Response.Cookies.Add(action);
+                    Response.Cookies.Add(cID);
+                     // Redirect the user to Edit page on btn click
 
                     on_orderTableAdapter daOrder = new on_orderTableAdapter(); // table adapter to service table (Service adapter)
                     daOrder.Update(record); // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
                     dsOrder.AcceptChanges(); // Call accept method on the dataset so it update the chanmges to the database
                     //Refresh the page to show the record being deleted
-                    Response.Redirect(Request.RawUrl);
+                    //Response.Redirect(Request.RawUrl);
+                    Response.Redirect("DetailsArrivedOrder.aspx");
                 }
                 catch
                 {
@@ -209,6 +220,15 @@ namespace PRIMEWeb.Orders
             {
                 //Send Id using cookie, more seecure I presume
                 HttpCookie cID = new HttpCookie("ID"); // Cokkie variable named cID to hold a value 
+                
+                cID.Value = id.ToString();
+
+                HttpCookie action = new HttpCookie("Action"); // Cokkie variable named cID to hold a value 
+                action.Value = "Details";
+
+                Response.Cookies.Add(action);
+                
+                
                 cID.Value = id.ToString();
                 Response.Cookies.Add(cID);
                 Response.Redirect("DetailsArrivedOrder.aspx"); // Redirect the user to Edit page on btn click

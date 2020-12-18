@@ -83,7 +83,16 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Orders</h1>
-
+                    <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
+                    <h4 class="alert-heading">Do you really want to delete this Order?</h4>
+                    <hr />
+                   
+                    
+                    
+                    <hr />
+                    <a href="/Orders/ArrivedOrderDefaultPage.aspx" type="button" class="btn btn-secondary">Cancel</a>
+                    <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDeleteConfirm_Click" />
+                </asp:Panel>
                  <div class="form-row">
                     <div class="col-md-6 form-group">
                         <asp:Label runat="server">ID</asp:Label>
