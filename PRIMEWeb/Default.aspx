@@ -48,6 +48,10 @@
             box-shadow: none;
         }
 
+        #lblMessage {
+            color: red;
+        }
+
         #btnLogin {
             background-image: linear-gradient(to right, #25cefd, #6385fd, #786bfe, #b625ff);
             border: 2px solid #fff;
@@ -77,7 +81,8 @@
                 <div class="form-group">
                     <asp:TextBox ID="txtPass" runat="server" placeholder="Password" required="required" CssClass="form-control" TextMode="Password"></asp:TextBox>
                 </div>
-                <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary rounded-pill" Text="LOGIN" PostBackUrl="~/Landing.aspx" />
+                <asp:Label ID="lblMessage" runat="server" Visible="False"></asp:Label>
+                <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary rounded-pill" Text="LOGIN" OnClick="btnLogin_Click" />
             </form>
         </div>
     </div>

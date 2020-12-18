@@ -392,6 +392,7 @@
     <Compile Include="Sales\SaleRecord.aspx.designer.cs">
       <DependentUpon>SaleRecord.aspx</DependentUpon>
     </Compile>
+    <Compile Include="StartupOWIN.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
