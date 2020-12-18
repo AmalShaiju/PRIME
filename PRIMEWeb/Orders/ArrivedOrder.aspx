@@ -58,7 +58,6 @@
             margin: 0 10px;
         }
     </style>
-    
 </head>
 <body>
     <form id="frmNewItem" runat="server"  class="was-validated">

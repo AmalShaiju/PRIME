@@ -66,12 +66,18 @@
             margin-bottom: 20px;
         }
 
-            #pnlBtnItems input, #pnlBtnItems a {
-                margin: 0 10px;
-            }
+        #pnlBtnItems input, #pnlBtnItems a {
+            margin: 0 10px;
+        }
+        label
+        {
+            width: 100%;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmNewItem" runat="server" class="was-validated">
@@ -107,8 +113,12 @@
             <div id="wrapper-inner" class="col-lg-9">
                 <h1>Add New Product</h1>
                 <div class="form-group form-control form-check form-check-inline">
+                    &nbsp;
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design</label>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
                     <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
-                    <label id="help" for="cboHelp">Check this to display detailed instruction on this form.</label>
+                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form</label>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
@@ -188,9 +198,9 @@
                     <asp:Panel ID="pnlBtnItems" CssClass="col-md-12" runat="server">
 
                         <br />
-                        <asp:Button ID="btnAddItem" runat="server" aria-label="Add the Inventory Item" CssClass="btn btn-outline-primary" OnClick="btnAddItem_Click" Text="Add the Item" />
-                        <input type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
-                        <a aria-label="Cancel Adding Inventory Item" class="btn btn-outline-primary" href="/Inventory/" role="button">Cancel</a>
+                        <asp:Button ID="btnCreate" runat="server" aria-label="Add the Inventory Item" CssClass="btn btn-outline-primary" OnClick="btnAddItem_Click" Text="Add the Item" />
+                        <input id="btnClear" type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form" />
+                        <a aria-label="Cancel Adding Inventory Item" class="btn btn-danger" href="/Inventory/" role="button">Cancel</a>
                         <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.inventoryTableAdapter" UpdateMethod="Update">
                             <DeleteParameters>
                                 <asp:Parameter Name="Original_id" Type="Int32" />

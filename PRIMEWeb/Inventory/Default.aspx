@@ -50,14 +50,19 @@
             margin-top: 31px;
             margin-bottom: 0;
         }
+        label{
+            width:100%;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmInventory" runat="server">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="breadcrumb">
-            z<a class="navbar-brand" href="/Landing.aspx">PRIME</a>
+            <a class="navbar-brand" href="/Landing.aspx">PRIME</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -93,10 +98,16 @@
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Inventory</h1>
-                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-secondary" aria-label="Add New Inventory Item" Text="Add New Item" PostBackUrl="/Inventory/NewItem.aspx" />
-                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Inventory Items">
+                    <div class="form-group form-control form-check form-check-inline">
+                        &nbsp;
+                        <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                        <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                    </div>
+                    <button id="btnFilter" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Inventory Items">
                         Filter Inventory
                     </button>
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Add New Inventory Item" Text="Add New Item" PostBackUrl="/Inventory/NewItem.aspx" />
+                    
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
@@ -132,7 +143,7 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                         <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
-                                        <asp:Button ID="Button1" runat="server" CssClass="btn btn-outline-secondary" OnClick="Button1_Click" style="width: 62px" Text="Clear" />
+                                        <asp:Button ID="btnClear" runat="server" CssClass="btn btn-outline-secondary" OnClick="Button1_Click" style="width: 62px" Text="Clear" />
 &nbsp;</div>
                             </div>
                         </div>

@@ -36,6 +36,9 @@
             text-align: center;
             vertical-align: middle;
         }
+        label {
+            width: 100%;
+        }
         td .btn {
             width: 80px;
             margin: 0 5px;

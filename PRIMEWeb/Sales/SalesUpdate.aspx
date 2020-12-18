@@ -71,6 +71,132 @@
         #pnlOrdersHelp {
             text-align: center;
         }
+        label{
+            width: 100%;
+        }
+                /*BODY TAG*/
+        .body-high {
+            background-color: #B5B5B5;
+            color:#000000;
+        }
+
+        /*NAVIGATION  CONTAINER*/
+        .nav-high{
+            border-bottom: solid 1.5px #000;
+        }
+
+        .border-high {
+            border: solid 1.5px #000;
+        }
+
+        .table-high {
+            border: solid 1.5px #000;
+        }
+
+
+        /*INFO and DELETE*/
+        .btn-danger-high {
+            color: #fff;
+            background-color: #AE191B;
+            border-color: #AE191B;
+        }
+
+        .btn-info-high {
+            color: #fff;
+            background-color: #6E1EE6;
+            border-color: #6E1EE6;
+        }
+
+
+
+        /*SEARCH and FILTER*/
+        #btnSearch, #btnFilter {
+            color: #fff;
+            background-color: #1B6AFE;
+            border-color: #1B6AFE;
+        }
+
+        #btnSearch:hover, #btnFilter:hover {
+            color: #fff;
+            background-color: #0152E9;
+            border-color: #0152E9;
+        }
+
+        #btnSearch.btn-search-high, #btnFilter.btn-search-high  {
+            color: #fff;
+            background-color: #014BD5;
+            border-color: #014BD5;
+        }
+
+        #btnSearch.btn-search-high:hover, #btnFilter.btn-search-high:hover {
+            color: #fff;
+            background-color: #012F84;
+            border-color: #012F84;
+        }
+
+
+        /*CLEAR button*/
+        #btnClear, .btn-dependent-page {
+            color: #fff;
+            background-color: #F07000;
+            border-color: #F07000;
+        }
+
+        #btnClear:hover, .btn-dependent-page:hover {
+            color: #fff;
+            background-color: #D16200;
+            border-color: #D16200;
+        }
+
+        #btnClear.btn-clear-high, .btn-dependent-page.btn-dependent-high {
+            color: #fff;
+            background-color: #BD5800;
+            border-color: #BD5800;
+        }
+
+        #btnClear.btn-clear-high:hover, .btn-dependent-page.btn-dependent-high:hover {
+            color: #fff;
+            background-color: #7A3900;
+            border-color: #7A3900;
+        }
+
+        /*CREATE BUTTON*/
+        #btnCreate, #btnModify {
+            color: #fff;
+            background-color: #777718;
+            border-color: #777718;
+        }
+
+        #btnCreate:hover, #btnModify:hover {
+            color: #fff;
+            background-color: #656515;
+            border-color: #656515;
+        }
+
+        #btnCreate.btn-create-high, #btnModify.btn-create-high {
+            color: #fff;
+            background-color: #5C5B05;
+            border-color: #5C5B05;
+        }
+
+        #btnCreate.btn-create-high:hover, #btnModify.btn-create-high:hover {
+            color: #fff;
+            background-color: #3C3C07;
+            border-color: #3C3C07;
+        }
+
+        /*LOGOUT BUTTON*/
+        #btnLogout.btn-logout-high {
+            color: #fff;
+            background-color: #DC3545;
+            border-color: #DC3545;
+        }
+
+        #btnLogout.btn-logout-high:hover {
+            color: #fff;
+            background-color: #C72334;
+            border-color: #C72334;
+        }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
@@ -86,6 +212,108 @@
             document.getElementById("<%=lsbOrders.ClientID%>").style.height = "calc(" + lsbHeight + "px + 7.5rem)";
         }
     </script>
+    <script type="text/javascript">
+        function SwitchCss(element) {
+            var btnDangers = document.getElementsByClassName("btn-danger");
+            var btnInfos = document.getElementsByClassName("btn-info");
+            var btnInfos = document.getElementsByClassName("btn-info");
+            var btnSearch = document.getElementById("btnSearch");
+            var btnFilter = document.getElementById("btnFilter");
+            var btnCreate = document.getElementById("btnCreate");
+            var btnClear = document.getElementById("btnClear");
+            var btnLogOut = document.getElementById("btnLogout");
+            var btnDependents = document.getElementsByClassName("btn btn-secondary btn-dependent-page");
+            var body = document.getElementsByTagName("body");
+            var navigation = document.getElementsByTagName("nav");
+            var ol = document.getElementsByTagName("ol");
+            var container = document.getElementsByClassName("container");
+            var table = document.getElementsByClassName("table");
+            var createZicheng = document.getElementById("btnModify");
+
+            if (element.checked) {
+                btnLogOut.classList.add("btn-logout-high");
+                for (var i = 0; i < btnDangers.length; i++) {
+                    btnDangers[i].classList.add("btn-danger-high");
+                }
+
+                for (var i = 0; i < btnInfos.length; i++) {
+                    btnInfos[i].classList.add("btn-info-high");
+                }
+
+                for (var i = 0; i < btnDependents.length; i++) {
+                    btnDependents[i].classList.add("btn-dependent-high");
+                }
+
+                for (var i = 0; i < body.length; i++) {
+                    body[i].classList.add("body-high");
+                }
+
+                for (var i = 0; i < navigation.length; i++) {
+                    navigation[i].classList.add("nav-high");
+                }
+
+                for (var i = 0; i < ol.length; i++) {
+                    ol[i].classList.add("border-high");
+                }
+
+                for (var i = 0; i < container.length; i++) {
+                    container[i].classList.add("border-high");
+                }
+
+                for (var i = 0; i < table.length; i++) {
+                    table[i].classList.add("table-high");
+                }
+
+                btnSearch.classList.add("btn-search-high");
+                btnFilter.classList.add("btn-search-high");
+                btnCreate.classList.add("btn-create-high");
+                btnClear.classList.add("btn-clear-high");
+                createZicheng.classList.add("btn-create-high");
+            }
+            else {
+                btnLogOut.classList.remove("btn-logout-high");
+                for (var i = 0; i < btnDangers.length; i++) {
+                    btnDangers[i].classList.remove("btn-danger-high");
+                }
+
+                for (var i = 0; i < btnInfos.length; i++) {
+                    btnInfos[i].classList.remove("btn-info-high");
+                }
+
+                for (var i = 0; i < btnDependents.length; i++) {
+                    btnDependents[i].classList.remove("btn-dependent-high");
+                }
+
+                for (var i = 0; i < body.length; i++) {
+                    body[i].classList.remove("body-high");
+                }
+
+                for (var i = 0; i < navigation.length; i++) {
+                    navigation[i].classList.remove("nav-high");
+                }
+
+                for (var i = 0; i < ol.length; i++) {
+                    ol[i].classList.remove("border-high");
+                }
+
+                for (var i = 0; i < container.length; i++) {
+                    container[i].classList.remove("border-high");
+                }
+
+                for (var i = 0; i < table.length; i++) {
+                    table[i].classList.remove("table-high");
+                }
+
+                btnSearch.classList.remove("btn-search-high");
+                btnFilter.classList.remove("btn-search-high");
+                btnCreate.classList.remove("btn-create-high");
+                btnClear.classList.remove("btn-clear-high");
+                createZicheng.classList.remove("btn-create-high");
+            }
+        }
+    </script>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmSalesUpdate" runat="server" class="was-validated">
@@ -124,11 +352,14 @@
                     <asp:Label ID="lblTitle" runat="server" Text="Create New Sale"></asp:Label>
                 </h1>
                 <div class="col-lg-9">
+                    <h4>Sales Information</h4>
                     <div class="form-group form-control form-check form-check-inline">
+                        <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                        <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
                         <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
                         <label class="form-check-label" for="cboHelp">Check this checkbox to display detailed instruction on this form.</label>
                     </div>
-                    <h4>Sales Information</h4>
                     <div class="form-row">
                         <div class="col-md-6 form-group">
                             <asp:DropDownList ID="ddlCustomer" runat="server" CssClass="custom-select" required="required"></asp:DropDownList>
@@ -189,10 +420,10 @@
                     <div class="form-row">
                         <div id="divBtnOrder" class="col-md-12">
                             <asp:Button ID="btnModify" runat="server" aria-label="Create a new sale along with the orders" CssClass="btn btn-outline-primary" Text="Create Sale" UseSubmitBehavior="False" OnClick="btnModify_Click"/>
-                            <asp:Button ID="btnAddOrder" runat="server" aria-label="Add Order" CssClass="btn btn-outline-primary" Text="Add Order" OnClick="btnAddOrder_Click" />
-                            <asp:Button ID="btnDeleteOrder" runat="server" aria-label="Delete Order" CssClass="btn btn-outline-primary" Text="Delete Order" OnClick="btnDeleteOrder_Click" UseSubmitBehavior="False" />
-                            <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-outline-primary" Text="Clear Order Form" UseSubmitBehavior="False" OnClick="btnClearOrder_Click" />
-                            <a class="btn btn-outline-primary" href="/Sales/" role="button" aria-label="Cancel Creating Sale">Cancel</a>
+                            <asp:Button ID="btnAddOrder" runat="server" aria-label="Add Order" CssClass="btn btn-info" Text="Add Order" OnClick="btnAddOrder_Click" />
+                            <asp:Button ID="btnDeleteOrder" runat="server" aria-label="Delete Order" CssClass="btn btn-danger" Text="Delete Order" OnClick="btnDeleteOrder_Click" UseSubmitBehavior="False" />
+                            <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-secondary btn-dependent-page" Text="Clear Order Form" UseSubmitBehavior="False" OnClick="btnClearOrder_Click" />
+                            <a class="btn btn-danger" href="/Sales/" role="button" aria-label="Cancel Creating Sale">Cancel</a>
                         </div>
                     </div>
                     <asp:Panel ID="pnlOrdersHelp" runat="server" Visible="False">

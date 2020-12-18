@@ -32,6 +32,9 @@
             text-align: center;
             padding: 2rem 0;
         }
+        label {
+            width: 100%;
+        }
         .form-row .col-md-6 {
             padding: 0 15px;
         }

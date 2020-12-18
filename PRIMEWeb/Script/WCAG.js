@@ -13,6 +13,7 @@
     var ol = document.getElementsByTagName("ol");
     var container = document.getElementsByClassName("container");
     var table = document.getElementsByClassName("table");
+    var createZicheng = document.getElementById("btnModify");
 
     if (element.checked) {
         btnLogOut.classList.add("btn-logout-high");
@@ -52,7 +53,7 @@
         btnFilter.classList.add("btn-search-high");
         btnCreate.classList.add("btn-create-high");
         btnClear.classList.add("btn-clear-high");
-        
+        createZicheng.classList.add("btn-create-high");
     }
     else {
         btnLogOut.classList.remove("btn-logout-high");
@@ -92,6 +93,6 @@
         btnFilter.classList.remove("btn-search-high");
         btnCreate.classList.remove("btn-create-high");
         btnClear.classList.remove("btn-clear-high");
-        
+        createZicheng.classList.remove("btn-create-high");
     }
 }

@@ -58,6 +58,9 @@
         .col-md-12 input, .col-md-12 a {
             margin: 0 10px;
         }
+        label {
+            width: 100%;
+        }
     </style>
     <link href="/CSS/wcag.css" rel="stylesheet" />
     <script>

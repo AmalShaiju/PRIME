@@ -46,7 +46,7 @@
     border-color: #0152E9;
 }
 
-#btnSearch.btn-search-high, #btnFilter.btn-search-high {
+#btnSearch.btn-search-high, #btnFilter.btn-search-high  {
     color: #fff;
     background-color: #014BD5;
     border-color: #014BD5;
@@ -85,25 +85,25 @@
 }
 
 /*CREATE BUTTON*/
-#btnCreate {
+#btnCreate, #btnModify {
     color: #fff;
     background-color: #777718;
     border-color: #777718;
 }
 
-#btnCreate:hover {
+#btnCreate:hover, #btnModify:hover {
     color: #fff;
     background-color: #656515;
     border-color: #656515;
 }
 
-#btnCreate.btn-create-high {
+#btnCreate.btn-create-high, #btnModify.btn-create-high {
     color: #fff;
     background-color: #5C5B05;
     border-color: #5C5B05;
 }
 
-#btnCreate.btn-create-high:hover {
+#btnCreate.btn-create-high:hover, #btnModify.btn-create-high:hover {
     color: #fff;
     background-color: #3C3C07;
     border-color: #3C3C07;
