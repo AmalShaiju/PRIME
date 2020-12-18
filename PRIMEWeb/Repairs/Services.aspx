@@ -93,11 +93,11 @@
                     <li class="breadcrumb-item active" aria-current="page">Services</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
-                <div id="wrapper-inner" class="col-lg-11 rounded-lg">
+                <div id="wrapper-inner" class="col-lg-10 rounded-lg">
                     <h1>Services</h1>
                     <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Create New Service" Text="Create New Service" PostBackUrl="/Repairs/NewService.aspx" ToolTip="Create new service" />
                     <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Services">

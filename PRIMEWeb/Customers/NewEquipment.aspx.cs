@@ -27,7 +27,8 @@ namespace PRIMEWeb.Customers
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -76,6 +77,13 @@ namespace PRIMEWeb.Customers
             lblCustomer.Visible = lblManufacturer.Visible = lblModelHelp.Visible =
             lblSerialHelp.Visible = lblType.Visible =
             pnlEquipmentsHelp.Visible = cboHelp.Checked;
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

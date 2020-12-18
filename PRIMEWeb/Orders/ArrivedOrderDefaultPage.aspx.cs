@@ -19,10 +19,10 @@ namespace PRIMEWeb.Orders
         private static int id = -1;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
 
-            
-
-                dsOrder = new OrdersDataSet();
+            dsOrder = new OrdersDataSet();
             // on_orderTableAdapter daOrder = new on_orderTableAdapter();
                 on_orderCRUDTableAdapter daOrder = new on_orderCRUDTableAdapter();
                 
@@ -234,5 +234,11 @@ namespace PRIMEWeb.Orders
             }
         }
 
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
+        }
     }
 }

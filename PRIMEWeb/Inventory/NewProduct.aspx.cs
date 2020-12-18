@@ -14,25 +14,22 @@ namespace PRIMEWeb.Inventory
     {
         static EmmasDataSet dsInventory = new EmmasDataSet();
         private static DataRow[] rows;
+
         static NewProduct()
         {
             dsInventory = new EmmasDataSet();
             InventoryLookUpTableAdapter daInventory = new InventoryLookUpTableAdapter();
-
-
-
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
         }
 
         protected void btnAddItem_Click(object sender, EventArgs e)
         {
             try
             {
-
-
                 DataRow Inventorydata = dsInventory.product.NewRow(); // Create a new row of service_order table in memory
                                                                         //update record with user's input
 
@@ -68,6 +65,13 @@ namespace PRIMEWeb.Inventory
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         {
             lblIdHelp.Visible = lblDescHelp.Visible = lblBrandHelp.Visible = pnlProductssHelp.Visible = cboHelp.Checked;
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

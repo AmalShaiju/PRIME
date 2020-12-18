@@ -16,6 +16,9 @@ namespace PRIMEWeb.Orders
         private static int id = -1;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             try
             {
                 dsOrder = new OrdersDataSet();
@@ -67,6 +70,13 @@ namespace PRIMEWeb.Orders
                 Response.Cookies.Add(cID);
                 Response.Redirect("EditArrivedOrder.aspx"); // Redirect the user to Edit page on btn click
             }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

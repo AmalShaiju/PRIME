@@ -29,6 +29,9 @@ namespace PRIMEWeb.Repairs
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             Session["ServiceCriteria"] = null;
             Session["RepairCriteria"] = null;
 
@@ -50,9 +53,8 @@ namespace PRIMEWeb.Repairs
                 try
                 {
                     DataRow serviceOrder = RepairsDataSet.service_order.NewRow(); // Create a new row of service_order table in memory
-                                                                                  //update record with user's input
-                    serviceOrder[1] = this.txtDateIn.Text;
-                    serviceOrder[2] = this.txtDateOut.Text;
+                     
+                    //update record with user's input
                     serviceOrder[3] = this.txtIssue.Text;
                     if (this.radInWarranty.Checked)
                         serviceOrder[4] = 1;
@@ -86,14 +88,6 @@ namespace PRIMEWeb.Repairs
             }
         }
 
-        //protected void cboHelp_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    lblDateIn.Visible = lblDateOut.Visible = lblEmployee.Visible =
-        //       lblEquipment.Visible = lblIssue.Visible = lblRecipet.Visible =
-        //       lblService.Visible =  cboHelp.Checked;
-
-               
-        //}
 
         //method to validate fields
         private bool Repairvalidation()
@@ -101,20 +95,7 @@ namespace PRIMEWeb.Repairs
             bool control = true;
 
             this.Label1.Visible = true;
-            if(Convert.ToDateTime(this.txtDateIn.Text) > Convert.ToDateTime(this.txtDateOut.Text))
-            {
-                this.lblDateInVal.Visible = true;
-                this.lblDateInVal.Text = "* The date In should be before date out";
-                this.lblDateOutVal.Visible = true;
-                this.lblDateOutVal.Text = "* The date out should be after date in";
-                control = false;
-            }
-            else
-            {
-                this.lblDateOutVal.Visible = false;
-
-                this.lblDateInVal.Visible = false;
-            }
+        
 
            if(this.ddlReceipt.SelectedValue == "None")
             {
@@ -186,6 +167,19 @@ namespace PRIMEWeb.Repairs
             }
 
             return control;
+        }
+
+        protected void cboHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            this.lblEmployeeHelp.Visible = this.lblEquipmentHelp.Visible = this.lblIssueHelp.Visible = this.lblRecieptHelp.Visible = this.lblServiceHelp.Visible = lblWarrantyHelp.Visible = cboHelp.Checked;
+
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

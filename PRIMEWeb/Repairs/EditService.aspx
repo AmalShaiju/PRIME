@@ -131,15 +131,19 @@
                     <li class="breadcrumb-item active" aria-current="page">Create New Service</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9">
-                <%-- <div class="form-group form-control form-check form-check-inline">
-                    <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
-                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form.</label>
-                </div>--%>
                 <h1>Edit Service</h1>
+                <div class="form-group form-control form-check form-check-inline">
+                    &nbsp;
+                    <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                    <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design</label>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <asp:CheckBox ID="cboHelp" runat="server" CssClass="form-check-input" AutoPostBack="True" OnCheckedChanged="cboHelp_CheckedChanged" />
+                    <label class="form-check-label" for="cboHelp">Check this to display detailed instruction on this form</label>
+                </div>
                 <strong>
                     <asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Green" ToolTip="Status" Visible="False"></asp:Label>
                     <br />
@@ -157,15 +161,8 @@
                                     <asp:TextBox ID="txtName" runat="server" CssClass="form-control" required="required" ToolTip="Service Name" MaxLength="20"></asp:TextBox>
                                     <div class="invalid-feedback">Please enter a service name</div>
                                 </div>
-                                <div>
-                                    <img id="ServiceNameImg" src="images/question.png" alt="Question mark" />
-
-                                </div>
                             </div>
-                            <div style="visibility: hidden" class="help-text" id="lblServiceName">
-                                <p>input a service Name (Eg: oil change)</p>
-                            </div>
-
+                            <asp:Label ID="lblServiceName" runat="server" Text="Input Name of the Service (Eg. oil change)." CssClass="help-text" Visible="False"></asp:Label>
 
                         </div>
                     </div>
@@ -179,14 +176,9 @@
                                     <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" required="required" ToolTip="Service Description" MaxLength="100"></asp:TextBox>
                                     <div class="invalid-feedback">Please enter a service description</div>
                                 </div>
-                                <div>
-                                    <img id="ServiceDescImg" src="images/question.png" alt="Question mark" />
-
-                                </div>
                             </div>
-                            <div style="visibility: hidden" class="help-text" id="lblServiceDesc">
-                                <p>input a service Description (Eg: Change oil)</p>
-                            </div>
+                            <asp:Label ID="lblServiceDesc" runat="server" Text="Input the description of the equipment (Eg. change oil)." CssClass="help-text" Visible="False"></asp:Label>
+                          
 
                         </div>
                     </div>
@@ -195,40 +187,29 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Service Price:</label>
-
-
                             <div class="flex-box">
                                 <div style="width: 100%;">
                                     <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" required="required" ToolTip="Service Price" MaxLength="8"></asp:TextBox>
                                     <div class="invalid-feedback">Please enter a service Price</div>
                                 </div>
-                                <div>
-                                    <img id="PriceImg" src="images/question.png" alt="Question mark" />
-
-                                </div>
                             </div>
                              <div class="validation-child">
                                 <asp:Label ID="lblPriceVal" runat="server" Text="Label" Visible="False"></asp:Label>
                             </div>
-                            <div style="visibility: hidden" class="help-text" id="lblPrice">
-                                <p>input a service Price (Eg: $25)</p>
-                            </div>
-
-
+                            <asp:Label ID="lblServicePrice" runat="server" Text="Input the Issues of the equipment (Eg. oil change)." CssClass="help-text" Visible="False"></asp:Label>
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <asp:Panel ID="pnlBtnRepairs" CssClass="col-md-12" runat="server">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Create Service" CssClass="btn btn-success" Text="Save" OnClick="btnCreate_Click" ToolTip="Create Service" Width="100px" />
-                        <input class="btn btn-secondary" type="reset" value="Clear Form" aria-label="Clear Form"  />
+                        <input class="btn btn-secondary" type="reset" value="Clear Form" aria-label="Clear Form" width="100px" />
                         <a class="btn btn-danger" href="/Repairs/Services.aspx" role="button" aria-label="Cancel Creating Service" style="width: 100px;">Cancel</a>
                     </asp:Panel>
                 </div>
             </div>
         </div>
     </form>
-    <script src="/Script/service-help_text.js"></script>
 
 </body>
 </html>

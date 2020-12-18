@@ -11,7 +11,16 @@ namespace PRIMEWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+            lblUser.Text = User.Identity.Name;
+        }
 
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }
