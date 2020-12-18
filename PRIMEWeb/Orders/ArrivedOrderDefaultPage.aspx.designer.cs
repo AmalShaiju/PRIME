@@ -60,15 +60,6 @@ namespace PRIMEWeb.Orders
         protected global::System.Web.UI.WebControls.DropDownList ddlInventoryID;
 
         /// <summary>
-        /// ddlProdOrderID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProdOrderID;
-
-        /// <summary>
         /// txtDateAttived control.
         /// </summary>
         /// <remarks>
@@ -121,15 +112,6 @@ namespace PRIMEWeb.Orders
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gv_Orders;
-
-        /// <summary>
-        /// ObjectDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
 
         /// <summary>
         /// on_order control.

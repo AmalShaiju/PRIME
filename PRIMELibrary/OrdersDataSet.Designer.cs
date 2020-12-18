@@ -4609,7 +4609,7 @@ SELECT id, pordNumber, pordDateOrdered, pordPaid FROM prod_order WHERE (id = @id
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        on_order.id, on_order.onordInvoiceNum, on_order.onordArriveDate, on_order.onordNumInOrder, on_order.onordPrice, on_order.inventoryID, on_order.prodorderID, product.prodName + ' ' + product.prodBrand AS ProductName
+            this._commandCollection[0].CommandText = @"SELECT        on_order.id, on_order.onordInvoiceNum, on_order.onordArriveDate, on_order.onordNumInOrder, on_order.onordPrice, on_order.inventoryID, on_order.prodorderID, product.prodName + '/Brand:  ' + product.prodBrand AS ProductName
 FROM            on_order INNER JOIN
                          inventory ON on_order.inventoryID = inventory.id INNER JOIN
                          product ON inventory.productID = product.id

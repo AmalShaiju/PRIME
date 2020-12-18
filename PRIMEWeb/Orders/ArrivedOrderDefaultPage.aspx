@@ -108,12 +108,12 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6 form-group">
+                                <%--<div class="col-md-6 form-group">
                                         <label class="control-label">Product Order ID:</label>
                                         <asp:DropDownList ID="ddlProdOrderID" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="ObjectDataSource1" DataTextField="pordNumber" DataValueField="id">
                                             <asp:ListItem Selected="True">None</asp:ListItem>
                                        </asp:DropDownList>
-                                </div>
+                                </div>--%>
                                  <div class="col-md-6 form-group">
                                         <label class="control-label">Date Arrived:</label>
                                         <asp:TextBox ID="txtDateAttived" runat="server" CssClass="form-control" TextMode ="Date" ></asp:TextBox>
@@ -152,9 +152,9 @@
                         </Triggers>
                     </asp:UpdatePanel>
                     </div>
-            </div>
+            <%--</div>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.prod_order1TableAdapter"></asp:ObjectDataSource>
-        </div>
+        </div>--%>
             
                 
             <asp:ObjectDataSource ID="on_order" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.OrdersDataSetTableAdapters.on_order1IDSTableAdapter">
