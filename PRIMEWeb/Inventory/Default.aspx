@@ -36,12 +36,28 @@
             text-align: center;
             vertical-align: middle;
         }
+        
         td .btn {
             width: 80px;
+            margin: 5px;
+        }
+        .auto-style1 {
+            width: 100%;
+            color: #212529;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 31px;
+            margin-bottom: 0;
+        }
+        label{
+            width:100%;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmInventory" runat="server">
@@ -64,22 +80,31 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Orders/">Orders</a>
+                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Inventory</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Inventory</h1>
-                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-secondary" aria-label="Add New Inventory Item" Text="Add New Item" PostBackUrl="/Inventory/NewItem.aspx" />
-                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Inventory Items">
+                    <div class="form-group form-control form-check form-check-inline">
+                        &nbsp;
+                        <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
+                        <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                    </div>
+                    <button id="btnFilter" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Inventory Items">
                         Filter Inventory
                     </button>
+                    <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-secondary" aria-label="Add New Inventory Item" Text="Add New Item" PostBackUrl="/Inventory/NewItem.aspx" />
+                    
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">
@@ -92,8 +117,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Brand:</label>
-                                        <asp:DropDownList ID="ddlBrands" runat="server" CssClass="form-control">
-                                            <asp:ListItem>All brands</asp:ListItem>
+                                        <asp:DropDownList ID="ddlBrands" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Brands" DataTextField="prodBrand" DataValueField="id">
+                                            <asp:ListItem Selected="True">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -114,62 +139,21 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                        <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" />
-                                        <input type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter" />
-                                </div>
+                                        <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
+                                        <asp:Button ID="btnClear" runat="server" CssClass="btn btn-outline-secondary" OnClick="Button1_Click" style="width: 62px" Text="Clear" />
+&nbsp;</div>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">Brand</th>
-                                <th scope="col">Price</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2 stroke oil</td>
-                                <td>12</td>
-                                <td>6.00 FL oz</td>
-                                <td>Castrol</td>
-                                <td>$4.95</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Item" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Item" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Air Filter</td>
-                                <td>23</td>
-                                <td>5.00 inch</td>
-                                <td>Briggs and Stratton</td>
-                                <td>$15.99</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Item" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Item" Text="Delete" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>50:1 Mixed Gas</td>
-                                <td>9</td>
-                                <td>1.00 Litre</td>
-                                <td>Champion</td>
-                                <td>$12.50</td>
-                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-info" aria-label="Item Details" Text="Details" />
-                                    <asp:Button runat="server" CssClass="btn btn-dark" aria-label="Edit Item" Text="Edit" />
-                                    <asp:Button runat="server" CssClass="btn btn-danger" aria-label="Delete Item" Text="Delete" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    
+                    <div>
+                        <asp:GridView ID="GridView1" runat="server" CssClass="auto-style1" GridLines="None" OnRowDataBound="GridView1_RowDataBound">
+                        </asp:GridView>
+                        <br />
+                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        <br />
+                        <asp:ObjectDataSource ID="Brands" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.BrandLookUpTableAdapter"></asp:ObjectDataSource>
+                    </div>
                 </div>
             </div>
         </div>

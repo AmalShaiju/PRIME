@@ -27,6 +27,9 @@ namespace PRIMEWeb.Repairs
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             try
             {
                 // Refresh the dataset so all updates are shown on page refresh 
@@ -315,6 +318,11 @@ namespace PRIMEWeb.Repairs
             return criteria;
         }
 
-        
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
+        }
     }
 }

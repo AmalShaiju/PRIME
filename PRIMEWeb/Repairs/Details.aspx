@@ -154,6 +154,7 @@
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    
 </head>
 <body>
     <form id="frmNewRepair" runat="server">
@@ -176,6 +177,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Orders/">Orders</a>
+                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
@@ -183,7 +187,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Details</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
 

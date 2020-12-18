@@ -17,6 +17,9 @@ namespace PRIMEWeb.Customers
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             try
             {
                 dsCustomer = new CustomerDataSet();
@@ -101,6 +104,13 @@ namespace PRIMEWeb.Customers
             lblAddressHelp.Visible = lblCityHelp.Visible = lblEmailHelp.Visible =
                 lblFirstlHelp.Visible = lblLastHelp.Visible = lblPhoneHelp.Visible = lblIdHelp.Visible =
                 lblPostalHelp.Visible = pnlCustomerHelp.Visible = cboHelp.Checked;
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

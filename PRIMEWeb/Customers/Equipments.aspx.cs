@@ -19,6 +19,9 @@ namespace PRIMEWeb.Customers
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             //data loaded successfully
             try
             {
@@ -163,6 +166,13 @@ namespace PRIMEWeb.Customers
             Response.Cookies.Add(action);
             Response.Cookies.Add(cID);
             Response.Redirect("EditEquipment.aspx"); // Redirect the user to Edit page on btn click
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

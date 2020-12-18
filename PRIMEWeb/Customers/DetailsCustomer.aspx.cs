@@ -15,9 +15,11 @@ namespace PRIMEWeb.Customers
         static CustomerDataSet dsCustomer;
         private static int id = -1;
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             try
             {
                 dsCustomer = new CustomerDataSet();
@@ -30,7 +32,7 @@ namespace PRIMEWeb.Customers
                 if (Request.Cookies["Action"] != null && Request.Cookies["Action"].Value == "Delete")
                 {
                     pnlDeleteConfirm.Visible = true;
-                    lblTitle.Text = "Delete Sale";
+                    lblTitle.Text = "Delete Customer";
                 }
                 else
                 {
@@ -99,6 +101,13 @@ namespace PRIMEWeb.Customers
                     lblStatus.Text = "Delete failed. The customer has an equipment asigned.";
                 }
             }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

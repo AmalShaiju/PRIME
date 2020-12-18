@@ -14,10 +14,16 @@
         .breadcrumb, #navbar {
             margin: 10px;
         }
+        label {
+            width: 100%;
+        }
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
             width: 130px;
+        }
+        label{
+            width:100%;
         }
         .container {
             background-color: #fff;
@@ -77,6 +83,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Orders/">Orders</a>
+                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
@@ -84,7 +93,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Equipments</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg" style="height: 80%">
             <div id="wrapper" class="row justify-content-sm-center">

@@ -26,6 +26,9 @@ namespace PRIMEWeb.Repairs
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             // Set the criteria so that the grid is refreshed 
             Session["RepairCriteria"] = null;
             Session["ServiceCriteria"] = null;
@@ -98,6 +101,11 @@ namespace PRIMEWeb.Repairs
             this.DetailGrid.DataBind();
         }
 
-       
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
+        }
     }
 }

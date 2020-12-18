@@ -26,6 +26,10 @@ namespace PRIMEWeb.Repairs
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
+            if (Request.Cookies["ID"] != null) // Request the cookies which contaions the ID Of thr record that was carried over from the index page
 
             if (Request.Cookies["ID"] != null)
             {
@@ -393,6 +397,13 @@ namespace PRIMEWeb.Repairs
             cID.Value = id.ToString();
             Response.Cookies.Add(cID);
             Response.Redirect("EditRepair.aspx"); // Redirect the user to Edit page on btn click
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

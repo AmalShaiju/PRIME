@@ -14,10 +14,16 @@
         .breadcrumb, #navbar {
             margin: 10px;
         }
+        label {
+            width: 100%;
+        }
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
             width: 130px;
+        }
+        label{
+            width:100%;
         }
         .container {
             background-color: #fff;
@@ -55,8 +61,19 @@
         .col-md-12 input, .col-md-12 a {
             margin: 0 10px;
         }
+        #btnLogout.btn-logout-high {
+            color: #fff;
+            background-color: #DC3545;
+            border-color: #DC3545;
+        }
+        #btnLogout.btn-logout-high:hover {
+            color: #fff;
+            background-color: #C72334;
+            border-color: #C72334;
+        }
     </style>
     <link href="/CSS/wcag.css" rel="stylesheet" />
+     
     <script src="/Script/wcag.js"></script>
 </head>
 <body>
@@ -80,6 +97,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Orders/">Orders</a>
+                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
@@ -87,7 +107,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Edit Customer</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9 rounded-lg">
@@ -159,8 +179,8 @@
                 <asp:Label ID="lblStatus" runat="server"></asp:Label>
                 <div class="form-row">
                     <div class="col-md-12">
-                        <asp:Button ID="btnUpdate" runat="server" aria-label="Update Customer" CssClass="btn btn-outline-primary" Text="Update Customer" OnClick="btnUpdate_Click"/>
-                        &nbsp;<a class="btn btn-outline-primary" href="/Customers/" role="button" aria-label="Cancel Editing Customer">Cancel</a>
+                        <asp:Button ID="btnCreate" runat="server" aria-label="Update Customer" CssClass="btn btn-outline-primary" Text="Update Customer" OnClick="btnUpdate_Click"/>
+                        &nbsp;<a class="btn btn-danger" href="/Customers/" role="button" aria-label="Cancel Editing Customer">Cancel</a>
                     </div>
                 </div>
                 <asp:Panel ID="pnlCustomerHelp" runat="server" Visible="False">

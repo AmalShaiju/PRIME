@@ -28,6 +28,9 @@ namespace PRIMEWeb.Sales
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             receiptID = Request.QueryString["ID"];
             if (receiptID == null)
                 Response.Redirect("~/Sales/");
@@ -60,7 +63,7 @@ namespace PRIMEWeb.Sales
                 return;
             }
 
-            if (Request.QueryString["Delete"] == "1" /* && IsAdmin */)
+            if (Request.QueryString["Delete"] == "1" && User.IsInRole("Admin"))
             {
                 pnlDeleteConfirm.Visible = true;
                 lblTitle.Text = "Delete Sale";
@@ -249,6 +252,13 @@ namespace PRIMEWeb.Sales
 
             gvRepairs.DataSource = dtRepairs;
             gvRepairs.DataBind();
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }

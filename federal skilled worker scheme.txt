@@ -1,8 +1,0 @@
-language pointss ==   clb level 8 speaking 7 ,listening 8 , reading 7, writimg 6.5 =20
-education diploam(two years) = 19
-job experience == 1 year = 9
-
-age == 18-35= 12
-
-adaptabilty = 5
-valid job offer == 10 

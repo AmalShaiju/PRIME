@@ -139,6 +139,8 @@
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
+    <link href="/CSS/wcag.css" rel="stylesheet" />
+    <script src="/Script/wcag.js"></script>
 </head>
 <body>
     <form id="frmNewService" runat="server" class="was-validated">
@@ -161,6 +163,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Orders/">Orders</a>
+                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
@@ -169,7 +174,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Create New Service</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9">
@@ -242,7 +247,7 @@
                 <div class="form-row">
                     <asp:Panel ID="pnlBtnRepairs" CssClass="auto-style1" runat="server">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Create Service" CssClass="btn btn-success" Text="Create" OnClick="btnCreate_Click" ToolTip="Create service" Width="100px" />
-                        <input class="btn btn-secondary" type="reset" value="Clear Form" aria-label="Clear Form" width="100px" />
+                        <input id="btnClear" class="btn btn-secondary" type="reset" value="Clear Form" aria-label="Clear Form" width="100px" />
                         <a class="btn btn-danger" href="/Repairs/Services.aspx" role="button" aria-label="Cancel Creating Service" style="width: 100px;">Cancel</a>
                     </asp:Panel>
                 </div>

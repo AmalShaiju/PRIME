@@ -14,10 +14,16 @@
         .breadcrumb, #navbar {
             margin: 10px;
         }
+        label {
+            width: 100%;
+        }
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
             width: 130px;
+        }
+        label{
+            width:100%;
         }
         .container {
             background-color: #fff;
@@ -61,7 +67,106 @@
         }
     </style>
     <link href="/CSS/wcag.css" rel="stylesheet" />
-    <script src="/Script/wcag.js"></script>
+    <script>
+        function SwitchCss(element) {
+            var btnDangers = document.getElementsByClassName("btn-danger");
+            var btnInfos = document.getElementsByClassName("btn-info");
+            var btnInfos = document.getElementsByClassName("btn-info");
+            var btnSearch = document.getElementById("btnSearch");
+            var btnFilter = document.getElementById("btnFilter");
+            var btnCreate = document.getElementById("btnCreate");
+            var btnClear = document.getElementById("btnClear");
+            var btnLogOut = document.getElementById("btnLogout");
+            var btnDependents = document.getElementsByClassName("btn btn-secondary btn-dependent-page");
+            var body = document.getElementsByTagName("body");
+            var navigation = document.getElementsByTagName("nav");
+            var ol = document.getElementsByTagName("ol");
+            var container = document.getElementsByClassName("container");
+            var table = document.getElementsByClassName("table");
+
+            if (element.checked) {
+                btnLogOut.classList.add("btn-logout-high");
+                for (var i = 0; i < btnDangers.length; i++) {
+                    btnDangers[i].classList.add("btn-danger-high");
+                }
+
+                for (var i = 0; i < btnInfos.length; i++) {
+                    btnInfos[i].classList.add("btn-info-high");
+                }
+
+                for (var i = 0; i < btnDependents.length; i++) {
+                    btnDependents[i].classList.add("btn-dependent-high");
+                }
+
+                for (var i = 0; i < body.length; i++) {
+                    body[i].classList.add("body-high");
+                }
+
+                for (var i = 0; i < navigation.length; i++) {
+                    navigation[i].classList.add("nav-high");
+                }
+
+                for (var i = 0; i < ol.length; i++) {
+                    ol[i].classList.add("border-high");
+                }
+
+                for (var i = 0; i < container.length; i++) {
+                    container[i].classList.add("border-high");
+                }
+
+                for (var i = 0; i < table.length; i++) {
+                    table[i].classList.add("table-high");
+                }
+
+                btnSearch.classList.add("btn-search-high");
+                btnFilter.classList.add("btn-search-high");
+                btnCreate.classList.add("btn-create-high");
+                btnClear.classList.add("btn-clear-high");
+
+            }
+            else {
+                btnLogOut.classList.remove("btn-logout-high");
+                for (var i = 0; i < btnDangers.length; i++) {
+                    btnDangers[i].classList.remove("btn-danger-high");
+                }
+
+                for (var i = 0; i < btnInfos.length; i++) {
+                    btnInfos[i].classList.remove("btn-info-high");
+                }
+
+                for (var i = 0; i < btnDependents.length; i++) {
+                    btnDependents[i].classList.remove("btn-dependent-high");
+                }
+
+                for (var i = 0; i < body.length; i++) {
+                    body[i].classList.remove("body-high");
+                }
+
+                for (var i = 0; i < navigation.length; i++) {
+                    navigation[i].classList.remove("nav-high");
+                }
+
+                for (var i = 0; i < ol.length; i++) {
+                    ol[i].classList.remove("border-high");
+                }
+
+                for (var i = 0; i < container.length; i++) {
+                    container[i].classList.remove("border-high");
+                }
+
+                for (var i = 0; i < table.length; i++) {
+                    table[i].classList.remove("table-high");
+                }
+
+                btnSearch.classList.remove("btn-search-high");
+                btnFilter.classList.remove("btn-search-high");
+                btnCreate.classList.remove("btn-create-high");
+                btnClear.classList.remove("btn-clear-high");
+
+            }
+        }
+    </script> 
+    <%--<script src="/Script/wcag.js"></script>--%>
 </head>
 <body>
     <form id="frmNewSale" runat="server"  class="was-validated">
@@ -84,6 +189,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Orders/">Orders</a>
+                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
@@ -92,7 +200,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Edit Equipment</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
         </nav>
         <div class="container rounded-lg row justify-content-sm-center">
             <div id="wrapper-inner" class="col-lg-9">
@@ -167,9 +275,9 @@
                 <br />
                 <asp:Label ID="Label1" runat="server"></asp:Label>
                 <div class="form-row">
-                    <div id="divBtnEquipments" class="col-md-12">
+                    <div runat="server" id="divBtnEquipments" class="col-md-12">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Update Equipment" CssClass="btn btn-outline-primary" Text="Update Equipment" OnClick="btnUpdate_Click" />
-                        <a class="btn btn-outline-primary" href="/Customers/Equipments.aspx" role="button" aria-label="Cancel Editing Equipment">Cancel</a>
+                        <a class="btn btn-danger" href="/Customers/Equipments.aspx" role="button" aria-label="Cancel Editing Equipment">Cancel</a>
                     </div>
                 </div>
                 <asp:Panel ID="pnlEquipmentsHelp" runat="server" Visible="False">

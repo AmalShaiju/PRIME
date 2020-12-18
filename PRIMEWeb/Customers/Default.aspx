@@ -14,6 +14,10 @@
         .breadcrumb, #navbar {
             margin: 10px;
         }
+
+        label{
+            width:100%;
+        }
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
@@ -35,6 +39,9 @@
         .table td, .table th {
             text-align: center;
             vertical-align: middle;
+        }
+        label {
+            width: 100%;
         }
         td .btn {
             width: 80px;
@@ -71,13 +78,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Orders/">Orders</a>
+                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Customers</li>
                 </ol>
             </div>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" PostBackUrl="/" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" />
         </nav>
         <div class="container rounded-lg">
             <div id="wrapper" class="row justify-content-sm-center">

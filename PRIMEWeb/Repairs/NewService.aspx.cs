@@ -37,6 +37,9 @@ namespace PRIMEWeb.Repairs
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.Identity.IsAuthenticated)  //if not logged in
+                Response.Redirect("/");
+
             if (flag)
             {
                 this.Label1.Visible = true;
@@ -118,6 +121,13 @@ namespace PRIMEWeb.Repairs
         protected void cboHelp_CheckedChanged(object sender, EventArgs e)
         {
             this.lblServiceName.Visible = this.lblServiceDesc.Visible = this.lblServicePrice.Visible = cboHelp.Checked;
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("/");
         }
     }
 }
