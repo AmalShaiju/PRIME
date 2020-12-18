@@ -1,5 +1,5 @@
 ﻿using PRIMELibrary;
-using PRIMELibrary.EmmasDataSetTableAdapters;
+using PRIMELibrary.InventoryDataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,12 +12,12 @@ namespace PRIMEWeb.Inventory
 {
     public partial class NewProduct : System.Web.UI.Page
     {
-        static EmmasDataSet dsInventory = new EmmasDataSet();
+        static InventoryDataSet dsInventory = new InventoryDataSet();
         private static DataRow[] rows;
 
         static NewProduct()
         {
-            dsInventory = new EmmasDataSet();
+            dsInventory = new InventoryDataSet();
             InventoryLookUpTableAdapter daInventory = new InventoryLookUpTableAdapter();
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace PRIMEWeb.Inventory
         {
             try
             {
-                DataRow Inventorydata = dsInventory.product.NewRow(); // Create a new row of service_order table in memory
+                DataRow Inventorydata = dsInventory.Product.NewRow(); // Create a new row of service_order table in memory
                                                                         //update record with user's input
 
                 Inventorydata[1] = this.txtProduct.Text;
@@ -39,8 +39,8 @@ namespace PRIMEWeb.Inventory
                 Inventorydata[2] = this.txtDescription.Text;
 
                 
-                productTableAdapter ProductTable = new productTableAdapter();
-                dsInventory.product.Rows.Add(Inventorydata); // add the rows to the dataset
+                ProductTableAdapter ProductTable = new ProductTableAdapter();
+                dsInventory.Product.Rows.Add(Inventorydata); // add the rows to the dataset
 
 
                 ProductTable.Update(Inventorydata);

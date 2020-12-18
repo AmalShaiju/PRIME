@@ -118,6 +118,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Customers\Equipments.aspx" />
     <Content Include="Customers\NewEquipment.aspx" />
+    <Content Include="Inventory\DeleteItem.aspx" />
     <Content Include="Inventory\EditItem.aspx" />
     <Content Include="Inventory\NewItem.aspx" />
     <Content Include="Inventory\Default.aspx" />
@@ -207,6 +208,13 @@
     </Compile>
     <Compile Include="Customers\NewEquipment.aspx.designer.cs">
       <DependentUpon>NewEquipment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\DeleteItem.aspx.cs">
+      <DependentUpon>DeleteItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inventory\DeleteItem.aspx.designer.cs">
+      <DependentUpon>DeleteItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inventory\EditItem.aspx.cs">
       <DependentUpon>EditItem.aspx</DependentUpon>

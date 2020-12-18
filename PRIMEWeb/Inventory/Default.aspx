@@ -29,6 +29,19 @@
             text-align: center;
             padding: 10px 0;
         }
+        #cboSwitch {
+            margin-left: 10px;
+        }
+        #divBtnSearch {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+        #btnClear {
+            margin-left: 30px;
+        }
+        #upnInventory {
+            padding-top: 20px;
+        }
         .table {
             margin: 30px auto 0 auto;
         }
@@ -36,22 +49,13 @@
             text-align: center;
             vertical-align: middle;
         }
-        
         td .btn {
-            width: 80px;
-            margin: 5px;
+            width: 70px;
+            margin: 0 5px;
         }
-        .auto-style1 {
+        label
+        {
             width: 100%;
-            color: #212529;
-            border-collapse: collapse;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 31px;
-            margin-bottom: 0;
-        }
-        label{
-            width:100%;
         }
     </style>
     <script src="/Script/jquery-3.5.1.min.js"></script>
@@ -99,9 +103,8 @@
                 <div id="wrapper-inner" class="col-lg-9 rounded-lg">
                     <h1>Inventory</h1>
                     <div class="form-group form-control form-check form-check-inline">
-                        &nbsp;
-                        <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="chbSwitch" name="cnbSwitch" />
-                        <label class="form-check-label" for="cnbSwitch">Check this to switch to high contrast design.</label>
+                        <input type="checkbox" onclick="SwitchCss(this)" class="form-check-input" id="cboSwitch" name="cboSwitch" />
+                        <label class="form-check-label" for="cboSwitch">Check this to switch to high contrast design.</label>
                     </div>
                     <button id="btnFilter" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" aria-label="Filter Inventory Items">
                         Filter Inventory
@@ -120,7 +123,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Brand:</label>
-                                        <asp:DropDownList ID="ddlBrands" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="Brands" DataTextField="prodBrand" DataValueField="id">
+                                        <asp:DropDownList ID="ddlBrands" runat="server" CssClass="form-control" AppendDataBoundItems="True" DataSourceID="dsBrands" DataTextField="prodBrand" DataValueField="id">
                                             <asp:ListItem Selected="True">None</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -141,22 +144,26 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6">
-                                        <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
-                                        <asp:Button ID="btnClear" runat="server" CssClass="btn btn-outline-secondary" OnClick="Button1_Click" style="width: 62px" Text="Clear" />
-&nbsp;</div>
+                                <div id="divBtnSearch" class="col-md-12 align-self-end">
+                                    <asp:Button ID="btnSearch" runat="server" aria-label="Apply Filter" CssClass="btn btn-outline-secondary" Text="Apply Filter" OnClick="btnSearch_Click" />
+                                    <input id="btnClear" type="reset" value="Clear Filter" class="btn btn-outline-secondary" aria-label="Clear Filter"/>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div>
-                        <asp:GridView ID="GridView1" runat="server" CssClass="auto-style1" GridLines="None" OnRowDataBound="GridView1_RowDataBound">
-                        </asp:GridView>
-                        <br />
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                        <br />
-                        <asp:ObjectDataSource ID="Brands" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.EmmasDataSetTableAdapters.BrandLookUpTableAdapter"></asp:ObjectDataSource>
-                    </div>
+                    <asp:ObjectDataSource ID="dsBrands" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="PRIMELibrary.InventoryDataSetTableAdapters.BrandLookUpTableAdapter"></asp:ObjectDataSource>
+                    <asp:ScriptManager ID="smgInventory" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="upnInventory" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                            <asp:GridView ID="gvInventory" runat="server" CssClass="table" CellPadding="0" GridLines="None" OnRowDataBound="gvInventory_RowDataBound">
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnSearch" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>

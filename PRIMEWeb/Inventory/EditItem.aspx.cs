@@ -1,5 +1,5 @@
 ﻿using PRIMELibrary;
-using PRIMELibrary.EmmasDataSetTableAdapters;
+using PRIMELibrary.InventoryDataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,16 +13,16 @@ namespace PRIMEWeb.Inventory
     public partial class EditItem : System.Web.UI.Page
     {
         private static int id = -1;
-        static EmmasDataSet dsInventory = new EmmasDataSet();
+        static InventoryDataSet dsInventory = new InventoryDataSet();
         private static DataRow[] rows;
         static EditItem()
         {
-            dsInventory = new EmmasDataSet();
+            dsInventory = new InventoryDataSet();
 
             try
             {
-                inventoryTableAdapter daInventory = new inventoryTableAdapter();
-                daInventory.Fill(dsInventory.inventory);
+                InventoryTableAdapter daInventory = new InventoryTableAdapter();
+                daInventory.Fill(dsInventory.Inventory);
             }
             catch { }
         }
@@ -71,7 +71,7 @@ namespace PRIMEWeb.Inventory
                 {
                    // try
                     //{
-                        DataRow record = dsInventory.inventory.FindByid(id); // Find the related Record and fill the fields in the page with the data
+                        DataRow record = dsInventory.Inventory.FindByid(id); // Find the related Record and fill the fields in the page with the data
 
                         if (record != null)
                         {
@@ -83,7 +83,7 @@ namespace PRIMEWeb.Inventory
 
                       // dsInventory.inventory.Rows.Add(record); // add the rows to the dataset
 
-                            inventoryTableAdapter daInventory = new inventoryTableAdapter();
+                            InventoryTableAdapter daInventory = new InventoryTableAdapter();
                             daInventory.Update(record);
                             // Call update method on the service adapter so it updates the table in memory ( All changes made are applied - CRUD)
                             dsInventory.AcceptChanges();
