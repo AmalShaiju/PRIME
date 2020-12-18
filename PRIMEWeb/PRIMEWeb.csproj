@@ -105,9 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Emmas.mdf" />
-    <Content Include="App_Data\Emmas_log.ldf">
-      <DependentUpon>Emmas.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\Emmas_log.ldf" />
     <Content Include="CSS\bootstrap.css" />
     <Content Include="CSS\wcag.css" />
     <Content Include="Customers\Default.aspx" />

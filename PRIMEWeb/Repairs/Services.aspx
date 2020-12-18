@@ -88,6 +88,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Inventory/">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Orders/">Orders</a>
+                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
@@ -116,6 +119,21 @@
                     <br />
                     <strong> <asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Green" ToolTip="Status"></asp:Label></strong>
                     <br />
+                    <div style="margin-top:20px;">
+                        <strong> <asp:Label ID="lblDeleteMsg" runat="server" ForeColor="Green" Visible ="false" Text="Label" ToolTip="Record delete msg"></asp:Label></strong>
+                    </div> 
+
+                    <br />
+                     <asp:Panel ID="pnlDeleteConfirm" runat="server" CssClass="alert alert-danger" role="alert" Visible="False">
+                    <h4 class="alert-heading">Do you really want to delete this Service?</h4>
+                    <hr />
+                    <p>Doing this will also delete all repairs under this service.</p>
+                    <p>Please check out the orders and repairs before doing so.</p>
+                    <p>If you're sure about this, click the "Delete" button.</p>
+                    <hr />
+                    <a href="/Services/" type="button" class="btn btn-secondary">Cancel</a>
+                    <asp:Button ID="btnDeleteConfirm" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDeleteConfirm_Click" />
+                </asp:Panel>
                     <div class="collapse" id="collapseFilter">
                         <div class="card card-body bg-light">
                             <div class="form-row">

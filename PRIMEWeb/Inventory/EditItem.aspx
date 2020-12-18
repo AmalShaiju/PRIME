@@ -210,9 +210,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Orders/">Orders</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a>
-                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>

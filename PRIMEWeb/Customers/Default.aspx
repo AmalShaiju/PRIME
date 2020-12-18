@@ -14,6 +14,10 @@
         .breadcrumb, #navbar {
             margin: 10px;
         }
+
+        label{
+            width:100%;
+        }
         #btnLogout {
             margin: 0 15px;
             padding: 10px 0;
@@ -76,9 +80,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Orders/">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a>
                     </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">

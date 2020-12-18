@@ -19,6 +19,9 @@
             padding: 10px 0;
             width: 130px;
         }
+        label{
+            width:100%;
+        }
         .container {
             background-color: #fff;
             box-shadow: 2px 2px 10px 3px #a8a8a8;
@@ -86,14 +89,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Orders/">Orders</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a>
-                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
                     <li class="breadcrumb-item"><a href="/Orders/">Orders</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Edit New Order</li>
+                    <li class="breadcrumb-item active" aria-current="page">New Order</li>
                 </ol>
             </div>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-outline-danger rounded-pill" OnClick="btnLogout_Click" />
@@ -142,7 +142,7 @@
                 <div class="form-row">
                     <div class="col-md-12">
                         <asp:Button ID="btnCreate" runat="server" aria-label="Create Order" CssClass="btn btn-outline-primary" Text="Create Order" OnClick="btnCreate_Click" />
-                        <input id="btnClear" type="reset" value="Clear Form" class="btn btn-outline-primary" aria-label="Clear Form"/>
+                               <asp:Button ID="btnClearOrder" runat="server" aria-label="Clear Order Form" CssClass="btn btn-secondary btn-dependent-page" Text="Clear Form" UseSubmitBehavior="False" OnClick="btnClear_Click" />
                         <a class="btn btn-danger" href="/Orders/Default.aspx" role="button" aria-label="Cancel Creating">Cancel</a>
                     </div>
                 </div>

@@ -11,7 +11,7 @@
             background-color: #e0e0e0;
             line-height: 1;
         }
-
+        
         .breadcrumb, #navbar {
             margin: 10px;
         }
@@ -110,9 +110,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Orders/">Orders</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Orders/ArrivedOrderDefaultPage.aspx">Arriving Orders</a>
-                    </li>
                 </ul>
                 <ol class="navbar-collapse breadcrumb">
                     <li class="breadcrumb-item"><a href="/Landing.aspx">Home</a></li>
@@ -143,7 +140,14 @@
                     <br />
                     <br />
                     <br />
-                    &nbsp;<strong><asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Green" ToolTip="Records found"></asp:Label></strong>
+                    &nbsp;<strong><asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Green" ToolTip="Records found"></asp:Label>
+                    <br />
+                    </strong>
+                    
+                    <div style="margin-top:20px;">
+                    <strong> <asp:Label ID="lblDeleteMsg" runat="server" ForeColor="Green" Visible ="false" Text="Label" ToolTip="Record delete msg"></asp:Label></strong>
+                    </div>
+                   
 
                     <br />
                     <div class="collapse" id="collapseFilter">
